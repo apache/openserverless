@@ -1,3 +1,3 @@
-[submodule "openserverless-documentation"]
-	path = openserverless-documentation
+[submodule "website"]
+	path = website
 	url = ssh://git@github.com/nuvolaris/openserverless-documentation
