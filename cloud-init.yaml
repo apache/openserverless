@@ -1,17 +1,15 @@
 #cloud-config
-
 apt_update: true
 apt_upgrade: true
-
 runcmd:
- - >
-   curl -sfL https://get.k3s.io | sh -
- - >
-   curl -sfL https://direnv.net/install.sh | bash
- - |
-   USR="$(getent passwd 1000 | awk -F: '{print $1}')"
-   mkdir -p "/home/$USR/.kube"
-   cp /etc/rancher/k3s/k3s.yaml "/home/$USR/.kube/config"
-   chown -Rvf "$USR" "/home/$USR/.kube"
-   curl -L https://nixos.org/nix/install | sudo -u "$USR"  sh -s -- --daemon
+  - >
+    curl -sfL https://get.k3s.io | sh -
+  - >
+    curl -sfL https://direnv.net/install.sh | bash
+  - |
+    USR="$(getent passwd 1000 | awk -F: '{print $1}')"
+    mkdir -p "/home/$USR/.kube"
+    cp /etc/rancher/k3s/k3s.yaml "/home/$USR/.kube/config"
+    chown -Rvf "$USR" "/home/$USR/.kube"
+    curl -L https://nixos.org/nix/install | sudo -u "$USR"  sh -s -- --daemon
  
