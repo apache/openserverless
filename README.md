@@ -112,7 +112,7 @@ git config --global user.name "<your-name>"
 git config --global user.email "<your-email>
 ```
 
-## Access the virtual machin with VSCode:
+## Access the virtual machine with VSCode
 
 1. Install [VSCode](https://code.visualstudio.com/)
 
@@ -133,6 +133,29 @@ Now you have all the repositories in your virtual madchine and the subprojects. 
 
 For example try to execute `Terminal > New Terminal`  and you will see you can choose the sub project. If you select `website` for example, the system will download all the dependencies to build the web site, in this case `hugo` and `npm` and install the required tools `postcss`.
 
+
+## Submodules
+
+Apache OpenServerless uses git submodules.
+
+This means in practice 2 things: you have to do pull requests and changes forking the subprojects individually. 
+
+Then you have from time to time to update the whole subtree to the latest releases.
+
+### Contributing to subprojects
+
+To contribute to a subproject:
+
+- fork a subproject: for example `github.com/apache/openserverless-website` into `github.com/sciabarracom/openserverless-website`
+- add a remote the the subproject to point to your fork. After opening the `website` terminal, add `git remote add sciabarracom github.com/sciabarracom/openserverless-website`
+- now you can change the code and push in your fork: `git push sciabarracom main`
+- you can now contribute a Pull Request
+
+### Syncronize the tree
+
+Open a terminal in the `root` subproject and type `./update-tree.sh`. This script will update all the suprojcts to the latest available version on the main repo.
+
+Do not worry of contributing PR to update dependencies as the mainteiners will periodically take care of this. 
 
 ### Cleanup
 
