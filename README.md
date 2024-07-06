@@ -97,6 +97,5 @@ If you do now want to keep the vm anymore,   esure you have backed up all your f
 For multipass, use the following commands to cleanup:
 
 ```
-multipass delete openserverless
-multipass purge
+multipass delete openserverless --purge
 ```
