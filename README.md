@@ -1,34 +1,38 @@
 # Apache OpenServerless
 
-Welcome to [Apache OpenServerless](https://cwiki.apache.org/confluence/display/INCUBATOR/OpenServerlessProposal), shortened **AOS**, an incubating project at the [Apache Software Foundation](https://www.apache.org).
+Welcome to [Apache OpenServerless](https://cwiki.apache.org/confluence/display/INCUBATOR/OpenServerlessProposal) (also referenced as **AOS**), an incubating project at the [Apache Software Foundation](https://www.apache.org).
 
-This readme provides development information. For user informations refer to the [website](https://openserverless.apache.org) (not yet available).
+This readme provides  informations for developers of the project. For user informations refer to the [website](https://openserverless.apache.org) (not yet available).
 
 ## Development Enviroment Overview
 
-AOS is a complex projects with lots of dependencies. It also needs a Kubernetes to be executed, hence tested  and developed.
+AOS is a complex projects with lots of dependencies. It also needs a Kubernetes to be executed, tested and developed.
 
-In order to bootstrap easily the development environment for the project, we use virtual machines initialized with [cloud-init](https://cloud-init.io/) to setup a development environment.
+You may setup the environment by yourself but it can take a lot of time. If you want to do it quickly read on.
 
-As an IDE we use  [VSCode](https://code.visualstudio.com/)] as it allows [Remote Development](https://code.visualstudio.com/docs/remote/remote-overview) within the virtual machine.
+In order to bootstrap easily the development environment for the project, we use a virtual machines based on Ubuntu (currently version 24) initialized with [cloud-init](https://cloud-init.io/). This virtual machine can be run either in your local machine or in a cloud provider.
 
-You can setup your development virtual machine in cloud or you can configure it locally in your workstation. 
+As an IDE we use [VSCode](https://code.visualstudio.com/)] as it allows [Remote Development](https://code.visualstudio.com/docs/remote/remote-overview) within the virtual machine. You can also use a different IDE but the configuration for VSCode is ready and documented.
 
-You need a virtual machine with at least 8g of memory and 4 VCPU so your development workstation probably needs 16GB and 8VCPU of memory at least.
+You need a virtual machine with at least 8 giga of memory and 4 VCPU so your development workstation probably needs at least 16GB and 6VCPU. Your mileage may vary.
 
 ## Setup the Development Virtual Machine
 
-Here we see how to setup the development environment in variuos scenarios.
+Here we describe how to setup the development virtual machine in variuos scenarios.
 
-### Setup a development environment in Linux and Mac
+- Linux and Mac with Multipass
+- Windows with WSL2
+- TODO: AWS, Azure, etc
 
-The method we use to setup a VM in Linux and Mac is using [multipass](https://multipass.run/). 
+### Setup a development VM in Linux and Mac
+
+The method we recomment to setup a VM in Linux and Mac is using [multipass](https://multipass.run/). 
 
 - On Mac, if you already have [brew](https://brew.sh/), installing it is as easy as to type `brew install multipass`.
 
 - On Linux, if you already have [snap](https://snapcraft.io/), installing it is as easy as type `sudo snap install multipass`
 
--  Otherwise follow [those instructions](https://multipass.run/install)
+- Otherwise follow [those instructions](https://multipass.run/install)
 
 Once you have `multipass` type the following and wait util you see `status: done`
 

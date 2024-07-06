@@ -6,5 +6,6 @@ in
 pkgs.mkShellNoCC {
   packages = with pkgs; [
    python3
+
   ];
 }
