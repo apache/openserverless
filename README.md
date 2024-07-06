@@ -32,8 +32,13 @@ The method we use to setup a VM in Linux and Mac is using [multipass](https://mu
 
 Once you have `multipass` type the following 
 
+
 ```
+multipass launch -nopenserverless -c4 -d20g -m8g --cloud-init cloud-init.yaml
+
+
 multipass launch -nopenserverless -c4 -d20g -m8g --cloud-init https://raw.githubusercontent.com/nuvolaris/openserverless/main/cloud-init.yaml
+
 multipass exec "openserverless" -- sudo cloud-init status --wait
 ```
 
