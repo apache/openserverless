@@ -5,7 +5,7 @@ apt_upgrade: true
 
 runcmd:
  - curl -sfL https://get.k3s.io | sh -
--  curl -sfL https://direnv.net/install.sh | bash
+ - curl -sfL https://direnv.net/install.sh | bash
  - |
    USR= "$(getent passwd 1000 | awk -F: '{print $1}')"
    mkdir -p "/home/$USR/.kube"
