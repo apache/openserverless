@@ -11,13 +11,16 @@
             {
                 "name": "website",
                 "path": "website"
-            }
+            },
+            { 
+                "name": "root",
+                "path": "."
         ],
     "settings": {
             "workbench.colorCustomizations": {
                     "activityBar.background": "#0F3506",
-                    "titleBar.activeBackground": "#154A09",
-                    "titleBar.activeForeground": "#F1FDEE"
+                    "titleBar.activeBackground": "#0F3506",
+                    "titleBar.activeForeground": "#0F3506"
             }
     }
 }

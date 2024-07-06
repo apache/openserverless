@@ -59,14 +59,14 @@ cat ~/.ssh/id_rsa.pub | multipass exec openserverless -- tee -a .ssh/authorized_
 
 First type `multipass list`. You will see something like this:
 
-````
+```
 Name                    State             IPv4             Image
 openserverless          Running           10.6.73.253      Ubuntu 24.04 LTS
                                           10.42.0.0
                                           10.42.0.1
 ```
 
-Take note of the `<IP>` in the `openserverless line` (in this case `10.6.73.253` but yours can be different)
+Take note of the `<IP>` in the `openserverless line` (in this case `10.6.73.253` but your value can be different)
 
 Add to the file `~/ssh/config` the following
 
@@ -83,8 +83,14 @@ Host openserverless
 ssh openserverless
 ```
 
-### Cleanup
+5. Add your git username and email
 
+```
+git config --global user.name "<your-name>"
+git config --global user.email "<your-email>
+```
+
+### Cleanup
 
 If you do now want to keep the vm anymore,   esure you have backed up all your files. Then remove it in your cloud provider (check your cloud provider documentation). 
 
