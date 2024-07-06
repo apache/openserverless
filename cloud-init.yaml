@@ -1,0 +1,12 @@
+#cloud-config
+
+apt_update: true
+apt_upgrade: true
+
+runcmd:
+ - >
+   curl -sfL https://get.k3s.io | sh -
+ - >
+   curl -L https://nixos.org/nix/install 
+   | sudo -u "$(getent passwd 1000 | awk -F: '{print $1}')"  sh -s -- --daemon
+ 
