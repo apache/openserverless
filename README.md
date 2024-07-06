@@ -30,13 +30,15 @@ The method we use to setup a VM in Linux and Mac is using [multipass](https://mu
 
 -  Otherwise follow [those instructions](https://multipass.run/install)
 
-Once you have `multipass` type
+Once you have `multipass` type the following 
 
 ```
-multipass launch -nopenserverless -c4 -d20g -m8g --cloud-init cloud-init.yaml
+multipass launch -nopenserverless -c4 -d20g -m8g --cloud-init https://raw.githubusercontent.com/nuvolaris/openserverless/main/cloud-init.yaml
+multipass exec "openserverless" -- sudo cloud-init status --wait
 ```
 
-Once you have finished,  ensure you have backed up all your files. Then use 
+#### Removal
+If you do now want to keep the vm anymore,   ensure you have backed up all your files. Then use the following commands to cleanup:
 
 ```
 multipass delete openserverless
