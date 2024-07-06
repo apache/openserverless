@@ -22,7 +22,8 @@ runcmd:
     curl -L https://nixos.org/nix/install | sudo -u "$USR"  sh -s -- --no-daemon
     # get openserverless sources
     cd $HOME
-    git clone ssh://git@github.com/nuvolaris/openserverless --recurse-submodules
+    git clone https://github.com/nuvolaris/openserverless --recurse-submodules
+    cd  $HOME/openserverless ; chmod +x sync-branch.sh ; ./sync-branch.sh
     # add aliases
     echo "source $HOME/openserverless/aliases" >>$HOME/.bashrc
     # change owner to everything
