@@ -6,13 +6,24 @@ This README provides information how to setup the development environment of the
 
 For more information refer to the [website](https://openserverless.apache.org) (not yet available).
 
+## Migration status
+
+We are in the process of releasing our Nuvolaris sources as Apache OpenServerless. This is the TODO list
+
+- [x] migrate the development environment
+- [ ] [wip] setup the website
+- [ ] migrate the cli
+- [ ] migrate the operator
+- [ ] setup testing with the CI
+- [ ] release the tasks for AWS/Azure/GCP
+
 ## Development Enviroment Overview
 
 Apache OpenServerless is a complex project with lots of dependencies. It also needs a Kubernetes cluster to be executed, tested and developed on.
 
 You may setup the environment by yourself but it can take a lot of time so we prepared a procedure to setup quickly a ready-to-use development environment which runs the same on Windows, Linux and Mac. 
 
-Our development environemnt  use a virtual machine based on Ubuntu 24.04. The virtual environemnt is initialized with a[cloud-init](https://cloud-init.io/) script we provide. 
+Our development environment  use a virtual machine based on Ubuntu 24.04. The virtual environemnt is initialized with a [cloud-init](https://cloud-init.io/) script we provide. 
 
 The script installs [k3s](https://k3s.io/) as Kubernetes engine and [nix](https://nixos.org/download/#download-nix) to setup development environments. The project includes multiple subprojects, each one with a different set of dependencies so we use [direnv](https://direnv.net/) to automatically activate the right tools when you open a terminal.
 
@@ -37,7 +48,7 @@ Here we describe how to setup the development virtual machine on Linux, Mac and 
 
 Download the multipass installer from [here](https://multipass.run/download/windows) and run the installer. Pick Hyperv in preference, VirtualBox as an alternative.
 
-- Alternative options are available [here](https://multipass.run/install)
+- Alternative installation options are available [here](https://multipass.run/install)
 
 ## Setup a development VM using multipass
 
