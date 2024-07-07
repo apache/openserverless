@@ -25,7 +25,7 @@ We do not provide (yet) instructions how to setup on the various cloud provider.
 
 You can even setup the development environmet by yourself without using the virtual machine, and use a different IDE, but adapting the configuration for your IDE is up to you and could be very time consuming. Our development environment is the result of a few years of fine tuning, so we do not expect it will be easy to change.
 
-## Setup the Development Virtual Machine
+## Install Multipass
 
 Here we describe how to setup the development virtual machine on Linux, Mac and Windows using multipass. First, install multipass.
 
@@ -39,7 +39,7 @@ Download the multipass installer from [here](https://multipass.run/download/wind
 
 - Alternative options are available [here](https://multipass.run/install)
 
-### Setup a development VM using multipass
+## Setup a development VM using multipass
 
 The steps and the commands to install the development VM are the same in Linux, Windows and Mac.
 
@@ -116,7 +116,6 @@ git config --global user.name "<your-name>"
 git config --global user.email "<your-email>
 ```
 
-
 ## Access the virtual machine with VSCode
 
 1. Install [VSCode](https://code.visualstudio.com/)
@@ -131,19 +130,19 @@ git config --global user.email "<your-email>
 
 6. Click on the menu bar on `File` then `Openworkspace from file`, then select the `openserverless` folder and open the `openserverless.code-workspace`. Select `Linux` and then `Trust the authors` if requested.
 
-### Access to the subprojects
+## Access to the subprojects
 
 Now you have all the repositories in your virtual madchine and the subprojects. Furthermore, in the VM it is configured `nix` that will setup all the dependencies to develop the subprojects, and `direnv` that will activate the right dependencies when you open the terminal on a subproject.
 
 For example try to execute `Terminal > New Terminal` and you will see you can choose the sub project. If you select `website` for example, the system will download all the dependencies to build the web site, in this case `hugo` and `npm` and install the required tools `postcss`.
 
-## Submodules
+## Use Git Submodules
 
 Apache OpenServerless uses git submodules.
 
 This means in practice two things: you have to do Pull Requests and changes forking the subprojects individually.
 
-Then you have from time to time to update the whole subtree to the latest releases.
+Then you have from time to time to update the whole subtree to the latest releases of all the subprojects.
 
 ### Contributing to subprojects
 
@@ -160,7 +159,7 @@ Open a terminal in the `root` subproject and type `./update-tree.sh`. This scrip
 
 Do not worry about contributing PR to update dependencies as the maintainers will periodically take care of this.
 
-### Cleanup
+## Cleanup
 
 If you do not want to keep the VM anymore, ensure you have backed up all your files. Then remove it in your cloud provider (check your cloud provider documentation).
 

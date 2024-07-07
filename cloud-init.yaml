@@ -31,6 +31,6 @@ runcmd:
     # allow direnv for submodules
     sudo -u $USR direnv allow $HOME/openserverless/cli
     sudo -u $USR direnv allow $HOME/openserverless/operator
-    sudo -u $USR direnv allow $HOME/openserverless/website
+    sudo -u $USR direnv allow $HOME/openserverless/site
      
  
