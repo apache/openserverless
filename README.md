@@ -2,21 +2,21 @@
 
 Welcome to [Apache OpenServerless](https://cwiki.apache.org/confluence/display/INCUBATOR/OpenServerlessProposal) (also referenced as **AOS**), an incubating project at the [Apache Software Foundation](https://www.apache.org).
 
-This README provides informations for developers of the project. For user informations refer to the [website](https://openserverless.apache.org) (not yet available).
+This README provides information for developers of the project. For user information refer to the [website](https://openserverless.apache.org) (not yet available).
 
 ## Development Enviroment Overview
 
-Apache OpenServerless is a complex projects with lots of dependencies. It also needs a Kubernetes to be executed, tested and developed.
+Apache OpenServerless is a complex project with lots of dependencies. It also needs a Kubernetes cluster to be executed, tested and developed on.
 
 You may setup the environment by yourself but it can take a lot of time so we prepared a ready-to-use development environment which runs the same on Windows, Linux and Mac.
 
-In order to bootstrap easily the development environment for the project, we use a virtual machines based on Ubuntu (currently version 24) initialized with [cloud-init](https://cloud-init.io/). 
+In order to bootstrap easily the development environment for the project, we use a virtual machine based on Ubuntu (currently version 24) initialized with [cloud-init](https://cloud-init.io/).
 
-To create a virtual machine in your workstation we use [multipass](https://multipass.run/). You can also setup the virtual machine in a cloud provider and access it in the same way as in your local  machine. We provide here instructions how to install in your local machine only.
+To create a virtual machine in your workstation we use [multipass](https://multipass.run/). You can also setup the virtual machine in a cloud provider and access it in the same way as in your local machine. We provide here instructions how to install in your local machine only.
 
-As an IDE we use [VSCode](https://code.visualstudio.com/)] as it allows [Remote Development](https://code.visualstudio.com/docs/remote/remote-overview) within the virtual machine. You can also use a different IDE but the configuration for VSCode is documented.
+As an IDE we use [VSCode](https://code.visualstudio.com/) as it allows [Remote Development](https://code.visualstudio.com/docs/remote/remote-overview) within the virtual machine. You can also use a different IDE but the configuration for VSCode is documented.
 
-You need a virtual machine with at least 8 giga of memory and 4 VCPU so your development workstation probably needs at least 16GB and 6VCPU. Your mileage may vary.
+You need a virtual machine with at least 8GB of memory and 4 VCPU so your development workstation probably needs at least 16GB and 6 VCPU. Your mileage may vary.
 
 ## Setup the Development Virtual Machine
 
@@ -24,14 +24,13 @@ Here we describe how to setup the development virtual machine on Linux, Mac and 
 
 - On Mac, if you already have [brew](https://brew.sh/), installing it is as easy as to type `brew install multipass`.
 
-- On Linux, if you already have [snap](https://snapcraft.io/), installing it is as easy as type `sudo snap install multipass`
+- On Linux, if you already have [snap](https://snapcraft.io/), installing it is as easy as type `sudo snap install multipass`.
 
-- On Windows, you need Windows 10 Pro/Enterprise/Education v 1803 or later, or any Windows 10 with VirtualBox . Make sure your local network is designated as private, otherwise Windows prevents Multipass from starting.
+- On Windows, you need Windows 10 Pro/Enterprise/Education v1803 or later, or any Windows 10 with VirtualBox. Make sure your local network is designated as private, otherwise Windows prevents Multipass from starting.
 
 Download the multipass installer from [here](https://multipass.run/download/windows) and run the installer. Pick Hyperv in preference, VirtualBox as an alternative.
 
-- Alternative options are available  [here](https://multipass.run/install)
-
+- Alternative options are available [here](https://multipass.run/install)
 
 ### Setup a development VM using multipass
 
@@ -40,7 +39,7 @@ The steps and the commands to install the development VM are the same in Linux, 
 Once you have `multipass` installed, open a terminal or powershell and type the following command:
 
 ```
-multipass launch -nopenserverless -c4 -d20g -m8g --cloud-init https://raw.githubusercontent.com/nuvolaris/openserverless/main/cloud-init.yaml
+multipass launch -nopenserverless -c4 -d20g -m8g --cloud-init https://raw.githubusercontent.com/apache/openserverless/main/cloud-init.yaml
 ```
 
 Now wait until the installation is complete and you see `status: done`
@@ -49,7 +48,7 @@ Now wait until the installation is complete and you see `status: done`
 multipass exec "openserverless" -- sudo cloud-init status --wait
 ```
 
-Finally check if kubernetes (k3s) is up and running in the vm:
+Finally check if Kubernetes (k3s) is up and running in the VM:
 
 ```
 multipass exec openserverless sudo k3s kubectl get nodes
@@ -66,7 +65,7 @@ openserverless   Ready    control-plane,master   4h58m   v1.29.6+k3s1
 
 To access the virtual machine from VSCode you need to setup a ssh key and create a configuration. Open a terminal (powershell on Windows) and follow those steps:
 
-1. Check if you already have a key in `$HOME/.ssh/id_rsa`. If not, generate one with  `ssh-keygen -t rsa` then press enter to confirm.
+1. Check if you already have a key in `$HOME/.ssh/id_rsa`. If not, generate one with `ssh-keygen -t rsa` then press enter to confirm.
 
 2. copy the key in the virtual machine to allow no password access:
 
@@ -120,25 +119,23 @@ git config --global user.email "<your-email>
 
 3. Search "remote ssh" and install the extension "Remote - SSH"
 
-4. Type F1 then "Connect" (or click on the `><` symbol in the corner to the left at the bottom) and select "Remote-SSH: Connect Current Windows to Host" 
+4. Type F1 then "Connect" (or click on the `><` symbol in the corner to the left at the bottom) and select "Remote-SSH: Connect Current Windows to Host"
 
 5. Click on `openserverless` then select Linux if requested
 
 6. Click on the menu bar on `File` then `Openworkspace from file`, then select the `openserverless` folder and open the `openserverless.code-workspace`. Select `Linux` and then `Trust the authors` if requested.
 
-
 ### Access to the subprojects
 
-Now you have all the repositories in your virtual madchine and the subprojects. Furthermore, in the vm it is configured `nix` that will setup all the dependencies to develop the subprojects, and `direnv` that will activate the right dependencies when you open the terminal on a subproject.
+Now you have all the repositories in your virtual madchine and the subprojects. Furthermore, in the VM it is configured `nix` that will setup all the dependencies to develop the subprojects, and `direnv` that will activate the right dependencies when you open the terminal on a subproject.
 
-For example try to execute `Terminal > New Terminal`  and you will see you can choose the sub project. If you select `website` for example, the system will download all the dependencies to build the web site, in this case `hugo` and `npm` and install the required tools `postcss`.
-
+For example try to execute `Terminal > New Terminal` and you will see you can choose the sub project. If you select `website` for example, the system will download all the dependencies to build the web site, in this case `hugo` and `npm` and install the required tools `postcss`.
 
 ## Submodules
 
 Apache OpenServerless uses git submodules.
 
-This means in practice 2 things: you have to do pull requests and changes forking the subprojects individually. 
+This means in practice two things: you have to do Pull Requests and changes forking the subprojects individually.
 
 Then you have from time to time to update the whole subtree to the latest releases.
 
@@ -146,20 +143,20 @@ Then you have from time to time to update the whole subtree to the latest releas
 
 To contribute to a subproject:
 
-- fork a subproject: for example `github.com/apache/openserverless-website` into `github.com/sciabarracom/openserverless-website`
-- add a remote the the subproject to point to your fork. After opening the `website` terminal, add `git remote add sciabarracom github.com/sciabarracom/openserverless-website`
-- now you can change the code and push in your fork: `git push sciabarracom main`
+- fork a subproject: for example `github.com/apache/openserverless-website` into `github.com/<username>/openserverless-website`
+- add a remote to the subproject to point to your fork: for example after opening the `website` terminal, add `git remote add <username> github.com/<username>/openserverless-website`
+- now you can change the code and push in your fork: `git push <username> main`
 - you can now contribute a Pull Request
 
 ### Syncronize the tree
 
-Open a terminal in the `root` subproject and type `./update-tree.sh`. This script will update all the suprojcts to the latest available version on the main repo.
+Open a terminal in the `root` subproject and type `./update-tree.sh`. This script will update all the suprojects to the latest available version on the main repo.
 
-Do not worry of contributing PR to update dependencies as the mainteiners will periodically take care of this. 
+Do not worry about contributing PR to update dependencies as the maintainers will periodically take care of this.
 
 ### Cleanup
 
-If you do now want to keep the vm anymore,   esure you have backed up all your files. Then remove it in your cloud provider (check your cloud provider documentation). 
+If you do not want to keep the VM anymore, ensure you have backed up all your files. Then remove it in your cloud provider (check your cloud provider documentation).
 
 For multipass, use the following commands to cleanup:
 
