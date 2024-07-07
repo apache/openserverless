@@ -9,8 +9,8 @@
                 "path": "cli"
             },
             {
-                "name": "website",
-                "path": "website"
+                "name": "site",
+                "path": "site"
             },
             { 
                 "name": "root",

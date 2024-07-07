@@ -2,21 +2,28 @@
 
 Welcome to [Apache OpenServerless](https://cwiki.apache.org/confluence/display/INCUBATOR/OpenServerlessProposal) (also referenced as **AOS**), an incubating project at the [Apache Software Foundation](https://www.apache.org).
 
-This README provides information for developers of the project. For user information refer to the [website](https://openserverless.apache.org) (not yet available).
+This README provides information how to setup the development environment of the project. 
+
+For more information refer to the [website](https://openserverless.apache.org) (not yet available).
 
 ## Development Enviroment Overview
 
 Apache OpenServerless is a complex project with lots of dependencies. It also needs a Kubernetes cluster to be executed, tested and developed on.
 
-You may setup the environment by yourself but it can take a lot of time so we prepared a ready-to-use development environment which runs the same on Windows, Linux and Mac.
+You may setup the environment by yourself but it can take a lot of time so we prepared a procedure to setup quickly a ready-to-use development environment which runs the same on Windows, Linux and Mac. 
 
-In order to bootstrap easily the development environment for the project, we use a virtual machine based on Ubuntu (currently version 24) initialized with [cloud-init](https://cloud-init.io/).
+Our development environemnt  use a virtual machine based on Ubuntu 24.04. The virtual environemnt is initialized with a[cloud-init](https://cloud-init.io/) script we provide. 
 
-To create a virtual machine in your workstation we use [multipass](https://multipass.run/). You can also setup the virtual machine in a cloud provider and access it in the same way as in your local machine. We provide here instructions how to install in your local machine only.
+The script installs [k3s](https://k3s.io/) as Kubernetes engine and [nix](https://nixos.org/download/#download-nix) to setup development environments. The project includes multiple subprojects, each one with a different set of dependencies so we use [direnv](https://direnv.net/) to automatically activate the right tools when you open a terminal.
 
-As an IDE we use [VSCode](https://code.visualstudio.com/) as it allows [Remote Development](https://code.visualstudio.com/docs/remote/remote-overview) within the virtual machine. You can also use a different IDE but the configuration for VSCode is documented.
+To create a virtual machine in your workstation we use [multipass](https://multipass.run/). As an IDE we use [VSCode](https://code.visualstudio.com/) as it allows [Remote Development](https://code.visualstudio.com/docs/remote/remote-overview) within the virtual machine, and we provide a workspace for it.
 
 You need a virtual machine with at least 8GB of memory and 4 VCPU so your development workstation probably needs at least 16GB and 6 VCPU. Your mileage may vary.
+
+*NOTE*: of course you can operate variations. It should be relatively easy to run the development virtual machine in a cloud provider using the provided cloud-init script. Basically all the cloud providers allows to bult a VM using cloud-init.
+We do not provide (yet) instructions how to setup on the various cloud provider.
+
+You can even setup the development environmet by yourself without using the virtual machine, and use a different IDE, but adapting the configuration for your IDE is up to you and could be very time consuming. Our development environment is the result of a few years of fine tuning, so we do not expect it will be easy to change.
 
 ## Setup the Development Virtual Machine
 
@@ -96,20 +103,19 @@ Host openserverless
   IdentityFile ~/.ssh/id_rsa
 ```
 
-4. Check you have access without password:
+4. Check you have access without password  and configure git
 
 ```
 ssh openserverless
 ```
 
-5. Add your git username and email
-
-Now you are in the virtual machine, setup your name and email for git use.
+Once you accessed to the vm configure git with your username and password:
 
 ```
 git config --global user.name "<your-name>"
 git config --global user.email "<your-email>
 ```
+
 
 ## Access the virtual machine with VSCode
 
