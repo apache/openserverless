@@ -143,9 +143,9 @@ Then you have from time to time to update the whole subtree to the latest releas
 
 To contribute to a subproject:
 
-- fork a subproject: for example `github.com/apache/openserverless-website` into `github.com/sciabarracom/openserverless-website`
-- add a remote to the subproject to point to your fork: for example after opening the `website` terminal, add `git remote add sciabarracom github.com/sciabarracom/openserverless-website`
-- now you can change the code and push in your fork: `git push sciabarracom main`
+- fork a subproject: for example `github.com/apache/openserverless-website` into `github.com/<username>/openserverless-website`
+- add a remote to the subproject to point to your fork: for example after opening the `website` terminal, add `git remote add <username> github.com/<username>/openserverless-website`
+- now you can change the code and push in your fork: `git push <username> main`
 - you can now contribute a Pull Request
 
 ### Syncronize the tree
@@ -156,7 +156,7 @@ Do not worry about contributing PR to update dependencies as the maintainers wil
 
 ### Cleanup
 
-If you do not want to keep the VM anymore, esure you have backed up all your files. Then remove it in your cloud provider (check your cloud provider documentation).
+If you do not want to keep the VM anymore, ensure you have backed up all your files. Then remove it in your cloud provider (check your cloud provider documentation).
 
 For multipass, use the following commands to cleanup:
 
