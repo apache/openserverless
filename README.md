@@ -1,21 +1,13 @@
 # Apache OpenServerless
 
-Welcome to [Apache OpenServerless](https://cwiki.apache.org/confluence/display/INCUBATOR/OpenServerlessProposal) (also referenced as **AOS**), an incubating project at the [Apache Software Foundation](https://www.apache.org).
+Welcome to [Apache OpenServerless](https://cwiki.apache.org/confluence/display/INCUBATOR/OpenServerlessProposal) (shortened as **AOS**), an incubating project at the [Apache Software Foundation](https://www.apache.org).
+
+**NOTE** we are still in the process of migrating from [Nuvolaris](https://github.com/nuvolaris/nuvlaris) to Apache OpenServerless - check [https://github.com/apache/openserverless/issues/2 for the status.
 
 This README provides information how to setup the development environment of the project. 
 
 For more information refer to the [website](https://openserverless.apache.org) (not yet available).
 
-## Migration status
-
-We are in the process of releasing our Nuvolaris sources as Apache OpenServerless. This is the TODO list
-
-- [x] migrate the development environment
-- [ ] [wip] setup the website
-- [ ] migrate the cli
-- [ ] migrate the operator
-- [ ] setup testing with the CI
-- [ ] release the tasks for AWS/Azure/GCP
 
 ## Development Enviroment Overview
 
