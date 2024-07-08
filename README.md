@@ -1,6 +1,8 @@
 # Apache OpenServerless
 
-Welcome to [Apache OpenServerless](https://cwiki.apache.org/confluence/display/INCUBATOR/OpenServerlessProposal) (also referenced as **AOS**), an incubating project at the [Apache Software Foundation](https://www.apache.org).
+Welcome to [Apache OpenServerless](https://cwiki.apache.org/confluence/display/INCUBATOR/OpenServerlessProposal) (shortened as **AOS**), an incubating project at the [Apache Software Foundation](https://www.apache.org).
+
+**NOTE** we are still in the process of migrating from [Nuvolaris](https://github.com/nuvolaris/nuvlaris) to Apache OpenServerless - check [https://github.com/apache/openserverless/issues/2 for the status.
 
 This README provides information how to setup the development environment of the project. 
 
@@ -116,7 +118,7 @@ Host openserverless
   IdentityFile ~/.ssh/id_rsa
 ```
 
-In alternative, you can use this all-in-one command:
+If you are Linux or Mac, you can use this all-in-one command:
 
 ```
 export OS_IP=`multipass list | grep openserverless | grep Running | awk '{ print $3 }'`
