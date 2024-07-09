@@ -88,11 +88,20 @@ To access the virtual machine from VSCode you need to setup a ssh key and create
 2. copy the key in the virtual machine to allow no password access:
 
 ```
-muultipass transfer $HOME/.ssh/id_rsa.pub openserverless:
+multipass transfer $HOME/.ssh/id_rsa.pub openserverless:
 multipass exec openserverless -- bash -c "cat id_rsa.pub | tee -a .ssh/authorized_keys"
 ```
 
-3. Create a configuration named `openserverless` to easily access it.
+3. Create a new private key to authenticate your openserverless development environment on github:
+
+```
+multipass exec openserverless -- ssh-keygen -t ed25519 -C "openserverless" -f /home/ubuntu/.ssh/id_ed25519
+multipass exec openserverless -- cat /home/ubuntu/.ssh/id_ed25519.pub
+```
+
+Retrieve the content of the public key and add it to your github. As an alternative, you may want to use PAT.
+
+4. Create a configuration named `openserverless` to easily access it.
 
 First type `multipass list`. You will see something like this:
 
@@ -105,7 +114,7 @@ openserverless          Running           10.6.73.253      Ubuntu 24.04 LTS
 
 Take note of the `<IP>` in the `openserverless line` (in this case `10.6.73.253` but your value can be different)
 
-Use an editor to add to the file `~/ssh/config` the following:
+Use an editor to add to the file `~/.ssh/config` the following:
 
 ```
 Host openserverless
@@ -114,17 +123,29 @@ Host openserverless
   IdentityFile ~/.ssh/id_rsa
 ```
 
-4. Check you have access without password  and configure git
+In alternative, you can use this all-in-one command:
+
+```
+export OS_IP=`multipass list | grep openserverless | grep Running | awk '{ print $3 }'`
+cat << EOF >> ~/.ssh/config
+Host openserverless
+  Hostname $OS_IP
+  User ubuntu
+  IdentityFile ~/.ssh/id_rsa
+EOF
+```
+
+5. Check you have access without password  and configure git
 
 ```
 ssh openserverless
 ```
 
-Once you accessed to the vm configure git with your username and password:
+Once you accessed to the vm configure git with your username and email:
 
 ```
 git config --global user.name "<your-name>"
-git config --global user.email "<your-email>
+git config --global user.email "<your-email>"
 ```
 
 ## Access the virtual machine with VSCode
