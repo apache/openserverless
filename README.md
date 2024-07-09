@@ -80,7 +80,7 @@ To access the virtual machine from VSCode you need to setup a ssh key and create
 2. copy the key in the virtual machine to allow no password access:
 
 ```
-muultipass transfer $HOME/.ssh/id_rsa.pub openserverless:
+multipass transfer $HOME/.ssh/id_rsa.pub openserverless:
 multipass exec openserverless -- bash -c "cat id_rsa.pub | tee -a .ssh/authorized_keys"
 ```
 
