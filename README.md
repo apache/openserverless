@@ -116,7 +116,7 @@ Once you accessed to the vm configure git with your username and password:
 
 ```
 git config --global user.name "<your-name>"
-git config --global user.email "<your-email>
+git config --global user.email "<your-email>"
 ```
 
 ## Access the virtual machine with VSCode
