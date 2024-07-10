@@ -8,7 +8,7 @@ This README provides information how to setup the development environment of the
 
 For more information refer to the [website](https://openserverless.apache.org) (not yet available).
 
-Check the migration status in issue #2.
+We are in the process of migrating from Nuvolaris Community to Apache OpenServerless. Check the migration status in [issue #2.](https://github.com/apache/openserverless/issues/2)
 
 ## Development Enviroment Overview
 
