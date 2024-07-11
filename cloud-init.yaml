@@ -42,9 +42,7 @@ runcmd:
     # change owner to everything
     chown -Rvf "$USR" "$HOME"
     # allow direnv for submodules
-    sudo -u $USR ssh-keyscan github.com >>.ssh/known_hosts
-    sudo -u $USR git clone ssh://git@github.com/mdigirolamo-nuv/openserverless --recurse-submodules
-    
+    sudo -u $USR git clone https://github.com/openserverless/openserverless --recurse-submodules
     cd  $HOME/openserverless 
     sudo -u $USR bash sync-branch.sh
     sudo -u $USR direnv allow $HOME/openserverless/site
