@@ -13,6 +13,10 @@ runcmd:
     curl -sfL https://get.k3s.io | sh -
     curl -sfL https://direnv.net/install.sh | bash
     snap install task --classic
+    cd /tmp
+    curl https://dlcdn.apache.org/skywalking/eyes/0.6.0/skywalking-license-eye-0.6.0-bin.tgz | tar xzvf -
+    mv skywalking-license-eye-0.6.0-bin/bin/linux/license-eye /usr/bin/license-eye
+    rm -Rvf skywalking-license-eye-0.6.0-bin
     echo "OPS_CLOUD_INIT_VER=2" >>/etc/environment
   - |
     # set home and user
@@ -33,21 +37,20 @@ runcmd:
     curl -L https://nixos.org/nix/install | sudo -u "$USR"  sh -s -- --no-daemon
     # get openserverless sources
     cd $HOME
-    git clone https://github.com/apache/openserverless --recurse-submodules
-    cd  $HOME/openserverless ; chmod +x sync-branch.sh ; ./sync-branch.sh
     # add aliases
     echo "source $HOME/openserverless/aliases" >>$HOME/.bashrc
     # change owner to everything
     chown -Rvf "$USR" "$HOME"
     # allow direnv for submodules
+    sudo -u $USR ssh-keyscan github.com >>.ssh/known_hosts
+    sudo -u $USR git clone ssh://git@github.com/mdigirolamo-nuv/openserverless --recurse-submodules
+    
+    cd  $HOME/openserverless 
+    sudo -u $USR bash sync-branch.sh
     sudo -u $USR direnv allow $HOME/openserverless/site
     sudo -u $USR direnv allow $HOME/openserverless/cli
     sudo -u $USR direnv allow $HOME/openserverless/operator
     # install license-eye and a git-hook
-    cd /tmp
-    curl https://dlcdn.apache.org/skywalking/eyes/0.6.0/skywalking-license-eye-0.6.0-bin.tgz | tar xzvf -
-    mv skywalking-license-eye-0.6.0-bin/bin/linux/license-eye /usr/bin/license-eye
-    rm -Rvf skywalking-license-eye-0.6.0-bin
     sudo -u $USR git config core.hooksPath .git-hooks
 
 
