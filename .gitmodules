@@ -1,7 +1,3 @@
-[submodule "website"]
-        path = website
-        url = https://github.com/nuvolaris/openserverless-documentation
-        branch = main
 [submodule "site"]
 	path = site
 	url = ssh://git@github.com/apache/openserverless-site

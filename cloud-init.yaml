@@ -1,17 +1,28 @@
 #cloud-config
 apt_update: true
 apt_upgrade: true
+users:
+  - name: ubuntu
+    uid: 1000
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
 runcmd:
   - |
     # install k3s, direnv, task
     curl -sfL https://get.k3s.io | sh -
     curl -sfL https://direnv.net/install.sh | bash
     snap install task --classic
-    echo "OPS_CLOUD_INIT_VER=1" >>/etc/environment
+    echo "OPS_CLOUD_INIT_VER=2" >>/etc/environment
   - |
     # set home and user
     USR="$(getent passwd 1000 | awk -F: '{print $1}')"
     HOME="/home/$USR"
+    # copy authkey if there is a root one
+    if test -e /root/.ssh/authorized_keys
+    then mkdir -p /home/$USR/.ssh
+         cat /root/.ssh/authorized_keys >>/home/$USR/.ssh/authorized_keys
+    fi
     # access k3s
     mkdir -p "$HOME/.kube"
     cp /etc/rancher/k3s/k3s.yaml "$HOME/.kube/config"
@@ -22,15 +33,21 @@ runcmd:
     curl -L https://nixos.org/nix/install | sudo -u "$USR"  sh -s -- --no-daemon
     # get openserverless sources
     cd $HOME
-    git clone https://github.com/nuvolaris/openserverless --recurse-submodules
+    git clone https://github.com/apache/openserverless --recurse-submodules
     cd  $HOME/openserverless ; chmod +x sync-branch.sh ; ./sync-branch.sh
     # add aliases
     echo "source $HOME/openserverless/aliases" >>$HOME/.bashrc
     # change owner to everything
     chown -Rvf "$USR" "$HOME"
     # allow direnv for submodules
+    sudo -u $USR direnv allow $HOME/openserverless/site
     sudo -u $USR direnv allow $HOME/openserverless/cli
     sudo -u $USR direnv allow $HOME/openserverless/operator
-    sudo -u $USR direnv allow $HOME/openserverless/site
-     
- 
+    # install license-eye and a git-hook
+    cd /tmp
+    curl https://dlcdn.apache.org/skywalking/eyes/0.6.0/skywalking-license-eye-0.6.0-bin.tgz | tar xzvf -
+    mv skywalking-license-eye-0.6.0-bin/bin/linux/license-eye /usr/bin/license-eye
+    rm -Rvf skywalking-license-eye-0.6.0-bin
+    sudo -u $USR git config core.hooksPath .git-hooks
+
+
