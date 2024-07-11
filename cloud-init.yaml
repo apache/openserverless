@@ -34,7 +34,7 @@ runcmd:
     # use direnv for autoinit 
     echo 'eval "$(direnv hook bash)"' >>$HOME/.bashrc
     # install nix
-    curl -L https://nixos.org/nix/install | sudo -u "$USR"  sh -s -- --no-daemon
+    curl -L https://nixos.org/nix/install | sudo -u "$USR"  sh
     # get openserverless sources
     cd $HOME
     # add aliases
@@ -45,10 +45,7 @@ runcmd:
     sudo -u $USR git clone https://github.com/apache/openserverless --recurse-submodules
     cd  $HOME/openserverless 
     sudo -u $USR bash sync-branch.sh
-    sudo -u $USR direnv allow $HOME/openserverless/site
-    sudo -u $USR direnv allow $HOME/openserverless/cli
-    sudo -u $USR direnv allow $HOME/openserverless/operator
+    sudo -i -H -u $USR bash "$HOME/openserverless/direnv-init.sh"
     # install license-eye and a git-hook
     sudo -u $USR git config core.hooksPath .git-hooks
-
 
