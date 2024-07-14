@@ -5,6 +5,9 @@
                 "path": "operator"
             },
             {
+                "name": "task",
+                "path": "task"
+            {
                 "name": "cli",
                 "path": "cli"
             },
