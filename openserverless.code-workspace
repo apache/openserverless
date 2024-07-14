@@ -6,7 +6,8 @@
             },
             {
                 "name": "task",
-                "path": "task"
+                "path": "cli/openserverless-task"
+	    },
             {
                 "name": "cli",
                 "path": "cli"
