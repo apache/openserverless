@@ -5,6 +5,10 @@
                 "path": "operator"
             },
             {
+                "name": "task",
+                "path": "cli/openserverless-task"
+	    },
+            {
                 "name": "cli",
                 "path": "cli"
             },
