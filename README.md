@@ -130,7 +130,14 @@ git config --global user.email "<your-email>"
 
 5. Click on `openserverless` then select Linux if requested
 
-6. Click on the menu bar on `File` then `Openworkspace from file`, then select the `openserverless` folder and open the `openserverless.code-workspace`. Select `Linux` and then `Trust the authors` if requested.
+6. Click on the menu bar on `File` then `Openworkspace from file`, then select the `openserverless` folder and open one of the workspaces. Currently:
+
+- `openserverless-cli.code-workspace`: for the CLI
+- `openserverless.code-workspace`: for the Operator
+- `openserverless.code-workspace`: everything else
+
+
+ Select `Linux` and then `Trust the authors` if requested.
 
 ## Access to the subprojects
 
