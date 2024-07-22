@@ -5,26 +5,20 @@
                 "path": "operator"
             },
             {
-                "name": "task",
-                "path": "cli/openserverless-task"
-	    },
-            {
-                "name": "cli",
-                "path": "cli"
-            },
-            {
                 "name": "site",
                 "path": "site"
             },
             { 
                 "name": "root",
                 "path": "."
+	    }
         ],
     "settings": {
             "workbench.colorCustomizations": {
-                    "activityBar.background": "#0F3506",
-                    "titleBar.activeBackground": "#0F3506",
-                    "titleBar.activeForeground": "#0F3506"
+                    "activityBar.background": "#d2e313",
+                    "titleBar.activeBackground": "#d2e313",
+                    "titleBar.activeForeground": "#d2e313",
+                    "statusBar.background": "#d2e313"
             }
     }
 }

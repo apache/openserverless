@@ -1,0 +1,17 @@
+{
+    "folders": [
+            {
+                "name": "openserverless-operator",
+                "path": "operator"
+            }
+        ],
+    "settings": {
+            "workbench.colorCustomizations": {
+                    "activityBar.background": "#32cb0f",
+                    "titleBar.activeBackground": "#32cb0f",
+                    "titleBar.activeForeground": "#32cb0f",
+                    "statusBar.background": "#32cb0f"
+
+            }
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "name": "openserverless-cli",
+      "path": "cli"
+    }
+  ],
+  "settings": {
+    "workbench.colorCustomizations": {
+      "activityBar.background": "#5b09e0",
+      "titleBar.activeBackground": "#5b09e0",
+      "titleBar.activeForeground": "#5b09e0",
+      "statusBar.background": "#5b09e0"
+    },
+    "go.goroot": "/nix/store/nnh57s7m672k6snkanhz1kb18skwjpbg-go-1.21.11/share/go"
+  }
+}
