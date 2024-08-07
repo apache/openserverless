@@ -17,7 +17,7 @@
 [submodule "task"]
 	path = task
 	url = https://github.com/apache/openserverless-task
-	branc = main
+	branch = main
 [submodule "runtimes"]
 	path = runtimes
 	url = https://github.com/apache/openserverless-runtimes
