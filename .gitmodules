@@ -10,3 +10,15 @@
 	path = operator
 	url = https://github.com/apache/openserverless-operator
 	branch = main
+[submodule "testing"]
+	path = testing
+	url = https://github.com/apache/openserverless-testing
+	branch = main
+[submodule "task"]
+	path = task
+	url = https://github.com/apache/openserverless-task
+	branch = main
+[submodule "runtimes"]
+	path = runtimes
+	url = https://github.com/apache/openserverless-runtimes
+	branch = main

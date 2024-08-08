@@ -1,8 +1,12 @@
 {
   "folders": [
     {
-      "name": "openserverless-cli",
+      "name": "cli",
       "path": "cli"
+    },
+   { 
+      "name": "task",
+      "path": "task"
     }
   ],
   "settings": {

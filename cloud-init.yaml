@@ -37,6 +37,9 @@ runcmd:
     curl -L https://nixos.org/nix/install | sudo -u "$USR"  sh
     # get openserverless sources
     cd $HOME
+    # add z.sh
+    curl "https://raw.githubusercontent.com/rupa/z/master/z.sh" -o "$HOME/.z.sh"
+    echo "source $HOME/.z.sh" >> $HOME/.bashrc
     # add aliases
     echo "source $HOME/openserverless/aliases" >>$HOME/.bashrc
     # change owner to everything
