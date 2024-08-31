@@ -8,13 +8,13 @@ For more information refer to the [website](https://openserverless.apache.org) (
 
 **NOTE** we are still in the process of migrating from [Nuvolaris](https://github.com/nuvolaris/nuvlaris) to Apache OpenServerless - check https://github.com/apache/openserverless/issues/2 for the status.
 
-## Development Enviroment Overview
+## Development Environment Overview
 
 Apache OpenServerless is a complex project with lots of dependencies. It also needs a Kubernetes cluster to be executed, tested and developed on.
 
-You may setup the environment by yourself but it can take a lot of time so we prepared a procedure to setup quickly a ready-to-use development environment which runs the same on Windows, Linux and Mac. 
+You may setup the environment by yourself, but it can take a lot of time so we prepared a procedure to setup quickly a ready-to-use development environment which runs the same on Windows, Linux and Mac. 
 
-Our development environment  use a virtual machine based on Ubuntu 24.04. The virtual environemnt is initialized with a [cloud-init](https://cloud-init.io/) script we provide. 
+Our development environment uses a virtual machine based on Ubuntu 24.04. The virtual environemnt is initialized with a [cloud-init](https://cloud-init.io/) script we provide. 
 
 The script installs [k3s](https://k3s.io/) as Kubernetes engine and [nix](https://nixos.org/download/#download-nix) to setup development environments. The project includes multiple subprojects, each one with a different set of dependencies so we use [direnv](https://direnv.net/) to automatically activate the right tools when you open a terminal.
 
@@ -22,10 +22,10 @@ To create a virtual machine in your workstation we use [multipass](https://multi
 
 You need a virtual machine with at least 8GB of memory and 4 VCPU so your development workstation probably needs at least 16GB and 6 VCPU. Your mileage may vary.
 
-*NOTE*: of course you can operate variations. It should be relatively easy to run the development virtual machine in a cloud provider using the provided cloud-init script. Basically all the cloud providers allows to bult a VM using cloud-init.
-We do not provide (yet) instructions how to setup on the various cloud provider.
+*NOTE*: of course you can operate variations. It should be relatively easy to run the development virtual machine in a cloud provider using the provided cloud-init script. Basically all the cloud providers allows to build a VM using cloud-init.
+We do not provide instructions how to setup on the various cloud provider (yet).
 
-You can even setup the development environmet by yourself without using the virtual machine, and use a different IDE, but adapting the configuration for your IDE is up to you and could be very time consuming. Our development environment is the result of a few years of fine tuning, so we do not expect it will be easy to change.
+You can even setup the development environment by yourself without using the virtual machine, and use a different IDE, but adapting the configuration for your IDE is up to you and could be very time-consuming. Our development environment is the result of a few years of fine tuning, so we do not expect it will be easy to change.
 
 ## Install Multipass
 
@@ -76,7 +76,7 @@ To access the virtual machine from VSCode you need to setup a ssh key and create
 
 1. Check if you already have a key in `$HOME/.ssh/id_rsa`. If not, generate one with `ssh-keygen -t rsa` then press enter to confirm.
 
-2. copy the key in the virtual machine to allow no password access:
+2. Copy the key in the virtual machine to allow no password access:
 
 ```
 multipass transfer $HOME/.ssh/id_rsa.pub openserverless:
@@ -105,13 +105,13 @@ Host openserverless
   IdentityFile ~/.ssh/id_rsa
 ```
 
-4. Check you have access without password  and configure git
+4. Check you have access without password:
 
 ```
 ssh openserverless
 ```
 
-Once you accessed to the vm configure git with your username and email:
+Once you accessed the VM configure git with your username and email:
 
 ```
 git config --global user.name "<your-name>"
@@ -132,18 +132,18 @@ git config --global user.email "<your-email>"
 
 6. Click on the menu bar on `File` then `Openworkspace from file`, then select the `openserverless` folder and open one of the workspaces. Currently:
 
-- `openserverless-cli.code-workspace`: for the CLI
-- `openserverless.code-workspace`: for the Operator
-- `openserverless.code-workspace`: everything else
+- `openserverless-cli.code-workspace`: for the CLI along with task
+- `openserverless-operator.code-workspace`: for the Operator alone
+- `openserverless.code-workspace`: for the root with the Operator and the site
 
 
  Select `Linux` and then `Trust the authors` if requested.
 
 ## Access to the subprojects
 
-Now you have all the repositories in your virtual madchine and the subprojects. Furthermore, in the VM it is configured `nix` that will setup all the dependencies to develop the subprojects, and `direnv` that will activate the right dependencies when you open the terminal on a subproject.
+Now you have all the repositories in your virtual machine and the subprojects. Furthermore, in the VM it is configured `nix` that will setup all the dependencies to develop the subprojects, and `direnv` that activates the right dependencies when you open the terminal in a subproject.
 
-For example try to execute `Terminal > New Terminal` and you will see you can choose the sub project. If you select `website` for example, the system will download all the dependencies to build the web site, in this case `hugo` and `npm` and install the required tools `postcss`.
+For example try to execute `Terminal > New Terminal` and you will see you can choose the subproject. If you select `website` for example, the system will download all the dependencies to build the web site, in this case `hugo` and `npm` and install the required tools `postcss`.
 
 ## Use Git Submodules
 
@@ -164,13 +164,13 @@ To contribute to a subproject:
 
 ### Syncronize the tree
 
-Open a terminal in the `root` subproject and type `./update-tree.sh`. This script will update all the suprojects to the latest available version on the main repo.
+Open a terminal in the `root` subproject and type `./update-tree.sh`. This script will update all the subprojects to the latest available version on the main repo.
 
 Do not worry about contributing PR to update dependencies as the maintainers will periodically take care of this.
 
 ## Cleanup
 
-If you do not want to keep the VM anymore, ensure you have backed up all your files. Then remove it in your cloud provider (check your cloud provider documentation).
+If you do not want to keep the VM anymore, ensure you have backed up all your files. Then remove it from your cloud provider (check your cloud provider documentation).
 
 For multipass, use the following commands to cleanup:
 
