@@ -4,7 +4,7 @@ This document lists general guidelines to define OpenServerless Tasks variable v
 
 ## General info:
 
-OpenServerless Tasks variable are tipically set issuing a command like `ops config VARIABLE=<value>`. These variable are stored under the `~/.nuv/config.json` file. Variables name are splitted over the `_` character and the resulting parts are used to compose a json nested object having all the parts, that is given a variable with value `OPERATOR_COMPONENT_MINIO=true` the resulting json persisted into the configuration file will be something like
+OpenServerless Tasks variable are typically set issuing a command like `ops config VARIABLE=<value>`. These variable are stored under the `~/.ops/config.json` file. Variables name are splitted over the `_` character and the resulting parts are used to compose a json nested object having all the parts, that is given a variable with value `OPERATOR_COMPONENT_MINIO=true` the resulting json persisted into the configuration file will be something like
 
 ```json
 {
@@ -18,10 +18,10 @@ OpenServerless Tasks variable are tipically set issuing a command like `ops conf
 
 ## General guidelines:
 
-With the above described behavior we have defined some general rules to be adopted when developing/updating OpenServerless Taks variables
+With the above described behavior we have defined some general rules to be adopted when developing/updating OpenServerless Tasks variables
 
-- Avoid to define variable starting with `OPS_` prefix. This prefix is reserved to the `ops` general config itself, and normally defined inside the `nuvroot.json`. It is better to clearly distinguish task variable from the `ops` generated/reserved ones.
-- Considering the `_` splitting rules, prefer variable names composed by a maximum of 4 parts to avoid too much nested `json` structure. This is to simplify readability of the config.json if manually inspected.
+- Avoid to define variable starting with `OPS_` prefix. This prefix is reserved to the `ops` general config itself, and normally defined inside the `opsroot.json`. It is better to clearly distinguish task variable from the `ops` generated/reserved ones.
+- Considering the `_` splitting rules, prefer variable names composed by a maximum of 4 parts to avoid too much nested `json` structure. This is to simplify readability of the `config.json` if manually inspected.
 - Do not override variable used for configuration, with values obtained after the configuration has been applied (to create/update an Apache OpenServerless instance). This is to guarantee that we can always reconstruct the original `config.json` file. For instance OPS tasks defines an `OPERATOR_CONFIG_APIHOST` that should not be overridden. It is better to define a  `OUTPUT_APIHOST` instead.
 - Specify volume size parameters with numerical value expressed as GB
 - Specify memory size parameters with numerical value expressed as GB
