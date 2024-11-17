@@ -15,11 +15,12 @@ The order of the items does not pretend to to establish the project priorities.
     * Improvement: Deploy default nuvolaris namespace as a normal wsku resources
     * Improvement: Handle CouchDb init task as Operator managed task
     * Improvement: Use base images with smaller size for fast loading
+    * New: Integrate Argo Events and implements system action to support deployment of argo events resources
     * New: Implement a new customizable Job to perform CouchDb maintenance task (database compaction, activations cleanup)
     * Refactoring: Adopt a plugin based implemenation
 * OpenServerless CLI (aka ops)
     * TODO 
 * OpenServerless Tasks
-    * TODO 
+    * New: implemens task to schedule actions using argo events supporting actions
 * OpenServerless runtimes
-    * TODO
+    * Improvement: call to runtime at / should implement /run behavior as OpenWhisk web actions.
