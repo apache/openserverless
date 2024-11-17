@@ -16,7 +16,7 @@
 #
 
 github:
-  description: "Apache OpenServerless (incibating)"
+  description: "Apache OpenServerless (incubating)"
   homepage: https://openserverless.apache.org
   labels:
     - openserverless
