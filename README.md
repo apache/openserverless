@@ -1,8 +1,10 @@
 # Apache OpenServerless (incubating)
 
-Welcome to [Apache OpenServerless](https://cwiki.apache.org/confluence/display/INCUBATOR/OpenServerlessProposal) (shortened as **AOS**), an incubating project at the [Apache Software Foundation](https://www.apache.org).
+Welcome to   [Apache OpenServerless](https://openserverless.apache.org), an incubating project at the [Apache Software Foundation](https://www.apache.org) 
 
-*NOTE*: This README provides how-to setup instructions for the Apache OpenServerless development. It is mostly addressed to people willing to contribute to the project or willing to have a better understanding of the implementations details. *Regular Apache OpenServerless users, should refer to the official documentation [website](https://openserverless.apache.org).*
+- If you want to **install** Apache OpenServerless go [here](https://openserverless.apache.org/docs/installation/).
+- If you want to **understand** what this project is check the [original proposal](https://cwiki.apache.org/confluence/display/INCUBATOR/OpenServerlessProposal). 
+- If you want to **contribute** to the project, read on this README to setup a **development** environment. 
 
 ## Development Environment Overview
 
