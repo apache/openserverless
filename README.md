@@ -4,7 +4,8 @@ Welcome to   [Apache OpenServerless](https://openserverless.apache.org), an incu
 
 - If you want to **install** Apache OpenServerless go [here](https://openserverless.apache.org/docs/installation/).
 - If you want to **understand** what this project is check the [original proposal](https://cwiki.apache.org/confluence/display/INCUBATOR/OpenServerlessProposal). 
-- If you want to **contribute** to the project, read on this README to setup a **development** environment. 
+- If you want to **contribute** to the project, read on this README to setup a **development** environment.
+- If you want to **chat** with us, join  [our Discord server](https://bit.ly/openserverless-discord).
 
 ## Development Environment Overview
 
