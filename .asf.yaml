@@ -44,7 +44,7 @@ github:
     issues: true
     projects: true
 
-  collaborators:  # Note: the number of collaborators is limited to 10
+  collaborators: []  # Note: the number of collaborators is limited to 10
 
   ghp_branch: gh-pages
   ghp_path: /
