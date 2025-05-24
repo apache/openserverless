@@ -22,3 +22,11 @@
 	path = runtimes
 	url = https://github.com/apache/openserverless-runtimes
 	branch = main
+[submodule "devel/olaris"]
+	path = devel/olaris
+	url = https://github.com/apache/openserverless-task
+	branch = devel
+[submodule "devel/olaris-operator"]
+	path = devel/olaris-operator
+	url = https://github.com/apache/openserverless-operator
+	branch = devel
