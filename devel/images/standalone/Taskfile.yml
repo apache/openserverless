@@ -1,0 +1,28 @@
+version: 3
+
+vars:
+  STANDALONE: "openwhisk/standalone:7ef091c"
+  IMAGE: "ghcr.io/sciabarracom/standalone:2506121330"
+
+tasks:
+
+  default:
+    desc: "build"
+    cmds:
+      - task: extract
+      - > 
+        docker build 
+        -t "{{.IMAGE}}" . 
+
+  extract:
+    desc: "Extract the tarball"
+    cmds:
+      - |        
+        docker run --rm --privileged tonistiigi/binfmt --install all
+        docker pull --platform=linux/amd64 "{{.STANDALONE}}"
+        docker create --name=standalone --platform=linux/amd64 "{{.STANDALONE}}"
+        docker cp standalone:/openwhisk-standalone.jar .
+        docker rm standalone
+    status:
+      - test -e openwhisk-standalone.jar
+
