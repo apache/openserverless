@@ -40,7 +40,7 @@ Before starting, if have an old version of the vm, remove it with:
 multipass delete openserverless --purge
 ```
 
-Then create a new vm with
+Then create a new vm with:
 
 
 ```
@@ -52,7 +52,7 @@ Wait until the vm is ready and you see messages like `status: done` or `Launched
 Finally wait the installation to be completed running the command:
 
 ```
-multipass exec openserverless -- sudo journalctl -u setup -f
+multipass exec openserverless /etc/setup.status
 ```
 
 and wait until you see the message `=== DONE ===`
