@@ -47,7 +47,7 @@ Then create a new vm with:
 multipass launch -nopenserverless -c4 -d20g -m16g --cloud-init https://raw.githubusercontent.com/sciabarracom/openserverless/main/cloud-init.yaml
 ```
 
-Wait until the vm is ready and you see messages like `status: done` or `Launched: openserverless` (message can be different depending on multipass version effectively installed).
+Wait until the vm is ready and you see the message `Launched: openserverless` (message can be different depending on multipass version effectively installed).
 
 Finally wait the installation to be completed running the command:
 
@@ -67,4 +67,12 @@ then retrieve the `.kube/config` file and store it locally with the command:
 mkdir $HOME/.kube
 # warning!!! this overwrites an existing kubeconfig
 multipass exec openserverless cat .kube/config >$HOME/.kube/config
-````
+kubectl get nodes
+```
+
+You should see something like:
+
+```
+NAME             STATUS   ROLES                  AGE   VERSION
+openserverless   Ready    control-plane,master   19s   v1.32.5+k3s1
+```
