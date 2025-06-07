@@ -37,6 +37,7 @@ Once you have `multipass` installed, open a terminal or powershell and type the 
 Before starting, if have an old version of the vm, remove it with:
 
 ```
+# warning! this removes everything so you will lose data it not backed up
 multipass delete openserverless --purge
 ```
 

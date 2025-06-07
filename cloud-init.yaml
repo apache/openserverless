@@ -20,9 +20,11 @@ write_files:
       Requires=network-online.target
       After=network-online.target
       [Service]
-      Type=oneshot
+      Type=simple
       Environment="HOME=/home/ubuntu"
       ExecStart=/etc/cloud-init.sh 
+      RemainAfterExit=yes
+      Restart=no
       User=ubuntu
       [Install]
       WantedBy=multi-user.target
