@@ -21,27 +21,15 @@ write_files:
       [Service]
       Type=oneshot
       Environment="HOME=/home/ubuntu"
-      ExecStart=/home/ubuntu/cloud-init.sh 
+      ExecStart=/etc/cloud-init.sh 
       User=ubuntu
       [Install]
       WantedBy=multi-user.target    
 
 runcmd:
   - |
-    # install k3s, direnv, task
-    curl -sfL https://get.k3s.io | sh -
-  - |
-    # set home and user
-    USR="$(getent passwd 1000 | awk -F: '{print $1}')"
-    HOME="/home/$USR"
-    # access k3s
-    mkdir -p "$HOME/.kube"
-    cp /etc/rancher/k3s/k3s.yaml "$HOME/.kube/config"
-    echo "export KUBECONFIG=$HOME/.kube/config" >>$HOME/.bashrc
-    # download and run cloud-init.sh
-    curl -o "$HOME/cloud-init.sh" https://raw.githubusercontent.com/sciabarracom/openserverless/main/cloud-init.sh
-    chmod +x "$HOME/cloud-init.sh"
-  - |
+    curl -o  /etc/cloud-init.sh https://raw.githubusercontent.com/sciabarracom/openserverless/main/cloud-init.sh
+    chmod +x "/etc/cloud-init.sh"
     # enable and start the service
-    systemctl enable openserverless-setup.service
-    systemctl start openserverless-setup.service
+    #systemctl enable openserverless-setup.service
+    #systemctl start openserverless-setup.service

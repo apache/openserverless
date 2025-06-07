@@ -3,18 +3,19 @@
 Welcome to   [Apache OpenServerless](https://openserverless.apache.org), an incubating project at the [Apache Software Foundation](https://www.apache.org) 
 
 
-- If you want to **understand** what this project is check the [original proposal](https://cwiki.apache.org/confluence/display/INCUBATOR/OpenServerlessProposal). 
-- If you want to **install** Apache OpenServerless in your servers go [here](https://openserverless.apache.org/docs/installation/)
-- If you want to **contribute** to the project, read [the  doc to setup a **development** environment)[DEVEL.md].
-- If you want to **chat** with us, join  [our Discord server](https://bit.ly/openserverless-discord).
+- If you want to **learn** about Apache OpenServerless [check our website](https://openserverless.apache.org)
+- If you want to **contribute** to the project, read [this document](DEVEL.md)  describng how to setup a **development** environment 
 - If you want a simple local installation for testing things out, read on.
-
 
 ## Prerequisites: Install Multipass
 
-To install a local environemt, you need [multipass](https://canonical.com/multipass)
+To install a local environemt you need a PC/Mac running a recent version of Windows, Linux and Mac, with least 16GB of memory and virtualization enables.
 
-Here we describe how to setup the development virtual machine on Linux, Mac and Windows using multipass. First, install multipass.
+There are multiple ways of installing Apache OpenServerless on a local machine, including using docker. All the options are documented [here](https://openserverless.apache.org/docs/installation/)
+
+The simplest way and most reliable way is to use [multipass](https://canonical.com/multipass) creating a dedicated virual machine.
+
+You should start installing multipass as follows:
 
 - On Mac, if you already have [brew](https://brew.sh/), installing it is as easy as to type `brew install --cask multipass`.
 
@@ -24,7 +25,7 @@ Here we describe how to setup the development virtual machine on Linux, Mac and 
 
 Download the multipass installer from [here](https://multipass.run/download/windows) and run the installer. Pick Hyperv in preference, VirtualBox as an alternative.
 
-- Alternative installation options are available [here](https://multipass.run/install)
+- There are other installation options, described [here](https://multipass.run/install)
 
 ## Setup a development VM using multipass
 
@@ -33,7 +34,7 @@ The steps and the commands to install the development VM are the same in Linux, 
 Once you have `multipass` installed, open a terminal or powershell and type the following command:
 
 ```
-multipass launch -nopenserverless -c4 -d20g -m8g --cloud-init https://raw.githubusercontent.com/apache/openserverless/main/cloud-init.yaml
+multipass launch -nopenserverless -c4 -d20g -m8g --cloud-init https://raw.githubusercontent.com/sciabarracom/openserverless/main/cloud-init.yaml
 ```
 
 Now wait until the installation is complete and you see messages like `status: done` or `Launched: openserverless` (message can be different depending on multipass version effectively installed).
