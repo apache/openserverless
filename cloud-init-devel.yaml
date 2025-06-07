@@ -12,7 +12,7 @@ runcmd:
     # install k3s, direnv, task
     curl -sfL https://get.k3s.io | sh -
     cd /tmp
-    echo "OPS_CLOUD_INIT_VER=2" >>/etc/environment
+    echo "OPS_CLOUD_INIT_VER=3" >>/etc/environment
   - |
     # set home and user
     USR="$(getent passwd 1000 | awk -F: '{print $1}')"

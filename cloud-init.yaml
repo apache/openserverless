@@ -1,6 +1,8 @@
 #cloud-config
 apt_update: true
 apt_upgrade: true
+packages:
+ - at
 
 users:
   - name: ubuntu
@@ -10,36 +12,18 @@ users:
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
 
 write_files:
-
-  - path: /etc/systemd/system/setup.service
-    permissions: '0644'
-    content: |
-      [Unit]
-      Description=Initial setup
-      After=cloud-init.target
-      Requires=network-online.target
-      After=network-online.target
-      [Service]
-      Type=simple
-      Environment="HOME=/home/ubuntu"
-      ExecStart=/etc/cloud-init.sh 
-      RemainAfterExit=yes
-      Restart=no
-      User=ubuntu
-      [Install]
-      WantedBy=multi-user.target
-
   - path: /etc/setup.status
     permissions: '0755'
     content: |
       #!/bin/bash
       if sudo cloud-init status --wait
-      then sudo journalctl -u setup -f
+      then tail -f /tmp/setup.log
       fi
 
 runcmd:
   - |
+    echo "OPS_CLOUD_INIT_VER=3" >>/etc/environment
     curl -sLo  /etc/cloud-init.sh https://raw.githubusercontent.com/sciabarracom/openserverless/main/cloud-init.sh
     chmod +x "/etc/cloud-init.sh"
-    systemctl enable setup.service
-    systemctl start setup.service
+    echo -e '#!/bin/bash\nsudo -iu ubuntu /etc/cloud-init.sh 2>&1 >/tmp/setup.log' | at now
+ 

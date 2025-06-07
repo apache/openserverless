@@ -43,7 +43,6 @@ multipass delete openserverless --purge
 
 Then create a new vm with:
 
-
 ```
 multipass launch -nopenserverless -c4 -d20g -m16g --cloud-init https://raw.githubusercontent.com/sciabarracom/openserverless/main/cloud-init.yaml
 ```
