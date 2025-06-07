@@ -9,7 +9,7 @@ Welcome to   [Apache OpenServerless](https://openserverless.apache.org), an incu
 
 ## Prerequisites: Install Multipass
 
-To install a local environemt you need a PC/Mac running a recent version of Windows, Linux and Mac, with least 16GB of memory and virtualization enables.
+To install a local environemt you need a PC/Mac running a recent version of Windows, Linux and Mac, with least 24GB of memory and virtualization enables. The vm requires at least 16gb of memory if you want a complete installation with all the services
 
 There are multiple ways of installing Apache OpenServerless on a local machine, including using docker. All the options are documented [here](https://openserverless.apache.org/docs/installation/)
 
@@ -31,39 +31,40 @@ Download the multipass installer from [here](https://multipass.run/download/wind
 
 The steps and the commands to install the development VM are the same in Linux, Windows and Mac.
 
-Once you have `multipass` installed, open a terminal or powershell and type the following command:
+Once you have `multipass` installed, open a terminal or powershell and type the following commands.
+
+
+Before starting, if have an old version of the vm, remove it with:
 
 ```
-multipass launch -nopenserverless -c4 -d20g -m8g --cloud-init https://raw.githubusercontent.com/sciabarracom/openserverless/main/cloud-init.yaml
+multipass delete openserverless --purge
 ```
 
-Now wait until the installation is complete and you see messages like `status: done` or `Launched: openserverless` (message can be different depending on multipass version effectively installed).
+Then create a new vm with
 
-
-TODO: change command for installing openserverless
 
 ```
-multipass exec "openserverless" -- sudo cloud-init status --wait
+multipass launch -nopenserverless -c4 -d20g -m16g --cloud-init https://raw.githubusercontent.com/sciabarracom/openserverless/main/cloud-init.yaml
 ```
 
-## Get your Local VM API HOST
+Wait until the vm is ready and you see messages like `status: done` or `Launched: openserverless` (message can be different depending on multipass version effectively installed).
 
-
-First type `multipass list`. You will see something like this:
+Finally wait the installation to be completed running the command:
 
 ```
-Name                    State             IPv4             Image
-openserverless          Running           10.6.73.253      Ubuntu 24.04 LTS
-                                          10.42.0.0
-                                          10.42.0.1
+multipass exec openserverless -- sudo journalctl -u setup -f
 ```
 
-Take note of the `<IP>` in the `openserverless line` (in this case `10.6.73.253` but your value can be different)
+and wait until you see the message `=== DONE ===`
 
+## Optional: retrieve the kubeconfig
 
-yours instance is http://10.6.73.253.nip.io
+If you want to administer the installation and be able to create users, debug and tweak it, 
+you need to [install ` kubectl`](https://kubernetes.io/docs/tasks/tools/) 
+then retrieve the `.kube/config` file and store it locally with the command:
 
-**NOTE** this is a transient instance and if your reboot your Laptop, your IP may change
-
-TODO: update the internal ips...
-
+```
+mkdir $HOME/.kube
+# warning!!! this overwrites an existing kubeconfig
+multipass exec openserverless cat .kube/config >$HOME/.kube/config
+````

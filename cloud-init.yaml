@@ -10,7 +10,7 @@ users:
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
 
 write_files:
-  - path: /etc/systemd/system/openserverless-setup.service
+  - path: /etc/systemd/system/setup.service
     permissions: '0644'
     content: |
       [Unit]
@@ -30,6 +30,5 @@ runcmd:
   - |
     curl -o  /etc/cloud-init.sh https://raw.githubusercontent.com/sciabarracom/openserverless/main/cloud-init.sh
     chmod +x "/etc/cloud-init.sh"
-    # enable and start the service
-    #systemctl enable openserverless-setup.service
-    #systemctl start openserverless-setup.service
+    systemctl enable openserverless-setup.service
+    systemctl start openserverless-setup.service
