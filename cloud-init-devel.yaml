@@ -1,0 +1,49 @@
+#cloud-config
+apt_update: true
+apt_upgrade: true
+users:
+  - name: ubuntu
+    uid: 1000
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+runcmd:
+  - |
+    # install k3s, direnv, task
+    curl -sfL https://get.k3s.io | sh -
+    cd /tmp
+    echo "OPS_CLOUD_INIT_VER=2" >>/etc/environment
+  - |
+    # set home and user
+    USR="$(getent passwd 1000 | awk -F: '{print $1}')"
+    HOME="/home/$USR"
+    # copy authkey if there is a root one
+    if test -e /root/.ssh/authorized_keys
+    then mkdir -p /home/$USR/.ssh
+         cat /root/.ssh/authorized_keys >>/home/$USR/.ssh/authorized_keys
+    fi
+    # access k3s
+    mkdir -p "$HOME/.kube"
+    cp /etc/rancher/k3s/k3s.yaml "$HOME/.kube/config"
+    echo "export KUBECONFIG=/home/$USR/.kube/config" >>$HOME/.bashrc
+    # use direnv for autoinit 
+    echo 'eval "$(direnv hook bash)"' >>$HOME/.bashrc
+    # install nix
+    curl -L https://nixos.org/nix/install | sudo -u "$USR"  sh
+    # get openserverless sources
+    cd $HOME
+    # add z.sh
+    curl "https://raw.githubusercontent.com/rupa/z/master/z.sh" -o "$HOME/.z.sh"
+    echo "source $HOME/.z.sh" >> $HOME/.bashrc
+    # add aliases
+    echo "source $HOME/openserverless/aliases" >>$HOME/.bashrc
+    # change owner to everything
+    chown -Rvf "$USR" "$HOME"
+    # allow direnv for submodules
+    sudo -u $USR git clone https://github.com/apache/openserverless --recurse-submodules
+    cd  $HOME/openserverless 
+    sudo -u $USR bash sync-branch.sh
+    sudo -i -H -u $USR bash "$HOME/openserverless/direnv-init.sh"
+    # install license-eye and a git-hook
+    sudo -u $USR git config core.hooksPath .git-hooks
+
