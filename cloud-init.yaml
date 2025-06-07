@@ -16,10 +16,9 @@ write_files:
     permissions: '0755'
     content: |
       #!/bin/bash
-      if sudo cloud-init status --wait
-      then tail -f /tmp/setup.log
-      fi
-
+      sudo cloud-init status --wait
+      tail -f /tmp/setup.log | awk '/== DONE ==/ {print ; exit} {print}' 
+      
 runcmd:
   - |
     echo "OPS_CLOUD_INIT_VER=3" >>/etc/environment
