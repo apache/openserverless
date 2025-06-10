@@ -39,7 +39,7 @@ The steps and the commands to install the development VM are the same in Linux, 
 Once you have `multipass` installed, open a terminal or powershell and type the following command:
 
 ```
-multipass launch -nopenserverless -c4 -d20g -m8g --cloud-init https://raw.githubusercontent.com/sciabarracom/openserverless/main/cloud-init.yaml
+multipass launch --nopsv -c4 -d20g -m16g --cloud-init https://raw.githubusercontent.com/apache/openserverless/main/cloud-init.yaml
 ```
 
 Wait until the vm is launched and you see messages like  `Launched: openserverless` (message can be different depending on multipass version effectively installed).
@@ -47,19 +47,21 @@ Wait until the vm is launched and you see messages like  `Launched: openserverle
 Now wait until the intallation is complete.
 
 ```
-multipass exec "openserverless" waitready
+multipass exec opsv ./waitready
 ```
 
 Your VM is ready. 
 
+TODO describe how to log in it.
+
 ## (Optional) Configure Kubectl access
 
-If you need administrative access to the vm, copy the `kubeconfig` file inside the VM and check if you have access:
+If you need administrative access to the vm, copy the `.kube/config` file inside the VM locally, then check if you have access:
 
 ```
 mkdir $HOME/.kube
 # warning this overwrites an exiting kube config
-multipass exec "cat .kube/config" >$HOME/.kube/config
+multipass exec opsv "cat .kube/config" >$HOME/.kube/config
 # you need kubectl installed
 kubectl get nodes
 ```
@@ -73,7 +75,7 @@ openserverless   Ready    control-plane,master   4h58m   v1.29.6+k3s1
 
 # Development Environment Overview
 
-If you only want to test OpenServerless, stop here.
+If you only want to test OpenServerless, stop here. You should have a working environment.
 
 The rest of this readme describes how to create a development enviroment within the vm.
 
@@ -92,8 +94,7 @@ We do not provide instructions how to setup on the various cloud provider (yet).
 
 You can even setup the development environment by yourself without using the virtual machine, and use a different IDE, but adapting the configuration for your IDE is up to you and could be very time-consuming. Our development environment is the result of a few years of fine tuning, so we do not expect it will be easy to change.
 
-
-## (Optional) Configure SSH access for VSCode
+## Configure SSH access for VSCode
 
 To access the virtual machine from VSCode you need to setup a ssh key and create a configuration. Open a terminal (powershell on Windows) and follow those steps:
 
@@ -102,8 +103,8 @@ To access the virtual machine from VSCode you need to setup a ssh key and create
 2. Copy the key in the virtual machine to allow no password access:
 
 ```
-multipass transfer $HOME/.ssh/id_rsa.pub openserverless:
-multipass exec openserverless -- bash -c "cat id_rsa.pub | tee -a .ssh/authorized_keys"
+multipass transfer $HOME/.ssh/id_rsa.pub opsv:
+multipass exec opsv -- bash -c "cat id_rsa.pub | tee -a .ssh/authorized_keys"
 ```
 
 3. Create a configuration named `openserverless` to easily access it.
@@ -112,18 +113,18 @@ First type `multipass list`. You will see something like this:
 
 ```
 Name                    State             IPv4             Image
-openserverless          Running           10.6.73.253      Ubuntu 24.04 LTS
+opsv                    Running           10.6.73.253      Ubuntu 24.04 LTS
                                           10.42.0.0
                                           10.42.0.1
 ```
 
-Take note of the `<IP>` in the `openserverless line` (in this case `10.6.73.253` but your value can be different)
+Take note of the `<IP>` in the `opsv` line (in this example `10.6.73.253` but your value can be different)
 
 Use an editor to add to the file `~/.ssh/config` the following:
 
 ```
-Host openserverless
-  Hostname  <IP>
+Host opsv
+  Hostname <IP>
   User ubuntu
   IdentityFile ~/.ssh/id_rsa
 ```
@@ -131,7 +132,7 @@ Host openserverless
 4. Check you have access without password:
 
 ```
-ssh openserverless
+ssh opsv
 ```
 
 Once you accessed the VM configure git with your username and email:
@@ -140,6 +141,14 @@ Once you accessed the VM configure git with your username and email:
 git config --global user.name "<your-name>"
 git config --global user.email "<your-email>"
 ```
+
+5. Install source code and related toold
+
+In the user folder there is a script to setup the development environemt:
+
+`./devel-init.sh`
+
+It can take a while but at the end you will have a complete development environment ready
 
 ## Access the virtual machine with VSCode
 
@@ -151,7 +160,7 @@ git config --global user.email "<your-email>"
 
 4. Type F1 then "Connect" (or click on the `><` symbol in the corner to the left at the bottom) and select "Remote-SSH: Connect Current Windows to Host"
 
-5. Click on `openserverless` then select Linux if requested
+5. Click on `opsv` then select Linux if requested
 
 6. Click on the menu bar on `File` then `Openworkspace from file`, then select the `openserverless` folder and open one of the workspaces. Currently:
 
@@ -159,8 +168,7 @@ git config --global user.email "<your-email>"
 - `openserverless-operator.code-workspace`: for the Operator alone
 - `openserverless.code-workspace`: for the root with the Operator and the site
 
-
- Select `Linux` and then `Trust the authors` if requested.
+Select `Linux` and then `Trust the authors` if requested.
 
 ## Access to the subprojects
 
@@ -198,5 +206,6 @@ If you do not want to keep the VM anymore, ensure you have backed up all your fi
 For multipass, use the following commands to cleanup:
 
 ```
-multipass delete openserverless --purge
+multipass delete opsv --purge
 ```
+
