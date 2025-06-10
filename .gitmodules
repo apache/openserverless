@@ -27,6 +27,6 @@
 	url = https://github.com/apache/openserverless-task
 	branch = devel
 [submodule "devel/olaris-operator"]
-	path = devel/olaris-operator
+	path = devel/olaris-setup2
 	url = https://github.com/apache/openserverless-operator
 	branch = devel
