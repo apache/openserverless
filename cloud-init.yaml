@@ -34,6 +34,7 @@ write_files:
       echo "export KUBECONFIG=/home/$USR/.kube/config" >>$HOME/.bashrc
       chown -Rvf "$USR" /home/$USR
       echo "== DONE =="
+  
   - path: /home/ubuntu/waitready
     permissions: '0755'
     owner: ubuntu:ubuntu
@@ -48,41 +49,38 @@ write_files:
         fi
       done
   
-  - path: /home/ubuntu/devel-init.sh
+  - path: /home/ubuntu/i-am-a-developer
     permissions: '0755'
     defer: true
     owner: ubuntu:ubuntu
     content: |
-      # task
-      sudo snap install task --classic
-      # install nix
-      curl -L https://nixos.org/nix/install | sudo -u "$USR"  sh
-      # license-eye
-      cd /tmp
-      curl https://dlcdn.apache.org/skywalking/eyes/0.6.0/skywalking-license-eye-0.6.0-bin.tgz | tar xzvf -
-      sudo mv skywalking-license-eye-0.6.0-bin/bin/linux/license-eye /usr/bin/license-eye
-      rm -Rvf skywalking-license-eye-0.6.0-bin
-      curl -sfL https://direnv.net/install.sh | sudo bash
       # get openserverless sources
       cd $HOME
+      # install task and skywalking-eyes
+      sudo snap install task --classic
+      sudo snap install go --classic
+      go install github.com/apache/skywalking-eyes/cmd/license-eye@latest
+      echo "export PATH=\$PATH:\$HOME/go/bin" >> .bashrc
+      # install direnv and nix
+      curl -sL https://nixos.org/nix/install | sh
+      source .profile
+      curl -sL https://direnv.net/install.sh | sudo bash
+      echo 'eval "$(direnv hook bash)"' >> .bashrc
+      source .bashrc
+      # setup openserverless
       git clone https://github.com/apache/openserverless.git --recurse-submodules
-      # change owner to everything
-      chown -Rvf "$USR" "$HOME"
-      # allow direnv for submodules
-      sudo -u $USR git clone https://github.com/apache/openserverless --recurse-submodules
-      cd  $HOME/openserverless 
-      sudo -u $USR bash sync-branch.sh
-      sudo -i -H -u $USR bash "$HOME/openserverless/direnv-init.sh"
-      # install license-eye and a git-hook
-      sudo -u $USR git config core.hooksPath .git-hooks
+      cd openserverless 
+      bash sync-branch.sh
+      bash direnv-init.sh
+      # TODO add a .git-hooks directory with hooks
+      #git config core.hooksPath .git-hooks
  
 runcmd:
-  - |
-    echo -e '#!/bin/bash\n/etc/cloud-init.sh 2>&1 >/tmp/cloud-init.log\n' | at now
   - |
     cd /home/ubuntu
     # add z.sh and .aliases
     curl -sL "https://raw.githubusercontent.com/rupa/z/master/z.sh" -o ".z.sh"
-    curl -sL https://raw.githubusercontent.com/apache/openserverless/refs/heads/main/bash_aliases -o ".bash_aliases"
+    curl -sL https://raw.githubusercontent.com/sciabarra/openserverless/refs/heads/main/bash_aliases -o ".bash_aliases"
     echo 'source $HOME/.z.sh' >> .bashrc
     chown  ubuntu:ubuntu .z.sh" .bashrc
+    echo -e '#!/bin/bash\n/etc/cloud-init.sh 2>&1 >/tmp/cloud-init.log\n' | at now
