@@ -17,7 +17,7 @@
 # under the License.
 #
 
-alias va="vi ~/openserverless/aliases ; source ~/openserverless/aliases"
+alias va="vi ~/.bash_aliases ; source ~/.bash_aliases"
 
 # prompt
 parse_git_branch() {
@@ -115,3 +115,4 @@ alias ttt='task -d ../..'
 alias dtag="date +%y%m%d%H"
 alias lenv='export $(xargs <.env)'
 alias nssh="ssh -oStrictHostKeyChecking=no"
+alias gr="grep -nr"
