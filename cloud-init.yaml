@@ -80,7 +80,7 @@ runcmd:
     cd /home/ubuntu
     # add z.sh and .aliases
     curl -sL "https://raw.githubusercontent.com/rupa/z/master/z.sh" -o ".z.sh"
-    curl -sL https://raw.githubusercontent.com/sciabarra/openserverless/refs/heads/main/bash_aliases -o ".bash_aliases"
+    curl -sL https://raw.githubusercontent.com/sciabarracom/openserverless/refs/heads/main/bash_aliases -o ".bash_aliases"
     echo 'source $HOME/.z.sh' >> .bashrc
-    chown  ubuntu:ubuntu .z.sh" .bashrc
+    chown ubuntu:ubuntu .z.sh .bashrc .bash_aliases 
     echo -e '#!/bin/bash\n/etc/cloud-init.sh 2>&1 >/tmp/cloud-init.log\n' | at now
