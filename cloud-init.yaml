@@ -83,8 +83,6 @@ runcmd:
     cd /home/ubuntu
     # add z.sh and .aliases
     curl -sL "https://raw.githubusercontent.com/rupa/z/master/z.sh" -o ".z.sh"
-    curl -sL https://raw.githubusercontent.com/apache/openserverless/refs/heads/main/aliases -o ".bash_aliases"
+    curl -sL https://raw.githubusercontent.com/apache/openserverless/refs/heads/main/bash_aliases -o ".bash_aliases"
     echo 'source $HOME/.z.sh' >> .bashrc
-    # add to bashrc
-    echo "source $HOME/.aliases" >>.bashrc
-    chown  ubuntu:ubuntu .z.sh" .aliases .bashrc
+    chown  ubuntu:ubuntu .z.sh" .bashrc
