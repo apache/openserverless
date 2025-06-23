@@ -59,7 +59,7 @@ If you need administrative access to the vm, copy the `.kube/config` file inside
 ```
 mkdir $HOME/.kube
 # warning this overwrites an exiting kube config
-multipass exec opsv "cat .kube/config" >$HOME/.kube/config
+multipass exec opsv cat .kube/config >$HOME/.kube/config
 # you need kubectl installed
 kubectl get nodes
 ```
