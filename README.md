@@ -39,7 +39,7 @@ The steps and the commands to install the development VM are the same in Linux, 
 Once you have `multipass` installed, open a terminal or powershell and type the following command:
 
 ```
-multipass launch -nopsv -c4 -d20g -m16g --cloud-init https://raw.githubusercontent.com/apache/openserverless/main/cloud-init.yaml
+multipass launch -nopsv -c6 -d40g -m16g --cloud-init https://raw.githubusercontent.com/apache/openserverless/main/cloud-init.yaml
 ```
 
 Wait until the vm is launched and you see messages like  `Launched: openserverless` (message can be different depending on multipass version effectively installed).
@@ -59,7 +59,7 @@ If you need administrative access to the vm, copy the `.kube/config` file inside
 ```
 mkdir $HOME/.kube
 # warning this overwrites an exiting kube config
-multipass exec opsv "cat .kube/config" >$HOME/.kube/config
+multipass exec opsv cat .kube/config >$HOME/.kube/config
 # you need kubectl installed
 kubectl get nodes
 ```
