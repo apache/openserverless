@@ -33,8 +33,25 @@ write_files:
       cat /etc/rancher/k3s/k3s.yaml "$HOME/.kube/config" | sed -e 's!server: https://127.0.0.1:!server: https://'$IP':!' >"$HOME/.kube/config"
       echo "export KUBECONFIG=/home/$USR/.kube/config" >>$HOME/.bashrc
       chown -Rvf "$USR" /home/$USR
+      #sudo -u $USR bash /etc/install-opsv.sh
       echo "== DONE =="
-  
+
+  - path: /etc/install-opsv.sh
+    permissions: '0755'
+    owner: root:root
+    content: |
+        curl -sL bit.ly/get-ops | bash
+        # TODO: use the released version not main
+        echo "export OPS_BRANCH=main" >> ~/.bashrc
+        source ~/.bashrc
+        ops -t
+        ops -info
+        # configure opsv
+        ops config slim 
+        IP="$(ip -o -4 addr | awk '$2 ~/en/ { print $4}' | cut -d/ -f1)"
+        ops config apihost "$IP.nip.io"
+        ops setup cluster
+
   - path: /home/ubuntu/waitready
     permissions: '0755'
     owner: ubuntu:ubuntu
