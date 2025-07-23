@@ -110,7 +110,6 @@ write_files:
       kubectl apply -f ${RAW_BASE}/operator.yaml
       sleep 10
 
-      echo "🔎 Checking for yq..."
       if ! command -v yq >/dev/null 2>&1; then
         echo "📥 Installing yq..."
         mkdir -p /home/ubuntu/bin
@@ -181,7 +180,6 @@ write_files:
 
       echo "✅ Rook installed and configured with default StorageClass rook-ceph-block."
 
-
   - path: /home/ubuntu/add-longhorn
     permissions: '0755'
     defer: true
@@ -189,6 +187,7 @@ write_files:
     content: |
       #!/bin/bash
       set -e
+
       LONGHORN_VERSION="v1.4.1"
       
       echo "📦 Installing Longhorn ${LONGHORN_VERSION}"
