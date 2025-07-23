@@ -99,34 +99,29 @@ write_files:
     content: |
       #!/bin/bash
       set -e
-      echo "📦 Installing Rook v1.14.1..."
-
-      BASE=https://raw.githubusercontent.com/rook/rook/v1.14.1/deploy/examples
-
-      echo "🔧 Applying CRDs and common resources..."
-      kubectl apply -f $BASE/crds.yaml
-      kubectl apply -f $BASE/common.yaml
-
-      echo "🚀 Deploying Rook Operator..."
-      kubectl apply -f $BASE/operator.yaml
-      sleep 15
-
-      echo "🔧 Configuring cluster.yaml for single node..."
-      curl -s $BASE/cluster.yaml -o /tmp/cluster.yaml
-
+      echo "📦 Installing Rook..."
+      cd /home/ubuntu
+      git clone --depth 1 https://github.com/rook/rook.git || (cd rook && git pull)
+      cd rook/deploy/examples
+      echo "🔧 Patching Ceph cluster.yaml for single node..."
       if ! command -v yq >/dev/null 2>&1; then
         mkdir -p /home/ubuntu/bin
         wget -qO /home/ubuntu/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
         chmod +x /home/ubuntu/bin/yq
         export PATH=/home/ubuntu/bin:$PATH
       fi
+      yq e '.spec.mon.count = 1 | .spec.mon.allowMultiplePerNode = true' -i cluster.yaml
 
-      yq e '.spec.mon.count = 1 | .spec.mon.allowMultiplePerNode = true' -i /tmp/cluster.yaml
-      kubectl apply -f /tmp/cluster.yaml
+      kubectl apply -f crds.yaml
+      kubectl apply -f common.yaml
+      kubectl apply -f operator.yaml
+      sleep 15
+      kubectl apply -f cluster.yaml
       sleep 90
+      kubectl apply -f ceph-client.yaml
 
-      echo "📄 Applying Ceph clients..."
-      kubectl apply -f $BASE/ceph-client.yaml
+      echo "📦 Installing RBD CSI manifests (except storageclass.yaml)..."
+      kubectl apply -f csi/rbd/
 
       for i in {1..90}; do
         status=$(kubectl -n rook-ceph get cephcluster rook-ceph -o jsonpath='{.status.phase}' 2>/dev/null || echo "notfound")
@@ -135,11 +130,21 @@ write_files:
         sleep 15
       done
 
-      echo "📦 Trying to set rook-ceph-block as default storage class (non-destructive)..."
+      echo "📦 Waiting for csi-rbdplugin pods to be ready..."
+      for i in {1..90}; do
+        notready=$(kubectl -n rook-ceph get pods -l app=csi-rbdplugin -o jsonpath='{.items[*].status.containerStatuses[*].ready}' | grep -v true | wc -l)
+        total=$(kubectl -n rook-ceph get pods -l app=csi-rbdplugin --no-headers 2>/dev/null | wc -l)
+        echo "⏳ Attempt $i: $((total - notready))/$total pods ready"
+        if [[ "$notready" == "0" && "$total" -gt 0 ]]; then
+          echo "✅ CSI RBD Plugin Ready"
+          break
+        fi
+        sleep 15
+      done
+
       if kubectl get storageclass rook-ceph-block >/dev/null 2>&1; then
-        kubectl annotate storageclass rook-ceph-block storageclass.kubernetes.io/is-default-class=true --overwrite
-      else
-        echo "⚠️  rook-ceph-block not found, skipping annotation"
+        echo "📦 Setting rook-ceph-block as default storage class"
+        kubectl annotate storageclass rook-ceph-block storageclass.kubernetes.io/is-default-class=true --overwrite >/dev/null 2>&1
       fi
 
   - path: /home/ubuntu/add-longhorn
