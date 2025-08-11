@@ -30,3 +30,7 @@
 	path = devel/olaris-operator
 	url = https://github.com/apache/openserverless-operator
 	branch = devel
+[submodule "vscode"]
+	path = vscode
+	url = https://github.com/apache/openserverless-vscode-extension
+        branch = main
