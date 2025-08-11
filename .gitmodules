@@ -33,3 +33,4 @@
 [submodule "vscode"]
 	path = vscode
 	url = https://github.com/apache/openserverless-vscode-extension
+        branch = main
