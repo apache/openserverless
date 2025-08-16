@@ -71,6 +71,20 @@ NAME             STATUS   ROLES                  AGE     VERSION
 opsv             Ready    control-plane,master   4h58m   v1.29.6+k3s1
 ```
 
+## (Optional) Add block storage rook
+
+```
+multipass exec opsv -- bash -c 'export KUBECONFIG=/home/ubuntu/.kube/config && /home/ubuntu/add-rook'
+
+```
+
+## (Optional) Add block storage longhorn
+
+```
+multipass exec opsv -- bash -c 'export KUBECONFIG=/home/ubuntu/.kube/config && /home/ubuntu/add-longhorn'
+
+```
+
 # Development Environment Overview
 
 If you only want to test OpenServerless, stop here. You should have a working environment.
