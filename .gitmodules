@@ -7,7 +7,7 @@
 	url = https://github.com/apache/openserverless-cli
 	branch = main
 [submodule "operator"]
-	path = operator
+	path = olaris-op
 	url = https://github.com/apache/openserverless-operator
 	branch = main
 [submodule "testing"]
@@ -22,15 +22,10 @@
 	path = runtimes
 	url = https://github.com/apache/openserverless-runtimes
 	branch = main
-[submodule "devel/olaris"]
-	path = devel/olaris
-	url = https://github.com/apache/openserverless-task
-	branch = devel
-[submodule "devel/olaris-operator"]
-	path = devel/olaris-operator
-	url = https://github.com/apache/openserverless-operator
-	branch = devel
 [submodule "vscode"]
 	path = vscode
 	url = https://github.com/apache/openserverless-vscode-extension
         branch = main
+[submodule "openserverless-devcontainer"]
+	path = openserverless-devcontainer
+	url = https://github.com/apache/openserverless-devcontainer
