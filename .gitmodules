@@ -26,3 +26,6 @@
 	path = vscode
 	url = https://github.com/apache/openserverless-vscode-extension
         branch = main
+[submodule "openserverless-devcontainer"]
+	path = openserverless-devcontainer
+	url = https://github.com/apache/openserverless-devcontainer
