@@ -91,7 +91,121 @@ write_files:
       bash direnv-init.sh
       # TODO add a .git-hooks directory with hooks
       #git config core.hooksPath .git-hooks
- 
+
+  - path: /home/ubuntu/add-rook
+    permissions: '0755'
+    defer: true
+    owner: ubuntu:ubuntu
+    content: |
+      #!/bin/bash
+      set -e
+
+      ROOK_VERSION="v1.14.6"
+      RAW_BASE="https://raw.githubusercontent.com/rook/rook/${ROOK_VERSION}/deploy/examples"
+
+      echo "📦 Installing Rook ${ROOK_VERSION}"
+      echo "📄 Applying CRDs and operator..."
+      kubectl apply -f ${RAW_BASE}/crds.yaml
+      kubectl apply -f ${RAW_BASE}/common.yaml
+      kubectl apply -f ${RAW_BASE}/operator.yaml
+      sleep 10
+
+      if ! command -v yq >/dev/null 2>&1; then
+        echo "📥 Installing yq..."
+        mkdir -p /home/ubuntu/bin
+        curl -sL https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -o /home/ubuntu/bin/yq
+        chmod +x /home/ubuntu/bin/yq
+        export PATH=/home/ubuntu/bin:$PATH
+      else
+        echo "✅ yq already installed."
+      fi
+
+      echo "🛠️ Patching and applying Ceph cluster for single-node setup..."
+      curl -sL ${RAW_BASE}/cluster.yaml | \
+        yq e '.spec.mon.count = 1 | .spec.mon.allowMultiplePerNode = true' - | \
+        kubectl apply -f -
+      sleep 30
+
+      echo "📄 Applying Ceph client..."
+      kubectl apply -f ${RAW_BASE}/ceph-client.yaml
+
+      echo "🔍 Waiting for Rook to be Ready..."
+      for i in {1..90}; do
+        status=$(kubectl -n rook-ceph get cephcluster rook-ceph -o jsonpath='{.status.phase}' 2>/dev/null || echo "notfound")
+        echo "⏳ Attempt $i: Rook status = $status"
+        if [[ "$status" == "Ready" ]]; then
+          echo "✅ Rook is healthy!"
+          break
+        fi
+        sleep 15
+      done
+
+      if [[ "$status" != "Ready" ]]; then
+        echo "❌ Timeout waiting for Rook to become healthy."
+        exit 1
+      fi
+
+      echo "📄 Installing VolumeSnapshot CRDs..."
+      kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v6.3.3/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
+      kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v6.3.3/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
+      kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v6.3.3/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
+
+      echo "🧹 Re-creating rook-ceph-block StorageClass..."
+      kubectl delete storageclass rook-ceph-block --ignore-not-found=true
+
+      cat <<EOF | kubectl apply -f -
+      apiVersion: storage.k8s.io/v1
+      kind: StorageClass
+      metadata:
+        name: rook-ceph-block
+        annotations:
+          storageclass.kubernetes.io/is-default-class: "true"
+      provisioner: rook-ceph.rbd.csi.ceph.com
+      allowVolumeExpansion: true
+      reclaimPolicy: Delete
+      volumeBindingMode: WaitForFirstConsumer
+      parameters:
+        clusterID: rook-ceph
+        pool: replicapool
+        imageFormat: "2"
+        imageFeatures: layering
+        csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
+        csi.storage.k8s.io/provisioner-secret-namespace: rook-ceph
+        csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
+        csi.storage.k8s.io/controller-expand-secret-namespace: rook-ceph
+        csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
+        csi.storage.k8s.io/node-stage-secret-namespace: rook-ceph
+        csi.storage.k8s.io/fstype: ext4
+      EOF
+
+      echo "✅ Rook installed and configured with default StorageClass rook-ceph-block."
+
+  - path: /home/ubuntu/add-longhorn
+    permissions: '0755'
+    defer: true
+    owner: ubuntu:ubuntu
+    content: |
+      #!/bin/bash
+      set -e
+
+      LONGHORN_VERSION="v1.4.1"
+      
+      echo "📦 Installing Longhorn ${LONGHORN_VERSION}"
+      kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/${LONGHORN_VERSION}/deploy/longhorn.yaml
+
+      for i in {1..90}; do
+        ready=$(kubectl -n longhorn-system get pods -l app=longhorn-manager -o jsonpath='{.items[*].status.containerStatuses[0].ready}' | grep -o true | wc -l)
+        total=$(kubectl -n longhorn-system get pods -l app=longhorn-manager --no-headers | wc -l)
+        echo "⏳ Attempt $i: $ready/$total pods ready"
+        [[ "$ready" == "$total" && "$total" -gt 0 ]] && echo "✅ Longhorn Ready" && break
+        sleep 15
+      done
+
+      echo "📦 Trying to set Longhorn as default storage class ..."
+      if kubectl get storageclass longhorn >/dev/null 2>&1; then
+        kubectl annotate storageclass longhorn storageclass.kubernetes.io/is-default-class=true --overwrite || true
+      fi
+
 runcmd:
   - |
     cd /home/ubuntu
