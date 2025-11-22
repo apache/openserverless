@@ -1,32 +1,32 @@
 [submodule "site"]
-	path = site
-	url = https://github.com/apache/openserverless-site
-	branch = main
+        path = site
+        url = https://github.com/apache/openserverless-site
+        branch = main
 [submodule "cli"]
-	path = cli
-	url = https://github.com/apache/openserverless-cli
-	branch = main
+        path = cli
+        url = https://github.com/apache/openserverless-cli
+        branch = main
 [submodule "operator"]
-	path = olaris-op
-	url = https://github.com/apache/openserverless-operator
-	branch = main
+        path = operator
+        url = https://github.com/mobs75/openserverless-operator
+        branch = feature/add-spark-operator
 [submodule "testing"]
-	path = testing
-	url = https://github.com/apache/openserverless-testing
-	branch = main
+        path = testing
+        url = https://github.com/apache/openserverless-testing
+        branch = main
 [submodule "task"]
-	path = olaris
-	url = https://github.com/apache/openserverless-task
-	branch = main
+        path = olaris
+        url = https://github.com/apache/openserverless-task
+        branch = main
 [submodule "runtimes"]
-	path = runtimes
-	url = https://github.com/apache/openserverless-runtimes
-	branch = main
+        path = runtimes
+        url = https://github.com/apache/openserverless-runtimes
+        branch = main
 [submodule "vscode"]
-	path = vscode
-	url = https://github.com/apache/openserverless-vscode-extension
+        path = vscode
+        url = https://github.com/apache/openserverless-vscode-extension
         branch = main
 [submodule "openserverless-devcontainer"]
-	path = devcontainer
-	url = https://github.com/apache/openserverless-devcontainer
+        path = devcontainer
+        url = https://github.com/apache/openserverless-devcontainer
         branch = main
