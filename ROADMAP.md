@@ -1,6 +1,6 @@
 # Roadmap
 
-The roadmap is a high level overview of work we would like to see implemented. For more details and discussion of new features, improvements or bugs, please see the [issue list](https://github.com/apache/openserverless/issues) in GitHub. 
+The roadmap is a high level overview of work we would like to see implemented. For more details and discussion of new features, improvements or bugs, please see the [issue list](https://github.com/apache/openserverless/issues) in GitHub.
 
 The order of the items does not pretend to to establish the project priorities.
 
@@ -19,7 +19,7 @@ The order of the items does not pretend to to establish the project priorities.
     * New: Implement a new customizable Job to perform CouchDb maintenance task (database compaction, activations cleanup)
     * Refactoring: Adopt a plugin based implemenation
 * OpenServerless CLI (aka ops)
-    * TODO 
+    * TODO
 * OpenServerless Tasks
     * New: implemens task to schedule actions using argo events supporting actions
 * OpenServerless runtimes
