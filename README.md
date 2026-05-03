@@ -50,5 +50,3 @@ Execute a basic smoke test
 
 TODO: execute locally the full test suite under ./testing
 
-
-
