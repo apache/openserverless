@@ -8,39 +8,47 @@ Welcome to   [Apache OpenServerless](https://openserverless.apache.org), an incu
 - If you want to **discuss** with us, join  our mailing list sending an email to `dev-subscribe@openserverless.apache.org`
 - If you want to **locally install**  open serverless from sources test or development, read on.
 
-# Build from sources
+# Build and test from sources
 
 ## Prerequisites
 
 - you need an Unix environment, either OSX, Linux or Windows WSL.
-- you need docker availabe on the path
+- you need docker docker on the path
 - you need go available on the path
+- you need task (https://taskfile.dev) available in the path
 
 ## Procedure
 
-Clone all the modules and submodules recursively:
+### 1. Get the sources
 
-1. `git clone https://github.com/apache/openserverless --recurse-submodules`
+Clone all the modules and submodules recursively
 
-2. build ops running `./build.sh`
+`git clone https://github.com/apache/openserverless --recurse-submodules`
 
-3. check ops works executing `./ops -info`
+### 2. Build
 
-verify that  OPS_ROOT is equals to $PWD/olaris, so you can use the tasks from sources
+First clean everything
 
-then execute `./ops -t`
+`task clean`
 
-you should see somethin like this (files and version may vary)
+then build:
 
-```
-ensuring prerequisite coreutils 0.0.27
-ensuring prerequisite bun 1.2.5
-ensuring prerequisite kubectl 1.33.1
-```
+`task build`
 
-4. install openserverless in docker with
+This will
+- build the cli
+- build the operator image
+TODO: build the runtimes
 
-`./ops setup mini`
+3. Smoke est
 
-If everything works you end up with a running openserverless in docker
+Execute a basic smoke test
+
+`bash smoke.sh`
+
+4. More tests
+
+TODO: execute locally the ful test suite under ./testing
+
+
 
