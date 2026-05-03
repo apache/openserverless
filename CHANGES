@@ -2,3 +2,7 @@
 
 - archived old readme and dev environment files (moved in attic)
 - build from sources compiling the cli (updated the README.md)
+
+# sciabarracom 3 May 2026
+- `Taskfile.yml` for building the operator
+- `test.sh` for a smoke test
