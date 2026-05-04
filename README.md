@@ -13,7 +13,7 @@ Welcome to   [Apache OpenServerless](https://openserverless.apache.org), an incu
 ## Prerequisites
 
 - you need an Unix environment, either OSX, Linux or Windows WSL.
-- you need docker docker on the path
+- you need docker on the path
 - you need go available on the path
 - you need task (https://taskfile.dev) available in the path
 
@@ -40,7 +40,7 @@ This will
 - build the operator image
 TODO: build the runtimes
 
-3. Smoke est
+3. Smoke test
 
 Execute a basic smoke test
 
@@ -48,7 +48,7 @@ Execute a basic smoke test
 
 4. More tests
 
-TODO: execute locally the ful test suite under ./testing
+TODO: execute locally the full test suite under ./testing
 
 
 
