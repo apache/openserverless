@@ -8,6 +8,10 @@ vars:
   OPERATOR_TAG:
     sh: git  -C olaris-op rev-parse --short HEAD
 
+  RUNTIMES_TAG:
+    sh: git  -C runtimes rev-parse --short HEAD
+
+
   OPERATOR_SRC: "{{.OPERATOR_IMG}}:{{.OPERATOR_TAG}}"
 
   OPERATOR_TGT:
@@ -30,6 +34,7 @@ tasks:
       - task: cli
       - task: operator
       - task: opsroot
+      - task: runtimes
 
 
     image-save:
@@ -63,7 +68,6 @@ tasks:
       status:
       - ! test -e "{{.OPERATOR_TGT}}"
 
-
     opsroot:
       desc: build current opsroot.json
       dir: olaris
@@ -78,12 +82,10 @@ tasks:
 
     runtimes:
       desc: build current runtimes.json
-      dir: olaris
+      dir: runtimes
       cmds:
-      - test -e runtimes.orig || jq . <runtimes.json >runtimes.orig
-      - >
-        jq <runtimes.orig >runtimes.json  '
-          .runtimes = {} |
-          .blackboxes = {}
-        '
-      - diff runtimes.orig runtimes.json || true
+      - git tag -d $(git tag) && git tag {{.RUNTIMES_TAG}}
+      - task build-common
+      - task build
+      - task render-runtimes
+      - cp runtimes.json ../olaris/rutimes.json
