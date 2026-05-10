@@ -1,0 +1,91 @@
+version: 3
+
+vars:
+
+  OPERATOR_IMG:
+    sh: awk -F= '/ARG OPERATOR_IMAGE_DEFAULT=/ { print $2 ; exit }' olaris-op/Dockerfile
+
+  OPERATOR_TAG:
+    sh: git  -C olaris-op rev-parse --short HEAD
+
+  RUNTIMES_TAG:
+    sh: git  -C runtimes rev-parse --short HEAD
+
+
+  OPERATOR_SRC: "{{.OPERATOR_IMG}}:{{.OPERATOR_TAG}}"
+
+  OPERATOR_TGT:
+      sh: |
+          B64="$(echo {{.OPERATOR_SRC}} | /usr/bin/base64 -w0 )"
+          echo ~/.ops/{{OS}}-{{ARCH}}/images/kind/$B64
+
+tasks:
+
+    default: task -l
+
+    clean:
+      desc: clean the intermediate artifacts
+      cmds:
+      - rm -vf ./ops ~/.ops/{{OS}}-{{ARCH}}/images/kind/*
+
+    build:
+      desc: build all
+      cmds:
+      - task: cli
+      - task: operator
+      - task: opsroot
+      - task: runtimes
+
+
+    image-save:
+      desc: save an a SRC image in the TGT file
+      requires: { vars: [SRC, TGT]}
+      cmds:
+      - docker save {{.SRC}} -o {{.TGT}}
+
+    cli:
+      desc: build the cli
+      dir: cli
+      cmds:
+      - go build -o ../ops cmd/ops/main.go
+      status:
+      - ! test -e ../ops
+
+    operator:
+      desc: build the operator
+      deps:
+      - cli
+      dir: olaris-op
+      cmds:
+      - echo Building {{.OPERATOR_SRC}}
+      - git tag -d $(git tag) && git tag {{.OPERATOR_TAG}}
+      - task b:build
+      - echo Saving {{.OPERATOR_TGT}}
+      - task: image-save
+        vars:
+          SRC: "{{.OPERATOR_SRC}}"
+          TGT: "{{.OPERATOR_TGT}}"
+      status:
+      - ! test -e "{{.OPERATOR_TGT}}"
+
+    opsroot:
+      desc: build current opsroot.json
+      dir: olaris
+      cmds:
+      - test -e opsroot.orig || jq . <opsroot.json >opsroot.orig
+      - >
+        jq <opsroot.orig >opsroot.json  '
+          .config.images = {} |
+          .config.images.operator = "{{.OPERATOR_SRC}}"
+        '
+      - diff opsroot.orig opsroot.json || true
+
+    runtimes:
+      desc: build current runtimes.json
+      dir: runtimes
+      cmds:
+      - git tag -d $(git tag) && git tag {{.RUNTIMES_TAG}}
+      - task build-common
+      - task build
+      - task render-runtimes
+      - cp runtimes.json ../olaris/rutimes.json
