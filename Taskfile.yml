@@ -28,20 +28,13 @@ tasks:
       cmds:
       - rm -vf ./ops ~/.ops/{{OS}}-{{ARCH}}/images/kind/*
 
-    build:
-      desc: build all
-      cmds:
-      - task: cli
-      - task: operator
-      - task: opsroot
-      - task: runtimes
-
-
     image-save:
       desc: save an a SRC image in the TGT file
       requires: { vars: [SRC, TGT]}
       cmds:
+      - mkdir -p "{{ dir .TGT}}"
       - docker save {{.SRC}} -o {{.TGT}}
+
 
     cli:
       desc: build the cli
@@ -89,3 +82,26 @@ tasks:
       - task build
       - task render-runtimes
       - cp runtimes.json ../olaris/runtimes.json
+      - task: runtimes-save
+      
+    runtimes-save:
+      desc: save runtimes images
+      dir: runtimes
+      vars:
+        IMAGES:
+          sh: jq -r '.runtimes[][] | select(.default == true) | "\(.image.prefix)/\(.image.name):\(.image.tag)"' runtimes.json
+      cmds:
+      - for: { var: IMAGES, split: "\n", as: IMG }
+        task: image-save
+        vars:
+          SRC: "registry.hub.docker.com/{{.IMG}}"
+          TGT:
+            sh: echo ~/.ops/{{OS}}-{{ARCH}}/images/kind/$(echo registry.hub.docker.com/{{.IMG}} | /usr/bin/base64 -w0)
+
+    build:
+      desc: build all
+      cmds:
+      - task: cli
+      - task: operator
+      - task: opsroot
+      - task: runtimes

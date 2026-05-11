@@ -17,6 +17,41 @@ Welcome to   [Apache OpenServerless](https://openserverless.apache.org), an incu
 - you need go available on the path
 - you need task (https://taskfile.dev) available in the path
 
+Here the procedures for MacOS, Windows 11 and Ubuntu Linux
+
+##  Prepare Mac
+
+On Mac, install brew and Docker Desktop. then do
+
+- `brew install task`
+- `brew install go`
+
+## Prepare Windows
+
+On windows, 
+- install Docker Desktop then 
+- `wsl --install Ubuntu-24.04`
+
+then enable docker to be used in the distro `Ubuntu-24.04`
+
+Access the distro (`wsl -d Ubuntu-24.04` ) and run:
+
+- `sudo snap install go --classic`
+- `sudo snap install task --classic`
+
+## Prepare Ubuntu Linux
+
+Install docker with
+
+- `curl -sL get.docker.com | sudo bash`  
+- `sudo usermod -aG docker $USER` 
+- `newgrp` 
+
+Then
+
+- `sudo snap install go --classic`
+- `sudo snap install task --classic`
+
 ## Procedure
 
 ### 1. Get the sources
@@ -25,7 +60,12 @@ Clone all the modules and submodules recursively
 
 `git clone https://github.com/apache/openserverless --recurse-submodules`
 
+and enter in the folder
+
+`cd openserverless`
+
 ### 2. Build
+
 
 First clean everything
 
@@ -38,15 +78,10 @@ then build:
 This will
 - build the cli
 - build the operator image
-TODO: build the runtimes
+- build the runtimes
 
-3. Smoke test
+TODO: build the system actions and the streamer
 
-Execute a basic smoke test
+3. Tests
 
-`bash smoke.sh`
-
-4. More tests
-
-TODO: execute locally the full test suite under ./testing
-
+TODO: execute the test suite
