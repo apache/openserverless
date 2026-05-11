@@ -88,4 +88,4 @@ tasks:
       - task build-common
       - task build
       - task render-runtimes
-      - cp runtimes.json ../olaris/rutimes.json
+      - cp runtimes.json ../olaris/runtimes.json
