@@ -66,7 +66,6 @@ and enter in the folder
 
 ### 2. Build
 
-
 First clean everything
 
 `task clean`
