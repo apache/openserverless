@@ -30,3 +30,9 @@
 	path = devcontainer
 	url = https://github.com/apache/openserverless-devcontainer
         branch = main
+[submodule "streamer"]
+	path = streamer
+	url = git@github.com:apache/openserverless-streamer
+[submodule "admin-api"]
+	path = admin-api
+	url = git@github.com:apache/openserverless-admin-api
