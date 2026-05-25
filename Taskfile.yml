@@ -4,20 +4,18 @@ vars:
 
   OPERATOR_IMG:
     sh: awk -F= '/ARG OPERATOR_IMAGE_DEFAULT=/ { print $2 ; exit }' olaris-op/Dockerfile
-
   OPERATOR_TAG:
     sh: git  -C olaris-op rev-parse --short HEAD
-
-  RUNTIMES_TAG:
-    sh: git  -C runtimes rev-parse --short HEAD
-
-
   OPERATOR_SRC: "{{.OPERATOR_IMG}}:{{.OPERATOR_TAG}}"
 
-  OPERATOR_TGT:
-      sh: |
-          B64="$(echo {{.OPERATOR_SRC}} | /usr/bin/base64 -w0 )"
-          echo ~/.ops/{{OS}}-{{ARCH}}/images/kind/$B64
+  STREAMER_TAG: "{{.OPERATOR_TAG}}"
+  STREAMER_SRC: "registry.hub.docker.com/apache/openserverless-streamer:{{.STREAMER_TAG}}"
+
+  ADMIN_API_TAG: "{{.OPERATOR_TAG}}"
+  ADMIN_API_SRC: "registry.hub.docker.com/apache/openserverless-admin-api:{{.ADMIN_API_TAG}}"
+
+  RUNTIMES_TAG: "{{.OPERATOR_TAG}}"
+
 
 tasks:
 
@@ -27,14 +25,22 @@ tasks:
       desc: clean the intermediate artifacts
       cmds:
       - rm -vf ./ops ~/.ops/{{OS}}-{{ARCH}}/images/kind/*
+      - rm -vf ./ops
 
     image-save:
       desc: save an a SRC image in the TGT file
-      requires: { vars: [SRC, TGT]}
+      requires: { vars: [SRC]}
+      env:
+        TGT:
+          sh: |
+              B64="$(echo {{.SRC}} | /usr/bin/base64 -w0 )"
+              echo ~/.ops/{{OS}}-{{ARCH}}/images/kind/$B64
       cmds:
-      - mkdir -p "{{ dir .TGT}}"
-      - docker save {{.SRC}} -o {{.TGT}}
-
+      - echo Saving {{.SRC}} in "$TGT"
+      - mkdir -p  "$(dirname $TGT)"
+      - docker save {{.SRC}} -o  "$TGT"
+      status:
+      - ! test -e "$TGT"
 
     cli:
       desc: build the cli
@@ -53,13 +59,38 @@ tasks:
       - echo Building {{.OPERATOR_SRC}}
       - git tag -d $(git tag) && git tag {{.OPERATOR_TAG}}
       - task b:build
-      - echo Saving {{.OPERATOR_TGT}}
       - task: image-save
         vars:
           SRC: "{{.OPERATOR_SRC}}"
-          TGT: "{{.OPERATOR_TGT}}"
-      status:
-      - ! test -e "{{.OPERATOR_TGT}}"
+
+    streamer:
+      desc: build the streamer
+      deps:
+      - cli
+      dir: streamer
+      cmds:
+      - echo Building {{.STREAMER_SRC}}
+      - git tag -d $(git tag) && git tag {{.STREAMER_TAG}}
+      - echo -e "NAMESPACE=apache\nREGISTRY=apache\n" >.env
+      - task buildx
+      - task: image-save
+        vars:
+          SRC: "{{.STREAMER_SRC}}"
+
+
+    admin-api:
+      desc: build the admin-api
+      deps:
+      - cli
+      dir: admin-api
+      cmds:
+      - echo Building {{.ADMIN_API_SRC}}
+      - git tag -d $(git tag) && git tag {{.STREAMER_TAG}}
+      - echo -e "NAMESPACE=apache\nREGISTRY=apache\n" >.env
+      - task buildx
+      - task: image-save
+        vars:
+          SRC: "{{.ADMIN_API_SRC}}"
 
     opsroot:
       desc: build current opsroot.json
@@ -68,8 +99,9 @@ tasks:
       - test -e opsroot.orig || jq . <opsroot.json >opsroot.orig
       - >
         jq <opsroot.orig >opsroot.json  '
-          .config.images = {} |
-          .config.images.operator = "{{.OPERATOR_SRC}}"
+          .config.images.operator = "{{.OPERATOR_SRC}}" |
+          .config.images.streamer = "{{.STREAMER_SRC}}" |
+          .config.images.systemapi = "{{.ADMIN_API_SRC}}"
         '
       - diff opsroot.orig opsroot.json || true
 
@@ -83,7 +115,7 @@ tasks:
       - task render-runtimes
       - cp runtimes.json ../olaris/runtimes.json
       - task: runtimes-save
-      
+
     runtimes-save:
       desc: save runtimes images
       dir: runtimes
@@ -103,5 +135,8 @@ tasks:
       cmds:
       - task: cli
       - task: operator
+      - task: runtimes
+      - task: streamer
+      - task: admin-api
       - task: opsroot
       - task: runtimes
