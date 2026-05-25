@@ -116,7 +116,7 @@ tasks:
       - cp runtimes.json ../olaris/runtimes.json
       - task: runtimes-save
 
-    runtimes-json:
+    runtimes-save:
       desc: save runtimes images
       dir: runtimes
       vars:
@@ -139,4 +139,4 @@ tasks:
       - task: streamer
       - task: admin-api
       - task: opsroot
-      - task: runtimes-json
+      - task: runtimes

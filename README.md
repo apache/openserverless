@@ -28,8 +28,8 @@ On Mac, install brew and Docker Desktop. then do
 
 ## Prepare Windows
 
-On windows, 
-- install Docker Desktop then 
+On windows,
+- install Docker Desktop then
 - `wsl --install Ubuntu-24.04`
 
 then enable docker to be used in the distro `Ubuntu-24.04`
@@ -43,9 +43,9 @@ Access the distro (`wsl -d Ubuntu-24.04` ) and run:
 
 Install docker with
 
-- `curl -sL get.docker.com | sudo bash`  
-- `sudo usermod -aG docker $USER` 
-- `newgrp` 
+- `curl -sL get.docker.com | sudo bash`
+- `sudo usermod -aG docker $USER`
+- `newgrp`
 
 Then
 
@@ -78,8 +78,7 @@ This will
 - build the cli
 - build the operator image
 - build the runtimes
-
-TODO: build the system actions and the streamer
+- build accessories (streamer and system api)
 
 3. Tests
 
