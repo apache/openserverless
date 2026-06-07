@@ -32,7 +32,9 @@
         branch = main
 [submodule "streamer"]
 	path = streamer
-	url = git@github.com:apache/openserverless-streamer
+	url = https://github.com/apache/openserverless-streamer
+        branch = main
 [submodule "admin-api"]
 	path = admin-api
-	url = git@github.com:apache/openserverless-admin-api
+	url = https://github.com/apache/openserverless-admin-api
+        branch = main
