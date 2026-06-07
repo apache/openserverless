@@ -9,10 +9,10 @@ vars:
   OPERATOR_SRC: "{{.OPERATOR_IMG}}:{{.OPERATOR_TAG}}"
 
   STREAMER_TAG: "{{.OPERATOR_TAG}}"
-  STREAMER_SRC: "registry.hub.docker.com/apache/openserverless-streamer:{{.STREAMER_TAG}}"
+  STREAMER_SRC: "docker.io/apache/openserverless-streamer:{{.STREAMER_TAG}}"
 
   ADMIN_API_TAG: "{{.OPERATOR_TAG}}"
-  ADMIN_API_SRC: "registry.hub.docker.com/apache/openserverless-admin-api:{{.ADMIN_API_TAG}}"
+  ADMIN_API_SRC: "docker.io/apache/openserverless-admin-api:{{.ADMIN_API_TAG}}"
 
   RUNTIMES_TAG: "{{.OPERATOR_TAG}}"
 
@@ -33,7 +33,7 @@ tasks:
       env:
         TGT:
           sh: |
-              B64="$(echo {{.SRC}} | /usr/bin/base64 -w0 )"
+              B64="$(echo -n {{.SRC}} | /usr/bin/base64 -w0)"
               echo ~/.ops/{{OS}}-{{ARCH}}/images/kind/$B64
       cmds:
       - echo Saving {{.SRC}} in "$TGT"
@@ -71,7 +71,7 @@ tasks:
       cmds:
       - echo Building {{.STREAMER_SRC}}
       - git tag -d $(git tag) && git tag {{.STREAMER_TAG}}
-      - echo -e "NAMESPACE=apache\nREGISTRY=apache\n" >.env
+      - echo -e "NAMESPACE=apache\nREGISTRY=dockerhub\n" >.env
       - task buildx
       - task: image-save
         vars:
@@ -86,7 +86,7 @@ tasks:
       cmds:
       - echo Building {{.ADMIN_API_SRC}}
       - git tag -d $(git tag) && git tag {{.STREAMER_TAG}}
-      - echo -e "NAMESPACE=apache\nREGISTRY=apache\n" >.env
+      - echo -e "NAMESPACE=apache\nREGISTRY=dockerhub\n" >.env
       - task buildx
       - task: image-save
         vars:
@@ -126,9 +126,9 @@ tasks:
       - for: { var: IMAGES, split: "\n", as: IMG }
         task: image-save
         vars:
-          SRC: "registry.hub.docker.com/{{.IMG}}"
+          SRC: "docker.io/{{.IMG}}"
           TGT:
-            sh: echo ~/.ops/{{OS}}-{{ARCH}}/images/kind/$(echo registry.hub.docker.com/{{.IMG}} | /usr/bin/base64 -w0)
+            sh: echo ~/.ops/{{OS}}-{{ARCH}}/images/kind/$(echo docker.io/{{.IMG}} | /usr/bin/base64 -w0)
 
     build:
       desc: build all
@@ -140,3 +140,11 @@ tasks:
       - task: admin-api
       - task: opsroot
       - task: runtimes
+
+    setup:
+      desc: setup
+      env:
+          PATH: "{{.TASKDIR}}:$PATH"
+      cmds:
+        - ops setup mini
+

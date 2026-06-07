@@ -1,6 +1,6 @@
 # Apache OpenServerless (incubating)
 
-Welcome to   [Apache OpenServerless](https://openserverless.apache.org), an incubating project at the [Apache Software Foundation](https://www.apache.org)
+Welcome to  [Apache OpenServerless](https://openserverless.apache.org), an incubating project at the [Apache Software Foundation](https://www.apache.org)
 
 - If you want to **install** Apache OpenServerless  in cloud go [here](https://openserverless.apache.org/docs/installation/).
 - If you want to **understand** what this project is check the [original proposal](https://cwiki.apache.org/confluence/display/INCUBATOR/OpenServerlessProposal).
@@ -34,52 +34,40 @@ On windows,
 
 then enable docker to be used in the distro `Ubuntu-24.04`
 
-Access the distro (`wsl -d Ubuntu-24.04` ) and run:
+Access the distro (`wsl -d Ubuntu-24.04` ), configure a new user,  then execute:
 
-- `sudo snap install go --classic`
-- `sudo snap install task --classic`
+```
+sudo apt-get update
+sudo apt-get -y install jq
+sudo snap install go --classic
+sudo snap install task --classic
+sudo snap install kubectl --classic
+```
 
 ## Prepare Ubuntu Linux
 
-Install docker with
+Setup for a plain Ubuntu Linux with an user with sudo power:
 
-- `curl -sL get.docker.com | sudo bash`
-- `sudo usermod -aG docker $USER`
-- `newgrp`
-
-Then
-
-- `sudo snap install go --classic`
-- `sudo snap install task --classic`
+```
+sudo apt-get update
+sudo apt-get -y install jq
+sudo snap install go --classic
+sudo snap install task --classic
+sudo snap install kubectl --classic
+curl -sL get.docker.com | sudo bash
+sudo usermod -aG docker $USER
+newgrp docker
+docker ps
+```
 
 ## Procedure
 
-### 1. Get the sources
 
-Clone all the modules and submodules recursively
+```
+git clone https://github.com/apache/openserverless --recurse-submodules
+cd openserverless
+task build
+task setup
+```
 
-`git clone https://github.com/apache/openserverless --recurse-submodules`
-
-and enter in the folder
-
-`cd openserverless`
-
-### 2. Build
-
-First clean everything
-
-`task clean`
-
-then build:
-
-`task build`
-
-This will
-- build the cli
-- build the operator image
-- build the runtimes
-- build accessories (streamer and system api)
-
-3. Tests
-
-TODO: execute the test suite
+TODO: `task test`
