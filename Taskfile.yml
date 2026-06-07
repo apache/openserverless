@@ -143,8 +143,8 @@ tasks:
 
     setup:
       desc: setup
-      env:
-          PATH: "{{.TASKDIR}}:$PATH"
       cmds:
-        - ops setup mini
+        - |
+          export PATH="$PWD:$PATH" 
+          ops setup mini
 

@@ -62,7 +62,6 @@ docker ps
 
 ## Procedure
 
-
 ```
 git clone https://github.com/apache/openserverless --recurse-submodules
 cd openserverless
