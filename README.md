@@ -38,10 +38,13 @@ Access the distro (`wsl -d Ubuntu-24.04` ), configure a new user,  then execute:
 
 ```
 sudo apt-get update
-sudo apt-get -y install jq
+sudo apt-get -y install jq unzip zip
 sudo snap install go --classic
 sudo snap install task --classic
 sudo snap install kubectl --classic
+curl -s "https://get.sdkman.io" | bash
+source "/home/msciab/.sdkman/bin/sdkman-init.sh"
+sdk install java 17.0.19-tem
 ```
 
 ## Prepare Ubuntu Linux
