@@ -121,7 +121,8 @@ tasks:
       dir: runtimes
       vars:
         IMAGES:
-          sh: jq -r '.runtimes[][] | select(.default == true) | "\(.image.prefix)/\(.image.name):\(.image.tag)"' runtimes.json
+          sh: jq -r '.runtimes[][] | select(.default == true) | "\(.image.prefix)/\(.image.name):\(.image.tag)"'   runtimes.json | grep -v php
+
       cmds:
       - for: { var: IMAGES, split: "\n", as: IMG }
         task: image-save
@@ -145,6 +146,6 @@ tasks:
       desc: setup
       cmds:
         - |
-          export PATH="$PWD:$PATH" 
+          export PATH="$PWD:$PATH"
           ops setup mini
 
