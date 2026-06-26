@@ -1,0 +1,64 @@
+# Apache OpenServerless development VM
+#
+# Start with:
+#   limactl start ./lima.yaml
+#
+# This provisions an Ubuntu VM named "openserverless" with the prerequisites
+# described in README.md (jq, go, task, kubectl, docker) and mounts the
+# current directory (writable) so you can build OpenServerless from sources
+# inside the VM.
+
+# Base image: plain Ubuntu Linux (see README "Prepare Ubuntu Linux").
+images:
+  - location: "https://cloud-images.ubuntu.com/releases/24.04/release/ubuntu-24.04-server-cloudimg-amd64.img"
+    arch: "x86_64"
+  - location: "https://cloud-images.ubuntu.com/releases/24.04/release/ubuntu-24.04-server-cloudimg-arm64.img"
+    arch: "aarch64"
+
+# Resources requested: 4 vCPU, 8GB memory, 30GB disk.
+cpus: 4
+memory: "16GiB"
+disk: "30GiB"
+
+# Mount the host home directory writable at /home/<user> inside the VM, and
+# make that the Linux user's home (otherwise Lima defaults the home to
+# /home/<user>.linux to avoid colliding with a mount on /home/<user>).
+mounts:
+  - location: "/Users/{{.User}}"
+    writable: true
+
+user:
+  home: "/home/{{.User}}"
+
+# Install the OpenServerless build prerequisites (README "Prepare Ubuntu Linux").
+provision:
+  - mode: system
+    script: |
+      #!/bin/bash
+      set -eux -o pipefail
+      apt-get update
+      apt-get -y install jq
+      snap install go --classic
+      snap install task --classic
+      snap install kubectl --classic
+      curl -sL get.docker.com | bash
+      systemctl enable docker --now
+      usermod -aG docker {{.User}}
+  - mode: user
+    script: |
+      #!/bin/bash
+      newgrp docker
+
+# Sanity checks Lima runs after provisioning.
+probes:
+  - description: "docker, go, task and kubectl to be installed"
+    script: |
+      #!/bin/bash
+      set -eux -o pipefail
+      command -v docker >/dev/null 2>&1 || exit 1
+      command -v go >/dev/null 2>&1 || exit 1
+      command -v task >/dev/null 2>&1 || exit 1
+      command -v kubectl >/dev/null 2>&1 || exit 1
+    hint: |
+      One of docker/go/task/kubectl failed to install.
+      Check the provision logs with `limactl shell openserverless sudo journalctl`.

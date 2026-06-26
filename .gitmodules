@@ -38,3 +38,6 @@
 	path = admin-api
 	url = https://github.com/apache/openserverless-admin-api
         branch = main
+[submodule "build"]
+	path = build
+	url = https://github.com/apache/openserverless-build
