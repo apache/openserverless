@@ -174,7 +174,7 @@ This is now automated by the build repository task:
 
 ```bash
 cd /home/msciab/openserverless/build
-task deploy-kind-local
+task build
 ```
 
 That task runs:
@@ -225,7 +225,7 @@ This is now automated by:
 
 ```bash
 cd /home/msciab/openserverless/build
-task kind:rollout
+task build
 ```
 
 The underlying patch command is:
