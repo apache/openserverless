@@ -79,14 +79,24 @@ Unsupported class file major version 61
 
 Reason: host Java was 17, but this OpenWhisk/Gradle 6.9.1 build must run with Java 11.
 
-Fix: `build/Taskfile.yml` now wraps `distdocker` and `build-all` in the build container, so the host only needs Docker.
+Fix: `build/Taskfile.yml` now wraps `distdocker` and `build-all` with `ops ide devcontainer`, so the host uses the same devcontainer path expected by OPS instead of a hand-written `docker run`.
+
+The wrapper also sets a temporary empty `DOCKER_CONFIG` inside the devcontainer.
+This avoids failures from a devcontainer-generated Docker credential helper, for
+example:
+
+```text
+error getting credentials - err: exit status 255
+```
 
 ## Local Docker Build Tasks
 
 `build/Taskfile.yml` was changed so:
 
-- `task distdocker` runs through the build container
-- `task build-all` runs through the build container
+- `task build` is the main local flow: build images, update OPS root, load kind, roll out controller
+- `task distdocker` runs through `ops ide devcontainer`
+- `task build-all` runs through `ops ide devcontainer`
+- `task build-all:local` checks that `openwhisk/common/scala` exists and prints a submodule init hint if it does not
 - `distdocker` no longer passes a Docker registry by default
 - `build-all` no longer uses `--push` for `ACT=build`
 - Push remains explicit via `buildx-and-push` / `ACT=buildx-push`
@@ -95,11 +105,24 @@ Verified:
 
 ```text
 cd /home/msciab/openserverless/build
-task distdocker
-task build-all
+task build
 ```
 
-Both completed successfully locally.
+This completed successfully locally through `ops ide devcontainer`. It built the
+OpenWhisk images, loaded controller/invoker/standalone into kind, and rolled out
+`controller-0`.
+
+Latest verified tag:
+
+```text
+2.0.0-incubating.2606291403
+```
+
+Latest verified pod image:
+
+```text
+controller-0 registry.hub.docker.com/apache/openserverless-wsk-controller:2.0.0-incubating.2606291403
+```
 
 ## Images Built Locally
 
