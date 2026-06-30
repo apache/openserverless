@@ -124,6 +124,22 @@ Latest verified pod image:
 controller-0 registry.hub.docker.com/apache/openserverless-wsk-controller:2.0.0-incubating.2606291403
 ```
 
+## OpenWhisk Directory
+
+`build/openwhisk` was converted from a nested Git submodule into a regular
+tracked directory inside the `build-local` branch.
+
+Reason: on a fresh server, `task build` failed when Docker tried to build:
+
+```text
+openwhisk/common/scala
+```
+
+The directory was missing because the nested OpenWhisk submodule had not been
+initialized. The `build-local` branch now vendors the OpenWhisk tree from commit
+`f2cba906`, including the local Gradle fixes, so a checkout of `build-local`
+contains `openwhisk/common/scala` directly.
+
 ## Images Built Locally
 
 The OpenWhisk build produced these local Docker images:
