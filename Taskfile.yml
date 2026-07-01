@@ -16,6 +16,8 @@ vars:
 
   RUNTIMES_TAG: "{{.OPERATOR_TAG}}"
 
+  OPENSERVERLESS_TAG: "{{.OPERATOR_TAG}}"
+
 
 tasks:
 
@@ -77,6 +79,13 @@ tasks:
         vars:
           SRC: "{{.STREAMER_SRC}}"
 
+    openserverless:
+      desc: build openserverless
+      dir: build
+      cmds:
+      - echo Building  OpenServerless
+      - git tag -d $(git tag) && git tag {{.OPENSERVERLESS_TAG}}
+      - task build-all
 
     admin-api:
       desc: build the admin-api
@@ -141,6 +150,7 @@ tasks:
       - task: admin-api
       - task: opsroot
       - task: runtimes
+      - task: openserverless
 
     setup:
       desc: setup
