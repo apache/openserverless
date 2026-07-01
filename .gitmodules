@@ -41,4 +41,4 @@
 [submodule "build"]
 	path = build
 	url = https://github.com/apache/openserverless-build
-	branch = main
+	branch = build-local
