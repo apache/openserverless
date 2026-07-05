@@ -99,7 +99,10 @@ Write-Host "Running build-and-test-ubuntu.sh in $Distro as '$WslUser'"
 # with the mount's owning uid/gid, so it can write the build output in place;
 # it has docker + passwordless sudo, so no newgrp/usermod is needed in-script.
 $wslScriptDir = (wsl.exe -d $Distro wslpath -a ($ScriptDir -replace '\\', '/')).Trim()
-wsl.exe -d $Distro --cd "$wslScriptDir" -u $WslUser -- bash -lc "./build-and-test-ubuntu.sh"
+# Windows drive mounts (/mnt/c/...) are often noexec / lack the executable bit,
+# so `./build-and-test-ubuntu.sh` fails with "Permission denied". Invoke bash on
+# the script explicitly: that only needs read permission and bypasses noexec.
+wsl.exe -d $Distro --cd "$wslScriptDir" -u $WslUser -- bash -lc "bash ./build-and-test-ubuntu.sh"
 if ($LASTEXITCODE -ne 0) {
     Write-Error "build-and-test-ubuntu.sh failed with exit code $LASTEXITCODE"
     exit $LASTEXITCODE
