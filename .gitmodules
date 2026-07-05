@@ -1,7 +1,3 @@
-[submodule "site"]
-	path = site
-	url = https://github.com/apache/openserverless-site
-	branch = main
 [submodule "cli"]
 	path = cli
 	url = https://github.com/apache/openserverless-cli
