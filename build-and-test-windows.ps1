@@ -68,6 +68,17 @@ chmod 440 /etc/sudoers.d/$WslUser
 
 # Make sure the docker daemon is running.
 service docker start >/dev/null 2>&1 || true
+
+# Mount Windows drives with 'metadata' so Unix permissions (including the
+# executable bit) are honored on /mnt/c. Without this, scripts on the mount
+# cannot be run directly (fork/exec fails with "no such file or directory").
+# Requires a `wsl --shutdown` to take effect (done below).
+mkdir -p /etc
+if [ ! -f /etc/wsl.conf ] || ! grep -q '^\[automount\]' /etc/wsl.conf; then
+    printf '[automount]\noptions = "metadata"\n' >> /etc/wsl.conf
+elif ! grep -q 'metadata' /etc/wsl.conf; then
+    sed -i '/^\[automount\]/a options = "metadata"' /etc/wsl.conf
+fi
 "@
 
 # Write the script to a BOM-less, LF-normalized temp file (PS 5.1 stdin pipes
@@ -85,6 +96,12 @@ try {
     Remove-Item -LiteralPath $initFile -ErrorAction SilentlyContinue
 }
 
+# Restart WSL so the /etc/wsl.conf 'metadata' automount option is applied.
+# Until the distro is remounted, /mnt/c ignores the executable bit and scripts
+# on it cannot be run directly.
+Write-Host "Restarting WSL to apply mount options"
+wsl.exe --shutdown
+
 Write-Host "Setting '$WslUser' as the default user for $Distro"
 # Use wsl.exe --manage: the per-distro launcher (e.g. Ubuntu.exe) is not always on
 # PATH and its name does not reliably match the distro name.
@@ -99,10 +116,7 @@ Write-Host "Running build-and-test-ubuntu.sh in $Distro as '$WslUser'"
 # with the mount's owning uid/gid, so it can write the build output in place;
 # it has docker + passwordless sudo, so no newgrp/usermod is needed in-script.
 $wslScriptDir = (wsl.exe -d $Distro wslpath -a ($ScriptDir -replace '\\', '/')).Trim()
-# Windows drive mounts (/mnt/c/...) are often noexec / lack the executable bit,
-# so `./build-and-test-ubuntu.sh` fails with "Permission denied". Invoke bash on
-# the script explicitly: that only needs read permission and bypasses noexec.
-wsl.exe -d $Distro --cd "$wslScriptDir" -u $WslUser -- bash -lc "bash ./build-and-test-ubuntu.sh"
+wsl.exe -d $Distro --cd "$wslScriptDir" -u $WslUser -- bash -lc "./build-and-test-ubuntu.sh"
 if ($LASTEXITCODE -ne 0) {
     Write-Error "build-and-test-ubuntu.sh failed with exit code $LASTEXITCODE"
     exit $LASTEXITCODE
