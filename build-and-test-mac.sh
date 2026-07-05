@@ -28,6 +28,7 @@ echo "Creating '$VM_NAME' VM with the source dir mounted writable"
 # Mount the source directory writable so `go build` can write the ops binary
 # back into the tree (the default lima mounts are read-only).
 limactl start --name="$VM_NAME" --tty=false \
+    --cpus=4 --memory=8 \
     --set ".mounts += [{\"location\": \"$SCRIPT_DIR\", \"writable\": true}]"
 
 echo "Running $LINUX_SCRIPT inside the VM"

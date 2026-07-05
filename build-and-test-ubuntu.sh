@@ -25,7 +25,14 @@ if [[ -x /usr/local/bin/k3s-agent-uninstall.sh ]]; then
 fi
 
 sudo apt-get update
-sudo apt-get -y install jq unzip zip curl ca-certificates
+sudo apt-get -y install jq unzip zip
+sudo snap install go --classic
+sudo snap install task --classic
+sudo snap install kubectl --classic
+which docker || curl -sL get.docker.com | sudo bash
+sudo usermod -aG docker $USER
+
+newgrp docker <<EOF
 
 # Install go, task and kubectl WITHOUT snap: snapd mounts each snap via snapfuse
 # under WSL, which silently presents an empty mountpoint (meta/snap.yaml missing),
