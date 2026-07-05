@@ -3,13 +3,12 @@
 # - installs WSL if missing
 # - creates and starts an Ubuntu distribution
 # - initializes it non-interactively: removes k3s, creates a sudo user, sets it default
-# - runs build-and-test-ubuntu.sh inside the distribution
+# - Enter in the distro
 
 $ErrorActionPreference = "Stop"
 
 $Distro = "Ubuntu"
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-$LinuxScript = "build-and-test-ubuntu.sh"
 
 # Default UNIX account created inside the distribution (override with env vars).
 $WslUser = if ($env:WSL_USER) { $env:WSL_USER } else { "ops" }
@@ -54,32 +53,43 @@ if [ -x /usr/local/bin/k3s-agent-uninstall.sh ]; then /usr/local/bin/k3s-agent-u
 # Create the sudo-enabled user if it does not already exist.
 if ! id -u '$WslUser' >/dev/null 2>&1; then
     useradd -m -s /bin/bash '$WslUser'
-    echo '$WslUser:$WslPassword' | chpasswd
+    echo '${WslUser}:$WslPassword' | chpasswd
     usermod -aG sudo '$WslUser'
     # Allow passwordless sudo so the build script runs unattended.
     echo '$WslUser ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/$WslUser
     chmod 440 /etc/sudoers.d/$WslUser
 fi
 "@
-# Pass the script on stdin to avoid Windows/WSL quoting issues.
-$initScript | wsl.exe -d $Distro -u root bash
-if ($LASTEXITCODE -ne 0) {
-    Write-Error "Failed to initialize $Distro"
-    exit $LASTEXITCODE
+# Write the provisioning script to a temp file as UTF-8 *without a BOM* and run
+# it via bash. Piping on stdin under Windows PowerShell 5.1 prepends a BOM that
+# bash then chokes on ("set: command not found"), so avoid the pipe entirely.
+$initFile = Join-Path ([System.IO.Path]::GetTempPath()) "wsl-init-$PID.sh"
+# .NET UTF8Encoding($false) => no BOM; also normalize CRLF -> LF for bash.
+[System.IO.File]::WriteAllText($initFile, ($initScript -replace "`r`n", "`n"), (New-Object System.Text.UTF8Encoding($false)))
+try {
+    # Convert '\' to '/' before wslpath: backslashes get stripped when passed as
+    # a wsl.exe argument, so a native Windows path fails to translate.
+    $wslInitPath = (wsl.exe -d $Distro wslpath -a ($initFile -replace '\\', '/')).Trim()
+    wsl.exe -d $Distro -u root -- bash "$wslInitPath"
+    if ($LASTEXITCODE -ne 0) {
+        Write-Error "Failed to initialize $Distro"
+        exit $LASTEXITCODE
+    }
+} finally {
+    Remove-Item -LiteralPath $initFile -ErrorAction SilentlyContinue
 }
 
 Write-Host "Setting '$WslUser' as the default user for $Distro"
-# The `<distro> config --default-user` launcher command persists the default user.
-& "$Distro.exe" config --default-user $WslUser
-
-Write-Host "Running $LinuxScript inside $Distro"
-# Translate the Windows script path to a WSL path, then run it with bash.
-$wslScriptPath = (wsl.exe -d $Distro wslpath -a "$ScriptDir\$LinuxScript").Trim()
-wsl.exe -d $Distro bash -- $wslScriptPath
-
+# Use wsl.exe --manage: the per-distro launcher (e.g. Ubuntu.exe) is not always on
+# PATH and its name does not reliably match the distro name.
+wsl.exe --manage $Distro --set-default-user $WslUser
 if ($LASTEXITCODE -ne 0) {
-    Write-Error "build-and-test-linux.sh failed with exit code $LASTEXITCODE"
+    Write-Error "Failed to set default user for $Distro"
     exit $LASTEXITCODE
 }
 
-Write-Host "Done."
+Write-Host "Entering $Distro as '$WslUser' (starting in the source directory)"
+# Translate the Windows source dir to a WSL path, then open an interactive
+# login shell there so the user can run the build-and-test steps by hand.
+$wslScriptDir = (wsl.exe -d $Distro wslpath -a ($ScriptDir -replace '\\', '/')).Trim()
+wsl.exe -d $Distro --cd "$wslScriptDir" -u $WslUser -- bash -l
