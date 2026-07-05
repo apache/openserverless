@@ -32,11 +32,22 @@ if (-not (Test-WslInstalled)) {
     exit 0
 }
 
-Write-Host "Ensuring the $Distro distribution exists"
+Write-Host "Removing any existing $Distro distribution for a clean build"
 $installed = (wsl.exe --list --quiet) -replace "`0", "" | ForEach-Object { $_.Trim() } | Where-Object { $_ }
-if ($installed -notcontains $Distro) {
-    Write-Host "Installing $Distro distribution..."
-    wsl.exe --install -d $Distro --no-launch
+if ($installed -contains $Distro) {
+    Write-Host "Unregistering existing $Distro distribution..."
+    wsl.exe --unregister $Distro
+    if ($LASTEXITCODE -ne 0) {
+        Write-Error "Failed to unregister $Distro"
+        exit $LASTEXITCODE
+    }
+}
+
+Write-Host "Installing a fresh $Distro distribution"
+wsl.exe --install -d $Distro --no-launch
+if ($LASTEXITCODE -ne 0) {
+    Write-Error "Failed to install $Distro"
+    exit $LASTEXITCODE
 }
 
 Write-Host "Initializing $Distro as root (removing k3s, docker, creating user '$WslUser')"
