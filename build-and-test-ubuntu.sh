@@ -1,6 +1,11 @@
 #!/bin/bash
 set -euo pipefail
 
+# This script builds and tests the sources. It expects to run as a user that
+# already has passwordless sudo and is a member of the docker group (the host
+# driver — build-and-test-mac.sh / build-and-test-windows.ps1 — sets that up).
+# It must run from the source directory, which the user can write to.
+
 echo "Checking this is Linux Ubuntu"
 if [[ "$(uname -s)" != "Linux" ]]; then
     echo "ERROR: this script must run on Linux, found $(uname -s)" >&2
@@ -26,25 +31,13 @@ fi
 
 sudo apt-get update
 sudo apt-get -y install jq unzip zip
-sudo snap install go --classic
-sudo snap install task --classic
-sudo snap install kubectl --classic
-which docker || curl -sL get.docker.com | sudo bash
-sudo usermod -aG docker $USER
-
-newgrp docker <<EOF
 
 # Install go, task and kubectl WITHOUT snap: snapd mounts each snap via snapfuse
 # under WSL, which silently presents an empty mountpoint (meta/snap.yaml missing),
 # so `task`/`go`/`kubectl` fail. Direct binaries avoid the whole snap machinery.
 
-# Map uname -m to the Go/k8s arch naming used by the download URLs.
-ARCH="$(uname -m)"
-case "$ARCH" in
-    x86_64) GOARCH=amd64 ;;
-    aarch64) GOARCH=arm64 ;;
-    *) echo "ERROR: unsupported architecture $ARCH" >&2; exit 1 ;;
-esac
+# Map dpkg arch (amd64/arm64) to the Go/k8s arch naming used by the download URLs.
+GOARCH="$(dpkg --print-architecture)"
 
 echo "Installing Go"
 GO_VERSION=1.26.4
@@ -66,12 +59,13 @@ curl -fsSL "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/${GOARCH}/kub
 sudo install -m 0755 /tmp/kubectl /usr/local/bin/kubectl
 rm -f /tmp/kubectl
 
-curl -sL get.docker.com | sed -e 's/sleep 20/sleep 1/'  | sudo bash
-sudo usermod -aG docker $USER
+export PATH="/usr/local/go/bin:/usr/local/bin:$PATH"
 
-newgrp docker <<EOF
-git config --global --add safe.directory $PWD/olaris-op
-export PATH=/usr/local/go/bin:/usr/local/bin:\$PATH
+echo "Building and testing"
+# cd into the source dir (where this script lives) so `task` finds the Taskfile,
+# regardless of the caller's working directory (e.g. a login shell resets it).
+cd "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+git config --global --add safe.directory "$PWD"
+git config --global --add safe.directory "$PWD/olaris-op"
 task build
 task test
-EOF

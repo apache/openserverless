@@ -39,9 +39,11 @@ if ($installed -notcontains $Distro) {
     wsl.exe --install -d $Distro --no-launch
 }
 
-Write-Host "Initializing $Distro (removing k3s, creating sudo user '$WslUser')"
-# Fresh Ubuntu WSL distros boot as root until a default user is set, so run the
-# provisioning as root. This is done non-interactively (no first-boot prompt).
+Write-Host "Initializing $Distro as root (removing k3s, docker, creating user '$WslUser')"
+# On WSL there is no host user mapped in, so we create the build user ourselves.
+# We do it by running provisioning commands directly as root (wsl -u root), no
+# boot command. The script is idempotent: removes k3s, ensures docker, and
+# creates '$WslUser' with docker + passwordless sudo.
 $initScript = @"
 set -e
 
@@ -50,25 +52,29 @@ if [ -x /usr/local/bin/k3s-killall.sh ]; then /usr/local/bin/k3s-killall.sh; fi
 if [ -x /usr/local/bin/k3s-uninstall.sh ]; then /usr/local/bin/k3s-uninstall.sh; fi
 if [ -x /usr/local/bin/k3s-agent-uninstall.sh ]; then /usr/local/bin/k3s-agent-uninstall.sh; fi
 
-# Create the sudo-enabled user if it does not already exist.
+# Ensure docker is installed.
+command -v docker >/dev/null 2>&1 || curl -sL get.docker.com | sh
+
+# Create the build user if it does not already exist (idempotent).
 if ! id -u '$WslUser' >/dev/null 2>&1; then
     useradd -m -s /bin/bash '$WslUser'
     echo '${WslUser}:$WslPassword' | chpasswd
-    usermod -aG sudo '$WslUser'
-    # Allow passwordless sudo so the build script runs unattended.
-    echo '$WslUser ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/$WslUser
-    chmod 440 /etc/sudoers.d/$WslUser
 fi
+
+# Add it to the docker + sudo groups and grant passwordless sudo.
+usermod -aG docker,sudo '$WslUser'
+echo '$WslUser ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/$WslUser
+chmod 440 /etc/sudoers.d/$WslUser
+
+# Make sure the docker daemon is running.
+service docker start >/dev/null 2>&1 || true
 "@
-# Write the provisioning script to a temp file as UTF-8 *without a BOM* and run
-# it via bash. Piping on stdin under Windows PowerShell 5.1 prepends a BOM that
-# bash then chokes on ("set: command not found"), so avoid the pipe entirely.
+
+# Write the script to a BOM-less, LF-normalized temp file (PS 5.1 stdin pipes
+# prepend a BOM that bash chokes on), then run it as root inside the distro.
 $initFile = Join-Path ([System.IO.Path]::GetTempPath()) "wsl-init-$PID.sh"
-# .NET UTF8Encoding($false) => no BOM; also normalize CRLF -> LF for bash.
 [System.IO.File]::WriteAllText($initFile, ($initScript -replace "`r`n", "`n"), (New-Object System.Text.UTF8Encoding($false)))
 try {
-    # Convert '\' to '/' before wslpath: backslashes get stripped when passed as
-    # a wsl.exe argument, so a native Windows path fails to translate.
     $wslInitPath = (wsl.exe -d $Distro wslpath -a ($initFile -replace '\\', '/')).Trim()
     wsl.exe -d $Distro -u root -- bash "$wslInitPath"
     if ($LASTEXITCODE -ne 0) {
@@ -88,8 +94,15 @@ if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
 }
 
-Write-Host "Entering $Distro as '$WslUser' (starting in the source directory)"
-# Translate the Windows source dir to a WSL path, then open an interactive
-# login shell there so the user can run the build-and-test steps by hand.
+Write-Host "Running build-and-test-ubuntu.sh in $Distro as '$WslUser'"
+# Run the build/test script as ops from the source directory. ops was created
+# with the mount's owning uid/gid, so it can write the build output in place;
+# it has docker + passwordless sudo, so no newgrp/usermod is needed in-script.
 $wslScriptDir = (wsl.exe -d $Distro wslpath -a ($ScriptDir -replace '\\', '/')).Trim()
-wsl.exe -d $Distro --cd "$wslScriptDir" -u $WslUser -- bash -l
+wsl.exe -d $Distro --cd "$wslScriptDir" -u $WslUser -- bash -lc "./build-and-test-ubuntu.sh"
+if ($LASTEXITCODE -ne 0) {
+    Write-Error "build-and-test-ubuntu.sh failed with exit code $LASTEXITCODE"
+    exit $LASTEXITCODE
+}
+
+Write-Host "Done."
