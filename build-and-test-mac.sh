@@ -66,4 +66,5 @@ echo "Build user is '$BUILD_USER'"
 echo "Running $LINUX_SCRIPT inside the VM as '$BUILD_USER'"
 # Run as the build user WITHOUT -i: a login shell would reset the working dir to
 # the user's home. -H sets $HOME; the script cd's into the source dir itself.
+
 limactl shell --workdir "$GUEST_SRC" "$VM_NAME" sudo -H -u "$BUILD_USER" bash -- "$GUEST_SRC/$LINUX_SCRIPT"

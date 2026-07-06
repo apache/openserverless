@@ -16,6 +16,18 @@ if ! grep -qi ubuntu /etc/os-release 2>/dev/null; then
     exit 1
 fi
 
+echo "Checking Docker is accessible"
+if ! command -v docker >/dev/null 2>&1; then
+    echo "ERROR: docker is not installed" >&2
+    exit 1
+fi
+if ! docker ps >/dev/null 2>&1; then
+    echo "ERROR: cannot access the Docker daemon (permission denied or daemon not running)." >&2
+    echo "       Ensure the daemon is running and this user is in the 'docker' group." >&2
+    echo "       If you were just added to the group, start a fresh session (e.g. 'newgrp docker')." >&2
+    exit 1
+fi
+
 echo "Killing k3s processes if present"
 if [[ -x /usr/local/bin/k3s-killall.sh ]]; then
     sudo /usr/local/bin/k3s-killall.sh

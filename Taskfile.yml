@@ -157,7 +157,6 @@ tasks:
         '
       - diff opsroot.orig opsroot.json || true
 
-
     opslink:
       desc: link ops
       cmds:
@@ -170,13 +169,12 @@ tasks:
       desc: build all
       cmds:
       - task: opslink
+      - task: openserverless
       - task: operator
       - task: runtimes
       - task: streamer
       - task: admin-api
       - task: opsroot
-      - task: runtimes
-      - task: openserverless
 
     test:
       desc: create
