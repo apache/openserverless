@@ -77,6 +77,11 @@ usermod -aG docker,sudo '$WslUser'
 echo '$WslUser ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/$WslUser
 chmod 440 /etc/sudoers.d/$WslUser
 
+# Ensure ~/.ssh exists: the devcontainer bind-mounts \${HOME}/.ssh and docker
+# refuses to start if the source path is missing.
+sudo -u '$WslUser' mkdir -p /home/$WslUser/.ssh
+sudo -u '$WslUser' chmod 700 /home/$WslUser/.ssh
+
 # Make sure the docker daemon is running.
 service docker start >/dev/null 2>&1 || true
 
