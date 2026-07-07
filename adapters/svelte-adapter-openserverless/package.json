@@ -1,0 +1,35 @@
+{
+  "name": "svelte-adapter-openserverless",
+  "version": "0.1.0",
+  "description": "Apache OpenServerless adapter for SvelteKit — build and deploy a SvelteKit app as an OpenServerless web action.",
+  "keywords": ["svelte", "sveltekit", "adapter", "openserverless", "openwhisk", "serverless"],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apache/openserverless.git",
+    "directory": "adapters/svelte-adapter-openserverless"
+  },
+  "type": "module",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
+    }
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "src"
+  ],
+  "peerDependencies": {
+    "@sveltejs/kit": "^2.0.0"
+  },
+  "devDependencies": {
+    "@sveltejs/kit": "^2.0.0"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}
