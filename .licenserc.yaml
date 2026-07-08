@@ -14,10 +14,26 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
+#
+header:
+  license:
+    spdx-id: Apache-2.0
+    copyright-owner: Apache Software Foundation
 
-.attic/
-.vscode/
-.idea/
-**/.DS_Store
-network-cache/
-ops
+  paths-ignore:
+    - 'admin-api'
+    - 'devcontainer'
+    - 'olaris'
+    - 'olaris-op'
+    - 'runtimes'
+    - 'streamer'
+    - 'testing'
+    - 'vscode'
+    - 'build'
+    - '**/*.svg'
+    - '**/*.png'
+    - '**/*.md'
+    - 'LICENSE'
+    - 'DISCLAIMER'
+    - 'NOTICE'
+    - 'CHANGES'
