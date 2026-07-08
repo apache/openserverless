@@ -1,4 +1,21 @@
 #!/bin/bash
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
 set -euo pipefail
 
 # This script builds and tests the sources. It expects to run as a user that
@@ -6,13 +23,13 @@ set -euo pipefail
 # driver — build-and-test-mac.sh / build-and-test-windows.ps1 — sets that up).
 # It must run from the source directory, which the user can write to.
 
-echo "Checking this is Linux Ubuntu"
+echo "Checking this is Linux Ubuntu or Debian"
 if [[ "$(uname -s)" != "Linux" ]]; then
     echo "ERROR: this script must run on Linux, found $(uname -s)" >&2
     exit 1
 fi
-if ! grep -qi ubuntu /etc/os-release 2>/dev/null; then
-    echo "ERROR: this script must run on Ubuntu" >&2
+if ! egrep -qi 'ubuntu|debian'  /etc/os-release 2>/dev/null; then
+    echo "ERROR: this script must run on Ubuntu or Debian" >&2
     exit 1
 fi
 
@@ -79,5 +96,6 @@ echo "Building and testing"
 cd "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 git config --global --add safe.directory "$PWD"
 git config --global --add safe.directory "$PWD/olaris-op"
+mkdir -p ~/.ssh
 task build
 task test
