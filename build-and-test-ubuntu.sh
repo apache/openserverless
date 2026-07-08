@@ -91,7 +91,7 @@ rm -f /tmp/kubectl
 echo "Installing license-eye" 
 go install github.com/apache/skywalking-eyes/cmd/license-eye@latest
 
-export PATH="/usr/local/go/bin:/usr/local/bin:$PATH"
+export PATH="$(go env GOPATH)/bin:/usr/local/bin:$PATH"
 
 echo "Building and testing"
 # cd into the source dir (where this script lives) so `task` finds the Taskfile,
