@@ -6,13 +6,13 @@ set -euo pipefail
 # driver — build-and-test-mac.sh / build-and-test-windows.ps1 — sets that up).
 # It must run from the source directory, which the user can write to.
 
-echo "Checking this is Linux Ubuntu"
+echo "Checking this is Linux Ubuntu or Debian"
 if [[ "$(uname -s)" != "Linux" ]]; then
     echo "ERROR: this script must run on Linux, found $(uname -s)" >&2
     exit 1
 fi
-if ! grep -qi ubuntu /etc/os-release 2>/dev/null; then
-    echo "ERROR: this script must run on Ubuntu" >&2
+if ! egrep -qi 'ubuntu|debian'  /etc/os-release 2>/dev/null; then
+    echo "ERROR: this script must run on Ubuntu or Debian" >&2
     exit 1
 fi
 
@@ -79,5 +79,6 @@ echo "Building and testing"
 cd "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 git config --global --add safe.directory "$PWD"
 git config --global --add safe.directory "$PWD/olaris-op"
+mkdir -p ~/.ssh
 task build
 task test
