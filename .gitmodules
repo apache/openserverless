@@ -35,10 +35,6 @@
 	path = runtimes
 	url = https://github.com/apache/openserverless-runtimes
 	branch = main
-[submodule "vscode"]
-	path = vscode
-	url = https://github.com/apache/openserverless-vscode-extension
-        branch = main
 [submodule "openserverless-devcontainer"]
 	path = devcontainer
 	url = https://github.com/apache/openserverless-devcontainer
