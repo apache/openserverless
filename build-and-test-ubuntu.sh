@@ -88,7 +88,10 @@ curl -fsSL "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/${GOARCH}/kub
 sudo install -m 0755 /tmp/kubectl /usr/local/bin/kubectl
 rm -f /tmp/kubectl
 
-export PATH="/usr/local/go/bin:/usr/local/bin:$PATH"
+echo "Installing license-eye" 
+go install github.com/apache/skywalking-eyes/cmd/license-eye@latest
+
+export PATH="$(go env GOPATH)/bin:/usr/local/bin:$PATH"
 
 echo "Building and testing"
 # cd into the source dir (where this script lives) so `task` finds the Taskfile,
@@ -97,5 +100,6 @@ cd "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 git config --global --add safe.directory "$PWD"
 git config --global --add safe.directory "$PWD/olaris-op"
 mkdir -p ~/.ssh
+task license
 task build
 task test
