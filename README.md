@@ -10,7 +10,10 @@ Welcome to  [Apache OpenServerless](https://openserverless.apache.org), an incub
 
 # Build and test from sources
 
-Download a releases tarbal or clone all the latest sources with
+> [!WARNING]
+> Building from the latest sources in git is **not recommended for production use**. The `main` branch may contain unstable, untested, or incomplete changes. For production deployments, use an official release tarball instead. There are no Apache Software Foundation approved releases yet.
+
+Download a releases tarball or clone all the latest sources with:
 
 ```
 git clone https://github.com/apache/openserverless --recurse-submodules
