@@ -28,7 +28,8 @@ vars:
   STREAMER_TAG: "{{.OPERATOR_TAG}}"
   STREAMER_SRC: "docker.io/apache/openserverless-streamer:{{.STREAMER_TAG}}"
 
-  ADMIN_API_TAG: "{{.OPERATOR_TAG}}"
+  ADMIN_API_TAG:
+    sh: git -C admin-api rev-parse --short HEAD
   ADMIN_API_SRC: "docker.io/apache/openserverless-admin-api:{{.ADMIN_API_TAG}}"
 
   RUNTIMES_TAG: "{{.OPERATOR_TAG}}"
@@ -109,7 +110,7 @@ tasks:
       dir: admin-api
       cmds:
       - echo Building {{.ADMIN_API_SRC}}
-      - git tag -d $(git tag) && git tag {{.STREAMER_TAG}}
+      - git tag -d $(git tag) && git tag {{.ADMIN_API_TAG}}
       - echo -e "NAMESPACE=apache\nREGISTRY=dockerhub\n" >.env
       - task buildx
       - task: image-save
