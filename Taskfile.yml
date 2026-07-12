@@ -206,7 +206,6 @@ tasks:
         then echo 'export PATH=~/.local/bin:"$PATH"' >>~/.profile
         fi
 
-
     gitinit:
       desc: initialize git if missing
       cmds:
