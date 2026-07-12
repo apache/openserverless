@@ -17,6 +17,7 @@ Download a releases tarball or clone all the latest sources with:
 
 ```
 git clone https://github.com/apache/openserverless --recurse-submodules
+cd openserverless
 ```
 
 You can then build and test
@@ -33,7 +34,7 @@ It can work on other distros but you have to adapt the scripts.
 
 You need Windows 10/11 with WSL. Execute from PowerShell:
 
-`.\build-and-test-windos.ps1`
+`.\build-and-test-windows.ps1`
 
 # Mac OSX
 

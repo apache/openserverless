@@ -14,40 +14,47 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
+[submodule "admin-api"]
+	path = admin-api
+	url = https://github.com/apache/openserverless-admin-api
+    branch = 0.9.0
+
+[submodule "build"]
+	path = build
+	url = https://github.com/apache/openserverless-build
+	branch = 0.9.0
 
 [submodule "cli"]
 	path = cli
 	url = https://github.com/apache/openserverless-cli
-	branch = main
+	branch = 0.9.0
+
 [submodule "operator"]
 	path = olaris-op
 	url = https://github.com/apache/openserverless-operator
-	branch = main
-[submodule "testing"]
-	path = testing
-	url = https://github.com/apache/openserverless-testing
-	branch = main
-[submodule "task"]
-	path = olaris
-	url = https://github.com/apache/openserverless-task
-	branch = main
-[submodule "runtimes"]
-	path = runtimes
-	url = https://github.com/apache/openserverless-runtimes
-	branch = main
+	branch = 0.9.0
+
 [submodule "openserverless-devcontainer"]
 	path = devcontainer
 	url = https://github.com/apache/openserverless-devcontainer
-        branch = main
+    branch = 0.9.0
+
+[submodule "task"]
+	path = olaris
+	url = https://github.com/apache/openserverless-task
+	branch = 0.1.0
+
+[submodule "runtimes"]
+	path = runtimes
+	url = https://github.com/apache/openserverless-runtimes
+	branch = 0.9.0
+
 [submodule "streamer"]
 	path = streamer
 	url = https://github.com/apache/openserverless-streamer
-        branch = main
-[submodule "admin-api"]
-	path = admin-api
-	url = https://github.com/apache/openserverless-admin-api
-        branch = main
-[submodule "build"]
-	path = build
-	url = https://github.com/apache/openserverless-build
-	branch = build-local
+        branch = 0.9.0
+
+[submodule "testing"]
+	path = testing
+	url = https://github.com/apache/openserverless-testing
+	branch = 0.9.0
