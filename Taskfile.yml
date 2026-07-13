@@ -34,8 +34,8 @@ vars:
   RUNTIMES_TAG: "{{.OPERATOR_TAG}}"
 
   OPENSERVERLESS_TAG: "{{.OPERATOR_TAG}}"
-  CONTROLLER_SRC: "docker.io/apache/openserverless-wsk-invoker:{{.OPENSERVERLESS_TAG}}"
-  INVOKER_SRC: "docker.io/apache/openserverless-wsk-controller:{{.OPENSERVERLESS_TAG}}"
+  CONTROLLER_SRC: "docker.io/apache/openserverless-wsk-controller:{{.OPENSERVERLESS_TAG}}"
+  INVOKER_SRC: "docker.io/apache/openserverless-wsk-invoker:{{.OPENSERVERLESS_TAG}}"
 
   OPS_BRANCH: "{{.OPERATOR_TAG}}"
 
@@ -116,8 +116,8 @@ tasks:
         vars:
           SRC: "{{.ADMIN_API_SRC}}"
 
-    openserverless:
-      desc: build openserverless
+    openwhisk:
+      desc: build openwhisk
       dir: build
       env:
         PATH: "{{.TASKFILE_DIR}}:$PATH"
@@ -182,13 +182,23 @@ tasks:
       - task: cli
       - mkdir -p ~/.local/bin ~/.ops/{{.OPS_BRANCH}}
       - ln -sf $(pwd)/ops ~/.local/bin/ops
-      - ln -sf $(pwd)/olaris ~/.ops/{{.OPS_BRANCH}}/olaris
+      - test -d ~/.ops/{{.OPS_BRANCH}}/olaris || ln -sf $(pwd)/olaris ~/.ops/{{.OPS_BRANCH}}/olaris
+      - touch ~/.profile
+      - |
+        if ! grep -q OPS_BRANCH= ~/.profile
+        then echo export OPS_BRANCH={{.OPS_BRANCH}} >>~/.profile
+        fi
+      - |
+        if ! grep -q 'PATH=~/.local/bin' ~/.profile
+        then echo 'export PATH=~/.local/bin:"$PATH"' >>~/.profile
+        fi
+
 
     build:
       desc: build all
       cmds:
       - task: opslink
-      - task: openserverless
+      - task: openwhisk
       - task: operator
       - task: runtimes
       - task: streamer
@@ -212,12 +222,12 @@ tasks:
       desc: check license headers
       cmds:
       - |
-        license-eye header {{.CMD}} 
+        license-eye header {{.CMD}}
         for i in */.licenserc.yaml
-        do  
+        do
             DIR=$(dirname $i)
             echo "*** Checking license headers in $DIR"
-            cd $DIR 
-            license-eye header {{.CMD}} 
-            cd {{.TASKFILE_DIR}}        
-        done 
+            cd $DIR
+            license-eye header {{.CMD}}
+            cd {{.TASKFILE_DIR}}
+        done
