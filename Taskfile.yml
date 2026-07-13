@@ -34,8 +34,8 @@ vars:
   RUNTIMES_TAG: "{{.OPERATOR_TAG}}"
 
   OPENSERVERLESS_TAG: "{{.OPERATOR_TAG}}"
-  CONTROLLER_SRC: "docker.io/apache/openserverless-wsk-invoker:{{.OPENSERVERLESS_TAG}}"
-  INVOKER_SRC: "docker.io/apache/openserverless-wsk-controller:{{.OPENSERVERLESS_TAG}}"
+  CONTROLLER_SRC: "docker.io/apache/openserverless-wsk-controller:{{.OPENSERVERLESS_TAG}}"
+  INVOKER_SRC: "docker.io/apache/openserverless-wsk-invoker:{{.OPENSERVERLESS_TAG}}"
 
   OPS_BRANCH: "{{.OPERATOR_TAG}}"
 
