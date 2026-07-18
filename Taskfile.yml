@@ -18,7 +18,6 @@
 version: 3
 
 vars:
-
   OPERATOR_IMG:
     sh: awk -F= '/ARG OPERATOR_IMAGE_DEFAULT=/ { print $2 ; exit }' olaris-op/Dockerfile
   OPERATOR_TAG:
@@ -42,6 +41,17 @@ vars:
   CMD: "check"
 
 tasks:
+
+    release:
+      desc: release
+      dir: ..
+      requires:
+        vars: [ V ]
+      cmds:
+      - |
+        tar --exclude='.git' -czvf openserverless-v{{.V}}.tar.gz openserverless
+        git tag "v{{.V}}"
+        echo please push the tag
 
     default: task -l
 
@@ -215,6 +225,8 @@ tasks:
           export OPS_BRANCH="{{.OPS_BRANCH}}"
           which ops
           ops -info
+          ops setup docker delete || true
+          touch .secrets
           ./all.sh kind
 
     license:
