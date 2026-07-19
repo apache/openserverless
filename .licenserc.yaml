@@ -34,7 +34,7 @@ header:
     - '**/*.svg'
     - '**/*.png'
     - '**/*.md'
-    - '.vscode/**
+    - '.vscode/**'
     - 'LICENSE'
     - 'DISCLAIMER'
     - 'NOTICE'
