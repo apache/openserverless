@@ -21,7 +21,12 @@ vars:
   OPERATOR_IMG:
     sh: awk -F= '/ARG OPERATOR_IMAGE_DEFAULT=/ { print $2 ; exit }' olaris-op/Dockerfile
   OPERATOR_TAG:
-    sh: git  -C olaris-op rev-parse --short HEAD
+    sh: |
+        if test -e RELEASE
+        then cat RELEASE
+        else git  -C olaris-op rev-parse --short HEAD
+        fi
+
   OPERATOR_SRC: "{{.OPERATOR_IMG}}:{{.OPERATOR_TAG}}"
 
   STREAMER_TAG: "{{.OPERATOR_TAG}}"
@@ -41,17 +46,6 @@ vars:
   CMD: "check"
 
 tasks:
-
-    release:
-      desc: release
-      dir: ..
-      requires:
-        vars: [ V ]
-      cmds:
-      - |
-        tar --exclude='.git' -czvf openserverless-v{{.V}}.tar.gz openserverless
-        git tag "v{{.V}}"
-        echo please push the tag
 
     default: task -l
 
@@ -178,11 +172,11 @@ tasks:
       - test -e opsroot.orig || jq . <opsroot.json >opsroot.orig
       - >
         jq <opsroot.orig >opsroot.json  '
-          .config.images.operator = "{{.OPERATOR_SRC}}"   |
-          .config.images.streamer = "{{.STREAMER_SRC}}"   |
-          .config.images.systemapi = "{{.ADMIN_API_SRC}}" |
+          .config.images.operator   = "{{.OPERATOR_SRC}}"   |
+          .config.images.streamer   = "{{.STREAMER_SRC}}"   |
+          .config.images.systemapi  = "{{.ADMIN_API_SRC}}"  |
           .config.images.controller = "{{.CONTROLLER_SRC}}" |
-          .config.images.invoker = "{{.INVOKER_SRC}}"
+          .config.images.invoker    = "{{.INVOKER_SRC}}"
         '
       - diff opsroot.orig opsroot.json || true
 
@@ -204,9 +198,24 @@ tasks:
         fi
 
 
+    gitinit:
+      desc: initialize git if missing
+      cmds:
+      - |
+        for i in build cli olaris-op runtimes streamer admin-api
+        do
+          cd "$i"
+          if ! test -e .git
+          then git init 2>/dev/null
+              git commit -m "init" --allow-empty
+          fi
+          cd ..
+        done
+
     build:
       desc: build all
       cmds:
+      - task: gitinit
       - task: opslink
       - task: openwhisk
       - task: operator
@@ -237,9 +246,18 @@ tasks:
         license-eye header {{.CMD}}
         for i in */.licenserc.yaml
         do
-            DIR=$(dirname $i)
+            DIR="$(dirname $i)"
             echo "*** Checking license headers in $DIR"
             cd $DIR
             license-eye header {{.CMD}}
             cd {{.TASKFILE_DIR}}
         done
+
+    release:
+      desc: release
+      requires:
+        vars: [ V ]
+      cmds:
+      - echo "v{{.V}}" >RELEASE
+      - tar -C .. --exclude='.git' -czvf openserverless-v{{.V}}.tar.gz openserverless
+      - git tag "v{{.V}}" && git push --tags
