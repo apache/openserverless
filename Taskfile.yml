@@ -259,5 +259,5 @@ tasks:
         vars: [ V ]
       cmds:
       - echo "v{{.V}}" >RELEASE
-      - tar -C .. --exclude='.git' -czvf openserverless-v{{.V}}.tar.gz openserverless
+      - tar -C .. --exclude='.git' -czvf ../openserverless-v{{.V}}.tar.gz openserverless
       - git tag "v{{.V}}" && git push --tags

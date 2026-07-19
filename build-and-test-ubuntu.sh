@@ -99,6 +99,8 @@ echo "Building and testing"
 cd "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 git config --global --add safe.directory "$PWD"
 git config --global --add safe.directory "$PWD/olaris-op"
+git config --global user.name "Build OpenServerless" 
+git config --global user.email "noreply@example.com" 
 mkdir -p ~/.ssh
 task license
 task build
