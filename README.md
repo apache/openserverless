@@ -11,23 +11,21 @@ Welcome to  [Apache OpenServerless](https://openserverless.apache.org), an incub
 # Build and test from sources
 
 > [!WARNING]
-> Building from the latest sources in git is **not recommended for production use**. The `main` branch may contain unstable, untested, or incomplete changes. For production deployments, use an official release tarball instead. There are no Apache Software Foundation approved releases yet.
+> Building from the latest sources in git is **not recommended for production use**. The `main` branch may contain unstable, untested, or incomplete changes. For production deployments, use an official release tarball instead.
 
-Download a releases tarball from the Apache distribution and untar it:
+Download a releases tarball from the Apache distribution, untar and cd to it:
 
 ```
 tar xzvf openseerverless-<version>.tar.gz
+cd openserverless-<version>
 ```
 
-or clone all the latest sources with:
+or clone the latest sources from the `main` branch or a release branch:
 
 ```
-git clone https://github.com/apache/openserverless --recurse-submodules
+git clone --branch <branch> https://github.com/apache/openserverless --recurse-submodules
+cd openserverless
 ```
-
-then change the directory with:
-
-`cd openserverless`
 
 You can then build and test as follows.
 

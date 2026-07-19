@@ -258,6 +258,12 @@ tasks:
       requires:
         vars: [ V ]
       cmds:
+      - git tag "v{{.V}}"
       - echo "v{{.V}}" >RELEASE
-      - tar -C .. --exclude='.git' -czvf ../openserverless-v{{.V}}.tar.gz openserverless
-      - git tag "v{{.V}}" && git push --tags
+      - >
+          {{if eq OS "darwin"}}gtar{{else}}tar{{end}}
+          -C .. --exclude='.git'
+          --transform 's,^openserverless,openserverless-v{{.V}},'
+          -czvf ../openserverless-v{{.V}}.tar.gz
+          openserverless
+      - git push --tags
