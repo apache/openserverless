@@ -17,44 +17,44 @@
 [submodule "admin-api"]
 	path = admin-api
 	url = https://github.com/apache/openserverless-admin-api
-    branch = 0.9.0
+    branch = 0.9.1
 
 [submodule "build"]
 	path = build
 	url = https://github.com/apache/openserverless-build
-	branch = 0.9.0
+	branch = 0.9.1
 
 [submodule "cli"]
 	path = cli
 	url = https://github.com/apache/openserverless-cli
-	branch = 0.9.0
+	branch = 0.9.1
 
 [submodule "operator"]
 	path = olaris-op
 	url = https://github.com/apache/openserverless-operator
-	branch = 0.9.0
+	branch = 0.9.1
 
 [submodule "openserverless-devcontainer"]
 	path = devcontainer
 	url = https://github.com/apache/openserverless-devcontainer
-    branch = 0.9.0
+    branch = 0.9.1
 
 [submodule "task"]
 	path = olaris
 	url = https://github.com/apache/openserverless-task
-	branch = 0.1.0
+	branch = 0.9.1
 
 [submodule "runtimes"]
 	path = runtimes
 	url = https://github.com/apache/openserverless-runtimes
-	branch = 0.9.0
+	branch = 0.9.1
 
 [submodule "streamer"]
 	path = streamer
 	url = https://github.com/apache/openserverless-streamer
-        branch = 0.9.0
+        branch = 0.9.1
 
 [submodule "testing"]
 	path = testing
 	url = https://github.com/apache/openserverless-testing
-	branch = 0.9.0
+	branch = 0.9.1
