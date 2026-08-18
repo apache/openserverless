@@ -16,7 +16,7 @@ Welcome to  [Apache OpenServerless](https://openserverless.apache.org), an incub
 Download a releases tarball from the Apache distribution, untar and cd to it:
 
 ```
-tar xzvf openseerverless-<version>.tar.gz
+tar xzvf openserverless-<version>.tar.gz
 cd openserverless-<version>
 ```
 
