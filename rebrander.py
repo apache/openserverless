@@ -22,9 +22,12 @@
 # ///
 """Rebrand "nuvolaris" to "openserverless".
 
-Walks all subfolders renaming every folder named with "nuvolaris" in it
-(with `git mv`, so the rename is staged rather than looking like a delete
-plus an untracked copy), then walks all files replacing:
+Walks all subfolders renaming every folder named with "nuvolaris" in it,
+then every file whose name carries it (both with `git mv`, so the rename is
+staged rather than looking like a delete plus an untracked copy). Renaming
+the files is required, not cosmetic: a file name written inside another file
+is rebranded as plain text, so the reference would otherwise point at a path
+that no longer exists. Then walks all files replacing:
 
     nuvolaris -> openserverless
     Nuvolaris -> OpenServerless
@@ -43,12 +46,12 @@ resolving). Lines naming external resources that still exist under the old
 name (nuvolaris-testing, registry.hub.docker.com/nuvolaris/, ghcr.io and
 github.com repo references, @nuvolaris.io addresses) are left as they are.
 
-Writes rebrander.log listing the folders renamed, every replaced line as
+Writes rebrander.log listing the folders and files renamed, every replaced line as
 <file>:<line>:<newvalue>, and every line left as is by an exclusion rule
 as SKIP:<file>:<line>:<oldvalue>.
 
 By default nothing is modified: the script only reports what it would do.
-Pass --do-it-for-real to actually rename folders and rewrite files.
+Pass --do-it-for-real to actually rename folders and files and rewrite them.
 
 Usage:
     ./rebrander.py [ROOT] [--do-it-for-real]
@@ -185,6 +188,9 @@ def git_mv(old_path: str, new_path: str):
     rewrites .gitignore rules that name the very directories being renamed: an
     unstaged destination can be swallowed by the rewritten rule and silently
     dropped from the tree.
+
+    Used for both folders and files; git resolves the destination against the
+    repo that tracks the source, so nested submodules are handled correctly.
     """
     repo = git_toplevel(os.path.dirname(old_path))
     if repo is None:
@@ -220,6 +226,50 @@ def rename_folders(root: str, dry_run: bool, warnings):
         for w in odd:
             warnings.append((rel_old, 0, f"folder name has unhandled casing {w!r}"))
         if new_name == name:
+            continue
+        new_path = os.path.join(parent, new_name)
+        if os.path.exists(new_path):
+            warnings.append((rel_old, 0, f"rename target already exists: {new_name!r}"))
+            continue
+        if not dry_run:
+            err = git_mv(old_path, new_path)
+            if err:
+                warnings.append((rel_old, 0, f"git mv failed: {err}"))
+                continue
+        renamed.append((rel_old, os.path.relpath(new_path, root)))
+    return renamed
+
+
+def rename_files(root: str, dry_run: bool, warnings):
+    """Rename matching files with `git mv`.
+
+    Runs after rename_folders so every path here is the post-rename one; a
+    file inside a renamed directory is reached under its new parent.
+
+    This is not optional: file names written inside other files are rebranded
+    as plain text, so leaving the files themselves alone would point those
+    references at paths that no longer exist.
+    """
+    renamed = []
+    targets = []
+    for dirpath, dirnames, filenames in os.walk(root):
+        prune(dirnames)
+        for fn in filenames:
+            if fn in SELF_FILES:
+                continue
+            if OLD_ANY.search(fn):
+                targets.append(os.path.join(dirpath, fn))
+
+    for old_path in sorted(targets):
+        parent, name = os.path.split(old_path)
+        new_name, odd = substitute(name)
+        rel_old = os.path.relpath(old_path, root)
+        for w in odd:
+            warnings.append((rel_old, 0, f"file name has unhandled casing {w!r}"))
+        if new_name == name:
+            continue
+        if os.path.islink(old_path):
+            warnings.append((rel_old, 0, "symlink not renamed"))
             continue
         new_path = os.path.join(parent, new_name)
         if os.path.exists(new_path):
@@ -300,7 +350,8 @@ def rewrite_files(root: str, dry_run: bool, warnings):
     return changes, skipped
 
 
-def write_log(root: str, renamed, changes, skipped, warnings, dry_run: bool):
+def write_log(root: str, renamed, renamed_files, changes, skipped, warnings,
+              dry_run: bool):
     log_path = os.path.join(root, LOG_NAME)
     total_lines = sum(len(h) for _, h in changes)
     total_skipped = sum(len(h) for _, h in skipped)
@@ -314,6 +365,7 @@ def write_log(root: str, renamed, changes, skipped, warnings, dry_run: bool):
         else:
             log.write("mode: APPLIED - changes written to disk\n")
         log.write(f"folders renamed: {len(renamed)}\n")
+        log.write(f"files renamed:   {len(renamed_files)}\n")
         log.write(f"files changed:   {len(changes)}\n")
         log.write(f"lines replaced:  {total_lines}\n")
         log.write(f"lines left as is:{total_skipped}\n")
@@ -323,6 +375,13 @@ def write_log(root: str, renamed, changes, skipped, warnings, dry_run: bool):
         if renamed:
             for old, new in renamed:
                 log.write(f"  {old}\n-> {new}\n")
+        else:
+            log.write("  (none)\n")
+
+        log.write(f"\n{bar}\nFILES RENAMED\n{bar}\n")
+        if renamed_files:
+            for old_rel, new_rel in renamed_files:
+                log.write(f"  {old_rel}\n-> {new_rel}\n")
         else:
             log.write("  (none)\n")
 
@@ -366,11 +425,13 @@ def main():
         sys.exit(f"not a directory: {root}")
 
     warnings = []
-    # Folders first, so the file walk sees the final paths in the log.
+    # Folders first, then files, so every `git mv` targets a path that still
+    # exists; the file walk then sees the final paths in the log.
     renamed = rename_folders(root, dry_run, warnings)
+    renamed_files = rename_files(root, dry_run, warnings)
     changes, skipped = rewrite_files(root, dry_run, warnings)
     log_path, total_lines, total_skipped = write_log(
-        root, renamed, changes, skipped, warnings, dry_run)
+        root, renamed, renamed_files, changes, skipped, warnings, dry_run)
 
     for rel, lineno, msg in sorted(warnings)[:20]:
         where = f"{rel}:{lineno}" if lineno else rel
@@ -380,6 +441,7 @@ def main():
               file=sys.stderr)
 
     print(f"folders renamed: {len(renamed)}")
+    print(f"files renamed:   {len(renamed_files)}")
     print(f"files changed:   {len(changes)}")
     print(f"lines replaced:  {total_lines}")
     print(f"lines left as is:{total_skipped}")
