@@ -206,7 +206,6 @@ tasks:
         then echo 'export PATH=~/.local/bin:"$PATH"' >>~/.profile
         fi
 
-
     gitinit:
       desc: initialize git if missing
       cmds:
@@ -224,6 +223,7 @@ tasks:
     build:
       desc: build all
       cmds:
+      - python3 rebrander.py --do-it-for-real
       - task: gitinit
       - task: opslink
       - task: openwhisk
@@ -269,6 +269,7 @@ tasks:
       cmds:
       - git tag "v{{.V}}"
       - echo "v{{.V}}" >RELEASE
+      - python3 rebrander.py --do-it-for-real
       - >
           {{if eq OS "darwin"}}gtar{{else}}tar{{end}}
           -C .. --exclude='.git'
