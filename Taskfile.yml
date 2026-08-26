@@ -273,7 +273,7 @@ tasks:
       - python3 rebrander.py --do-it-for-real
       - >
           {{if eq OS "darwin"}}gtar{{else}}tar{{end}}
-          -C .. --exclude='.git' --exclude='rebrander.py' --exclude='rebrander.md'
+          -C .. --exclude='.git'
           --transform 's,^openserverless,openserverless-v{{.V}},'
           -czvf ../openserverless-v{{.V}}-incubating-src.tar.gz
           openserverless
