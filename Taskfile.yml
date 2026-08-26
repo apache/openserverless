@@ -224,6 +224,7 @@ tasks:
     build:
       desc: build all
       cmds:
+      - python3 rebrander.py
       - task: gitinit
       - task: opslink
       - task: openwhisk
@@ -269,9 +270,10 @@ tasks:
       cmds:
       - git tag "v{{.V}}"
       - echo "v{{.V}}" >RELEASE
+      - python3 rebrander.py
       - >
           {{if eq OS "darwin"}}gtar{{else}}tar{{end}}
-          -C .. --exclude='.git'
+          -C .. --exclude='.git' --exclude='rebrander.py' --exclude='rebrander.md'
           --transform 's,^openserverless,openserverless-v{{.V}},'
           -czvf ../openserverless-v{{.V}}-incubating-src.tar.gz
           openserverless

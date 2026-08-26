@@ -4,7 +4,7 @@ The goal is rebrand openserverless in openserverless
 
 It walks all the subfolders renaming with `git mv` all the folder openserverless in openserverless
 
-Then it will rename with `git mv` the files including "nuvolaris" in the name with the name including "openserverless"
+Then it will rename with `git mv` the files including "openserverless" in the name with the name including "openserverless"
 
 This file rename is mandatory, not optional: file names written inside other
 files are rebranded as plain text, so if the files themselves are not renamed
