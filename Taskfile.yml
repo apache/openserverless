@@ -223,7 +223,6 @@ tasks:
     build:
       desc: build all
       cmds:
-      - python3 rebrander.py --do-it-for-real
       - task: gitinit
       - task: opslink
       - task: openwhisk
