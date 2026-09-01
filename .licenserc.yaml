@@ -21,6 +21,7 @@ header:
     copyright-owner: Apache Software Foundation
 
   paths-ignore:
+    - 'cli'
     - 'admin-api'
     - 'devcontainer'
     - 'olaris'
@@ -33,7 +34,10 @@ header:
     - '**/*.svg'
     - '**/*.png'
     - '**/*.md'
+    - '.vscode/**'
     - 'LICENSE'
     - 'DISCLAIMER'
     - 'NOTICE'
     - 'CHANGES'
+    - 'RELEASE'
+    - 'rebrander.log'

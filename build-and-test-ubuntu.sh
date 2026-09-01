@@ -88,7 +88,7 @@ curl -fsSL "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/${GOARCH}/kub
 sudo install -m 0755 /tmp/kubectl /usr/local/bin/kubectl
 rm -f /tmp/kubectl
 
-echo "Installing license-eye" 
+echo "Installing license-eye"
 go install github.com/apache/skywalking-eyes/cmd/license-eye@latest
 
 export PATH="$(go env GOPATH)/bin:/usr/local/bin:$PATH"
@@ -99,6 +99,10 @@ echo "Building and testing"
 cd "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 git config --global --add safe.directory "$PWD"
 git config --global --add safe.directory "$PWD/olaris-op"
+
+git config --global --get user.name  >/dev/null || git config --global user.name  "Build OpenServerless"
+git config --global --get user.email >/dev/null || git config --global user.email "noreply@example.com"
+
 mkdir -p ~/.ssh
 task license
 task build

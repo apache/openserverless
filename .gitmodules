@@ -17,7 +17,7 @@
 [submodule "admin-api"]
 	path = admin-api
 	url = https://github.com/apache/openserverless-admin-api
-    branch = 0.9.0
+        branch = 0.9.0
 
 [submodule "build"]
 	path = build
@@ -37,12 +37,12 @@
 [submodule "openserverless-devcontainer"]
 	path = devcontainer
 	url = https://github.com/apache/openserverless-devcontainer
-    branch = 0.9.0
+        branch = 0.9.0
 
 [submodule "task"]
 	path = olaris
 	url = https://github.com/apache/openserverless-task
-	branch = 0.1.0
+	branch = 0.9.0
 
 [submodule "runtimes"]
 	path = runtimes

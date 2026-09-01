@@ -11,16 +11,23 @@ Welcome to  [Apache OpenServerless](https://openserverless.apache.org), an incub
 # Build and test from sources
 
 > [!WARNING]
-> Building from the latest sources in git is **not recommended for production use**. The `main` branch may contain unstable, untested, or incomplete changes. For production deployments, use an official release tarball instead. There are no Apache Software Foundation approved releases yet.
+> Building from the latest sources in git is **not recommended for production use**. The `main` branch may contain unstable, untested, or incomplete changes. For production deployments, use an official release tarball instead.
 
-Download a releases tarball or clone all the latest sources with:
+Download a releases tarball from the Apache distribution, untar and cd to it:
 
 ```
-git clone https://github.com/apache/openserverless --recurse-submodules
+tar xzvf openserverless-<version>.tar.gz
+cd openserverless-<version>
+```
+
+or clone the latest sources from the `main` branch or a release branch:
+
+```
+git clone --branch <branch> https://github.com/apache/openserverless --recurse-submodules
 cd openserverless
 ```
 
-You can then build and test
+You can then build and test as follows.
 
 # Linux
 
@@ -41,7 +48,6 @@ You need Windows 10/11 with WSL. Execute from PowerShell:
 You have to install [lima](https://limma-vm.io) (example: brew install lima). Execute:
 
 `./build-and-test-mac.sh`
-
 
 # Development setup
 

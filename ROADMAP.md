@@ -12,7 +12,7 @@ The order of the items does not pretend to to establish the project priorities.
     * Improvement: Migrate to newer version of MINIO server
     * Improvement: Migrate to newer version os Postgres SQL
     * Improvement: Update to latest kopf version and latest Python version
-    * Improvement: Deploy default nuvolaris namespace as a normal wsku resources
+    * Improvement: Deploy default openserverless namespace as a normal wsku resources
     * Improvement: Handle CouchDb init task as Operator managed task
     * Improvement: Use base images with smaller size for fast loading
     * New: Integrate Argo Events and implements system action to support deployment of argo events resources
