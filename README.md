@@ -1,14 +1,13 @@
 # Apache OpenServerless (incubating)
 
-Welcome to  [Apache OpenServerless](https://openserverless.apache.org), an incubating project at the [Apache Software Foundation](https://www.apache.org)
+Welcome to [Apache OpenServerless](https://openserverless.apache.org), an incubating project at the [Apache Software Foundation](https://www.apache.org).
 
-- If you want to **install** Apache OpenServerless  in cloud go [here](https://openserverless.apache.org/docs/installation/).
+- If you want to **install** Apache OpenServerless in the cloud go [here](https://openserverless.apache.org/docs/installation/).
 - If you want to **understand** what this project is check the [original proposal](https://cwiki.apache.org/confluence/display/INCUBATOR/OpenServerlessProposal).
-- If you want to **discuss** with us, join  our mailing list sending an email to `dev-subscribe@openserverless.apache.org`
+- If you want to **discuss** with us, join our mailing list by sending an email to `dev-subscribe@openserverless.apache.org`
+- If you want to **contribute** to the project, read [this guide](CONTRIBUTING.md)
 
-- If you want to **contribute** to the project, building from the sources or  setting up a   **development** environment, read on this README.
-
-# Build and test from sources
+## Build and test from sources
 
 > [!WARNING]
 > Building from the latest sources in git is **not recommended for production use**. The `main` branch may contain unstable, untested, or incomplete changes. For production deployments, use an official release tarball instead.
@@ -27,55 +26,67 @@ git clone --branch <branch> https://github.com/apache/openserverless --recurse-s
 cd openserverless
 ```
 
+> [!IMPORTANT]
+> Most of the code lives in git submodules, so `--recurse-submodules` is required.
+> If you already cloned without it, run `git submodule update --init --recursive`
+> before building, otherwise the submodule directories are empty and the build
+> fails in confusing ways.
+
 You can then build and test as follows.
 
-# Linux
+### Linux
 
-You need Ubuntu 22+ or Debian 11+.  Execute:
+You need Ubuntu 22+ or Debian 11+. Execute:
 
 `./build-and-test-ubuntu.sh`
 
 It can work on other distros but you have to adapt the scripts.
 
-# Windows
+### Windows
 
 You need Windows 10/11 with WSL. Execute from PowerShell:
 
 `.\build-and-test-windows.ps1`
 
-# Mac OSX
+### macOS
 
-You have to install [lima](https://limma-vm.io) (example: brew install lima). Execute:
+You have to install [lima](https://lima-vm.io) (example: `brew install lima`). Execute:
 
 `./build-and-test-mac.sh`
 
-# Development setup
+## Development setup
 
-## Prerequisites
+### Prerequisites
 
-- you need an Unix environment, either OSX, Linux or Windows WSL.
+- you need a Unix environment, either macOS, Linux or Windows WSL.
 - you need docker on the path
 - you need go available on the path
 - you need task (https://taskfile.dev) available in the path
+- you need jq, zip, unzip and kubectl available on the path
+- you need license-eye on the path, to check the license headers
 
-Here the procedures for MacOS, Windows 11 and Ubuntu Linux
+The per-platform sections below install all of these. Here are the procedures
+for macOS, Windows 11 and Ubuntu Linux.
 
-##  Prepare Mac
+### Prepare Mac
 
-On Mac, install brew and Docker Desktop. then do
+On Mac, install brew and Docker Desktop, then do
 
-- `brew install task`
-- `brew install go`
+```
+brew install task go jq kubernetes-cli
+go install github.com/apache/skywalking-eyes/cmd/license-eye@latest
+export PATH="$PATH:$(go env GOPATH)/bin"
+```
 
-## Prepare Windows
+### Prepare Windows
 
-On windows,
-- install Docker Desktop then
+On Windows,
+- install Docker Desktop, then
 - `wsl --install Ubuntu-24.04`
 
 then enable docker to be used in the distro `Ubuntu-24.04`
 
-Access the distro (`wsl -d Ubuntu-24.04` ), configure a new user,  then execute:
+Access the distro (`wsl -d Ubuntu-24.04`), configure a new user, then execute:
 
 ```
 sudo apt-get update
@@ -83,11 +94,13 @@ sudo apt-get -y install jq unzip zip
 sudo snap install go --classic
 sudo snap install task --classic
 sudo snap install kubectl --classic
+go install github.com/apache/skywalking-eyes/cmd/license-eye@latest
+export PATH="$PATH:$(go env GOPATH)/bin"
 ```
 
-## Prepare Ubuntu or Debian Linux
+### Prepare Ubuntu or Debian Linux
 
-Setup for a plain Ubuntu Linux with an user with sudo power:
+Setup for a plain Ubuntu Linux with a user with sudo power:
 
 ```
 sudo apt-get update
@@ -103,17 +116,37 @@ newgrp docker
 docker ps
 ```
 
-## Procedure
+### Procedure
 
 ```
 git clone https://github.com/apache/openserverless --recurse-submodules
 cd openserverless
 ```
 
-You can build with:  `task build`
+To work on a release branch instead of `main`, add `--branch <branch>`.
 
-You can run the test suite with:  `task test`
+You can build with: `task build`
+
+You can run the test suite with: `task test`
 
 You can check all the files have the license header: `task license`
 
-Read the task files (that are basically shell scripts wrapped in an yaml environment) to learn all the build procedures.
+Read the task files (that are basically shell scripts wrapped in a yaml environment) to learn all the build procedures.
+
+## License
+
+Apache OpenServerless is licensed under the [Apache License, Version 2.0](LICENSE).
+See also the [NOTICE](NOTICE) file.
+
+## Disclaimer
+
+Apache OpenServerless (Incubating) is an effort undergoing incubation at the Apache
+Software Foundation (ASF), sponsored by the Apache Incubator PMC.
+
+Incubation is required of all newly accepted projects until a further review
+indicates that the infrastructure, communications, and decision making process
+have stabilized in a manner consistent with other successful ASF projects.
+
+While incubation status is not necessarily a reflection of the completeness
+or stability of the code, it does indicate that the project has yet to be
+fully endorsed by the ASF.

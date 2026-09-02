@@ -23,25 +23,23 @@
 Anyone can contribute to the OpenServerless project and we welcome your contributions.
 
 There are multiple ways to contribute: report bugs, improve the docs, and
-contribute code, but you must follow these prerequisites and guidelines:
+contribute code. Whichever you choose, please follow the prerequisites and
+guidelines below.
 
-- [Contributing to Apache OpenServerless (incubating)](#contributing-to-apache-openserverless-incubating)
-    - [Contributor License Agreement](#contributor-license-agreement)
-  - [Raising issues](#raising-issues)
-    - [Discussion](#discussion)
-    - [Coding standards](#coding-standards)
+## Contributor License Agreement
 
-### Contributor License Agreement
+Contributors of significant changes must sign and submit an Apache ICLA
+(Individual Contributor License Agreement). Small contributions, such as
+documentation fixes, can be accepted at the discretion of the PMC without one,
+so do not let this stop you from opening your first pull request.
 
-All contributors must sign and submit an Apache CLA (Contributor License Agreement).
+Instructions on how to sign can be found here:
+[https://www.apache.org/licenses/contributor-agreements.html](https://www.apache.org/licenses/contributor-agreements.html)
 
-Instructions on how to do this can be found here:
-[http://www.apache.org/licenses/#clas](http://www.apache.org/licenses/#clas)
-
-Sign the appropriate CLA and submit it to the Apache Software Foundation (ASF) secretary. You will receive a confirmation email from the ASF and be added to
-the following list: http://people.apache.org/unlistedclas.html.  Once your name is on this list, you are done and your PR can be merged.
-
-Project committers will use this list to verify pull requests (PRs) come from contributors that have signed a CLA.
+Sign the appropriate agreement and submit it to the Apache Software Foundation
+(ASF) secretary. You will receive a confirmation email from the ASF once it has
+been recorded. Project committers verify that pull requests come from
+contributors covered by an ICLA where one is required.
 
 We look forward to your contributions!
 
@@ -50,22 +48,43 @@ We look forward to your contributions!
 Please raise any bug reports or enhancement requests on the main project repository's GitHub [issue tracker](https://github.com/apache/openserverless/issues). Be sure to search the
 list to see if your issue has already been raised.
 
-A good bug report is one that make it easy for us to understand what you were trying to do and what went wrong.
+A good bug report is one that makes it easy for us to understand what you were trying to do and what went wrong.
 Provide as much context as possible so we can try to recreate the issue.
 
 A good enhancement request comes with an explanation of what you are trying to do and how that enhancement would help you.
 
 ### Discussion
 
-Please use the project's developer email list to engage our community:
-[dev@openserverless.apache.org](dev@openserverless.apache.org)
+Please use the project's developer mailing list to engage our community:
+[dev@openserverless.apache.org](mailto:dev@openserverless.apache.org)
 
-In addition, we provide a [Telegram](https://t.me/+XhbCjBrkkaNkOWM0) team channel for conversation and support.
+The mailing list is the preferred contact medium. Subscribe by sending an email to
+[dev-subscribe@openserverless.apache.org](mailto:dev-subscribe@openserverless.apache.org)
+and then replying to the confirmation message.
 
-### Coding standards
+You can also find us on the `#openserverless` channel on the
+[ASF Slack](https://infra.apache.org/slack.html), but please prefer the mailing
+list: at Apache, project decisions must be discussed and recorded there.
+
+## Building and testing
+
+Before opening a pull request, please build and test your changes locally.
+See the [README](README.md) for how to set up a development environment and for
+the per-platform build and test scripts.
+
+## Coding standards
 
 Please ensure you follow the coding standards used throughout the existing
 code base. Some basic rules include:
 
- - all files must have the Apache license in the header.
+ - all files must have the Apache license in the header. Check this with
+   `task license` before opening a pull request (it requires
+   [license-eye](https://github.com/apache/skywalking-eyes)).
  - all PRs must have passing builds for all operating systems (where this is applicable).
+
+## Pull requests
+
+ - open pull requests against the `main` branch unless a committer directs you otherwise.
+ - keep each pull request focused on a single change, and describe what it does and why.
+ - reference the related GitHub issue in the description, if there is one.
+ - be prepared to address review comments; committers may ask you to rebase before merging.
