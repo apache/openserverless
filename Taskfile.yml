@@ -272,6 +272,6 @@ tasks:
           {{if eq OS "darwin"}}gtar{{else}}tar{{end}}
           -C .. --exclude='.git'
           --transform 's,^openserverless,openserverless-v{{.V}},'
-          -czvf ../openserverless-v{{.V}}-incubating-src.tar.gz
+          -czvf ../openserverless-v{{.V}}-src.tar.gz
           openserverless
       - git push --tags
