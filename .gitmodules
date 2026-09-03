@@ -30,7 +30,7 @@
 	branch = 0.9.0
 
 [submodule "operator"]
-	path = olaris-op
+	path = oplugins-op
 	url = https://github.com/apache/openserverless-operator
 	branch = 0.9.0
 
@@ -40,7 +40,7 @@
         branch = 0.9.0
 
 [submodule "task"]
-	path = olaris
+	path = oplugins
 	url = https://github.com/apache/openserverless-task
 	branch = 0.9.0
 
