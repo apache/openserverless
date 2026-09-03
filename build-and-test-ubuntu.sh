@@ -98,7 +98,7 @@ echo "Building and testing"
 # regardless of the caller's working directory (e.g. a login shell resets it).
 cd "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 git config --global --add safe.directory "$PWD"
-git config --global --add safe.directory "$PWD/olaris-op"
+git config --global --add safe.directory "$PWD/oplugins-op"
 
 git config --global --get user.name  >/dev/null || git config --global user.name  "Build OpenServerless"
 git config --global --get user.email >/dev/null || git config --global user.email "noreply@example.com"
