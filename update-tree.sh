@@ -16,6 +16,6 @@
 # specific language governing permissions and limitations
 # under the License.
 
-git pull origin main --rebase
+git pull origin  --rebase
 git submodule update --recursive --remote
 bash sync-branch.sh

@@ -1,16 +1,5 @@
-# opneserverless team 8 July
+This is the initial version of the CHANGES file for the project. It outlines the changes made in each version of the software, providing a clear history of updates, bug fixes, and new features.
 
-Full build testing and licenses
+Most notably changes for this release
 
-# sciabarracom 17 May  2026
-
-runtimes, streamer and system api compilation
-
-# sciabarracom 30 Apr 2026
-
-- archived old readme and dev environment files (moved in attic)
-- build from sources compiling the cli (updated the README.md)
-
-# sciabarracom 3 May 2026
-- `Taskfile.yml` for building the operator
-- `test.sh` for a smoke test
+- rebranding to OpenServerless, removing all the references to the original source

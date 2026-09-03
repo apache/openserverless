@@ -223,7 +223,6 @@ tasks:
     build:
       desc: build all
       cmds:
-      - python3 rebrander.py --do-it-for-real
       - task: gitinit
       - task: opslink
       - task: openwhisk
@@ -263,17 +262,22 @@ tasks:
         done
 
     release:
-      desc: release
+      desc: release - the source must be in version folder and you need a gpg key to sign
       requires:
-        vars: [ V ]
+        vars: [ VER, KEY ]
       cmds:
-      - git tag "v{{.V}}"
-      - echo "v{{.V}}" >RELEASE
-      - python3 rebrander.py --do-it-for-real
+      - test -d ../../{{.VER}}/openserverless || { echo "parent dir does not match with version" ; exit 1; }
+      - gpg --list-secret-keys | grep  "{{or .KEY "missing" }}" || { echo "key not found in gpg" ;   exit 1; }
+      - rm -f -v ../openserverless-* || true
+      - git tag -d $(git tag) || true
+      - git tag "v{{.VER}}"
       - >
           {{if eq OS "darwin"}}gtar{{else}}tar{{end}}
           -C .. --exclude='.git'
-          --transform 's,^openserverless,openserverless-v{{.V}},'
-          -czvf ../openserverless-v{{.V}}-incubating-src.tar.gz
+          --transform 's,^openserverless,openserverless-{{.VER}},'
+          -czvf ../openserverless-{{.VER}}-src.tar.gz
           openserverless
-      - git push --tags
+      - gpg --armor --detach-sign --local-user {{.KEY}} ../openserverless-{{.VER}}-src.tar.gz
+      - shasum -a 512 ../openserverless-{{.VER}}-src.tar.gz >../openserverless-{{.VER}}-src.tar.gz.sha512
+      - uv run releasing.py {{.VER}} >../../{{.VER}}.txt
+      - echo 'Next steps are svn push, git push --tags and send email'
