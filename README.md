@@ -12,11 +12,27 @@ Welcome to [Apache OpenServerless](https://openserverless.apache.org), an incuba
 > [!WARNING]
 > Building from the latest sources in git is **not recommended for production use**. The `main` branch may contain unstable, untested, or incomplete changes. For production deployments, use an official release tarball instead.
 
-Download a releases tarball from the Apache distribution, untar and cd to it:
+Download a release tarball from the Apache distribution area, untar and cd to it:
 
 ```
-tar xzvf openserverless-<version>.tar.gz
-cd openserverless-<version>
+curl -O https://dist.apache.org/repos/dist/dev/incubator/openserverless/<version>/openserverless-<version>-incubating-src.tar.gz
+tar xzvf openserverless-<version>-incubating-src.tar.gz
+cd openserverless-<version>-incubating-src
+```
+
+where `<version>` is the release you want, for example `v0.9.0`. Browse
+[the distribution area](https://dist.apache.org/repos/dist/dev/incubator/openserverless/)
+to see the available versions.
+
+Release artifacts are signed. Before building, verify the tarball against the
+project [KEYS](https://dist.apache.org/repos/dist/dev/incubator/openserverless/KEYS)
+file:
+
+```
+curl -O https://dist.apache.org/repos/dist/dev/incubator/openserverless/<version>/openserverless-<version>-incubating-src.tar.gz.asc
+curl -O https://dist.apache.org/repos/dist/dev/incubator/openserverless/KEYS
+gpg --import KEYS
+gpg --verify openserverless-<version>-incubating-src.tar.gz.asc
 ```
 
 or clone the latest sources from the `main` branch or a release branch:
