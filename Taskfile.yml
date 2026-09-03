@@ -268,7 +268,7 @@ tasks:
       cmds:
       - test -d ../../{{.VER}}/openserverless || { echo "parent dir does not match with version" ; exit 1; }
       - gpg --list-secret-keys | grep  "{{or .KEY "missing" }}" || { echo "key not found in gpg" ;   exit 1; }
-      - rm -fv ../openserverless-*
+      - rm -f -v ../openserverless-* || true
       - git tag -d "v{{.VER}}" || true
       - >
           {{if eq OS "darwin"}}gtar{{else}}tar{{end}}
