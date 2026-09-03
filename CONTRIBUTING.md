@@ -80,11 +80,14 @@ code base. Some basic rules include:
  - all files must have the Apache license in the header. Check this with
    `task license` before opening a pull request (it requires
    [license-eye](https://github.com/apache/skywalking-eyes)).
- - all PRs must have passing builds for all operating systems (where this is applicable).
+ - you need always to provide a test - there are plenty of testing in the source around: unit, integration, a test suite and so on
+ - all PRs must have passing builds.
 
 ## Pull requests
 
- - open pull requests against the `main` branch unless a committer directs you otherwise.
+We work in releavse branches and then move up the changes to the main
+
+ - open pull requests against the higher version branch (example if there is 0.1.0, 0.9.0 and 0.9.1 use 0.9.1) unless a committer directs you otherwise
  - keep each pull request focused on a single change, and describe what it does and why.
  - reference the related GitHub issue in the description, if there is one.
  - be prepared to address review comments; committers may ask you to rebase before merging.
