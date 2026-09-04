@@ -121,31 +121,53 @@ Components carry their own base version prefix where applicable (e.g. the CLI
 produces `v0.9.0-<timestamp>.SNAPSHOT`). The documentation must show one real
 tag per case rather than describing the format abstractly.
 
-### 2.3 Where images go
+### 2.3 Where images go — no configuration required
 
-The destination registry is decided by **who owns the repository the tag was
-pushed to**, not by anything in the tag:
+The destination registry and the credentials used to push are **derived
+automatically from the repository the tag was pushed to**. Nothing has to be
+configured for the normal case, and the documentation must lead with that fact
+rather than with a configuration table.
 
-- Tag pushed to the Apache repository → Apache official namespace.
-- Tag pushed to a fork → the fork owner's namespace, using the fork's secrets.
+The rule:
 
-The documentation must be explicit that a contributor without Apache
-credentials is not blocked — forking is the supported path, not a workaround.
+| Tag pushed to | Registry | Namespace | Credentials |
+|---|---|---|---|
+| the Apache repository | `docker.io` | `apache` | secrets `DOCKERHUB_USER` / `DOCKERHUB_TOKEN` |
+| any fork | `ghcr.io` | the fork owner's GitHub user | the current GitHub actor + the built-in `GITHUB_TOKEN` |
 
-### 2.4 Registry configuration
+So a contributor who forks and pushes a tag gets images at
+`ghcr.io/<their-user>/…` with **no secrets to create and no `.env` to write** —
+the workflow authenticates as the user running it, using the token GitHub
+provides to every Actions run. This must be stated as the default path, not as a
+fallback.
 
-Where credentials and namespace come from differs by case, and this is the
-single largest source of confusion. The documentation must present it as a
-table rather than prose:
+### 2.4 Overriding the registry (optional)
 
-| Case | Configured via | Notes |
-|---|---|---|
-| A — single image | `.env` in the component dir: `REGISTRY`, `NAMESPACE` | `REGISTRY` is `ghcr`, `dockerhub`, or `apache`; the task derives the full image name from it |
-| B — runtimes | Repository secrets: `DOCKERHUB_REGISTRY`, `DOCKERHUB_USER`, `DOCKERHUB_TOKEN` | Read as env vars by the Taskfile; must be set in the fork's GitHub settings |
-| C — cli | None | No registry involved |
+An explicit registry can be selected by setting `DOCKERHUB_REGISTRY` together
+with the secrets `DOCKERHUB_USER` and `DOCKERHUB_TOKEN`. The documentation must
+present this as an override for people who want their images somewhere other
+than their own GHCR namespace — **not** as a required setup step.
 
-The documentation must say plainly: **for Case B, forking is not enough — the
-three secrets must be configured in the fork before any CI build can succeed.**
+### 2.5 The one exception: runtimes
+
+Case B is the single place where the automatic path is not sufficient, and the
+documentation must call this out explicitly rather than leaving it to be
+discovered from a failed build.
+
+The runtimes build publishes images that do **not** belong to the current
+repository. The built-in `GITHUB_TOKEN` is scoped to packages owned by the
+repository running the workflow, so it does not carry enough permission for
+those pushes.
+
+Therefore, for runtimes only:
+
+- `DOCKERHUB_TOKEN` **must** be provided explicitly, and
+- it must be a token with **write permission on the target images**, not merely
+  on the packages of the current repository.
+
+The documentation must state the symptom this produces when skipped — a
+permission/denied error at push time, after a long and otherwise successful
+build — so the cause is recognisable from the error alone.
 
 ---
 
@@ -163,8 +185,9 @@ The documentation must cover:
   is tagged with the timestamp and exists only in the local Docker daemon.
 - **CI flow** — `task ci` pushes the tag; the `image` workflow builds multi-arch
   (`linux/amd64`, `linux/arm64`) and pushes.
-- **Fork setup** — set `REGISTRY` and `NAMESPACE` in `.env`. Show the two common
-  values (`ghcr` → `ghcr.io/<user>/…`, `dockerhub` → `docker.io/<user>/…`).
+- **Fork setup** — nothing to do. Per section 2.3 the images go to
+  `ghcr.io/<your-user>/…` automatically, authenticated with the built-in
+  `GITHUB_TOKEN`. Mention the `DOCKERHUB_REGISTRY` override only as an aside.
 - **What CI does beyond building** — license check (skywalking-eyes) and unit
   tests run before the image is built. A build can fail for reasons unrelated to
   the image; the documentation must say so, so failures are not mysterious.
@@ -193,10 +216,15 @@ documentation must call out as the *entire* reason this case is separate:
    <registry>/<namespace>/openserverless-runtime-<rt>:<ver>-<tag>
    ```
 
-3. **Secrets are mandatory.** Unlike Case A, registry configuration is not in a
-   local `.env` — it comes from repository secrets. The documentation must list
-   `DOCKERHUB_REGISTRY`, `DOCKERHUB_USER`, `DOCKERHUB_TOKEN` and say where to
-   set them (fork → Settings → Secrets and variables → Actions).
+3. **A token must be supplied.** This is the one case where the automatic
+   credentials of section 2.3 are not enough: the images published are not the
+   current repository's own packages, so the built-in `GITHUB_TOKEN` lacks the
+   permission. A `DOCKERHUB_TOKEN` with write access to the target images must
+   be set in the fork (Settings → Secrets and variables → Actions), optionally
+   alongside `DOCKERHUB_REGISTRY` and `DOCKERHUB_USER` to change the
+   destination. The documentation must present this as *the* prerequisite for
+   Case B, and as the only place in the whole build system where a secret is
+   mandatory.
 
 The documentation must also explain the relationship between the **common base
 image** and the language runtimes: the base is built and tagged separately, and
@@ -313,9 +341,13 @@ the documentation cannot be written without them:
 1. **One tag encoding or two.** Either every component uses the letter-encoded
    timestamp, or the plain numeric one. The current mix must not be documented
    as if it were intentional.
-2. **Where registry configuration lives.** Case A reads `.env`, Case B reads
-   repository secrets. Either this difference is justified and documented as a
-   rule, or the two are unified.
+2. **Convergence on the automatic registry rule.** Section 2.3 is the target:
+   registry, namespace, and credentials derived from the repository owner, with
+   no configuration in the normal case. The single-image Taskfiles currently
+   require `REGISTRY` and `NAMESPACE` in a local `.env` and fail without them;
+   they must be changed to fall back to the automatic behaviour and treat
+   `DOCKERHUB_REGISTRY` / `DOCKERHUB_USER` / `DOCKERHUB_TOKEN` as an override.
+   The runtimes exception (2.5) stays.
 
 Until these are settled, the documentation must not describe the current
 behaviour as stable.
