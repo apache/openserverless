@@ -14,7 +14,7 @@ Work was done locally only. No git push and no Docker Hub push were performed.
 
 ## OpenWhisk Source
 
-The nested `build/openwhisk` submodule was moved to the Nuvolaris commit:
+The nested `build/openwhisk` submodule was moved to the Nuvoplugins commit:
 
 ```text
 a456219d35bfabe4a3458fcce82cd71497a8524e
@@ -23,7 +23,7 @@ a456219d35bfabe4a3458fcce82cd71497a8524e
 `build/.gitmodules` was updated to use:
 
 ```text
-https://github.com/nuvolaris/openwhisk.git
+https://github.com/nuvoplugins/openwhisk.git
 ```
 
 ## Build Devcontainer
@@ -159,7 +159,7 @@ Despite the `registry.hub.docker.com/apache` prefix, these were local tags only.
 The installed OPS root was updated here:
 
 ```text
-/home/msciab/.ops/0.1.0/olaris/opsroot.json
+/home/msciab/.ops/0.1.0/oplugins/opsroot.json
 ```
 
 Changed keys:
@@ -197,7 +197,7 @@ Backed up kubeconfig:
 Updated context:
 
 ```text
-kind-nuvolaris
+kind-nuvoplugins
 ```
 
 Verified:
@@ -219,7 +219,7 @@ task build
 That task runs:
 
 1. `task build-all`
-2. update of `/home/msciab/.ops/0.1.0/olaris/opsroot.json`
+2. update of `/home/msciab/.ops/0.1.0/oplugins/opsroot.json`
 3. import of local OpenWhisk images into the kind node
 4. rollout of the local OpenWhisk controller StatefulSet
 5. final status output
@@ -234,7 +234,7 @@ for img in \
   registry.hub.docker.com/apache/openserverless-wsk-invoker:2.0.0-incubating.2506080813 \
   registry.hub.docker.com/apache/openserverless-wsk-standalone:2.0.0-incubating.2506080813
 do
-  docker save "$img" | docker exec -i nuvolaris-control-plane ctr --namespace=k8s.io images import -
+  docker save "$img" | docker exec -i nuvoplugins-control-plane ctr --namespace=k8s.io images import -
 done
 ```
 
@@ -257,7 +257,7 @@ spec.controller.image = registry.hub.docker.com/apache/openserverless-wsk-contro
 But the actual StatefulSet/pod initially still used:
 
 ```text
-ghcr.io/nuvolaris/openwhisk-controller:0.3.0-morpheus.22122609
+ghcr.io/nuvoplugins/openwhisk-controller:0.3.0-morpheus.22122609
 ```
 
 This is now automated by:
@@ -270,7 +270,7 @@ task build
 The underlying patch command is:
 
 ```bash
-kubectl -n nuvolaris set image statefulset/controller \
+kubectl -n nuvoplugins set image statefulset/controller \
   controller=registry.hub.docker.com/apache/openserverless-wsk-controller:2.0.0-incubating.2506080813
 ```
 
@@ -312,15 +312,15 @@ Observed behavior:
 
 Likely technical cause:
 
-- `olaris-op/nuvolaris/openwhisk_standalone.py` calls `kus.image(whisk_image, newTag=whisk_tag)`.
+- `oplugins-op/nuvoplugins/openwhisk_standalone.py` calls `kus.image(whisk_image, newTag=whisk_tag)`.
 - Kustomize image replacement matches the image name already present in the template.
-- The template contains `ghcr.io/nuvolaris/openwhisk-controller`.
+- The template contains `ghcr.io/nuvoplugins/openwhisk-controller`.
 - The generated kustomization uses the new image as the match name, so it does not match the old template image.
 
 Proper code-level fix should replace the template image name with `newName`, for example:
 
 ```text
-name: ghcr.io/nuvolaris/openwhisk-controller
+name: ghcr.io/nuvoplugins/openwhisk-controller
 newName: registry.hub.docker.com/apache/openserverless-wsk-controller
 newTag: 2.0.0-incubating.2506080813
 ```
@@ -334,7 +334,7 @@ bd8b2b4 Update build-all local workflow
 1796e13 Update build distdocker container wrapper
 35ae719 Update build distdocker local workflow
 d4d269d Update build submodule devcontainer toolchain
-d781ddb Update build submodule for Nuvolaris openwhisk source
+d781ddb Update build submodule for Nuvoplugins openwhisk source
 d758eab Point build submodule to local openwhisk update
 ```
 
@@ -345,8 +345,8 @@ Build submodule:
 f591434 Run distdocker through build container
 13ef155 Make distdocker local-only by default
 3492964 Make build devcontainer multi-arch OpenWhisk ready
-2c53f0f Use Nuvolaris openwhisk submodule source
-2fd1cf8 Point openwhisk to Nuvolaris action size change
+2c53f0f Use Nuvoplugins openwhisk submodule source
+2fd1cf8 Point openwhisk to Nuvoplugins action size change
 ```
 
 OpenWhisk submodule:
