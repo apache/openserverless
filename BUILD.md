@@ -148,26 +148,81 @@ with the secrets `DOCKERHUB_USER` and `DOCKERHUB_TOKEN`. The documentation must
 present this as an override for people who want their images somewhere other
 than their own GHCR namespace — **not** as a required setup step.
 
-### 2.5 The one exception: runtimes
+### 2.5 Local builds — defaults and `MY_*_IMAGE` overrides
 
-Case B is the single place where the automatic path is not sufficient, and the
-documentation must call this out explicitly rather than leaving it to be
-discovered from a failed build.
+Everything above describes CI. When building **locally**, no registry is
+involved by default: each component builds its image under the same default name
+it would use in CI (section 2.3), and the result exists only in the local Docker
+daemon.
 
-The runtimes build publishes images that do **not** belong to the current
-repository. The built-in `GITHUB_TOKEN` is scoped to packages owned by the
-repository running the workflow, so it does not carry enough permission for
-those pushes.
+That default can be overridden per component by exporting a `MY_<COMPONENT>_IMAGE`
+environment variable, normally set in a local `.env` file. The variable holds the
+**full image name without the tag** — registry, namespace and repository — and
+the tag continues to be computed as described in section 2.2.
 
-Therefore, for runtimes only:
+The variables, one per single-image component:
 
-- `DOCKERHUB_TOKEN` **must** be provided explicitly, and
-- it must be a token with **write permission on the target images**, not merely
+| Component | Variable | Example value |
+|---|---|---|
+| operator | `MY_OPERATOR_IMAGE` | `ghcr.io/<your-user>/openserverless-operator` |
+| devcontainer | `MY_DEVCONTAINER_IMAGE` | `ghcr.io/<your-user>/openserverless-devcontainer` |
+| admin-api | `MY_ADMINAPI_IMAGE` | `ghcr.io/<your-user>/openserverless-admin-api` |
+| streamer | `MY_STREAMER_IMAGE` | `ghcr.io/<your-user>/openserverless-streamer` |
+
+Each component repository must ship a `.env.dist` listing these variables with
+their intended default form, so that copying it to `.env` and filling in the
+GitHub user is the whole of the setup. `.env` itself is local and must stay
+untracked.
+
+The documentation must present this as the **local** counterpart of section 2.3:
+the automatic rule still decides the default, and `MY_*_IMAGE` only replaces it
+when someone wants their local build named for their own registry.
+
+### 2.6 The exception: repositories publishing multiple images
+
+Two repositories publish images that do **not** correspond to the repository
+itself:
+
+| repository | images published |
+|---|---|
+| `openserverless-build` | `openwhisk2/controller`, `openwhisk2/invoker`, `openwhisk2/scheduler`, `openwhisk2/standalone`, `openwhisk2/scala` |
+| `openserverless-runtimes` | `openserverless-runtime-<rt>` — one per language version |
+
+This is the single place where the automatic path of section 2.3 is not
+sufficient, and the documentation must call it out explicitly rather than
+leaving it to be discovered from a failed build.
+
+The built-in `GITHUB_TOKEN` is scoped to packages **owned by the repository
+running the workflow**. GHCR links a package to its creating repository on first
+push and grants write access only to that repository. Because these two builds
+publish under image names that do not match the repository, `GITHUB_TOKEN`
+carries no permission for them and the push is refused.
+
+Therefore, for `openserverless-build` and `openserverless-runtimes` only, when
+pushing to **ghcr.io**:
+
+- a **`GHCR_TOKEN`** secret **must** be set on the fork, and
+- it must be a GitHub Personal Access Token (classic) with the
+  **`write:packages`** scope — write permission on the target images, not merely
   on the packages of the current repository.
 
+To create it:
+
+1. Go to <https://github.com/settings/tokens> → *Generate new token (classic)*.
+2. Select the **`write:packages`** scope (this implies `read:packages` and
+   `repo`).
+3. Copy the generated token.
+4. In your fork: *Settings → Secrets and variables → Actions → New repository
+   secret*, name it exactly **`GHCR_TOKEN`**, and paste the value.
+
+When pushing to Docker Hub instead, the equivalent requirement is a
+`DOCKERHUB_TOKEN` with write permission on the target images.
+
 The documentation must state the symptom this produces when skipped — a
-permission/denied error at push time, after a long and otherwise successful
-build — so the cause is recognisable from the error alone.
+`denied: permission_denied: write_package` error at push time, after a long and
+otherwise successful build — so the cause is recognisable from the error alone.
+The workflows fail fast with these instructions when the secret is missing,
+rather than building first and failing at the push.
 
 ---
 
@@ -219,12 +274,14 @@ documentation must call out as the *entire* reason this case is separate:
 3. **A token must be supplied.** This is the one case where the automatic
    credentials of section 2.3 are not enough: the images published are not the
    current repository's own packages, so the built-in `GITHUB_TOKEN` lacks the
-   permission. A `DOCKERHUB_TOKEN` with write access to the target images must
-   be set in the fork (Settings → Secrets and variables → Actions), optionally
+   permission. Per section 2.6 a **`GHCR_TOKEN`** secret with the
+   `write:packages` scope must be set in the fork (Settings → Secrets and
+   variables → Actions) when pushing to ghcr.io, or a `DOCKERHUB_TOKEN` with
+   write access to the target images when pushing to Docker Hub — optionally
    alongside `DOCKERHUB_REGISTRY` and `DOCKERHUB_USER` to change the
    destination. The documentation must present this as *the* prerequisite for
-   Case B, and as the only place in the whole build system where a secret is
-   mandatory.
+   Case B, and note that `openserverless-build` carries the same requirement for
+   the same reason.
 
 The documentation must also explain the relationship between the **common base
 image** and the language runtimes: the base is built and tagged separately, and
@@ -347,7 +404,7 @@ the documentation cannot be written without them:
    require `REGISTRY` and `NAMESPACE` in a local `.env` and fail without them;
    they must be changed to fall back to the automatic behaviour and treat
    `DOCKERHUB_REGISTRY` / `DOCKERHUB_USER` / `DOCKERHUB_TOKEN` as an override.
-   The runtimes exception (2.5) stays.
+   The runtimes exception (2.6) stays.
 
 Until these are settled, the documentation must not describe the current
 behaviour as stable.
