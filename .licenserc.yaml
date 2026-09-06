@@ -41,5 +41,5 @@ header:
     - 'CHANGES'
     - 'RELEASE'
     - 'rebrander.log'
-    - '.gimodules'
+    - '.gitmodules'
     - 'openserverless.code-workspace'
