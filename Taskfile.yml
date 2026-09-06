@@ -171,7 +171,7 @@ tasks:
         vars:
           SRC: "docker.io/{{.IMG}}"
           TGT:
-            sh: echo ~/.ops/{{OS}}-{{ARCH}}/images/kind/$(echo docker.io/{{.IMG}} | /usr/bin/base64 -w0)
+            sh: echo ~/.ops/{{OS}}-{{ARCH}}/images/kind/$(echo {{.IMG}} | /usr/bin/base64 -w0)
 
     opsroot:
       desc: build current opsroot.json
