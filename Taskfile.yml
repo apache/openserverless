@@ -42,7 +42,7 @@ vars:
   ADMIN_API_TAG: "{{.OPERATOR_TAG}}"
   ADMIN_API_SRC: "docker.io/apache/openserverless-admin-api:{{.ADMIN_API_TAG}}"
 
-  RUNTIMES_TAG: "{{.OPERATOR_TAG}}"
+  RUNTIMES_TAG: "all_{{.OPERATOR_TAG}}"
 
   OPENSERVERLESS_TAG: "{{.OPERATOR_TAG}}"
   CONTROLLER_SRC: "docker.io/apache/openserverless-wsk-controller:{{.OPENSERVERLESS_TAG}}"
@@ -154,7 +154,6 @@ tasks:
       dir: runtimes
       cmds:
       - git tag -d $(git tag) && git tag {{.RUNTIMES_TAG}}
-      - task build-common
       - task build
       - task render-runtimes
       - cp runtimes.json ../oplugins/runtimes.json
