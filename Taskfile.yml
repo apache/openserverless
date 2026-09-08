@@ -51,6 +51,7 @@ vars:
   OPS_BRANCH: "{{.OPERATOR_TAG}}"
 
   CMD: "check"
+  TEST_TYPE: "kind"
 
 tasks:
 
@@ -164,12 +165,12 @@ tasks:
       dir: runtimes
       vars:
         IMAGES:
-          sh: jq -r '.runtimes[][] | select(.default == true) | "\(.image.prefix)/\(.image.name):\(.image.tag)"'   runtimes.json | grep -v php
+          sh: jq -r '.runtimes[][] | select(.default == true or .kind == "python:sys")  | "\(.image.prefix)/\(.image.name):\(.image.tag)"'   runtimes.json | grep -v php
       cmds:
       - for: { var: IMAGES, split: "\n", as: IMG }
         task: image-save
         vars:
-          SRC: "docker.io/{{.IMG}}"
+          SRC: "{{.IMG}}"
           TGT:
             sh: echo ~/.ops/{{OS}}-{{ARCH}}/images/kind/$(echo {{.IMG}} | /usr/bin/base64 -w0)
 
@@ -232,7 +233,7 @@ tasks:
       - task: opsroot
 
     test:
-      desc: create
+      desc: execute all the tests
       dir: testing/tests
       cmds:
         - |
@@ -243,7 +244,29 @@ tasks:
           ops -info
           ops setup docker delete || true
           touch .secrets
-          ./all.sh kind
+          ./all.sh {{.TEST_TYPE}}
+
+    test-one:
+      desc: execute one test specified by TEST, empty valure to list tests
+      requires: { vars: [TEST] }
+      dir: testing/tests
+      cmds:
+        - |
+          export PATH="{{.TASKFILE_DIR}}:$PATH"
+          export OPS_ROOT="{{.TASKFILE_DIR}}/oplugins"
+          export OPS_BRANCH="{{.OPS_BRANCH}}"
+          which ops
+          ops -info
+          if test -e '{{.TEST}}'
+          then echo "Running {{.TEST}}"
+              if ./{{.TEST}} {{.TEST_TYPE}}
+              then echo SUCCESS
+              else echo FAIL
+              fi
+          else echo test not found, tests are
+               ls *-*.sh | awk '{ print "- "  $1 }'
+          fi
+
 
     license:
       silent: true
