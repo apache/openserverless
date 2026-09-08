@@ -1,5 +1,14 @@
 This is the initial version of the CHANGES file for the project. It outlines the changes made in each version of the software, providing a clear history of updates, bug fixes, and new features.
 
-Most notably changes for this release
+Most notably changes for the first release
 
-- rebranding to OpenServerless, removing all the references to the original source
+- addressed all the outstanding known security issues
+
+- rebrended everything to OpenServerless, removing all the references to the original source
+
+- images has been updated for compliance with ASF rules. Most notably psycopg has been removed and replacds with pg8000, and incompatbile biaries (most notably mc) has been removed
+
+- entirely rewritten the entire build system, documented in BUILD.md - governed by triggering by tags and manually
+
+- now there is one python:sys image for executing system actions, the preloader preloads the images also from non-apache sources and preload the python:sys image
+
