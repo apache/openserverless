@@ -19,13 +19,17 @@
 
 # Build-and-test driver for Windows via WSL.
 # - installs WSL if missing
-# - creates and starts an Ubuntu distribution
+# - creates and starts a dedicated Ubuntu-based distribution named 'openserverless'
+#   (so it never touches an existing 'Ubuntu' installation)
 # - initializes it non-interactively: removes k3s, creates a sudo user, sets it default
 # - Enter in the distro and run tesst/build-and-test-ubuntu.sh as the ops user
 
 $ErrorActionPreference = "Stop"
 
-$Distro = "Ubuntu"
+# Image to install from, and the name the local distribution is registered under.
+# Keeping them distinct means an already installed 'Ubuntu' distro is left alone.
+$BaseDistro = "Ubuntu"
+$Distro = "openserverless"
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 
 # Default UNIX account created inside the distribution (override with env vars).
@@ -41,13 +45,50 @@ function Test-WslInstalled {
     return ($LASTEXITCODE -eq 0)
 }
 
+function Test-WslNameOptionSupported {
+    # `wsl --install --name <name>` registers the distribution under a custom
+    # name; it only exists in recent WSL releases. There is no `wsl --install
+    # --help`, so look the option up in the '--install' block of `wsl --help`.
+    # wsl.exe emits UTF-16, which PowerShell 5.1 surfaces with embedded NULs,
+    # so strip them before matching.
+    $lines = ((wsl.exe --help | Out-String) -replace "`0", "") -split "`r?`n"
+    $inInstall = $false
+    foreach ($line in $lines) {
+        # Top-level commands are indented 4 spaces, their options deeper.
+        if ($line -match '^\s{4}--\S') {
+            $inInstall = ($line -match '^\s{4}--install\b')
+            continue
+        }
+        if ($inInstall -and $line -match '^\s+--name\b') {
+            return $true
+        }
+    }
+    return $false
+}
+
 Write-Host "Checking WSL is installed"
 if (-not (Test-WslInstalled)) {
-    Write-Host "WSL not found. Installing WSL with the $Distro distribution..."
-    wsl.exe --install -d $Distro
+    Write-Host "WSL not found. Installing WSL with the $BaseDistro distribution..."
+    wsl.exe --install -d $BaseDistro
     Write-Warning "WSL was just installed. A reboot is usually required to finish setup."
     Write-Warning "Please reboot Windows and re-run this script."
     exit 0
+}
+
+Write-Host "Checking 'wsl --install --name' is supported"
+if (-not (Test-WslNameOptionSupported)) {
+    Write-Error @"
+This WSL version does not support 'wsl --install --name', which is required to
+install the '$Distro' distribution without disturbing an existing '$BaseDistro' one.
+
+Please update WSL and re-run this script:
+
+    wsl --update
+
+If 'wsl --update' is not available either, install the latest WSL from
+https://github.com/microsoft/WSL/releases (or the Microsoft Store).
+"@
+    exit 1
 }
 
 Write-Host "Removing any existing $Distro distribution for a clean build"
@@ -61,8 +102,8 @@ if ($installed -contains $Distro) {
     }
 }
 
-Write-Host "Installing a fresh $Distro distribution"
-wsl.exe --install -d $Distro --no-launch
+Write-Host "Installing a fresh $Distro distribution (from the $BaseDistro image)"
+wsl.exe --install -d $BaseDistro --name $Distro --no-launch
 if ($LASTEXITCODE -ne 0) {
     Write-Error "Failed to install $Distro"
     exit $LASTEXITCODE
@@ -82,7 +123,7 @@ if [ -x /usr/local/bin/k3s-uninstall.sh ]; then /usr/local/bin/k3s-uninstall.sh;
 if [ -x /usr/local/bin/k3s-agent-uninstall.sh ]; then /usr/local/bin/k3s-agent-uninstall.sh; fi
 
 # Ensure docker is installed.
-command -v docker >/dev/null 2>&1 || curl -sL get.docker.com | sh
+command -v docker >/dev/null 2>&1 || curl -sL get.docker.com | sed -e 's/sleep 20/sleep 1/g' | sh
 
 # Create the build user if it does not already exist (idempotent).
 if ! id -u '$WslUser' >/dev/null 2>&1; then
