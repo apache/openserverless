@@ -47,10 +47,10 @@ vars:
 
   RUNTIMES_TAG: "all_{{.OPERATOR_TAG}}"
 
-  BUILD_TAG: "{{.OPERATOR_TAG}}"
+  OPENWHISK_TAG: "{{.OPERATOR_TAG}}"
 
-  CONTROLLER_SRC: "docker.io/apache/openserverless-wsk-controller:{{.BUILD_TAG}}"
-  INVOKER_SRC: "docker.io/apache/openserverless-wsk-invoker:{{.BUILD_TAG}}"
+  CONTROLLER_SRC: "docker.io/apache/openserverless-wsk-controller:{{.OPENWHISK_TAG}}"
+  INVOKER_SRC: "docker.io/apache/openserverless-wsk-invoker:{{.OPENWHISK_TAG}}"
 
   DEVCONTAINER_TAG: "{{.OPERATOR_TAG}}"
   DEVCONTAINER_SRC: "docker.io/apache/openserverless-devcontainer:{{.DEVCONTAINER_TAG}}"
@@ -145,7 +145,7 @@ tasks:
         OPS_ROOT: "{{.TASKFILE_DIR}}"
       cmds:
       - echo Building  OpenServerless
-      - git tag -d $(git tag) && git tag {{.OPENSERVERLESS_TAG}}
+      - git tag -d $(git tag) && git tag {{.OPENWHISK_TAG}}
       - |
         export PATH="{{.TASKFILE_DIR}}:$PATH"
         export OPS_ROOT="{{.TASKFILE_DIR}}/oplugins"
@@ -340,7 +340,7 @@ tasks:
           sh: git -C streamer for-each-ref --sort=-creatordate --count=1 --format='%(refname:short)' refs/tags
         ADMIN_API_TAG:
           sh: git -C admin-api for-each-ref --sort=-creatordate --count=1 --format='%(refname:short)' refs/tags
-        BUILD_TAG:
+        OPENWHISK_TAG:
           sh: git -C build for-each-ref --sort=-creatordate --count=1 --format='%(refname:short)' refs/tags
         DEVCONTAINER_TAG:
           sh: git -C devcontainer for-each-ref --sort=-creatordate --count=1 --format='%(refname:short)' refs/tags
@@ -348,8 +348,8 @@ tasks:
         - test -e opsroot.orig || jq . <oplugins/opsroot.json >opsroot.orig
         - >
           jq <opsroot.orig >oplugins/opsroot.json  '
-            .config.images.controller = "{{.BASE_IMG}}/openserverless-wsk-controller:{{.BUILD_TAG}}"   |
-            .config.images.invoker    = "{{.BASE_IMG}}/openserverless-wsk-invoker:{{.BUILD_TAG}}"      |
+            .config.images.controller = "{{.BASE_IMG}}/openserverless-wsk-controller:{{.OPENWHISK_TAG}}"   |
+            .config.images.invoker    = "{{.BASE_IMG}}/openserverless-wsk-invoker:{{.OPENWHISK_TAG}}"      |
             .config.images.operator   = "{{.BASE_IMG}}/openserverless-operator:{{.OPERATOR_TAG}}"      |
             .config.images.streamer   = "{{.BASE_IMG}}/openserverless-streamer:{{.STREAMER_TAG}}"      |
             .config.images.systemapi  = "{{.BASE_IMG}}/openserverless-admin-api:{{.ADMIN_API_TAG}}"    |
