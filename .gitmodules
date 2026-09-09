@@ -58,3 +58,6 @@
 	path = testing
 	url = https://github.com/apache/openserverless-testing
 	branch = 0.9.0
+[submodule "site"]
+	path = site
+	url = https://github.com/apache/openserverless-site
