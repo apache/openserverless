@@ -2,15 +2,27 @@
 
 Welcome to [Apache OpenServerless](https://openserverless.apache.org), an incubating project at the [Apache Software Foundation](https://www.apache.org).
 
-- If you want to **install** Apache OpenServerless in the cloud go [here](https://openserverless.apache.org/docs/installation/).
+- If you want to **install** Apache OpenServerless go [here](https://openserverless.apache.org/docs/installation/).
 - If you want to **understand** what this project is check the [original proposal](https://cwiki.apache.org/confluence/display/INCUBATOR/OpenServerlessProposal).
 - If you want to **discuss** with us, join our mailing list by sending an email to `dev-subscribe@openserverless.apache.org`
-- If you want to **contribute** to the project, read [this guide](CONTRIBUTING.md)
+- If you want to **contribute** to the project, read [this the contribution guide](CONTRIBUTING.md) and the [developer guide](DEVEL.md).
 
-## Build and test from sources
+
+> [!IMPORTANT]
+> **The rest of this document covers building Apache OpenServerless from source,
+> for developers of the project itself.**
+>
+> If you are an end user and just want to *use* OpenServerless, you do not need
+> any of this — start from the
+> [installation guide](https://openserverless.apache.org/docs/installation/)
+> instead. It walks you through installing the `ops` CLI and creating a local
+> OpenServerless with `ops setup mini`.
 
 > [!WARNING]
 > Building from the latest sources in git is **not recommended for production use**. The `main` branch may contain unstable, untested, or incomplete changes. For production deployments, use an official release tarball instead.
+
+## Build and test from sources
+
 
 Download a release tarball from the Apache distribution area, untar and cd to it:
 
@@ -69,6 +81,9 @@ You need Windows 10/11 with WSL. Execute from PowerShell:
 You have to install [lima](https://lima-vm.io) (example: `brew install lima`). Execute:
 
 `./build-and-test-mac.sh`
+
+Each script builds and tests inside a disposable Linux VM or WSL distribution, so
+the build never touches your host toolchain.
 
 ## Development setup
 
@@ -140,6 +155,9 @@ cd openserverless
 ```
 
 To work on a release branch instead of `main`, add `--branch <branch>`.
+Remember that most of the code lives in git submodules, so `--recurse-submodules`
+is required; if you already cloned without it, run
+`git submodule update --init --recursive`.
 
 You can build with: `task build`
 
@@ -148,6 +166,10 @@ You can run the test suite with: `task test`
 You can check all the files have the license header: `task license`
 
 Read the task files (that are basically shell scripts wrapped in a yaml environment) to learn all the build procedures.
+
+For a guided tour of how the system is put together — the cli, the `opsroot.json`
+configuration, how tags drive the builds, the development loop and how images are
+published — read the [developer guide](DEVEL.md).
 
 ## License
 
