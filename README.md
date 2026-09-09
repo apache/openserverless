@@ -2,21 +2,14 @@
 
 Welcome to [Apache OpenServerless](https://openserverless.apache.org), an incubating project at the [Apache Software Foundation](https://www.apache.org).
 
-- If you want to **install** Apache OpenServerless go [here](https://openserverless.apache.org/docs/installation/).
-- If you want to **understand** what this project is check the [original proposal](https://cwiki.apache.org/confluence/display/INCUBATOR/OpenServerlessProposal).
-- If you want to **discuss** with us, join our mailing list by sending an email to `dev-subscribe@openserverless.apache.org`
+- If you want to **install** Apache OpenServerless to use it go [here](https://openserverless.apache.org/docs/installation/). If you are in a hurry go straight to the [quick start](https://openserverless.apache.org/docs/installation/quickstart/).
 - If you want to **contribute** to the project, read [this the contribution guide](CONTRIBUTING.md) and the [developer guide](DEVEL.md).
-
+- If you want to **discuss** with us, join our mailing list by sending an email to `dev-subscribe@openserverless.apache.org`
 
 > [!IMPORTANT]
 > **The rest of this document covers building Apache OpenServerless from source,
 > for developers of the project itself.**
->
-> If you are an end user and just want to *use* OpenServerless, you do not need
-> any of this — start from the
-> [installation guide](https://openserverless.apache.org/docs/installation/)
-> instead. It walks you through installing the `ops` CLI and creating a local
-> OpenServerless with `ops setup mini`.
+
 
 > [!WARNING]
 > Building from the latest sources in git is **not recommended for production use**. The `main` branch may contain unstable, untested, or incomplete changes. For production deployments, use an official release tarball instead.
