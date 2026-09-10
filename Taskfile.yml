@@ -324,9 +324,9 @@ tasks:
       - git tag "v{{.VER}}"
       - >
           {{if eq OS "darwin"}}gtar{{else}}tar{{end}}
+          --exclude='.git' --exclude='.github' --exclude='.vscode'
+          --exclude-from={{.TASKFILE_DIR}}/no-release.txt
           -C ..
-          --exclude='.git' --exclude='gredle-wrapper.jar'
-          --exclude-from=no-release.txt
           --transform 's,^openserverless,openserverless-{{.VER}},'
           -czvf ../openserverless-{{.VER}}-src.tar.gz
           openserverless
