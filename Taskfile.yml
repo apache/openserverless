@@ -313,47 +313,7 @@ tasks:
       - echo 'Next steps are svn push, git push --tags and send email'
 
     sync-images:
-      - |
-        for i in build oplugins-op admin-api streamer devcontainer runtimes
-        do
-          cd $i
-          echo git tag -d | xargs -L1 echo git tag -d
-          echo git fetch --tags --all
-          cd ..
-        done
-      - task: sync-runtimes
-      - task: sync-opsroot
-
-    sync-runtimes:
-      dir: runtimes
+      desc: synchronize runtimes.json and opsroot.json with published images, use WRITE=y to actuallyt write, GHUSER=github-user for a non apache user on ghcr.io
       cmds:
-      - git fetch --all --tags
-      - task render-runtimes
-      - jq -r '.runtimes[][] | "\(.image.prefix)/\(.image.name):\(.image.tag)"'  runtimes.json
-      - cp -v runtimes.json ../oplugins/runtimes.json
-
-    sync-opsroot:
-      vars:
-        OPERATOR_TAG:
-          sh: git -C oplugins-op for-each-ref --sort=-creatordate --count=1 --format='%(refname:short)' refs/tags
-        STREAMER_TAG:
-          sh: git -C streamer for-each-ref --sort=-creatordate --count=1 --format='%(refname:short)' refs/tags
-        ADMIN_API_TAG:
-          sh: git -C admin-api for-each-ref --sort=-creatordate --count=1 --format='%(refname:short)' refs/tags
-        OPENWHISK_TAG:
-          sh: git -C build for-each-ref --sort=-creatordate --count=1 --format='%(refname:short)' refs/tags
-        DEVCONTAINER_TAG:
-          sh: git -C devcontainer for-each-ref --sort=-creatordate --count=1 --format='%(refname:short)' refs/tags
-      cmds:
-        - test -e opsroot.orig || jq . <oplugins/opsroot.json >opsroot.orig
-        - >
-          jq <opsroot.orig >oplugins/opsroot.json  '
-            .config.images.controller = "{{.BASE_IMG}}/openserverless-wsk-controller:{{.OPENWHISK_TAG}}"   |
-            .config.images.invoker    = "{{.BASE_IMG}}/openserverless-wsk-invoker:{{.OPENWHISK_TAG}}"      |
-            .config.images.operator   = "{{.BASE_IMG}}/openserverless-operator:{{.OPERATOR_TAG}}"      |
-            .config.images.streamer   = "{{.BASE_IMG}}/openserverless-streamer:{{.STREAMER_TAG}}"      |
-            .config.images.systemapi  = "{{.BASE_IMG}}/openserverless-admin-api:{{.ADMIN_API_TAG}}"    |
-            .config.images.devcontainer  = "{{.BASE_IMG}}/openserverless-devcontainer:{{.DEVCONTAINER_TAG}}"
-          '
-        - diff opsroot.orig oplugins/opsroot.json || true
+        - python syncimages.py --write={{.WRITE}} "{{.GHUSER}}"
 
