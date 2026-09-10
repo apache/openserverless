@@ -291,6 +291,18 @@ tasks:
             cd {{.TASKFILE_DIR}}
         done
 
+    find-binaries:
+      silent: true
+      desc: find binary files
+      cmds:
+      - >
+          find . -path ./.git -prune
+          -o -iname '*.png' -prune
+          -o -iname '*.jpg' -prune
+          -o -type f -size +0 -print0
+          | xargs -0 file --mime-encoding
+          | grep ':.*\bbinary$' | cut -d: -f1
+
     sync-images:
       desc: synchronize runtimes.json and opsroot.json with published images, use WRITE=y to actuallyt write, GHUSER=github-user for a non apache user on ghcr.io
       cmds:
@@ -309,7 +321,10 @@ tasks:
       - git tag "v{{.VER}}"
       - >
           {{if eq OS "darwin"}}gtar{{else}}tar{{end}}
-          -C .. --exclude='.git'
+          -C ..
+          --exclude='.git'
+          --exclude='./cli/_patches/wskdeploy/tests/*'
+          --exclude='./cli/_patches/wskdeploy/specification/*'
           --transform 's,^openserverless,openserverless-{{.VER}},'
           -czvf ../openserverless-{{.VER}}-src.tar.gz
           openserverless
