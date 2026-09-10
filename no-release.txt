@@ -1,0 +1,11 @@
+./oplugins-op/enterprise-util/kafka/jmx/jmx_prometheus_javaagent-0.18.0.jar
+./runtimes/tests/java/hello.jar
+./cli/_patches/wsk/gradle/wrapper/gradle-wrapper.jar
+./cli/_patches/wskdeploy/tests/*
+./cli/_patches/wskdeploy/specification/*
+./cli/_patches/wskdeploy/gradle/wrapper/gradle-wrapper.jar
+./cli/_patches/awk/testdata/*
+./oplugins/util/config/configurator/tests/fixtures/bad.json
+./build/openwhisk/tools/owperf/owperf_data.odg
+./build/openwhisk/docs/images/whisk_icon_full_color_with_tm.psd
+./build/openwhisk/gradle/wrapper/gradle-wrapper.jar
