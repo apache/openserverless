@@ -291,6 +291,11 @@ tasks:
             cd {{.TASKFILE_DIR}}
         done
 
+    sync-images:
+      desc: synchronize runtimes.json and opsroot.json with published images, use WRITE=y to actuallyt write, GHUSER=github-user for a non apache user on ghcr.io
+      cmds:
+        - python syncimages.py --write={{.WRITE}} "{{.GHUSER}}"
+
     release:
       desc: release - the source must be in version folder and you need a gpg key to sign
       requires:
@@ -299,6 +304,7 @@ tasks:
       - test -d ../../{{.VER}}/openserverless || { echo "parent dir does not match with version" ; exit 1; }
       - gpg --list-secret-keys | grep  "{{or .KEY "missing" }}" || { echo "key not found in gpg" ;   exit 1; }
       - rm -f -v ../openserverless-* || true
+      - task license
       - git tag -d $(git tag) || true
       - git tag "v{{.VER}}"
       - >
@@ -308,12 +314,8 @@ tasks:
           -czvf ../openserverless-{{.VER}}-src.tar.gz
           openserverless
       - gpg --armor --detach-sign --local-user {{.KEY}} ../openserverless-{{.VER}}-src.tar.gz
-      - shasum -a 512 ../openserverless-{{.VER}}-src.tar.gz >../openserverless-{{.VER}}-src.tar.gz.sha512
+      - cd .. && shasum -a 512 openserverless-{{.VER}}-src.tar.gz >openserverless-{{.VER}}-src.tar.gz.sha512
       - uv run releasing.py {{.VER}} >../../{{.VER}}.txt
       - echo 'Next steps are svn push, git push --tags and send email'
 
-    sync-images:
-      desc: synchronize runtimes.json and opsroot.json with published images, use WRITE=y to actuallyt write, GHUSER=github-user for a non apache user on ghcr.io
-      cmds:
-        - python syncimages.py --write={{.WRITE}} "{{.GHUSER}}"
 
