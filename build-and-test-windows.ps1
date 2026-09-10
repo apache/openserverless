@@ -27,8 +27,8 @@
 $ErrorActionPreference = "Stop"
 
 # Image to install from, and the name the local distribution is registered under.
-# Keeping them distinct means an already installed 'Ubuntu' distro is left alone.
-$BaseDistro = "Ubuntu"
+# Keeping them distinct means an already installed 'Ubuntu-24.04' distro is left alone.
+$BaseDistro = "Ubuntu-24.04"
 $Distro = "openserverless"
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 
@@ -112,7 +112,7 @@ if ($LASTEXITCODE -ne 0) {
 Write-Host "Initializing $Distro as root (removing k3s, docker, creating user '$WslUser')"
 # On WSL there is no host user mapped in, so we create the build user ourselves.
 # We do it by running provisioning commands directly as root (wsl -u root), no
-# boot command. The script is idempotent: removes k3s, ensures docker, and
+# boot command. The script is idempotent: removes k3s, installs docker, and
 # creates '$WslUser' with docker + passwordless sudo.
 $initScript = @"
 set -e
@@ -122,8 +122,8 @@ if [ -x /usr/local/bin/k3s-killall.sh ]; then /usr/local/bin/k3s-killall.sh; fi
 if [ -x /usr/local/bin/k3s-uninstall.sh ]; then /usr/local/bin/k3s-uninstall.sh; fi
 if [ -x /usr/local/bin/k3s-agent-uninstall.sh ]; then /usr/local/bin/k3s-agent-uninstall.sh; fi
 
-# Ensure docker is installed.
-command -v docker >/dev/null 2>&1 || curl -sL get.docker.com | sed -e 's/sleep 20/sleep 1/g' | sh
+# Install docker.
+curl -sL get.docker.com | sed -e 's/sleep 20/sleep 1/g' | sh
 
 # Create the build user if it does not already exist (idempotent).
 if ! id -u '$WslUser' >/dev/null 2>&1; then
@@ -190,8 +190,10 @@ Write-Host "Running build-and-test-ubuntu.sh in $Distro as '$WslUser'"
 # Run the build/test script as ops from the source directory. ops was created
 # with the mount's owning uid/gid, so it can write the build output in place;
 # it has docker + passwordless sudo, so no newgrp/usermod is needed in-script.
+# PATH is set explicitly to the distro's own directories, dropping the Windows
+# PATH that WSL otherwise appends.
 $wslScriptDir = (wsl.exe -d $Distro wslpath -a ($ScriptDir -replace '\\', '/')).Trim()
-wsl.exe -d $Distro --cd "$wslScriptDir" -u $WslUser -- bash -lc "./build-and-test-ubuntu.sh"
+wsl.exe -d $Distro --cd "$wslScriptDir" -u $WslUser -- bash -lc 'export PATH="$HOME/.local/bin:/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin"; ./build-and-test-ubuntu.sh'
 if ($LASTEXITCODE -ne 0) {
     Write-Error "build-and-test-ubuntu.sh failed with exit code $LASTEXITCODE"
     exit $LASTEXITCODE

@@ -54,6 +54,8 @@ VERSION_RE = re.compile(
     r"(?:-(?:RC|rc)(?P<rc>\d+))?$"
 )
 
+VERIFY_URL = "https://github.com/apache/openserverless/blob/0.9.0/VERIFY.md"
+
 DISCLAIMER = """\
 Apache OpenServerless is an effort undergoing incubation at The Apache Software
 Foundation (ASF), sponsored by the Apache Incubator. Incubation is required
@@ -175,7 +177,8 @@ class Release:
             "The KEYS file is available at:\n\n%s" % self.keys_url,
             "Please download, verify, and test the release candidate.",
             "For detailed step-by-step instructions on how to verify this\n"
-            "release, please see the file VERIFY.md within the source archive.",
+            "release, please see the file VERIFY.md within the source\n"
+            "archive, or check:\n\n%s" % VERIFY_URL,
             "The vote will run for a minimum of %d hours and close no earlier\n"
             "than:\n\n%s"
             % (self.hours, self.deadline.strftime("%Y-%m-%d %H:%M UTC")),
@@ -207,7 +210,8 @@ class Release:
             "The KEYS file used to sign the artifacts is available at:\n\n%s"
             % self.keys_url,
             "For instructions on how to verify the release, please see the\n"
-            "file VERIFY.md within the source archive.",
+            "file VERIFY.md within the source archive, or check:\n\n%s"
+            % VERIFY_URL,
         ]
         if self.incubating:
             paragraphs.append(DISCLAIMER)
