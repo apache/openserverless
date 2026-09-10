@@ -20,17 +20,9 @@ version: 3
 vars:
 
   BASE_IMG: "docker.io/apache"
-  RELEASE_FROM_DIR: '{{ if regexMatch "v[0-9][^/]+$" (base .TASKFILE_DIR) }}{{ regexFind "v[0-9][^/]+$" (base .TASKFILE_DIR) }}{{ else }}snapshot{{ end }}'
+
   RELEASE:
-    sh: |
-        if test -e .git
-        then git -C oplugins-op rev-parse --short HEAD
-        else
-          if test -e RELEASE
-          then cat RELEASE
-          else echo {{.RELEASE_FROM_DIR}} | tee RELEASE
-          fi
-        fi
+    sh: git -C oplugins-op rev-parse --short HEAD || '{{trimPrefix "openserverless-" (base .TASKFILE_DIR)}}'
 
   OPERATOR_TAG: "{{.RELEASE}}"
 
@@ -63,7 +55,7 @@ vars:
 tasks:
 
     default:
-      -  task -l
+      - task -l
       - echo release '{{.RELEASE}}'
 
     clean:
