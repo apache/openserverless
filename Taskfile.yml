@@ -315,7 +315,7 @@ tasks:
           openserverless
       - gpg --armor --detach-sign --local-user {{.KEY}} ../openserverless-{{.VER}}-src.tar.gz
       - cd .. && shasum -a 512 openserverless-{{.VER}}-src.tar.gz >openserverless-{{.VER}}-src.tar.gz.sha512
-      - pyhon3 releasing.py {{.VER}} >../../{{.VER}}.txt
+      - python3 releasing.py {{.VER}} >../../{{.VER}}.txt
       - echo 'Next steps are svn push, git push --tags and send email'
 
 
