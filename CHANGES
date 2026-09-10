@@ -17,3 +17,5 @@ This is the initial version of the CHANGES file for the project. It outlines the
 - bun.lockb -> bun.lock (text)
 
 - excluded binary files (almost all test data and the gradle-wrappers from openwhisk)
+
+- backported SSO from 0.9.1 branch
