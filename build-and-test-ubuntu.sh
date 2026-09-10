@@ -104,6 +104,8 @@ git config --global --get user.name  >/dev/null || git config --global user.name
 git config --global --get user.email >/dev/null || git config --global user.email "noreply@example.com"
 
 mkdir -p ~/.ssh
+
+rm -f ops
 task license
 task build
 task test
