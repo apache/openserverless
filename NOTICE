@@ -4,3 +4,472 @@ Copyright 2024 The Apache Software Foundation
 This product includes software developed at
 The Apache Software Foundation (http://www.apache.org/).
 
+
+==============================================================================
+BEGIN BUNDLED THIRD-PARTY SOFTWARE INVENTORY (consolidated)
+==============================================================================
+
+This file consolidates the third-party attribution for the whole Apache
+OpenServerless distribution: the `ops` command-line interface, the vendored
+Apache OpenWhisk sources under build/openwhisk, the runtimes, and every
+component published as a container image.
+
+Per-component inventories remain in the NOTICE file of each submodule and
+take precedence for that component. This file is the aggregate view and is
+the one shipped beside the convenience binaries.
+
+The components below are redistributed under the licenses recorded in the
+LICENSE file that accompanies this NOTICE. Components flagged
+'*** SEE WARN ***' are listed in the WARN file as incompatible with, or
+requiring special handling under, the Apache License 2.0.
+
+
+------------------------------------------------------------------------------
+1. Apache OpenServerless CLI -- `ops` binary (cli/)
+------------------------------------------------------------------------------
+
+The `ops` binary is statically linked. Every Go module below is compiled
+into the released executable, so its copyright notice is reproduced here as
+required by the MIT and BSD licenses.
+
+Go module dependencies (cli/go.mod, cli/go.sum)
+-----------------------------------------------
+  * dario.cat/mergo (v1.0.0)
+      License: BSD-3-Clause
+  * github.com/a8m/envsubst (v1.4.2)
+      License: MIT
+  * github.com/alecthomas/chroma/v2 (v2.14.0)
+      License: MIT
+  * github.com/alessio/shellescape (v1.4.1)
+      License: MIT
+  * github.com/apache/openwhisk-client-go (v0.0.0-20210311185314-87edc2364717)
+      License: Apache-2.0
+  * github.com/cenkalti/backoff/v4 (v4.3.0)
+      License: MIT
+  * github.com/cloudflare/circl (v1.3.7)
+      License: BSD-3-Clause
+  * github.com/cloudfoundry/jibber_jabber (v0.0.0-20151120183258-bcc4c8345a21)
+      License: Apache-2.0
+  * github.com/cyphar/filepath-securejoin (v0.2.4)
+      License: BSD-3-Clause
+  * github.com/davecgh/go-spew (v1.1.2-0.20180830191138-d8f796af33cc)
+      License: ISC
+  * github.com/dlclark/regexp2 (v1.11.0)
+      License: MIT
+  * github.com/docopt/docopt-go (v0.0.0-20180111231733-ee0de3bc6815)
+      License: MIT
+  * github.com/dominikbraun/graph (v0.23.0)
+      License: Apache-2.0
+  * github.com/emirpasic/gods (v1.18.1)
+      License: BSD-2-Clause
+  * github.com/fatih/color (v1.17.0)
+      License: MIT
+  * github.com/ghodss/yaml (v1.0.1-0.20190212211648-25d852aebe32)
+      License: MIT
+  * github.com/go-git/gcfg (v1.5.1-0.20230307220236-3a3c6141e376)
+      License: BSD-3-Clause
+  * github.com/go-git/go-billy/v5 (v5.5.0)
+      License: Apache-2.0
+  * github.com/go-git/go-git/v5 (v5.12.0)
+      License: Apache-2.0
+  * github.com/go-task/slim-sprig/v3 (v3.0.0)
+      License: MIT
+  * github.com/go-task/template (v0.0.0-20240602015157-960e6f576656)
+      License: BSD-3-Clause
+  * github.com/golang/groupcache (v0.0.0-20210331224755-41bb18bfe9da)
+      License: Apache-2.0
+  * github.com/gomarkdown/markdown (v0.0.0-20240730141124-034f12af3bf6)
+      License: BSD-2-Clause
+  * github.com/google/go-querystring (v1.1.0)
+      License: BSD-3-Clause
+  * github.com/google/uuid (v1.6.0)
+      License: BSD-3-Clause
+  * github.com/h2non/filetype (v1.1.3)
+      License: MIT
+  * github.com/hokaccha/go-prettyjson (v0.0.0-20210113012101-fb4e108d2519)
+      License: MIT
+  * github.com/huandu/xstrings (v1.3.2)
+      License: MIT
+  * github.com/imdario/mergo (v0.3.13)
+      License: BSD-3-Clause
+  * github.com/itchyny/gojq (v0.12.16)
+      License: MIT
+  * github.com/itchyny/timefmt-go (v0.1.6)
+      License: MIT
+  * github.com/jaytaylor/html2text (v0.0.0-20230321000545-74c2419ad056)
+      License: MIT
+  * github.com/jbenet/go-context (v0.0.0-20150711004518-d14ea06fba99)
+      License: MIT
+  * github.com/jessevdk/go-flags (v1.5.0)
+      License: BSD-3-Clause
+  * github.com/joho/godotenv (v1.5.1)
+      License: MIT
+  * github.com/kevinburke/ssh_config (v1.2.0)
+      License: MIT
+  * github.com/Ladicle/tabwriter (v1.0.0)
+      License: BSD-3-Clause
+  * github.com/Masterminds/goutils (v1.1.1)
+      License: Apache-2.0
+  * github.com/Masterminds/semver (v1.5.0)
+      License: MIT
+  * github.com/Masterminds/semver/v3 (v3.2.1)
+      License: MIT
+  * github.com/Masterminds/sprig (v2.22.0+incompatible)
+      License: MIT
+  * github.com/mattn/go-colorable (v0.1.13)
+      License: MIT
+  * github.com/mattn/go-isatty (v0.0.20)
+      License: MIT
+  * github.com/mattn/go-runewidth (v0.0.15)
+      License: MIT
+  * github.com/mattn/go-zglob (v0.0.4)
+      License: MIT
+  * github.com/mitchellh/copystructure (v1.2.0)
+      License: MIT
+  * github.com/mitchellh/go-homedir (v1.1.0)
+      License: MIT
+  * github.com/mitchellh/hashstructure/v2 (v2.0.2)
+      License: MIT
+  * github.com/mitchellh/reflectwalk (v1.0.2)
+      License: MIT
+  * github.com/nicksnyder/go-i18n (v1.10.1)
+      License: MIT
+  * github.com/nuvolaris/envsubst/cmd/envsubstmain (v0.0.0-20230603163828-10ca029cdb58)
+      License: MIT
+  * github.com/nuvolaris/go-replace (v0.0.0-20230515190028-12766da1824c)
+      License: MIT
+  * github.com/nuvolaris/goawk (v1.21.1)
+      License: MIT
+  * github.com/nuvolaris/gron (v0.0.0-20231020134423-84e679ea6aad)
+      License: MIT
+  * github.com/nuvolaris/jj (v0.0.0-20231020143327-10b90948a5d2)
+      License: MIT
+  * github.com/nwidger/jsoncolor (v0.0.0-20170215171346-75a6de4340e5)
+      License: MIT
+  * github.com/olekukonko/tablewriter (v0.0.5)
+      License: MIT
+  * github.com/pelletier/go-toml (v1.8.1)
+      License: MIT
+  * github.com/pjbgf/sha1cd (v0.3.0)
+      License: Apache-2.0
+  * github.com/pkg/browser (v0.0.0-20240102092130-5ac0b6a4141c)
+      License: BSD-2-Clause
+  * github.com/pkg/errors (v0.9.1)
+      License: BSD-2-Clause
+  * github.com/ProtonMail/go-crypto (v1.0.0)
+      License: BSD-3-Clause
+  * github.com/radovskyb/watcher (v1.0.7)
+      License: BSD-3-Clause
+  * github.com/remeh/sizedwaitgroup (v1.0.0)
+      License: MIT
+  * github.com/rivo/uniseg (v0.4.7)
+      License: MIT
+  * github.com/sajari/fuzzy (v1.0.0)
+      License: MIT
+  * github.com/sciabarracom/openwhisk-cli (v1.2.1)
+      License: Apache-2.0
+  * github.com/sciabarracom/openwhisk-wskdeploy (v1.2.1)
+      License: Apache-2.0
+  * github.com/sciabarracom/sh/v3 (v3.8.3)
+      License: BSD-3-Clause
+  * github.com/sciabarracom/task/v3 (v3.38.12)
+      License: MIT
+  * github.com/sergi/go-diff (v1.3.2-0.20230802210424-5b0b94c5c0d3)
+      License: MIT
+  * github.com/skeema/knownhosts (v1.2.2)
+      License: Apache-2.0
+  * github.com/spf13/cobra (v1.1.3)
+      License: Apache-2.0
+  * github.com/spf13/pflag (v1.0.5)
+      License: BSD-3-Clause
+  * github.com/ssor/bom (v0.0.0-20170718123548-6386211fdfcf)
+      License: MIT
+  * github.com/tidwall/gjson (v1.14.0)
+      License: MIT
+  * github.com/tidwall/match (v1.1.1)
+      License: MIT
+  * github.com/tidwall/pretty (v1.2.0)
+      License: MIT
+  * github.com/tidwall/sjson (v1.2.4)
+      License: MIT
+  * github.com/xanzy/ssh-agent (v0.3.3)
+      License: Apache-2.0
+  * github.com/xi2/xz (v0.0.0-20171230120015-48954b6210f8)
+      License: Public Domain
+  * github.com/zalando/go-keyring (v0.2.5)
+      License: MIT
+  * github.com/zeebo/xxh3 (v1.0.2)
+      License: BSD-2-Clause
+  * golang.org/x/crypto (v0.25.0)
+      License: BSD-3-Clause
+  * golang.org/x/exp (v0.0.0-20240719175910-8a7402abbf56)
+      License: BSD-3-Clause
+  * golang.org/x/net (v0.27.0)
+      License: BSD-3-Clause
+  * golang.org/x/sync (v0.7.0)
+      License: BSD-3-Clause
+  * golang.org/x/sys (v0.22.0)
+      License: BSD-3-Clause
+  * golang.org/x/term (v0.22.0)
+      License: BSD-3-Clause
+  * gopkg.in/warnings.v0 (v0.1.2)
+      License: BSD-2-Clause
+  * gopkg.in/yaml.v2 (v2.4.0)
+      License: Apache-2.0
+  * gopkg.in/yaml.v3 (v3.0.1)
+      License: MIT
+
+Attribution required by bundled Apache-2.0 components
+------------------------------------------------------
+The following bundled components ship their own NOTICE file. Their required
+attributions are reproduced here, as required by section 4(d) of the
+Apache License, Version 2.0.
+
+  Apache OpenWhisk Client Go
+  Copyright 2016-2021 The Apache Software Foundation
+
+  Apache OpenWhisk Command-line Interface (CLI)
+  Copyright 2016-2021 The Apache Software Foundation
+
+  Apache OpenWhisk Wskdeploy
+  Copyright 2016-2021 The Apache Software Foundation
+
+  Copyright 2011-2016 Canonical Ltd. (gopkg.in/yaml.v2)
+
+  Copyright 2024 Skeema LLC and the Skeema Knownhosts authors
+  (github.com/skeema/knownhosts)
+
+The `ops` CLI embeds patched forks of Apache OpenWhisk components
+(openwhisk-cli, openwhisk-wskdeploy) and of several third-party tools. The
+patches applied are recorded in cli/_patches/. All forks retain the license
+of their upstream project.
+
+
+------------------------------------------------------------------------------
+2. Apache OpenWhisk -- vendored sources (build/openwhisk/)
+------------------------------------------------------------------------------
+
+The build/openwhisk directory contains a vendored copy of the Apache
+OpenWhisk source tree, licensed under the Apache License, Version 2.0.
+
+  Apache OpenWhisk
+  Copyright 2016-2021 The Apache Software Foundation
+
+  This product includes software developed at
+  The Apache Software Foundation (http://www.apache.org/).
+
+The OpenWhisk code was originally created, designed and developed under an
+IBM copyright dated 2015-2016 and donated by the IBM Corporation
+(http://www.ibm.com/) to the Apache Software Foundation. The API Gateway
+component was jointly developed by IBM Corporation and Adobe Systems
+Incorporated (http://www.adobe.com/) and donated by both companies. The full
+donation record is preserved in build/openwhisk/CREDITS.txt.
+
+Source code incorporated from Spray
+------------------------------------
+  * Spray Caching (io.spray:spray-caching_2.11:1.3.4)
+      License: Apache-2.0
+      Copyright (C) 2011-2015 the spray project <http://spray.io>
+      The file
+        build/openwhisk/common/scala/src/main/scala/org/apache/openwhisk/
+        core/database/ConcurrentMapBackedCache.scala
+      contains an implementation derived from Spray's [[spray.caching.Cache]]
+      and [[spray.caching.SimpleLruCache]].
+      License text: build/openwhisk/licenses/LICENSE-spray.txt
+      See also https://github.com/spray/spray/blob/master/LICENSE
+
+Bundled build tooling
+----------------------
+  * Gradle wrapper -- gradlew, gradlew.bat, gradle-wrapper.jar (6.9.1)
+      License: Apache-2.0
+      Distributed with the vendored OpenWhisk sources; the wrapper downloads
+      Gradle 6.9.1 at build time. See build/openwhisk/gradlew and
+      build/openwhisk/gradlew.bat.
+
+Scala / Java dependencies resolved by the OpenWhisk Gradle build
+-----------------------------------------------------------------
+These are declared in build/openwhisk/**/build.gradle and settings.gradle
+and are resolved from Maven Central at build time. They are not present in
+the source distribution; they are linked into the published controller,
+invoker and scheduler container images.
+
+  * Scala standard library / reflect (2.12.10)
+      License: Apache-2.0
+  * Akka -- actor, stream, cluster, cluster-tools, cluster-metrics,
+    distributed-data, slf4j, testkit (2.6.12)
+      License: Apache-2.0
+      Note: Akka 2.6.12 predates the September 2022 BSL 1.1 relicensing of
+      Akka and is Apache-2.0. Do not upgrade Akka past 2.6.20 without legal
+      review -- later versions are Category X for an Apache release.
+  * Akka HTTP -- http, http-core, http-spray-json, http2-support, parsing (10.2.4)
+      License: Apache-2.0
+      Note: same BSL caveat as Akka above.
+  * Akka Stream Kafka (2.0.2)
+      License: Apache-2.0
+  * Akka Management / Discovery -- cluster-bootstrap, kubernetes-api,
+    marathon-api (1.0.5)
+      License: Apache-2.0
+  * Akka gRPC Gradle plugin (1.0.0)
+      License: Apache-2.0
+  * Alpakka -- file, s3 (1.1.2)
+      License: Apache-2.0
+  * spray-json (1.3.4, 1.3.5)
+      License: Apache-2.0
+      Copyright (C) 2011-2015 the spray project <http://spray.io>
+  * Kamon -- core, statsd, system-metrics, prometheus, datadog (2.1.12)
+      License: Apache-2.0
+  * Apache Kafka clients (2.4.0)
+      License: Apache-2.0
+  * Apache Curator (4.0.0)
+      License: Apache-2.0
+  * Apache Commons -- lang3 (3.3.2, 3.8.1), io (1.3.2, 2.6),
+    codec (1.9), collections (3.2.2)
+      License: Apache-2.0
+  * Apache HttpComponents -- httpclient (4.5.5), httpmime (4.3.6)
+      License: Apache-2.0
+  * Fabric8 Kubernetes client (4.10.3)
+      License: Apache-2.0
+  * AWS SDK for Java -- s3 (1.11.295), cloudfront (1.11.517)
+      License: Apache-2.0
+  * Azure Cosmos DB SDK -- azure-cosmos (3.5.0), azure-cosmosdb (2.6.2)
+      License: MIT
+  * MongoDB Scala driver (2.7.0)
+      License: Apache-2.0
+  * etcd-java (0.0.13)
+      License: Apache-2.0
+  * Caffeine (2.6.2)
+      License: Apache-2.0
+  * Gson (2.3.1, 2.6.2)
+      License: Apache-2.0
+  * Groovy (2.4.14)
+      License: Apache-2.0
+  * java-uuid-generator (3.1.3)
+      License: Apache-2.0
+  * json-schema-validator (2.2.8)
+      License: LGPL-3.0 OR Apache-2.0
+      Apache-2.0 is elected. *** SEE WARN ***
+  * swagger-request-validator-core (1.4.5)
+      License: Apache-2.0
+  * OpenTracing -- api, util, mock (0.31.0)
+      License: Apache-2.0
+  * Prometheus simpleclient -- simpleclient, simpleclient_common (0.6.0)
+      License: Apache-2.0
+  * Zipkin reporter2 -- reporter, sender-okhttp3 (2.6.1)
+      License: Apache-2.0
+  * RxJava (1.3.8) / rxjava-reactive-streams (1.2.1)
+      License: Apache-2.0
+  * SLF4J bridges -- jcl-over-slf4j, log4j-over-slf4j (1.7.25)
+      License: MIT
+  * Logback classic (1.2.3)
+      License: EPL-1.0 OR LGPL-2.1
+      Category B: used unmodified as a separate file. *** SEE WARN ***
+  * JSR-305 annotations (3.0.2)
+      License: BSD-3-Clause
+  * JUnit (4.11)
+      License: EPL-1.0
+      Test-only. Category B. *** SEE WARN ***
+  * ScalaTest (3.0.8)
+      License: Apache-2.0
+      Test-only.
+  * Mockito core (2.27.0)
+      License: MIT
+      Test-only.
+  * REST Assured (4.0.0)
+      License: Apache-2.0
+      Test-only.
+  * Testcontainers -- elasticsearch, mongodb (1.17.1)
+      License: MIT
+      Test-only.
+
+------------------------------------------------------------------------------
+3. Apache OpenServerless Runtimes (runtimes/)
+------------------------------------------------------------------------------
+
+The action proxy is written in Go and is compiled into each runtime image.
+
+Go module dependencies (runtimes/go.mod, runtimes/go.sum)
+---------------------------------------------------------
+  * github.com/google/uuid (v1.6.0)
+      License: BSD-3-Clause
+  * github.com/rs/zerolog (v1.33.0)
+      License: MIT
+  * github.com/stretchr/testify (v1.9.0)
+      License: MIT
+      Test-only dependency.
+  * github.com/davecgh/go-spew (v1.1.1)
+      License: ISC
+      Transitive.
+  * github.com/mattn/go-colorable (v0.1.13)
+      License: MIT
+      Transitive.
+  * github.com/mattn/go-isatty (v0.0.20)
+      License: MIT
+      Transitive.
+  * github.com/pmezard/go-difflib (v1.0.0)
+      License: BSD-3-Clause
+      Transitive.
+  * golang.org/x/sys (v0.26.0)
+      License: BSD-3-Clause
+      Transitive.
+  * gopkg.in/yaml.v3 (v3.0.1)
+      License: Apache-2.0 AND MIT
+      Transitive.
+
+The runtimes/openwhisk directory contains action-proxy sources derived from
+Apache OpenWhisk, licensed under the Apache License, Version 2.0.
+
+Each language runtime image additionally bundles its own language toolchain
+and libraries (Node.js, Python, Go, Java, PHP, Ruby and others) supplied by
+the corresponding upstream base image. Those components are provided by the
+upstream image and are not redistributed by the ASF in source form.
+
+
+------------------------------------------------------------------------------
+4. Components published as container images
+------------------------------------------------------------------------------
+
+The following components are Apache-2.0 licensed in source form and bundle
+third-party software only in their published convenience images. The full
+per-image inventory for each is kept in that component's own NOTICE, LICENSE
+and WARN files, which remain authoritative:
+
+  * apache/openserverless-admin-api        -- admin-api/NOTICE
+      Python runtime; bundles certifi (MPL-2.0, Category B) and
+      waitress (ZPL-2.1, Category B).
+  * apache/openserverless-operator         -- oplugins-op/NOTICE
+      Python runtime; bundles certifi (MPL-2.0, Category B), kubectl,
+      kustomize, the OpenWhisk CLI and Task.
+  * apache/openserverless-streamer         -- streamer/NOTICE
+      Go binary on a scratch image; bundles a CA certificate bundle
+      (MPL-2.0, Category B).
+  * apache/openserverless-devcontainer     -- devcontainer/NOTICE
+      Debian-based developer image; bundles GPL-licensed operating-system
+      userland. *** SEE WARN ***
+
+The Taskfile plugins (oplugins/) and the test suite (testing/) contain no
+bundled third-party source; they invoke tools that the `ops` CLI or the
+operating system provides.
+
+
+------------------------------------------------------------------------------
+Attribution required by bundled components
+------------------------------------------------------------------------------
+
+This product includes software developed by the Apache Software
+Foundation (http://www.apache.org/), including Apache OpenWhisk
+components and Apache-2.0 licensed libraries listed above.
+
+This product includes software developed by third parties under the
+MIT, BSD, ISC, PSF, MPL-2.0, EPL, ZPL and other licenses, as recorded in
+LICENSE.
+
+This product includes software developed by the spray project
+(http://spray.io), Copyright (C) 2011-2015 the spray project.
+
+This product includes software originally developed by IBM Corporation
+(http://www.ibm.com/) and Adobe Systems Incorporated
+(http://www.adobe.com/), donated to the Apache Software Foundation.
+
+==============================================================================
+END BUNDLED THIRD-PARTY SOFTWARE INVENTORY
+==============================================================================

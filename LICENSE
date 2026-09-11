@@ -200,3 +200,457 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+
+
+==============================================================================
+LICENSES OF BUNDLED THIRD-PARTY SOFTWARE
+Apache OpenServerless (Incubating) -- consolidated
+==============================================================================
+
+Apache OpenServerless itself is licensed under the Apache License,
+Version 2.0, reproduced above.
+
+The source distribution additionally contains a vendored copy of the Apache
+OpenWhisk sources (build/openwhisk), which is Apache-2.0 licensed. The
+convenience binaries and container images built from this source bundle the
+third-party components listed below, each under its own license.
+
+Refer to https://www.apache.org/legal/resolved.html for the ASF
+classification of these licenses. Components that are NOT compatible with
+the Apache License 2.0, or that require special handling, are enumerated in
+the WARN file.
+
+The per-component LICENSE files in each submodule remain authoritative for
+that component. This file is the aggregate view.
+
+
+==============================================================================
+SECTION 1 -- Apache OpenServerless CLI (`ops` binary, cli/)
+==============================================================================
+
+The `ops` binary is statically linked: all modules below are compiled into
+the released executable. The MIT and BSD licenses require that the copyright
+notice and permission notice be reproduced in binary redistributions; the
+full license text of every module is available in the module's source
+repository and in the Go module cache entry recorded in cli/go.sum.
+
+------------------------------------------------------------------------------
+Summary by license
+------------------------------------------------------------------------------
+
+Apache-2.0
+    github.com/apache/openwhisk-client-go (v0.0.0-20210311185314-87edc2364717)
+    github.com/cloudfoundry/jibber_jabber (v0.0.0-20151120183258-bcc4c8345a21)
+    github.com/dominikbraun/graph (v0.23.0)
+    github.com/go-git/go-billy/v5 (v5.5.0)
+    github.com/go-git/go-git/v5 (v5.12.0)
+    github.com/golang/groupcache (v0.0.0-20210331224755-41bb18bfe9da)
+    github.com/Masterminds/goutils (v1.1.1)
+    github.com/pjbgf/sha1cd (v0.3.0)
+    github.com/sciabarracom/openwhisk-cli (v1.2.1)
+    github.com/sciabarracom/openwhisk-wskdeploy (v1.2.1)
+    github.com/skeema/knownhosts (v1.2.2)
+    github.com/spf13/cobra (v1.1.3)
+    github.com/xanzy/ssh-agent (v0.3.3)
+    gopkg.in/yaml.v2 (v2.4.0)
+
+BSD-2-Clause
+    github.com/emirpasic/gods (v1.18.1)
+    github.com/gomarkdown/markdown (v0.0.0-20240730141124-034f12af3bf6)
+    github.com/pkg/browser (v0.0.0-20240102092130-5ac0b6a4141c)
+    github.com/pkg/errors (v0.9.1)
+    github.com/zeebo/xxh3 (v1.0.2)
+    gopkg.in/warnings.v0 (v0.1.2)
+
+BSD-3-Clause
+    dario.cat/mergo (v1.0.0)
+    github.com/cloudflare/circl (v1.3.7)
+    github.com/cyphar/filepath-securejoin (v0.2.4)
+    github.com/go-git/gcfg (v1.5.1-0.20230307220236-3a3c6141e376)
+    github.com/go-task/template (v0.0.0-20240602015157-960e6f576656)
+    github.com/google/go-querystring (v1.1.0)
+    github.com/google/uuid (v1.6.0)
+    github.com/imdario/mergo (v0.3.13)
+    github.com/jessevdk/go-flags (v1.5.0)
+    github.com/Ladicle/tabwriter (v1.0.0)
+    github.com/ProtonMail/go-crypto (v1.0.0)
+    github.com/radovskyb/watcher (v1.0.7)
+    github.com/sciabarracom/sh/v3 (v3.8.3)
+    github.com/spf13/pflag (v1.0.5)
+    golang.org/x/crypto (v0.25.0)
+    golang.org/x/exp (v0.0.0-20240719175910-8a7402abbf56)
+    golang.org/x/net (v0.27.0)
+    golang.org/x/sync (v0.7.0)
+    golang.org/x/sys (v0.22.0)
+    golang.org/x/term (v0.22.0)
+
+ISC
+    github.com/davecgh/go-spew (v1.1.2-0.20180830191138-d8f796af33cc)
+
+MIT
+    github.com/a8m/envsubst (v1.4.2)
+    github.com/alecthomas/chroma/v2 (v2.14.0)
+    github.com/alessio/shellescape (v1.4.1)
+    github.com/cenkalti/backoff/v4 (v4.3.0)
+    github.com/dlclark/regexp2 (v1.11.0)
+    github.com/docopt/docopt-go (v0.0.0-20180111231733-ee0de3bc6815)
+    github.com/fatih/color (v1.17.0)
+    github.com/ghodss/yaml (v1.0.1-0.20190212211648-25d852aebe32)
+    github.com/go-task/slim-sprig/v3 (v3.0.0)
+    github.com/h2non/filetype (v1.1.3)
+    github.com/hokaccha/go-prettyjson (v0.0.0-20210113012101-fb4e108d2519)
+    github.com/huandu/xstrings (v1.3.2)
+    github.com/itchyny/gojq (v0.12.16)
+    github.com/itchyny/timefmt-go (v0.1.6)
+    github.com/jaytaylor/html2text (v0.0.0-20230321000545-74c2419ad056)
+    github.com/jbenet/go-context (v0.0.0-20150711004518-d14ea06fba99)
+    github.com/joho/godotenv (v1.5.1)
+    github.com/kevinburke/ssh_config (v1.2.0)
+    github.com/Masterminds/semver (v1.5.0)
+    github.com/Masterminds/semver/v3 (v3.2.1)
+    github.com/Masterminds/sprig (v2.22.0+incompatible)
+    github.com/mattn/go-colorable (v0.1.13)
+    github.com/mattn/go-isatty (v0.0.20)
+    github.com/mattn/go-runewidth (v0.0.15)
+    github.com/mattn/go-zglob (v0.0.4)
+    github.com/mitchellh/copystructure (v1.2.0)
+    github.com/mitchellh/go-homedir (v1.1.0)
+    github.com/mitchellh/hashstructure/v2 (v2.0.2)
+    github.com/mitchellh/reflectwalk (v1.0.2)
+    github.com/nicksnyder/go-i18n (v1.10.1)
+    github.com/nuvolaris/envsubst/cmd/envsubstmain (v0.0.0-20230603163828-10ca029cdb58)
+    github.com/nuvolaris/go-replace (v0.0.0-20230515190028-12766da1824c)
+    github.com/nuvolaris/goawk (v1.21.1)
+    github.com/nuvolaris/gron (v0.0.0-20231020134423-84e679ea6aad)
+    github.com/nuvolaris/jj (v0.0.0-20231020143327-10b90948a5d2)
+    github.com/nwidger/jsoncolor (v0.0.0-20170215171346-75a6de4340e5)
+    github.com/olekukonko/tablewriter (v0.0.5)
+    github.com/pelletier/go-toml (v1.8.1)
+    github.com/remeh/sizedwaitgroup (v1.0.0)
+    github.com/rivo/uniseg (v0.4.7)
+    github.com/sajari/fuzzy (v1.0.0)
+    github.com/sciabarracom/task/v3 (v3.38.12)
+    github.com/sergi/go-diff (v1.3.2-0.20230802210424-5b0b94c5c0d3)
+    github.com/ssor/bom (v0.0.0-20170718123548-6386211fdfcf)
+    github.com/tidwall/gjson (v1.14.0)
+    github.com/tidwall/match (v1.1.1)
+    github.com/tidwall/pretty (v1.2.0)
+    github.com/tidwall/sjson (v1.2.4)
+    github.com/zalando/go-keyring (v0.2.5)
+    gopkg.in/yaml.v3 (v3.0.1)
+
+Public Domain
+    github.com/xi2/xz (v0.0.0-20171230120015-48954b6210f8)
+
+
+==============================================================================
+SECTION 2 -- Apache OpenWhisk, vendored sources (build/openwhisk/)
+==============================================================================
+
+The build/openwhisk directory contains a vendored copy of the Apache
+OpenWhisk source tree, licensed under the Apache License, Version 2.0
+(reproduced at the top of this file).
+
+------------------------------------------------------------------------------
+2.1 Source incorporated from Spray
+------------------------------------------------------------------------------
+
+This distribution bundles the following component, which is available under
+an Apache License 2.0 (https://opensource.org/licenses/Apache-2.0).
+
+Spray Caching 1.3.4
+  (io.spray:spray-caching_2.11:1.3.4
+   - http://spray.io/documentation/1.2.4/spray-caching/)
+
+  The file
+
+    build/openwhisk/common/scala/src/main/scala/org/apache/openwhisk/core/
+    database/ConcurrentMapBackedCache.scala
+
+  contains an implementation derived from Spray's [[spray.caching.Cache]]
+  and [[spray.caching.SimpleLruCache]] respectively.
+
+  License included at build/openwhisk/licenses/LICENSE-spray.txt, or
+  https://github.com/spray/spray/blob/master/LICENSE
+
+  Copyright (C) 2011-2015 the spray project <http://spray.io>
+
+The full text of the Spray license, as distributed in
+build/openwhisk/licenses/LICENSE-spray.txt, is:
+
+    This software is licensed under the Apache 2 license, quoted below.
+
+    Copyright (C) 2011-2015 the spray project <http://spray.io>
+
+    Licensed under the Apache License, Version 2.0 (the "License"); you may
+    not use this file except in compliance with the License. You may obtain
+    a copy of the License at
+
+        [http://www.apache.org/licenses/LICENSE-2.0]
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+The spray-json library (io.spray:spray-json, versions 1.3.4 and 1.3.5) is
+resolved as a binary dependency by the Gradle build and is likewise
+Apache-2.0, Copyright (C) 2011-2015 the spray project.
+
+------------------------------------------------------------------------------
+2.2 Gradle wrapper
+------------------------------------------------------------------------------
+
+This product bundles the files gradlew, gradlew.bat and
+gradle/wrapper/gradle-wrapper.jar, which are distributed under the Apache
+License, Version 2.0. The wrapper checked in under build/openwhisk resolves
+Gradle 6.9.1 at build time. For details see build/openwhisk/gradlew and
+build/openwhisk/gradlew.bat.
+
+------------------------------------------------------------------------------
+2.3 Scala / Java dependencies resolved at build time
+------------------------------------------------------------------------------
+
+The following are declared in build/openwhisk/**/build.gradle and
+settings.gradle and resolved from Maven Central. They are not present in the
+source distribution; they are linked into the published controller, invoker
+and scheduler images. Grouped by license:
+
+Apache-2.0
+    org.scala-lang:scala-library, scala-reflect (2.12.10)
+    com.typesafe.akka:akka-* (2.6.12)
+    com.typesafe.akka:akka-http-* (10.2.4)
+    com.typesafe.akka:akka-stream-kafka (2.0.2)
+    com.lightbend.akka.management / discovery (1.0.5)
+    com.lightbend.akka.grpc:akka-grpc-gradle-plugin (1.0.0)
+    com.lightbend.akka:akka-stream-alpakka-file, -s3 (1.1.2)
+    io.spray:spray-json (1.3.4, 1.3.5)
+    io.kamon:kamon-* (2.1.12)
+    org.apache.kafka:kafka-clients (2.4.0)
+    org.apache.curator:curator-* (4.0.0)
+    org.apache.commons:commons-lang3 (3.3.2, 3.8.1)
+    org.apache.commons:commons-io (1.3.2), commons-io:commons-io (2.6)
+    commons-codec:commons-codec (1.9)
+    commons-collections:commons-collections (3.2.2)
+    org.apache.httpcomponents:httpclient (4.5.5), httpmime (4.3.6)
+    io.fabric8:kubernetes-client (4.10.3)
+    com.amazonaws:aws-java-sdk-s3 (1.11.295), -cloudfront (1.11.517)
+    org.mongodb.scala:mongo-scala-driver (2.7.0)
+    com.ibm.etcd:etcd-java (0.0.13)
+    com.github.ben-manes.caffeine:caffeine (2.6.2)
+    com.google.code.gson:gson (2.3.1, 2.6.2)
+    org.codehaus.groovy:groovy-all (2.4.14)
+    com.fasterxml.uuid:java-uuid-generator (3.1.3)
+    com.atlassian.oai:swagger-request-validator-core (1.4.5)
+    io.opentracing:opentracing-api, -util, -mock (0.31.0)
+    io.prometheus:simpleclient, simpleclient_common (0.6.0)
+    io.zipkin.reporter2:zipkin-reporter, -sender-okhttp3 (2.6.1)
+    io.reactivex:rxjava (1.3.8), rxjava-reactive-streams (1.2.1)
+    org.scalatest:scalatest (3.0.8) -- test-only
+    io.rest-assured:rest-assured (4.0.0) -- test-only
+
+MIT
+    com.microsoft.azure:azure-cosmos (3.5.0), azure-cosmosdb (2.6.2)
+    org.slf4j:jcl-over-slf4j, log4j-over-slf4j (1.7.25)
+    org.mockito:mockito-core (2.27.0) -- test-only
+    org.testcontainers:elasticsearch, mongodb (1.17.1) -- test-only
+
+BSD-3-Clause
+    com.google.code.findbugs:jsr305 (3.0.2)
+
+LGPL-3.0 OR Apache-2.0 (Apache-2.0 elected)
+    com.github.java-json-tools:json-schema-validator (2.2.8)
+    *** SEE WARN ***
+
+EPL-1.0 OR LGPL-2.1 (Category B, binary only, unmodified)
+    ch.qos.logback:logback-classic (1.2.3)
+    *** SEE WARN ***
+
+EPL-1.0 (Category B, test-only)
+    junit:junit (4.11)
+    *** SEE WARN ***
+
+IMPORTANT -- Akka licensing
+---------------------------
+Akka 2.6.12 and Akka HTTP 10.2.4 as pinned in
+build/openwhisk/settings.gradle predate the September 2022 relicensing of
+Akka under the Business Source License 1.1 and are Apache-2.0. Any upgrade
+beyond Akka 2.6.20 would introduce a Category X (BSL) dependency and must
+not be made without legal review.
+
+==============================================================================
+SECTION 3 -- Apache OpenServerless Runtimes (runtimes/)
+==============================================================================
+
+BSD-3-Clause
+    github.com/google/uuid (v1.6.0)
+    github.com/pmezard/go-difflib (v1.0.0)
+    golang.org/x/sys (v0.26.0)
+
+MIT
+    github.com/rs/zerolog (v1.33.0)
+    github.com/stretchr/testify (v1.9.0) -- test-only
+    github.com/mattn/go-colorable (v0.1.13)
+    github.com/mattn/go-isatty (v0.0.20)
+
+ISC
+    github.com/davecgh/go-spew (v1.1.1)
+
+Apache-2.0 AND MIT
+    gopkg.in/yaml.v3 (v3.0.1)
+
+Each language runtime image additionally bundles a language toolchain and
+its standard libraries, supplied by the corresponding upstream base image
+and not redistributed by the ASF in source form.
+
+
+==============================================================================
+SECTION 4 -- Components published as container images
+==============================================================================
+
+The full license inventory for each published image is kept in that
+component's own LICENSE file, which remains authoritative:
+
+    admin-api/LICENSE       apache/openserverless-admin-api
+    oplugins-op/LICENSE     apache/openserverless-operator
+    streamer/LICENSE        apache/openserverless-streamer
+    devcontainer/LICENSE    apache/openserverless-devcontainer
+
+Components in those images requiring special handling under ASF policy:
+
+Category B (binary only, unmodified, as a separate file)
+    certifi / ca-certificates (MPL-2.0)
+    waitress (ZPL-2.1)
+
+Category X inherited from upstream base operating system images
+    Debian / Alpine userland, incl. GPL-2.0 and GPL-3.0 components
+    *** SEE WARN ***
+    These are supplied by the upstream base image at build time. The Apache
+    release artifact is the SOURCE distribution, which contains only the
+    Dockerfiles; the images are convenience binaries.
+
+
+==============================================================================
+SECTION 5 -- Full text of the non-Apache licenses used above
+==============================================================================
+
+------------------------------------------------------------------------------
+5.1 The MIT License
+------------------------------------------------------------------------------
+
+Applies to the components listed as MIT above. Copyright is held by the
+respective authors of each component, as recorded in the LICENSE file of
+that component's source repository.
+
+    Permission is hereby granted, free of charge, to any person obtaining a
+    copy of this software and associated documentation files (the
+    "Software"), to deal in the Software without restriction, including
+    without limitation the rights to use, copy, modify, merge, publish,
+    distribute, sublicense, and/or sell copies of the Software, and to
+    permit persons to whom the Software is furnished to do so, subject to
+    the following conditions:
+
+    The above copyright notice and this permission notice shall be included
+    in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+------------------------------------------------------------------------------
+5.2 The 3-Clause BSD License
+------------------------------------------------------------------------------
+
+Applies to the components listed as BSD-3-Clause above, including the
+golang.org/x/* modules (Copyright (c) 2009 The Go Authors. All rights
+reserved.) and github.com/ProtonMail/go-crypto.
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are
+    met:
+
+       * Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+       * Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+       * Neither the name of the copyright holder nor the names of its
+    contributors may be used to endorse or promote products derived from
+    this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+    A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+    OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+    DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+    THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+------------------------------------------------------------------------------
+5.3 The 2-Clause BSD License
+------------------------------------------------------------------------------
+
+Applies to the components listed as BSD-2-Clause above.
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are
+    met:
+
+    1. Redistributions of source code must retain the above copyright
+       notice, this list of conditions and the following disclaimer.
+    2. Redistributions in binary form must reproduce the above copyright
+       notice, this list of conditions and the following disclaimer in the
+       documentation and/or other materials provided with the distribution.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+    A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+    HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+    DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+    THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+------------------------------------------------------------------------------
+5.4 The ISC License
+------------------------------------------------------------------------------
+
+Applies to github.com/davecgh/go-spew.
+Copyright (c) 2012-2016 Dave Collins <dave@davec.name>
+
+    Permission to use, copy, modify, and/or distribute this software for any
+    purpose with or without fee is hereby granted, provided that the above
+    copyright notice and this permission notice appear in all copies.
+
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+    WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+    MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+    ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+    WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+    ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+------------------------------------------------------------------------------
+5.5 Public domain
+------------------------------------------------------------------------------
+
+github.com/xi2/xz is a Go port of XZ Embedded (http://tukaani.org/xz/
+embedded.html). All files in that package were written by Michael Cross,
+Lasse Collin and/or Igor Pavlov and have been placed in the public domain.
+The software is provided "as is", without any warranty.
+
+==============================================================================
+END LICENSES OF BUNDLED THIRD-PARTY SOFTWARE
+==============================================================================

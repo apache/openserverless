@@ -1,0 +1,147 @@
+==============================================================================
+WARN -- Apache License 2.0 incompatibilities
+Apache OpenServerless (Incubating) -- consolidated
+==============================================================================
+
+This file lists third-party components bundled anywhere in the Apache
+OpenServerless distribution whose licenses are NOT compatible with the
+Apache License, Version 2.0, together with components that require special
+handling. It is the aggregate view; the WARN file of each submodule remains
+authoritative for that component.
+
+Classification follows the ASF third-party licensing policy:
+
+    https://www.apache.org/legal/resolved.html
+
+  Category A  Apache-2.0 compatible. May be included in a release.
+  Category B  May be included in BINARY form only, unmodified and as a
+              separate file, with the reciprocal license disclosed.
+  Category X  MUST NOT be included in an Apache release artifact.
+
+IMPORTANT SCOPE NOTE
+------------------------------------------------------------------------------
+The Apache release artifact for OpenServerless is the SOURCE distribution.
+It consists of Apache-2.0 licensed sources, including the vendored Apache
+OpenWhisk tree under build/openwhisk, plus Dockerfiles. The published
+container images and the `ops` binaries are CONVENIENCE BINARIES assembled
+at build time from third-party base images, package repositories and Go and
+Maven module caches. Category X components inherited from a base operating
+system image are disclosed below but are not redistributed by the ASF in
+source form.
+
+
+==============================================================================
+CATEGORY X
+==============================================================================
+
+  None added on purpose by any component of this distribution.
+
+  The `ops` CLI links 92 third-party Go modules. Every one of them resolves
+  to a Category A license (Apache-2.0, MIT, BSD-2-Clause, BSD-3-Clause, ISC
+  or public domain). No GPL, LGPL, AGPL or BSL component is linked into the
+  released binary.
+
+
+==============================================================================
+CATEGORY X (as bundled, inherited from upstream base images)
+==============================================================================
+
+  Component : Debian / Alpine base image userland
+  License   : mixed, incl. GPL-2.0 and GPL-3.0
+  Affects   : admin-api, oplugins-op, devcontainer, runtimes
+  Action    :
+      The base images contain GPL-licensed operating-system components. The
+      Apache release artifact is the SOURCE (the Dockerfiles and the files
+      beside them); the published images are convenience binaries assembled
+      from third-party base images. No action required beyond this
+      disclosure.
+
+  Component : less, nano, locales (glibc)
+  License   : GPL-3.0-or-later; GPL-2.0-or-later AND LGPL-2.1-or-later
+  Affects   : devcontainer
+  Action    :
+      Installed by the devcontainer Dockerfile into a developer convenience
+      image only. Not part of any released runtime or server component. See
+      devcontainer/WARN.
+
+  Component : libpam-modules, libpam-modules-bin, libpam-runtime, libpam0g
+  License   : GPL-2.0-or-later AND BSD-3-Clause
+  Affects   : admin-api
+  Action    :
+      Shipped by the upstream base image; not installed by the Dockerfile.
+      See admin-api/WARN.
+
+
+==============================================================================
+CATEGORY B
+==============================================================================
+
+  Component : certifi / ca-certificates
+  License   : MPL-2.0
+  Affects   : admin-api, oplugins-op, streamer
+  Action    :
+      Category B: MPL-2.0 may be included in binary form only, unmodified
+      and as a separate file. That is satisfied here. No action required.
+
+  Component : waitress
+  License   : ZPL-2.1
+  Affects   : admin-api
+  Action    :
+      Category B: included in binary form only, unmodified, as a separate
+      file. No action required.
+
+  Component : ch.qos.logback:logback-classic (1.2.3)
+  License   : EPL-1.0 OR LGPL-2.1
+  Affects   : build/openwhisk (controller, invoker, scheduler images)
+  Action    :
+      Category B: resolved from Maven Central at build time and included in
+      the image in binary form only, unmodified, as a separate JAR. Not
+      present in the source distribution. No action required.
+
+  Component : junit:junit (4.11)
+  License   : EPL-1.0
+  Affects   : build/openwhisk (test scope only)
+  Action    :
+      Category B and test-only. Not linked into any released artifact. No
+      action required.
+
+
+==============================================================================
+COMPONENTS REQUIRING AN EXPLICIT LICENSE ELECTION
+==============================================================================
+
+  Component : com.github.java-json-tools:json-schema-validator (2.2.8)
+  License   : LGPL-3.0 OR Apache-2.0 (dual-licensed)
+  Affects   : build/openwhisk
+  Action    :
+      The Apache-2.0 option is elected for this distribution, which makes
+      the component Category A. This election is recorded here and in
+      LICENSE so that the LGPL option is not assumed by downstream
+      consumers.
+
+
+==============================================================================
+WATCH LIST -- do not upgrade without legal review
+==============================================================================
+
+  Component : com.typesafe.akka:akka-* (2.6.12)
+              com.typesafe.akka:akka-http-* (10.2.4)
+  Current   : Apache-2.0
+  Risk      : Akka was relicensed under the Business Source License 1.1
+              (BSL) in September 2022, starting with Akka 2.7.0. BSL is
+              Category X and must not appear in an Apache release.
+              The versions pinned in build/openwhisk/settings.gradle
+              predate that change and are Apache-2.0.
+  Action    :
+      Do NOT upgrade Akka beyond 2.6.20 or Akka HTTP beyond 10.2.x without
+      legal review. Any such upgrade would make the released images
+      non-distributable by the ASF.
+
+
+==============================================================================
+SUMMARY OF REQUIRED REMOVALS (Category X added by this distribution)
+==============================================================================
+
+  None. No component of this distribution adds a Category X dependency of
+  its own. All Category X exposure is inherited from upstream base operating
+  system images and is limited to convenience binaries.

@@ -38,6 +38,7 @@ header:
     - 'LICENSE'
     - 'DISCLAIMER'
     - 'NOTICE'
+    - 'WARN'
     - 'CHANGES'
     - 'RELEASE'
     - 'rebrander.log'
