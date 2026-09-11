@@ -305,6 +305,16 @@ tasks:
       cmds:
         - python syncimages.py --write={{.WRITE}} "{{.GHUSER}}"
 
+    targz:
+      cmds:
+      - >
+          {{if eq OS "darwin"}}gtar{{else}}tar{{end}}
+          --exclude-from={{.TASKFILE_DIR}}/no-release.txt
+          -C ..
+          --transform 's,^openserverless,openserverless-{{.VER}},'
+          -czvf ../openserverless-{{.VER}}-src.tar.gz
+          openserverless
+
     release:
       desc: release - the source must be in version folder and you need a gpg key to sign
       requires:
@@ -316,15 +326,7 @@ tasks:
       - task license
       - git tag -d $(git tag) || true
       - git tag "v{{.VER}}"
-      - >
-          {{if eq OS "darwin"}}gtar{{else}}tar{{end}}
-          --exclude='*/.git' --exclude='*/.github' --exclude='*/.vscode'
-          --exclude='.git' --exclude='.github' --exclude='.vscode'
-          --exclude-from={{.TASKFILE_DIR}}/no-release.txt
-          -C ..
-          --transform 's,^openserverless,openserverless-{{.VER}},'
-          -czvf ../openserverless-{{.VER}}-src.tar.gz
-          openserverless
+      - task: targz
       - gpg --armor --detach-sign --local-user {{.KEY}} ../openserverless-{{.VER}}-src.tar.gz
       - cd .. && shasum -a 512 openserverless-{{.VER}}-src.tar.gz >openserverless-{{.VER}}-src.tar.gz.sha512
       - python3 releasing.py {{.VER}} >../../{{.VER}}.txt
