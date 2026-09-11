@@ -22,7 +22,7 @@ vars:
   BASE_IMG: "docker.io/apache"
 
   RELEASE:
-    sh: git -C oplugins-op rev-parse --short HEAD || '{{trimPrefix "openserverless-" (base .TASKFILE_DIR)}}'
+    sh: git -C oplugins-op rev-parse --short HEAD 2>/dev/null || echo '{{trimPrefix "openserverless-" (base .TASKFILE_DIR)}}'
 
   OPERATOR_TAG: "{{.RELEASE}}"
 
@@ -55,6 +55,8 @@ vars:
 tasks:
 
     default:
+      silent: true
+      cmds:
       - task -l
       - echo release '{{.RELEASE}}'
 
@@ -289,7 +291,7 @@ tasks:
       cmds:
       # configurator is a false positive
       - >
-          find . -path ./.git -prune
+          find . -name .git -prune
           -o -iname '*.png' -prune
           -o -iname '*.jpg' -prune
           -o -iname '*.ico' -prune
@@ -316,6 +318,7 @@ tasks:
       - git tag "v{{.VER}}"
       - >
           {{if eq OS "darwin"}}gtar{{else}}tar{{end}}
+          --exclude='*/.git' --exclude='*/.github' --exclude='*/.vscode'
           --exclude='.git' --exclude='.github' --exclude='.vscode'
           --exclude-from={{.TASKFILE_DIR}}/no-release.txt
           -C ..
@@ -326,5 +329,4 @@ tasks:
       - cd .. && shasum -a 512 openserverless-{{.VER}}-src.tar.gz >openserverless-{{.VER}}-src.tar.gz.sha512
       - python3 releasing.py {{.VER}} >../../{{.VER}}.txt
       - echo 'Next steps are svn push, git push --tags and send email'
-
 
