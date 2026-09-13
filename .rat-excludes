@@ -34,3 +34,6 @@
 
 # skip .git
 **/.git
+
+# skip the skip
+no-release.txt
