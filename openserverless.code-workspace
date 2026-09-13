@@ -1,3 +1,4 @@
+
 {
 	"folders": [
 		{
@@ -5,6 +6,9 @@
 		},
 		{
 			"path": "cli"
+		},
+		{
+			"path": "oplugins"
 		},
 		{
 			"path": "oplugins-op"

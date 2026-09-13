@@ -1,3 +1,22 @@
+<!--
+  ~ Licensed to the Apache Software Foundation (ASF) under one
+  ~ or more contributor license agreements.  See the NOTICE file
+  ~ distributed with this work for additional information
+  ~ regarding copyright ownership.  The ASF licenses this file
+  ~ to you under the Apache License, Version 2.0 (the
+  ~ "License"); you may not use this file except in compliance
+  ~ with the License.  You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+-->
+
 # Apache OpenServerless (incubating)
 
 Welcome to [Apache OpenServerless](https://openserverless.apache.org), an incubating project at the [Apache Software Foundation](https://www.apache.org).
@@ -5,6 +24,7 @@ Welcome to [Apache OpenServerless](https://openserverless.apache.org), an incuba
 - If you want to **install** Apache OpenServerless to use it go [here](https://openserverless.apache.org/docs/installation/). If you are in a hurry go straight to the [quick start](https://openserverless.apache.org/docs/installation/quickstart/).
 - If you want to **contribute** to the project, read [this the contribution guide](CONTRIBUTING.md) and the [developer guide](DEVEL.md).
 - If you want to **discuss** with us, join our mailing list by sending an email to `dev-subscribe@openserverless.apache.org`
+- If you are releasing a version of Apache OpenServerless, [follow this process](RELEASE.md).
 
 > [!IMPORTANT]
 > **The rest of this document covers building Apache OpenServerless from source,
@@ -30,12 +50,12 @@ where `<version>` is the release you want, for example `v0.9.0`. Browse
 to see the available versions.
 
 Release artifacts are signed. Before building, verify the tarball against the
-project [KEYS](https://dist.apache.org/repos/dist/dev/incubator/openserverless/KEYS)
+project [KEYS](https://dist.apache.org/repos/dist/release/incubator/openserverless/KEYS)
 file:
 
 ```
 curl -O https://dist.apache.org/repos/dist/dev/incubator/openserverless/<version>/openserverless-<version>-incubating-src.tar.gz.asc
-curl -O https://dist.apache.org/repos/dist/dev/incubator/openserverless/KEYS
+curl -O https://dist.apache.org/repos/dist/release/incubator/openserverless/KEYS
 gpg --import KEYS
 gpg --verify openserverless-<version>-incubating-src.tar.gz.asc
 ```

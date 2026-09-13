@@ -36,6 +36,9 @@ output:
     with a closing date. Without it the mail is the [ANNOUNCE] of the
     final release, whose artifacts live under `dist/release`.
 
+The KEYS file is the exception: it is shared by all releases and always
+lives in `dist/release`, so it is linked from there even for candidates.
+
 Usage:
 
     ./releasing.py 0.9.0-incubating-RC4
@@ -125,12 +128,23 @@ class Release:
     # -- locations -------------------------------------------------------
 
     @property
+    def project_path(self):
+        """Path of the project inside the dist repo."""
+        return "incubator/openserverless" if self.incubating \
+            else "openserverless"
+
+    @property
     def dist_root(self):
         """Base of the dist repo: dev for candidates, release for finals."""
         area = "dev" if self.is_candidate else "release"
-        project = "incubator/openserverless" if self.incubating \
-            else "openserverless"
-        return "https://dist.apache.org/repos/dist/%s/%s" % (area, project)
+        return "https://dist.apache.org/repos/dist/%s/%s" \
+            % (area, self.project_path)
+
+    @property
+    def release_root(self):
+        """Release area of the dist repo, where shared files such as KEYS live."""
+        return "https://dist.apache.org/repos/dist/release/%s" \
+            % self.project_path
 
     @property
     def artifacts_url(self):
@@ -138,13 +152,13 @@ class Release:
 
     @property
     def keys_url(self):
-        return "%s/KEYS" % self.dist_root
+        """KEYS always lives in the release area, also for candidates."""
+        return "%s/KEYS" % self.release_root
 
     @property
     def downloads_url(self):
-        project = "incubator/openserverless" if self.incubating \
-            else "openserverless"
-        return "https://downloads.apache.org/%s/%s" % (project, self.version)
+        return "https://downloads.apache.org/%s/%s" \
+            % (self.project_path, self.version)
 
     @property
     def tag_url(self):

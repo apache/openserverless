@@ -1,0 +1,197 @@
+==============================================================================
+WARN -- Apache License 2.0 incompatibilities
+Apache OpenServerless (Incubating) -- consolidated
+==============================================================================
+
+This file lists third-party components bundled anywhere in the Apache
+OpenServerless distribution whose licenses are NOT compatible with the
+Apache License, Version 2.0, together with components that require special
+handling. It is the aggregate view; the WARN file of each submodule remains
+authoritative for that component.
+
+Classification follows the ASF third-party licensing policy:
+
+    https://www.apache.org/legal/resolved.html
+
+  Category A  Apache-2.0 compatible. May be included in a release.
+  Category B  May be included in BINARY form only, unmodified and as a
+              separate file, with the reciprocal license disclosed.
+  Category X  MUST NOT be included in an Apache release artifact.
+
+IMPORTANT SCOPE NOTE
+------------------------------------------------------------------------------
+The Apache release artifact for OpenServerless is the SOURCE distribution.
+It consists of Apache-2.0 licensed sources, including the vendored Apache
+OpenWhisk tree under build/openwhisk, plus Dockerfiles. The published
+container images and the `ops` binaries are CONVENIENCE BINARIES assembled
+at build time from third-party base images, package repositories and Go and
+Maven module caches. Category X components inherited from a base operating
+system image are disclosed below but are not redistributed by the ASF in
+source form.
+
+
+==============================================================================
+CATEGORY X
+==============================================================================
+
+  No Category X component is linked into or included in any release
+  artifact. Two Category X components are DOWNLOADED AT RUN TIME by the end
+  user as `ops` prerequisites. They are not in the source release and not
+  in any published image layer.
+
+  Component : 7-Zip standalone binary, 7zz (24.07) / 7zr.exe on Windows
+  License   : LGPL-2.1-or-later, plus an unRAR field-of-use restriction
+  Affects   : oplugins/prereq.yml (run-time download only)
+  Action    :
+      Downloaded on first use of `ops`, unmodified, as a separate
+      executable, directly from upstream by the end user. Not present in
+      the Apache source release and not in any published image layer, so no
+      release artifact is affected. The unRAR clause is a field-of-use
+      restriction and is non-free by both FSF and ASF standards. Disclosed
+      here for the benefit of users; nothing to remove from the release.
+      Preferred long-term fix: replace 7zz with a Category A extractor.
+
+  Component : bun (1.3.14)
+  License   : MIT (own sources) statically linked with JavaScriptCore and
+              WebKit (LGPL-2.1) and tinycc (LGPL-2.1); bundles zstd
+              (BSD OR GPL-2.0, BSD elected)
+  Affects   : oplugins/prereq.yml (run-time download only)
+  Action    :
+      bun's own code is Category A, but the upstream binary is
+      LGPL-2.1-encumbered through static linking and carries the LGPL-2.1
+      relink obligation. Downloaded on first use, unmodified, as a separate
+      executable, directly from upstream by the end user. Not present in
+      the Apache source release or in any published image layer. Disclosed
+      here; no action required.
+
+  NOTE ON SCOPE
+      The prerequisite download is performed by `ops -t` in
+      devcontainer/start.sh, which runs as the container ENTRYPOINT. It
+      executes when a container starts, not while the image is built, so
+      the published docker.io/apache/openserverless-devcontainer image
+      contains NEITHER of the binaries above -- they are fetched into the
+      writable layer of a running container. Do NOT reintroduce a
+      `RUN ops -t` step into any Dockerfile: that would bake Category X
+      binaries into a published image layer.
+
+  The `ops` CLI links 92 third-party Go modules. Every one of them resolves
+  to a Category A license (Apache-2.0, MIT, BSD-2-Clause, BSD-3-Clause, ISC
+  or public domain). No GPL, LGPL, AGPL or BSL component is linked into the
+  released binary.
+
+
+==============================================================================
+CATEGORY X (as bundled, inherited from upstream base images)
+==============================================================================
+
+  Component : Debian / Alpine base image userland
+  License   : mixed, incl. GPL-2.0 and GPL-3.0
+  Affects   : admin-api, oplugins-op, devcontainer, runtimes
+  Action    :
+      The base images contain GPL-licensed operating-system components. The
+      Apache release artifact is the SOURCE (the Dockerfiles and the files
+      beside them); the published images are convenience binaries assembled
+      from third-party base images. No action required beyond this
+      disclosure.
+
+  Component : less, nano, locales (glibc)
+  License   : GPL-3.0-or-later; GPL-2.0-or-later AND LGPL-2.1-or-later
+  Affects   : devcontainer
+  Action    :
+      Installed by the devcontainer Dockerfile into a developer convenience
+      image only. Not part of any released runtime or server component. See
+      devcontainer/WARN.
+
+  Component : libpam-modules, libpam-modules-bin, libpam-runtime, libpam0g
+  License   : GPL-2.0-or-later AND BSD-3-Clause
+  Affects   : admin-api
+  Action    :
+      Shipped by the upstream base image; not installed by the Dockerfile.
+      See admin-api/WARN.
+
+
+==============================================================================
+CATEGORY B
+==============================================================================
+
+  Component : certifi / ca-certificates
+  License   : MPL-2.0
+  Affects   : admin-api, oplugins-op, streamer
+  Action    :
+      Category B: MPL-2.0 may be included in binary form only, unmodified
+      and as a separate file. That is satisfied here. No action required.
+
+  Component : waitress
+  License   : ZPL-2.1
+  Affects   : admin-api
+  Action    :
+      Category B: included in binary form only, unmodified, as a separate
+      file. No action required.
+
+  Component : ch.qos.logback:logback-classic (1.2.3)
+  License   : EPL-1.0 OR LGPL-2.1
+  Affects   : build/openwhisk (controller, invoker, scheduler images)
+  Action    :
+      Category B: resolved from Maven Central at build time and included in
+      the image in binary form only, unmodified, as a separate JAR. Not
+      present in the source distribution. No action required.
+
+  Component : junit:junit (4.11)
+  License   : EPL-1.0
+  Affects   : build/openwhisk (test scope only)
+  Action    :
+      Category B and test-only. Not linked into any released artifact. No
+      action required.
+
+
+==============================================================================
+COMPONENTS REQUIRING AN EXPLICIT LICENSE ELECTION
+==============================================================================
+
+  Component : com.github.java-json-tools:json-schema-validator (2.2.8)
+  License   : LGPL-3.0 OR Apache-2.0 (dual-licensed)
+  Affects   : build/openwhisk
+  Action    :
+      The Apache-2.0 option is elected for this distribution, which makes
+      the component Category A. This election is recorded here and in
+      LICENSE so that the LGPL option is not assumed by downstream
+      consumers.
+
+
+==============================================================================
+WATCH LIST -- do not upgrade without legal review
+==============================================================================
+
+  Component : com.typesafe.akka:akka-* (2.6.12)
+              com.typesafe.akka:akka-http-* (10.2.4)
+  Current   : Apache-2.0
+  Risk      : Akka was relicensed under the Business Source License 1.1
+              (BSL) in September 2022, starting with Akka 2.7.0. BSL is
+              Category X and must not appear in an Apache release.
+              The versions pinned in build/openwhisk/settings.gradle
+              predate that change and are Apache-2.0.
+  Action    :
+      Do NOT upgrade Akka beyond 2.6.20 or Akka HTTP beyond 10.2.x without
+      legal review. Any such upgrade would make the released images
+      non-distributable by the ASF.
+
+
+==============================================================================
+SUMMARY OF REQUIRED REMOVALS (Category X added by this distribution)
+==============================================================================
+
+  No Category X component is present in the Apache SOURCE release, which is
+  the release artifact. Nothing must be removed from it.
+
+  The following are fetched by the end user at run time, directly from
+  their upstream projects. They are present in no release artifact and in
+  no published image layer:
+
+  [ ] 7zz (24.07)   --  LGPL-2.1-or-later + unRAR restriction
+  [ ] bun (1.3.14)  --  statically links JavaScriptCore/WebKit, tinycc
+                        (LGPL-2.1)
+
+  Both are unmodified, separate executables fetched from upstream release
+  pages at run time, declared in oplugins/prereq.yml and disclosed in
+  LICENSE and NOTICE for the information of users. All remaining Category X
+  exposure is inherited from upstream base operating system images.

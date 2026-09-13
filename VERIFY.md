@@ -1,3 +1,22 @@
+<!--
+  ~ Licensed to the Apache Software Foundation (ASF) under one
+  ~ or more contributor license agreements.  See the NOTICE file
+  ~ distributed with this work for additional information
+  ~ regarding copyright ownership.  The ASF licenses this file
+  ~ to you under the Apache License, Version 2.0 (the
+  ~ "License"); you may not use this file except in compliance
+  ~ with the License.  You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+-->
+
 # Apache Release Verification Checklist
 
 This markdown file serves as a local checklist for verifying the authenticity and integrity of Apache Software Foundation releases.
@@ -18,6 +37,8 @@ This markdown file serves as a local checklist for verifying the authenticity an
 - [ ] **Fetch ASC File**: Download the detached signature file (`.asc`) for your exact release version.
 - [ ] **Execute Signature Check**: Run the verification command:
   ```bash
+  curl https://dist.apache.org/repos/dist/release/incubator/openserverless/KEYS -o KEYS
+  gpg --import KEYS
   gpg --verify <filename>.<extension>.asc <filename>.<extension>
   ```
 - [ ] **Confirm 'Good Signature'**: Ensure the output states `"Good signature from..."`. (Ignore the "not certified with a trusted signature" warning if you haven't explicitly set trust levels, provided the name matches the release manager).
@@ -34,9 +55,11 @@ This markdown file serves as a local checklist for verifying the authenticity an
 - [ ] **Mandatory Root Files**: Unpack the archive and verify the root contains the required metadata files:
   - `LICENSE`
   - `NOTICE`
+
 - [ ] **Informational Files**: Verify the presence of setup and project notes:
   - `README` or `README.md`
   - `RELEASE_NOTES` or `CHANGES`
+
 - [ ] **Source Cleanliness**: For source distributions, check that no compiled binaries (`.jar`, `.class`, `.so`, `.dll`, or target/build folders) are accidentally bundled inside the package.
 
 
