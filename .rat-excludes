@@ -15,24 +15,16 @@
 # specific language governing permissions and limitations
 # under the License.
 #
-header:
-  license:
-    spdx-id: Apache-2.0
-    copyright-owner: Apache Software Foundation
+# Files excluded from the Apache RAT license-header audit.
+#
+# JSON has no comment syntax, so an ASF license header cannot be embedded
+# in a .json file without making it invalid. Such files are exempt under
+# the ASF policy on files that cannot carry a header.
+#
+# Pattern syntax is that of --input-exclude-file (gitignore-style).
 
-  paths-ignore:
-    - 'cli'
-    - 'admin-api'
-    - 'devcontainer'
-    - 'oplugins'
-    - 'oplugins-op'
-    - 'runtimes'
-    - 'streamer'
-    - 'testing'
-    - 'build'
-    - 'LICENSE'
-    - 'DISCLAIMER'
-    - 'NOTICE'
-    - 'WARN'
-    - 'openserverless.code-workspace'
-    - 'no-release.txt'
+# bun.lock is JSON-formatted - a license header would make it invalid.
+**/bun.lock
+
+# go.sum is a generated checksum database - a header breaks verification.
+**/go.sum
