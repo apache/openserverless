@@ -1,0 +1,227 @@
+Apache OpenServerless (Incubating)
+Copyright 2024-2026 The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (https://www.apache.org/).
+
+Apache OpenServerless is an effort undergoing incubation at The Apache
+Software Foundation (ASF), sponsored by the Apache Incubator. See the
+DISCLAIMER file distributed with this work.
+
+This product contains significant parts that were originally based on
+Apache OpenWhisk <https://openwhisk.apache.org/>, vendored under
+build/openwhisk.
+
+Apache OpenWhisk
+Copyright 2016-2024 The Apache Software Foundation
+
+---------------
+
+The `ops` command-line interface contains code from Apache OpenWhisk Client Go
+which was released under an Apache 2.0 license.
+
+Apache OpenWhisk
+Copyright 2016-2024 The Apache Software Foundation
+
+---------------
+
+The `ops` command-line interface contains code from go-git which was released
+under an Apache 2.0 license.
+
+Copyright 2018 Sourced Technologies, S.L.
+
+---------------
+
+The `ops` command-line interface contains code from go-billy which was
+released under an Apache 2.0 license.
+
+Copyright 2017 Sourced Technologies S.L.
+
+---------------
+
+The `ops` command-line interface contains code from groupcache which was
+released under an Apache 2.0 license.
+
+Copyright 2012 Google Inc.
+
+---------------
+
+The `ops` command-line interface contains code from Cobra which was released
+under an Apache 2.0 license.
+
+Copyright 2013 Steve Francia <spf@spf13.com>
+Copyright 2015 Red Hat Inc.
+
+---------------
+
+The `ops` command-line interface contains code from ssh-agent which was
+released under an Apache 2.0 license.
+
+Copyright (c) 2014 David Mzareulyan
+Copyright 2015 Sander van Harmelen
+
+---------------
+
+The `ops` command-line interface contains code from go-task/template, a fork
+of the Go standard library text/template package, which was released under a
+3-clause BSD license.
+
+Copyright 2011 The Go Authors. All rights reserved.
+
+---------------
+
+The `ops` command-line interface and the streamer contain code from the Go
+golang.org/x libraries which were released under a 3-clause BSD license.
+
+Copyright (c) 2009 The Go Authors. All rights reserved.
+
+---------------
+
+The `ops` command-line interface contains code from jibber_jabber which was
+released under an Apache 2.0 license.
+
+Copyright (c) 2014 Pivotal
+
+---------------
+
+The `ops` command-line interface contains code from go-toml which was
+released under an Apache 2.0 license.
+
+Copyright (c) 2013 - 2021 Thomas Pelletier, Eric Anderton
+
+---------------
+
+The `ops` command-line interface and the streamer contain code from
+gopkg.in/yaml.v2 and gopkg.in/yaml.v3 which were released under an Apache 2.0
+license and, for the parts derived from libyaml, under an MIT license.
+
+Copyright 2011-2016 Canonical Ltd.
+Copyright (c) 2006-2010 Kirill Simonov
+Copyright (c) 2006-2011 Kirill Simonov
+
+---------------
+
+The container images contain Akka, Akka HTTP, Akka Management and Alpakka
+which were released under an Apache 2.0 license.
+
+Akka
+Copyright (C) 2009-2021 Lightbend Inc. <https://www.lightbend.com>
+
+Akka 2.6.x is the last version that was distributed under the Apache
+License, Version 2.0.
+
+---------------
+
+The container images contain the Scala standard library which was released
+under an Apache 2.0 license.
+
+Scala
+Copyright (c) 2002-2020 EPFL
+Copyright (c) 2011-2020 Lightbend, Inc.
+
+Scala includes software developed at
+LAMP/EPFL (https://lamp.epfl.ch/) and
+Lightbend, Inc. (https://www.lightbend.com/).
+
+---------------
+
+The container images contain spray-json which was released under an
+Apache 2.0 license.
+
+Copyright (C) 2011-2015 the spray project <http://spray.io>
+
+---------------
+
+The container images contain code derived from Spray Caching in
+openwhisk/common/scala/src/main/scala/org/apache/openwhisk/core/database/
+ConcurrentMapBackedCache.scala, which was released under an Apache 2.0
+license.
+
+Copyright (C) 2011-2015 the spray project <http://spray.io>
+
+---------------
+
+The container images contain the AWS SDK for Java, elastic4s and the MongoDB
+Scala Driver which were released under an Apache 2.0 license.
+
+---------------
+
+The container images contain Logback which was dual-licensed under the
+Eclipse Public License 1.0 and the GNU Lesser General Public License 2.1.
+
+Copyright (C) 1999-2017 QOS.ch
+
+---------------
+
+The runtime container images contain the Eclipse OpenJ9 virtual machine and
+Eclipse OMR, which were released under the Eclipse Public License 2.0 or an
+Apache 2.0 license.
+
+Product: OpenJ9
+Copyright IBM Corp. and others 1991
+
+---------------
+
+The container images contain a Java runtime environment (Eclipse Temurin
+and/or Amazon Corretto, OpenJDK 11), licensed under the GNU General Public
+License, version 2, with the Classpath Exception.
+
+Copyright (c) Oracle and/or its affiliates, and Eclipse Adoptium
+Copyright (c) Amazon.com, Inc. or its affiliates.
+
+---------------
+
+The container images contain certifi, which distributes a version of the
+Mozilla CA root certificate bundle under the Mozilla Public License, v. 2.0.
+
+This product includes software developed by the Mozilla Foundation
+(https://www.mozilla.org/).
+
+---------------
+
+The container images contain Docker CLI static binaries.
+
+Copyright 2013-2018 Docker, Inc.
+Copyright 2013-2020 Docker, Inc.
+
+---------------
+
+The container images contain Scallop which was released under an MIT license.
+
+Copyright (c) 2012-2019 Platon Pronko and Chris Hodapp
+
+---------------
+
+The container images contain Python components released under the Python
+Software Foundation License Version 2.
+
+Copyright (c) 2001-2025 Python Software Foundation. All rights reserved.
+
+---------------
+
+The container images contain zip and unzip which were released under the
+Info-ZIP license.
+
+Copyright (c) 1990-2007 Info-ZIP.  All rights reserved.
+
+---------------
+
+The container images inherit operating-system components from their upstream
+Ubuntu, Debian, Alpine and ibm-semeru-runtimes base images. Those components
+are supplied by the upstream base images and are not redistributed by the ASF
+in source form. Their notices are distributed inside the container images at
+/usr/share/doc/<package>/copyright.
+
+---------------
+
+The NOTICE file of each submodule remains authoritative for that component:
+
+  admin-api/NOTICE     Admin API service
+  build/NOTICE         Build tree, including vendored Apache OpenWhisk
+  cli/NOTICE           The `ops` command-line interface
+  devcontainer/NOTICE  Developer container image
+  oplugins/NOTICE      Taskfile plugins
+  oplugins-op/NOTICE   Kubernetes operator
+  runtimes/NOTICE      Action runtime container images
+  streamer/NOTICE      Streamer service
+  testing/NOTICE       Integration test suite

@@ -36,3 +36,4 @@ header:
     - 'WARN'
     - 'openserverless.code-workspace'
     - 'no-release.txt'
+    - '**/*.json'

@@ -1,0 +1,147 @@
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+#
+# Node.js / JavaScript libraries used by Apache OpenServerless 0.9.0-incubating
+# Sources: all package.json files in the source tree (excluding node_modules)
+
+## build/openwhisk/core/routemgmt/createApi/package.json
+
+  lodash 4.17.15
+  request 2.88.0
+
+## build/openwhisk/core/routemgmt/deleteApi/package.json
+
+  lodash 4.17.15
+  request 2.88.0
+
+## build/openwhisk/core/routemgmt/getApi/package.json
+
+  lodash 4.17.15
+  request 2.88.0
+
+## cli/tests/testdata/example/packages/zipped/mfa/package.json
+
+  (no declared dependencies)
+
+## cli/tests/testdata/packages/zipped/mfa/package.json
+
+  (no declared dependencies)
+
+## oplugins/admin/usage/usagechecker/package.json
+
+  @clack/prompts ^0.7.0
+  yaml ^2.8.3
+  @types/bun ^1.2.16   # dev
+  bun-types ^1.2.16   # dev
+
+## oplugins/env/secrets/package.json
+
+  docopt =0.6.2
+  @types/bun =1.2.2   # dev
+  @types/docopt =0.6.37   # dev
+
+## oplugins/ide/deploy/package.json
+
+  chokidar =4.0.3
+  commander =13.1.0
+  dotenv ^16.4.7
+  glob =12.0.0
+  mime-types ^2.1.35
+  shell-quote ^1.8.3
+  @types/bun =1.2.2   # dev
+
+## oplugins/util/upload/package.json
+
+  docopt ^0.6.2
+  minio ^8.0.1
+  @types/bun ^1.1.10   # dev
+  @types/docopt ^0.6.37   # dev
+  @types/minio ^7.1.1   # dev
+
+## runtimes/packages/nodejs/withreqs/package.json
+
+  marked ^12.0.0
+
+## runtimes/runtime/nodejs/v20/package.json
+
+  aws-s3 ^2.0.5
+  minio ^8.0.7
+  mongodb ^7.6.0
+  ollama ^0.6.3
+  openai ^7.10.0
+  openwhisk ^3.21.9
+  pg ^8.23.0
+  redis ^6.2.1
+  uuid ^14.0.2
+
+## runtimes/runtime/nodejs/v22/package.json
+
+  aws-s3 ^2.0.5
+  minio ^8.0.7
+  mongodb ^7.6.0
+  ollama ^0.6.3
+  openai ^7.10.0
+  openwhisk ^3.21.9
+  pg ^8.23.0
+  redis ^6.2.1
+  uuid ^14.0.2
+
+## runtimes/runtime/nodejs/v24/package.json
+
+  aws-s3 ^2.0.5
+  minio ^8.0.7
+  mongodb ^7.6.0
+  ollama ^0.6.3
+  openai ^7.10.0
+  openwhisk ^3.21.9
+  pg ^8.23.0
+  redis ^6.2.1
+  uuid ^14.0.2
+
+## Consolidated unique package list
+
+  @clack/prompts ^0.7.0
+  @types/bun ^1.1.10
+  @types/bun ^1.2.16
+  @types/bun =1.2.2
+  @types/docopt ^0.6.37
+  @types/docopt =0.6.37
+  @types/minio ^7.1.1
+  aws-s3 ^2.0.5
+  bun-types ^1.2.16
+  chokidar =4.0.3
+  commander =13.1.0
+  docopt ^0.6.2
+  docopt =0.6.2
+  dotenv ^16.4.7
+  glob =12.0.0
+  lodash 4.17.15
+  marked ^12.0.0
+  mime-types ^2.1.35
+  minio ^8.0.1
+  minio ^8.0.7
+  mongodb ^7.6.0
+  ollama ^0.6.3
+  openai ^7.10.0
+  openwhisk ^3.21.9
+  pg ^8.23.0
+  redis ^6.2.1
+  request 2.88.0
+  shell-quote ^1.8.3
+  uuid ^14.0.2
+  yaml ^2.8.3

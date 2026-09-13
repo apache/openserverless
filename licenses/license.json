@@ -1,0 +1,3848 @@
+{
+  "go": {
+    "cloud.google.com/go": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.46.3",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "cloud.google.com/go/bigquery": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.0.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "cloud.google.com/go/datastore": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "cloud.google.com/go/firestore": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.1.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "cloud.google.com/go/pubsub": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.0.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "cloud.google.com/go/storage": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "dario.cat/mergo": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "dmitri.shuralyov.com/gpu/mtl": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.0.0-20190408044501-666a987793e9",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/BurntSushi/toml": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.3.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/BurntSushi/xgb": {
+      "license": "BSD-3-Clause AND WTFPL",
+      "notice": "Multi-licensed (BSD-3-Clause AND WTFPL). Licensed under the BSD 3-Clause License. Licensed under the WTFPL.",
+      "version": "v0.0.0-20160522181843-27f122750802",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/Ladicle/tabwriter": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/Masterminds/goutils": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.1.1",
+      "_source": "deps.dev",
+      "_shipped": true,
+      "_notice_required": true
+    },
+    "github.com/Masterminds/semver": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.5.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/Masterminds/semver/v3": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v3.2.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/Masterminds/sprig": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v2.22.0+incompatible",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/Microsoft/go-winio": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.6.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/OneOfOne/xxhash": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.2.2",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/ProtonMail/go-crypto": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/a8m/envsubst": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.4.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/alecthomas/assert/v2": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v2.7.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/alecthomas/chroma/v2": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v2.14.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/alecthomas/repr": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.4.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/alecthomas/template": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.0.0-20160405071501-a0175ee3bccc",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/alecthomas/units": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20151022065526-2efee857e7cf",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/alessio/shellescape": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.4.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/anmitsu/go-shlex": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20200514113438-38f4b401e2be",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/apache/openwhisk-client-go": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.0.0-20241028140229-bb8408824b9b",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/armon/circbuf": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20150827004946-bbbad097214e",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/armon/go-metrics": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20180917152333-f0300d1749da",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/armon/go-radix": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20180808171621-7fddfc383310",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/armon/go-socks5": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20160902184237-e75332964ef5",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/beorn7/perks": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/bgentry/speakeasy": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.1.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/bketelsen/crypt": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.3-0.20200106085610-5cbc8cc4026c",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/bwesterb/go-ristretto": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.2.3",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/cenkalti/backoff/v4": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v4.3.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/cespare/xxhash": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.1.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/client9/misspell": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.3.4",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/cloudflare/circl": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.3.7",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/cloudfoundry/jibber_jabber": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.0.0-20151120183258-bcc4c8345a21",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/coreos/bbolt": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.3.2",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/coreos/etcd": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v3.3.13+incompatible",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/coreos/go-semver": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.3.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/coreos/go-systemd": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.0.0-20190321100706-95778dfbb74e",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/coreos/go-systemd/v22": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v22.5.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/coreos/pkg": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.0.0-20180928190104-399ea9e2e55f",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/cpuguy83/go-md2man/v2": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v2.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/creack/pty": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.1.21",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/cyphar/filepath-securejoin": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.2.4",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/danieljoos/wincred": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.2.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/davecgh/go-spew": {
+      "license": "ISC",
+      "notice": "Licensed under the ISC License.",
+      "version": "v1.1.2-0.20180830191138-d8f796af33cc",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/dgrijalva/jwt-go": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v3.2.0+incompatible",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/dgryski/go-sip13": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20181026042036-e10d5fee7954",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/dlclark/regexp2": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.11.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/docopt/docopt-go": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20180111231733-ee0de3bc6815",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/dominikbraun/graph": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.23.0",
+      "_source": "deps.dev",
+      "_shipped": true,
+      "_notice_required": true
+    },
+    "github.com/elazarl/goproxy": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.0.0-20230808193330-2592e75ae04a",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/emirpasic/gods": {
+      "license": "BSD-2-Clause AND ISC",
+      "notice": "Multi-licensed (BSD-2-Clause AND ISC). Licensed under the BSD 2-Clause License. Licensed under the ISC License.",
+      "version": "v1.18.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/fatih/color": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.7.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/frankban/quicktest": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.14.6",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/fsnotify/fsnotify": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.6.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/ghodss/yaml": {
+      "license": "MIT AND BSD-3-Clause",
+      "notice": "Multi-licensed (MIT AND BSD-3-Clause). Licensed under the MIT License. Licensed under the BSD 3-Clause License.",
+      "version": "v1.0.1-0.20190212211648-25d852aebe32",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/gliderlabs/ssh": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.3.7",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/go-git/gcfg": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.5.1-0.20230307220236-3a3c6141e376",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/go-git/go-billy/v5": {
+      "license": "Apache-2.0",
+      "notice": "Copyright 2017 Sourced Technologies S.L. Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v5.5.0",
+      "_source": "deps.dev",
+      "_shipped": true,
+      "_notice_required": true
+    },
+    "github.com/go-git/go-git-fixtures/v4": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v4.3.2-0.20231010084843-55a94097c399",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/go-git/go-git/v5": {
+      "license": "Apache-2.0",
+      "notice": "Copyright 2018 Sourced Technologies, S.L. Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v5.12.0",
+      "_source": "deps.dev",
+      "_shipped": true,
+      "_notice_required": true
+    },
+    "github.com/go-gl/glfw": {
+      "license": "BSD-3-Clause AND Zlib",
+      "notice": "Multi-licensed (BSD-3-Clause AND Zlib). Licensed under the BSD 3-Clause License. Licensed under the zlib License.",
+      "version": "v0.0.0-20190409004039-e6da0acd62b1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/go-kit/kit": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.8.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/go-logfmt/logfmt": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.4.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/go-stack/stack": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.8.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/go-task/slim-sprig/v3": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v3.0.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/go-task/template": {
+      "license": "BSD-3-Clause",
+      "notice": "Copyright 2011 The Go Authors. All rights reserved. Licensed under the BSD 3-Clause License.",
+      "version": "v0.0.0-20240602015157-960e6f576656",
+      "_source": "verified-upstream",
+      "_evidence": "upstream LICENSE: Go Authors BSD-3-Clause text + Pete Davison modifications",
+      "_shipped": true,
+      "_notice_required": true
+    },
+    "github.com/godbus/dbus/v5": {
+      "license": "BSD-2-Clause",
+      "notice": "Licensed under the BSD 2-Clause License.",
+      "version": "v5.1.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/gogo/protobuf": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.2.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/golang/glog": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.0.0-20160126235308-23def4e6c14b",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/golang/groupcache": {
+      "license": "Apache-2.0",
+      "notice": "Copyright 2012 Google Inc. Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.0.0-20210331224755-41bb18bfe9da",
+      "_source": "deps.dev",
+      "_shipped": true,
+      "_notice_required": true
+    },
+    "github.com/golang/mock": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.3.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/golang/protobuf": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.4.2",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/gomarkdown/markdown": {
+      "license": "BSD-2-Clause",
+      "notice": "Licensed under the BSD 2-Clause License.",
+      "version": "v0.0.0-20240730141124-034f12af3bf6",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/google/btree": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/google/go-cmp": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.6.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/google/go-querystring": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.1.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/google/martian": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v2.1.0+incompatible",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/google/pprof": {
+      "license": "Apache-2.0 AND BSD-3-Clause",
+      "notice": "Multi-licensed (Apache-2.0 AND BSD-3-Clause). Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0 Licensed under the BSD 3-Clause License.",
+      "version": "v0.0.0-20190515194954-54271f7e092f",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/google/renameio": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.1.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/google/renameio/v2": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v2.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/google/uuid": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.6.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/googleapis/gax-go/v2": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v2.0.5",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/gopherjs/gopherjs": {
+      "license": "BSD-2-Clause",
+      "notice": "Licensed under the BSD 2-Clause License.",
+      "version": "v0.0.0-20181017120253-0766667cb4d1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/gorilla/websocket": {
+      "license": "BSD-2-Clause",
+      "notice": "Licensed under the BSD 2-Clause License.",
+      "version": "v1.4.2",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/grpc-ecosystem/go-grpc-middleware": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/grpc-ecosystem/go-grpc-prometheus": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.2.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/grpc-ecosystem/grpc-gateway": {
+      "license": "BSD-3-Clause AND Apache-2.0",
+      "notice": "Multi-licensed (BSD-3-Clause AND Apache-2.0). Licensed under the BSD 3-Clause License. Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.9.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/h2non/filetype": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.1.3",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/hashicorp/consul/api": {
+      "license": "MPL-2.0",
+      "notice": "Licensed under the Mozilla Public License 2.0. Source available from the upstream project.",
+      "version": "v1.1.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/hashicorp/consul/sdk": {
+      "license": "MPL-2.0",
+      "notice": "Licensed under the Mozilla Public License 2.0. Source available from the upstream project.",
+      "version": "v0.1.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/hashicorp/errwrap": {
+      "license": "MPL-2.0",
+      "notice": "Licensed under the Mozilla Public License 2.0. Source available from the upstream project.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/hashicorp/go-cleanhttp": {
+      "license": "MPL-2.0",
+      "notice": "Licensed under the Mozilla Public License 2.0. Source available from the upstream project.",
+      "version": "v0.5.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/hashicorp/go-immutable-radix": {
+      "license": "MPL-2.0",
+      "notice": "Licensed under the Mozilla Public License 2.0. Source available from the upstream project.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/hashicorp/go-msgpack": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.5.3",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/hashicorp/go-multierror": {
+      "license": "MPL-2.0",
+      "notice": "Licensed under the Mozilla Public License 2.0. Source available from the upstream project.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/hashicorp/go-rootcerts": {
+      "license": "MPL-2.0",
+      "notice": "Licensed under the Mozilla Public License 2.0. Source available from the upstream project.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/hashicorp/go-sockaddr": {
+      "license": "MPL-2.0",
+      "notice": "Licensed under the Mozilla Public License 2.0. Source available from the upstream project.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/hashicorp/go-syslog": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/hashicorp/go-uuid": {
+      "license": "MPL-2.0",
+      "notice": "Licensed under the Mozilla Public License 2.0. Source available from the upstream project.",
+      "version": "v1.0.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/hashicorp/go.net": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.0.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/hashicorp/golang-lru": {
+      "license": "MPL-2.0",
+      "notice": "Licensed under the Mozilla Public License 2.0. Source available from the upstream project.",
+      "version": "v0.5.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/hashicorp/hcl": {
+      "license": "MPL-2.0",
+      "notice": "Licensed under the Mozilla Public License 2.0. Source available from the upstream project.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/hashicorp/logutils": {
+      "license": "MPL-2.0",
+      "notice": "Licensed under the Mozilla Public License 2.0. Source available from the upstream project.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/hashicorp/mdns": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/hashicorp/memberlist": {
+      "license": "MPL-2.0",
+      "notice": "Licensed under the Mozilla Public License 2.0. Source available from the upstream project.",
+      "version": "v0.1.3",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/hashicorp/serf": {
+      "license": "MPL-2.0",
+      "notice": "Licensed under the Mozilla Public License 2.0. Source available from the upstream project.",
+      "version": "v0.8.2",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/hexops/gotextdiff": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.0.3",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/hokaccha/go-prettyjson": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20211117102719-0474bc63780f",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/hpcloud/tail": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/huandu/xstrings": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.3.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/imdario/mergo": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.3.13",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/inconshreveable/mousetrap": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/itchyny/gojq": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.12.16",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/itchyny/timefmt-go": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.1.6",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/jaytaylor/html2text": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20230321000545-74c2419ad056",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/jbenet/go-context": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20150711004518-d14ea06fba99",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/jessevdk/go-flags": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.5.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/joho/godotenv": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.5.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/jonboulle/clockwork": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.1.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/json-iterator/go": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.1.6",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/jstemmer/go-junit-report": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20190106144839-af01ea7f8024",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/jtolds/gls": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v4.20.0+incompatible",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/julienschmidt/httprouter": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.2.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/kevinburke/ssh_config": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.2.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/kisielk/errcheck": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.1.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/kisielk/gotool": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/klauspost/cpuid/v2": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v2.0.9",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/konsorten/go-windows-terminal-sequences": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.0.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/kr/fs": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.1.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/kr/logfmt": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20140226030751-b84e30acd515",
+      "_source": "verified-upstream",
+      "_evidence": "upstream LICENSE: 'MIT License'",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/kr/pretty": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.3.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/kr/pty": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.1.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/kr/text": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.2.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/magiconair/properties": {
+      "license": "BSD-2-Clause",
+      "notice": "Licensed under the BSD 2-Clause License.",
+      "version": "v1.8.4",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/mattn/go-colorable": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.1.8",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/mattn/go-isatty": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.4",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/mattn/go-runewidth": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.9",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/mattn/go-zglob": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.4",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/matttproud/golang_protobuf_extensions": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.0.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/miekg/dns": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.0.14",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/mitchellh/cli": {
+      "license": "MPL-2.0",
+      "notice": "Licensed under the Mozilla Public License 2.0. Source available from the upstream project.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/mitchellh/copystructure": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.2.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/mitchellh/go-homedir": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.1.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/mitchellh/go-testing-interface": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/mitchellh/gox": {
+      "license": "MPL-2.0",
+      "notice": "Licensed under the Mozilla Public License 2.0. Source available from the upstream project.",
+      "version": "v0.4.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/mitchellh/hashstructure/v2": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v2.0.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/mitchellh/iochan": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/mitchellh/mapstructure": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.4.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/mitchellh/reflectwalk": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.0.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/mmcloughlin/avo": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.5.0",
+      "_source": "verified-upstream",
+      "_evidence": "upstream LICENSE is BSD-3-Clause; deps.dev additionally reports LGPL-3.0/BSD-2-Clause from vendored test fixtures, not avo's own grant",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/modern-go/concurrent": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.0.0-20180306012644-bacd9c7ef1dd",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/modern-go/reflect2": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.0.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/mwitkow/go-conntrack": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.0.0-20161129095857-cc309e4a2223",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/nicksnyder/go-i18n": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.10.3",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/nuvolaris/envsubst/cmd/envsubstmain": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20230603163828-10ca029cdb58",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/nuvolaris/go-replace": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20230515190028-12766da1824c",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/nuvolaris/goawk": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.21.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/nuvolaris/gron": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20231020134423-84e679ea6aad",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/nuvolaris/jj": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20231020143327-10b90948a5d2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/nwidger/jsoncolor": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20170215171346-75a6de4340e5",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/nxadm/tail": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.4.8",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/oklog/ulid": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.3.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/olekukonko/tablewriter": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.5",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/onsi/ginkgo": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.6.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/onsi/gomega": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.7.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/otiai10/copy": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.14.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/pascaldekloe/goe": {
+      "license": "CC0-1.0",
+      "notice": "Released into the public domain under CC0 1.0 Universal.",
+      "version": "v0.0.0-20180627143212-57f6aae5913c",
+      "_source": "verified-upstream",
+      "_evidence": "upstream README: released into the public domain (CC0 1.0)",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/pelletier/go-toml": {
+      "license": "MIT AND Apache-2.0",
+      "notice": "Multi-licensed (MIT AND Apache-2.0). Licensed under the MIT License. Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.9.5",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/pjbgf/sha1cd": {
+      "license": "Apache-2.0",
+      "notice": "Copyright 2009 The Go Authors (portions). Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.3.0",
+      "_source": "deps.dev",
+      "_shipped": true,
+      "_notice_required": true
+    },
+    "github.com/pkg/browser": {
+      "license": "BSD-2-Clause",
+      "notice": "Licensed under the BSD 2-Clause License.",
+      "version": "v0.0.0-20240102092130-5ac0b6a4141c",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/pkg/diff": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.0.0-20210226163009-20ebb0f2a09e",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/pkg/errors": {
+      "license": "BSD-2-Clause",
+      "notice": "Licensed under the BSD 2-Clause License.",
+      "version": "v0.9.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/pkg/sftp": {
+      "license": "BSD-2-Clause",
+      "notice": "Licensed under the BSD 2-Clause License.",
+      "version": "v1.10.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/pmezard/go-difflib": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.0.1-0.20181226105442-5d4384ee4fb2",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/posener/complete": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.1.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/prometheus/client_golang": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.9.3",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/prometheus/client_model": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.0.0-20190129233127-fd36f4220a90",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/prometheus/common": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.4.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/prometheus/procfs": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.0.0-20190507164030-5867b95ac084",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/prometheus/tsdb": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.7.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/radovskyb/watcher": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.0.7",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/remeh/sizedwaitgroup": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/rivo/uniseg": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.4.7",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/rogpeppe/fastuuid": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.0.0-20150106093220-6724a57986af",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/rogpeppe/go-internal": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.3.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/rs/xid": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.5.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/rs/zerolog": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.33.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/russross/blackfriday/v2": {
+      "license": "BSD-2-Clause",
+      "notice": "Licensed under the BSD 2-Clause License.",
+      "version": "v2.0.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/ryanuber/columnize": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20160712163229-9b3edd62028f",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/sajari/fuzzy": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/sciabarracom/openwhisk-cli": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.2.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/sciabarracom/openwhisk-wskdeploy": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.2.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/sciabarracom/sh/v3": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v3.8.3",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/sciabarracom/task/v3": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v3.38.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/sean-/seed": {
+      "license": "MIT AND BSD-3-Clause",
+      "notice": "Multi-licensed (MIT AND BSD-3-Clause). Licensed under the MIT License. Licensed under the BSD 3-Clause License.",
+      "version": "v0.0.0-20170313163322-e2103e2c3529",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/sergi/go-diff": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.3.2-0.20230802210424-5b0b94c5c0d3",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/shurcooL/sanitized_anchor_name": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.0.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/sirupsen/logrus": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.9.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/skeema/knownhosts": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.2.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/smartystreets/assertions": {
+      "license": "MIT AND BSD-3-Clause AND Apache-2.0",
+      "notice": "Multi-licensed (MIT AND BSD-3-Clause AND Apache-2.0). Licensed under the MIT License. Licensed under the BSD 3-Clause License. Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.0.0-20180927180507-b2de0cb4f26d",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/smartystreets/goconvey": {
+      "license": "MIT AND Apache-2.0",
+      "notice": "Multi-licensed (MIT AND Apache-2.0). Licensed under the MIT License. Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.6.4",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/soheilhy/cmux": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.1.4",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/spaolacci/murmur3": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.0.0-20180118202830-f09979ecbc72",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/spf13/afero": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.5.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/spf13/cast": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.3.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/spf13/cobra": {
+      "license": "Apache-2.0",
+      "notice": "Copyright 2013 Steve Francia <spf@spf13.com>; Copyright 2015 Red Hat Inc. Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.1.3",
+      "_source": "deps.dev",
+      "_shipped": true,
+      "_notice_required": true
+    },
+    "github.com/spf13/jwalterweatherman": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.1.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/spf13/pflag": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.0.5",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/spf13/viper": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.7.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/ssor/bom": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20170718123548-6386211fdfcf",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/stretchr/objx": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.5.2",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/stretchr/testify": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.9.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/subosito/gotenv": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.2.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/tidwall/gjson": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.14.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/tidwall/match": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.1.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/tidwall/pretty": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.2.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/tidwall/sjson": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.2.4",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/tmc/grpc-websocket-proxy": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20190109142713-0ad062ec5ee5",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/xanzy/ssh-agent": {
+      "license": "Apache-2.0",
+      "notice": "Copyright (c) 2014 David Mzareulyan; Copyright 2015 Sander van Harmelen. Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.3.3",
+      "_source": "deps.dev",
+      "_shipped": true,
+      "_notice_required": true
+    },
+    "github.com/xi2/xz": {
+      "license": "public-domain",
+      "notice": "Released into the public domain.",
+      "version": "v0.0.0-20171230120015-48954b6210f8",
+      "_source": "verified-upstream",
+      "_evidence": "upstream source headers: 'This file has been put into the public domain.'",
+      "_shipped": true
+    },
+    "github.com/xiang90/probing": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.0.0-20190116061207-43a291ad63a2",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/yuin/goldmark": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.4.13",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/zalando/go-keyring": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v0.2.5",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "github.com/zeebo/assert": {
+      "license": "CC0-1.0",
+      "notice": "Released into the public domain under CC0 1.0 Universal.",
+      "version": "v1.3.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "github.com/zeebo/xxh3": {
+      "license": "BSD-2-Clause",
+      "notice": "Licensed under the BSD 2-Clause License.",
+      "version": "v1.0.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "go.etcd.io/bbolt": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.3.2",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "go.opencensus.io": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.22.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "go.uber.org/atomic": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.4.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "go.uber.org/multierr": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.1.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "go.uber.org/zap": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.10.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "golang.org/x/crypto": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.7.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "golang.org/x/exp": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.0.0-20240719175910-8a7402abbf56",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "golang.org/x/image": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.0.0-20190802002840-cff245a6509b",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "golang.org/x/lint": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.0.0-20190930215403-16217165b5de",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "golang.org/x/mobile": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.0.0-20190719004257-d2bd2a29d028",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "golang.org/x/mod": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.8.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "golang.org/x/net": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.8.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "golang.org/x/oauth2": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.0.0-20190604053449-0f29369cfe45",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "golang.org/x/sync": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.7.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "golang.org/x/sys": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.6.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "golang.org/x/telemetry": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.0.0-20240521205824-bda55230c457",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "golang.org/x/term": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.6.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "golang.org/x/text": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.8.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "golang.org/x/time": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.0.0-20190308202827-9d24e82272b4",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "golang.org/x/tools": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.6.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "golang.org/x/xerrors": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.0.0-20200804184101-5ec99f83aff1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "google.golang.org/api": {
+      "license": "BSD-3-Clause AND MIT",
+      "notice": "Multi-licensed (BSD-3-Clause AND MIT). Licensed under the BSD 3-Clause License. Licensed under the MIT License.",
+      "version": "v0.9.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "google.golang.org/appengine": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.6.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "google.golang.org/genproto": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v0.0.0-20191108220845-16a3f7862a1a",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "google.golang.org/grpc": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.21.1",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "google.golang.org/protobuf": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.23.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "gopkg.in/alecthomas/kingpin.v2": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v2.2.6",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "gopkg.in/check.v1": {
+      "license": "BSD-2-Clause",
+      "notice": "Licensed under the BSD 2-Clause License.",
+      "version": "v1.0.0-20201130134442-10cb98267c6c",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "gopkg.in/errgo.v2": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v2.1.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "gopkg.in/fsnotify.v1": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.4.7",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "gopkg.in/ini.v1": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v1.62.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "gopkg.in/resty.v1": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "v1.12.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "gopkg.in/tomb.v1": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v1.0.0-20141024135613-dd632973f1e7",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "gopkg.in/warnings.v0": {
+      "license": "BSD-2-Clause",
+      "notice": "Licensed under the BSD 2-Clause License.",
+      "version": "v0.1.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "gopkg.in/yaml.v2": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v2.4.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "gopkg.in/yaml.v3": {
+      "license": "MIT AND Apache-2.0",
+      "notice": "Multi-licensed (MIT AND Apache-2.0). Licensed under the MIT License. Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "v3.0.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "honnef.co/go/tools": {
+      "license": "MIT AND BSD-3-Clause",
+      "notice": "Multi-licensed (MIT AND BSD-3-Clause). Licensed under the MIT License. Licensed under the BSD 3-Clause License.",
+      "version": "v0.0.1-2019.2.3",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "mvdan.cc/editorconfig": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.2.1-0.20231228180347-1925077f8eb2",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    },
+    "rsc.io/binaryregexp": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "v0.2.0",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "in go.sum closure but not linked into any shipped binary"
+    }
+  },
+  "scala": {
+    "ch.megard:akka-http-cors_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "0.4.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "ch.qos.logback:logback-classic": {
+      "license": "EPL-1.0 OR LGPL-2.1",
+      "notice": "Multi-licensed (EPL-1.0 OR LGPL-2.1). Licensed under the Eclipse Public License 1.0. Licensed under the GNU Lesser General Public License 2.1.",
+      "version": "1.2.3",
+      "_source": "verified-upstream",
+      "_evidence": "POM declares dual Eclipse Public License v1.0 / GNU LGPL 2.1",
+      "_shipped": true
+    },
+    "com.amazonaws:aws-java-sdk-cloudfront": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.11.517",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.azure:azure-storage-blob": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "12.7.0",
+      "_source": "maven-pom",
+      "_shipped": true
+    },
+    "com.fasterxml.uuid:java-uuid-generator": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "3.1.3",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.github.ben-manes.caffeine:caffeine": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.6.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.github.pureconfig:pureconfig_2.13": {
+      "license": "MPL-2.0",
+      "notice": "Licensed under the Mozilla Public License 2.0. Source available from the upstream project.",
+      "version": "0.11.1",
+      "_source": "maven-pom",
+      "_shipped": true
+    },
+    "com.google.code.findbugs:jsr305": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "3.0.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.ibm.etcd:etcd-java": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "0.0.13",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.lightbend.akka.discovery:akka-discovery-kubernetes-api_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.0.5",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.lightbend.akka.discovery:akka-discovery-marathon-api_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.0.5",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.lightbend.akka.grpc:akka-grpc-gradle-plugin": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.0.0",
+      "_source": "verified-upstream",
+      "_evidence": "akka-grpc 1.0.0 released under Apache-2.0 (pre-BSL)",
+      "_shipped": false,
+      "_shipped_reason": "build scope only; not redistributed"
+    },
+    "com.lightbend.akka.management:akka-management-cluster-bootstrap_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.0.5",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.lightbend.akka:akka-stream-alpakka-file_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.1.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.lightbend.akka:akka-stream-alpakka-s3_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.1.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.lihaoyi:fastparse_2.13": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "2.3.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.microsoft.azure:azure-cosmos": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "3.5.0",
+      "_source": "maven-pom",
+      "_shipped": true
+    },
+    "com.microsoft.azure:azure-cosmosdb": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "2.6.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.sksamuel.elastic4s:elastic4s-http_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "6.7.4",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-actor_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.6.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-cluster-metrics_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.6.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-cluster-sharding_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.6.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-cluster-tools_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.6.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-cluster_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.6.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-coordination_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.6.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-discovery_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.6.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-distributed-data_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.6.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-http-core_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "10.2.4",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-http-spray-json_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "10.2.4",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-http-testkit_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "10.2.4",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-http-xml_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "10.2.4",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-http2-support_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "10.2.4",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-http_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "10.2.4",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-parsing_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "10.2.4",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-persistence_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.6.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-protobuf_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.6.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-remote_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.6.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-slf4j_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.6.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-stream-kafka-testkit_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.0.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-stream-kafka_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.0.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-stream-testkit_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.6.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-stream_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.6.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "com.typesafe.akka:akka-testkit_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.6.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "commons-codec:commons-codec": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.9",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "commons-collections:commons-collections": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "3.2.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "commons-io:commons-io": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.6",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "gradle.plugin.cz.alenkacz:gradle-scalafmt": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "1.16.2",
+      "_source": "verified-upstream",
+      "_evidence": "upstream LICENSE: MIT License",
+      "_shipped": false,
+      "_shipped_reason": "build scope only; not redistributed"
+    },
+    "io.altoo:akka-kryo-serialization_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.0.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "io.fabric8:kubernetes-client": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "4.10.3",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "io.github.embeddedkafka:embedded-kafka_2.13": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "2.4.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "io.kamon:kamon-core_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.1.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "io.kamon:kamon-datadog_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.1.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "io.kamon:kamon-prometheus_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.1.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "io.kamon:kamon-statsd_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.1.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "io.kamon:kamon-system-metrics_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.1.12",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "io.opentracing.brave:brave-opentracing": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "0.31.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "io.opentracing:opentracing-api": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "0.31.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "io.opentracing:opentracing-util": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "0.31.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "io.prometheus:simpleclient": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "0.6.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "io.prometheus:simpleclient_common": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "0.6.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "io.reactivex:rxjava": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.3.8",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "io.reactivex:rxjava-reactive-streams": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.2.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "io.spray:spray-json_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.3.5",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "io.zipkin.reporter2:zipkin-reporter": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.6.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "io.zipkin.reporter2:zipkin-sender-okhttp3": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.6.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "junit:junit": {
+      "license": "CPL-1.0",
+      "notice": "Licensed under the Common Public License 1.0.",
+      "version": "4.11",
+      "_source": "verified-upstream",
+      "_evidence": "POM: Common Public License Version 1.0 (junit 4.11; 4.12+ is EPL-1.0)",
+      "_shipped": false,
+      "_shipped_reason": "test scope only; not redistributed"
+    },
+    "org.apache.curator:curator-recipes": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "4.0.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "org.apache.httpcomponents:httpclient": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "4.5.5",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "org.apache.kafka:kafka-clients": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.4.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "org.apache.zookeeper:zookeeper": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "3.4.11",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "org.mongodb.scala:mongo-scala-driver_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.7.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "org.rogach:scallop_2.13": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "3.3.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "org.scala-lang:scala-library": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.13.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "org.scala-lang:scala-reflect": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.13.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "org.scalatest:scalatest_2.13": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "3.0.8",
+      "_source": "deps.dev",
+      "_shipped": false,
+      "_shipped_reason": "test scope only; not redistributed"
+    },
+    "org.slf4j:jcl-over-slf4j": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "1.7.25",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "org.slf4j:log4j-over-slf4j": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.7.25",
+      "_source": "verified-upstream",
+      "_evidence": "POM: Apache Software Licenses",
+      "_shipped": true
+    }
+  },
+  "python": {
+    "Jinja2": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "3.1.3",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "PyYAML": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "6.0.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "accelerate": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.1.1",
+      "_source": "verified-upstream",
+      "_evidence": "PyPI license 'Apache' + OSI Apache Software License classifier",
+      "_shipped": true
+    },
+    "aiohappyeyeballs": {
+      "license": "PSF-2.0",
+      "notice": "Licensed under the Python Software Foundation License.",
+      "version": "2.7.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "aiohttp": {
+      "license": "Apache-2.0 AND MIT",
+      "notice": "Multi-licensed (Apache-2.0 AND MIT). Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0 Licensed under the MIT License.",
+      "version": "3.14.3",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "aiosignal": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.4.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "annotated-types": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "0.8.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "anyio": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "4.15.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "argon2-cffi": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "23.1.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "argon2-cffi-bindings": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "21.2.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "asn1crypto": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "1.5.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "asttokens": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "3.0.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "attrs": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "24.3.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "auth0-python": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "4.9.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "backoff": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "2.2.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "bcrypt": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "4.3.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "beautifulsoup4": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "4.15.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "boto3": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.43.93",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "botocore": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.43.93",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "cachetools": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "5.5.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "certifi": {
+      "license": "MPL-2.0",
+      "notice": "Licensed under the Mozilla Public License 2.0. Source available from the upstream project.",
+      "version": "2024.12.14",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "cffi": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "1.17.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "charset-normalizer": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "3.4.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "click": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "8.1.8",
+      "_source": "verified-upstream",
+      "_evidence": "Pallets project standard BSD-3-Clause",
+      "_shipped": true
+    },
+    "cloudpickle": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "3.1.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "colorama": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "0.4.6",
+      "_source": "verified-upstream",
+      "_evidence": "upstream LICENSE.txt BSD-3-Clause",
+      "_shipped": true
+    },
+    "croniter": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "1.4.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "cryptography": {
+      "license": "Apache-2.0 OR BSD-3-Clause",
+      "notice": "Multi-licensed (Apache-2.0 OR BSD-3-Clause). Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0 Licensed under the BSD 3-Clause License.",
+      "version": "44.0.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "decorator": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "5.1.1",
+      "_source": "pypi",
+      "_shipped": true
+    },
+    "defusedxml": {
+      "license": "PSF-2.0",
+      "notice": "Licensed under the Python Software Foundation License.",
+      "version": "0.7.1",
+      "_source": "pypi",
+      "_shipped": true
+    },
+    "distro": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.9.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "dnspython": {
+      "license": "ISC",
+      "notice": "Licensed under the ISC License.",
+      "version": "2.8.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "durationpy": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "0.9",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "executing": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "2.1.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "feedparser": {
+      "license": "BSD-2-Clause",
+      "notice": "Licensed under the BSD 2-Clause License.",
+      "version": "6.0.14",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "feedparser-sgmllib": {
+      "license": "PSF-2.0",
+      "notice": "Licensed under the Python Software Foundation License.",
+      "version": "2.1.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "flasgger": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "0.9.7.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "flask": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "3.1.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "flask-cors": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "6.0.0",
+      "_source": "verified-upstream",
+      "_evidence": "PyPI info.license_expression: MIT",
+      "_shipped": true
+    },
+    "flatdict": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "4.1.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "frozenlist": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.5.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "google-auth": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.37.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "h11": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "0.16.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "htmlgenerator": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "",
+      "_source": "pypi",
+      "_shipped": false,
+      "_shipped_reason": "test fixture in runtimes/packages/python/withreqs/requirements.txt; not a runtime dependency"
+    },
+    "httpcore": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "1.0.9",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "httpcore2": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "2.12.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "httplib2": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "0.32.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "httpx": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "0.28.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "httpx2": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "2.12.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "huggingface_hub": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "0.26.2",
+      "_source": "verified-upstream",
+      "_evidence": "PyPI license: Apache-2.0",
+      "_shipped": true
+    },
+    "idna": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "3.10",
+      "_source": "verified-upstream",
+      "_evidence": "upstream LICENSE.md BSD-3-Clause",
+      "_shipped": true
+    },
+    "ipython": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "8.31.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "iso8601": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "2.1.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "jedi": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "0.19.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "jinja2": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "3.1.5",
+      "_source": "verified-upstream",
+      "_evidence": "Pallets project standard BSD-3-Clause",
+      "_shipped": true
+    },
+    "jiter": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "0.17.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "jmespath": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "1.1.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "joblib": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "1.6.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "jsonpatch": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "1.33",
+      "_source": "pypi",
+      "_shipped": true
+    },
+    "jsonpointer": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "3.1.1",
+      "_source": "pypi",
+      "_shipped": true
+    },
+    "kafka-python": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "3.0.11",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "kafka_python": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.0.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "kopf": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "1.37.4",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "kubernetes": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "31.0.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "langchain": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "1.4.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "langchain-core": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "1.6.3",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "langchain-protocol": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "0.0.19",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "langdetect": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "1.0.9",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "langgraph": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "1.2.11",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "langgraph-checkpoint": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "4.2.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "langgraph-prebuilt": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "1.1.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "langgraph-sdk": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "0.4.4",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "langsmith": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "0.12.4",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "markupsafe": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "3.0.2",
+      "_source": "verified-upstream",
+      "_evidence": "Pallets project standard BSD-3-Clause",
+      "_shipped": true
+    },
+    "matplotlib-inline": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "0.1.7",
+      "_source": "verified-upstream",
+      "_evidence": "upstream LICENSE BSD-3-Clause",
+      "_shipped": true
+    },
+    "minio": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "7.1.13",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "mistral_inference": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.5.0",
+      "_source": "verified-upstream",
+      "_evidence": "upstream LICENSE: Apache License",
+      "_shipped": true
+    },
+    "multidict": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "6.1.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "narwhals": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "2.26.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "netifaces": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "0.11.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "nltk": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "3.10.3",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "oauthlib": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "3.2.2",
+      "_source": "verified-upstream",
+      "_evidence": "PyPI license: BSD-3-Clause",
+      "_shipped": true
+    },
+    "ollama": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "0.6.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "openai": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "3.13.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "orjson": {
+      "license": "MPL-2.0 AND (Apache-2.0 OR MIT)",
+      "notice": "Multi-licensed (MPL-2.0 AND (Apache-2.0 OR MIT)). Licensed under the Mozilla Public License 2.0. Source available from the upstream project. Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0 Licensed under the MIT License.",
+      "version": "3.12.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "ormsgpack": {
+      "license": "Apache-2.0 OR MIT",
+      "notice": "Multi-licensed (Apache-2.0 OR MIT). Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0 Licensed under the MIT License.",
+      "version": "1.12.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "packaging": {
+      "license": "Apache-2.0 OR BSD-2-Clause",
+      "notice": "Multi-licensed (Apache-2.0 OR BSD-2-Clause). Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0 Licensed under the BSD 2-Clause License.",
+      "version": "26.3",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "parso": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "0.8.4",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "pexpect": {
+      "license": "ISC",
+      "notice": "Licensed under the ISC License.",
+      "version": "4.9.0",
+      "_source": "pypi",
+      "_shipped": true
+    },
+    "pg8000": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "1.31.5",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "plotly": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "7.0.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "prompt-toolkit": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "3.0.48",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "propcache": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "0.2.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "protobuf": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "5.28.3",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "ptyprocess": {
+      "license": "ISC",
+      "notice": "Licensed under the ISC License.",
+      "version": "0.7.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "pure-eval": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "0.2.3",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "pyasn1": {
+      "license": "BSD-2-Clause",
+      "notice": "Licensed under the BSD 2-Clause License.",
+      "version": "0.6.4",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "pyasn1-modules": {
+      "license": "BSD-2-Clause",
+      "notice": "Licensed under the BSD 2-Clause License.",
+      "version": "0.4.2",
+      "_source": "verified-upstream",
+      "_evidence": "pyasn1 project ships BSD-2-Clause",
+      "_shipped": true
+    },
+    "pycparser": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "2.22",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "pycryptodome": {
+      "license": "BSD-2-Clause AND public-domain",
+      "notice": "Multi-licensed (BSD-2-Clause AND public-domain). Licensed under the BSD 2-Clause License. Released into the public domain.",
+      "version": "3.21.0",
+      "_source": "verified-upstream",
+      "_evidence": "upstream LICENSE.rst: public domain + BSD-2-Clause dual",
+      "_shipped": true
+    },
+    "pydantic": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "2.13.5",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "pydantic-core": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "2.46.5",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "pygments": {
+      "license": "BSD-2-Clause",
+      "notice": "Licensed under the BSD 2-Clause License.",
+      "version": "2.19.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "pykube-ng": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "23.6.0",
+      "_source": "verified-upstream",
+      "_evidence": "PyPI license 'Apache' + OSI Apache Software License classifier",
+      "_shipped": true
+    },
+    "pymongo": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "4.18.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "pyparsing": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "3.3.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "python-dateutil": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.9.0.post0",
+      "_source": "pypi-classifier",
+      "_shipped": true
+    },
+    "python-dotenv": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "1.1.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "python-json-logger": {
+      "license": "BSD-2-Clause",
+      "notice": "Licensed under the BSD 2-Clause License.",
+      "version": "3.2.1",
+      "_source": "pypi",
+      "_shipped": true
+    },
+    "pyyaml": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "6.0.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "redis": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "5.2.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "regex": {
+      "license": "Apache-2.0 AND CNRI-Python",
+      "notice": "Multi-licensed (Apache-2.0 AND CNRI-Python). Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2026.9.10",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "requests": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.31.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "requests-oauthlib": {
+      "license": "ISC",
+      "notice": "Licensed under the ISC License.",
+      "version": "2.0.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "requests-toolbelt": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.0.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "rsa": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "4.9",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "s3transfer": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "0.19.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "scramp": {
+      "license": "MIT-0",
+      "notice": "Licensed under the MIT No Attribution License.",
+      "version": "1.4.17",
+      "_source": "verified-upstream",
+      "_evidence": "PyPI classifier: MIT No Attribution License (MIT-0)",
+      "_shipped": true
+    },
+    "scrapy": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "2.5.0",
+      "_source": "verified-upstream",
+      "_evidence": "PyPI license_expression: BSD-3-Clause",
+      "_shipped": true
+    },
+    "sentencepiece": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "0.2.0",
+      "_source": "verified-upstream",
+      "_evidence": "PyPI license_expression: Apache-2.0",
+      "_shipped": true
+    },
+    "setuptools": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "",
+      "_source": "pypi",
+      "_shipped": false,
+      "_shipped_reason": "doc/qa extra of a transitive package in oplugins-op/poetry.lock; not installed at runtime"
+    },
+    "simplejson": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "3.17.5",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "six": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "1.17.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "sniffio": {
+      "license": "Apache-2.0 OR MIT",
+      "notice": "Multi-licensed (Apache-2.0 OR MIT). Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0 Licensed under the MIT License.",
+      "version": "1.3.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "soupsieve": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "2.9.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "stack-data": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "0.6.3",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "tenacity": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "9.1.4",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "tqdm": {
+      "license": "MIT AND MPL-2.0",
+      "notice": "Multi-licensed (MIT AND MPL-2.0). Licensed under the MIT License. Licensed under the Mozilla Public License 2.0. Source available from the upstream project.",
+      "version": "4.70.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "traitlets": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "5.14.3",
+      "_source": "verified-upstream",
+      "_evidence": "upstream LICENSE BSD-3-Clause",
+      "_shipped": true
+    },
+    "transformers": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "4.46.3",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "truststore": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "0.10.4",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "twisted": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "21.7.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "typing-extensions": {
+      "license": "PSF-2.0",
+      "notice": "Licensed under the Python Software Foundation License.",
+      "version": "4.12.2",
+      "_source": "pypi-classifier",
+      "_shipped": true
+    },
+    "typing-inspection": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "0.4.4",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "urllib3": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "2.3.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "uuid-utils": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "0.17.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "waitress": {
+      "license": "ZPL-2.1",
+      "notice": "Licensed under ZPL-2.1.",
+      "version": "3.0.2",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "wcwidth": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "0.2.13",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "websocket-client": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.8.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "websockets": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "16.1.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "xxhash": {
+      "license": "BSD-2-Clause",
+      "notice": "Licensed under the BSD 2-Clause License.",
+      "version": "4.0.1",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "yarl": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "1.18.3",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "zstandard": {
+      "license": "BSD-3-Clause",
+      "notice": "Licensed under the BSD 3-Clause License.",
+      "version": "0.25.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    }
+  },
+  "node": {
+    "@clack/prompts": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "^0.7.0",
+      "_source": "npm",
+      "_shipped": true
+    },
+    "@types/bun": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "=1.2.2",
+      "_source": "npm",
+      "_shipped": false,
+      "_shipped_reason": "devDependency; TypeScript types erased at build time"
+    },
+    "@types/docopt": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "=0.6.37",
+      "_source": "npm",
+      "_shipped": false,
+      "_shipped_reason": "devDependency; TypeScript types erased at build time"
+    },
+    "@types/minio": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "^7.1.1",
+      "_source": "npm",
+      "_shipped": false,
+      "_shipped_reason": "devDependency; TypeScript types erased at build time"
+    },
+    "aws-s3": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "^2.0.5",
+      "_source": "npm",
+      "_shipped": true
+    },
+    "bun-types": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "^1.2.16",
+      "_source": "npm",
+      "_shipped": true
+    },
+    "chokidar": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "=4.0.3",
+      "_source": "npm",
+      "_shipped": true
+    },
+    "commander": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "=13.1.0",
+      "_source": "npm",
+      "_shipped": true
+    },
+    "docopt": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "=0.6.2",
+      "_source": "verified-upstream",
+      "_evidence": "npm registry version 0.6.2 license field: MIT",
+      "_shipped": true
+    },
+    "dotenv": {
+      "license": "BSD-2-Clause",
+      "notice": "Licensed under the BSD 2-Clause License.",
+      "version": "^16.4.7",
+      "_source": "npm",
+      "_shipped": true
+    },
+    "glob": {
+      "license": "BlueOak-1.0.0",
+      "notice": "Licensed under the Blue Oak Model License 1.0.0.",
+      "version": "=12.0.0",
+      "_source": "npm",
+      "_shipped": true
+    },
+    "lodash": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "4.17.15",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "marked": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "^12.0.0",
+      "_source": "npm",
+      "_shipped": true
+    },
+    "mime-types": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "^2.1.35",
+      "_source": "npm",
+      "_shipped": true
+    },
+    "minio": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "^8.0.7",
+      "_source": "npm",
+      "_shipped": true
+    },
+    "mongodb": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "^7.6.0",
+      "_source": "npm",
+      "_shipped": true
+    },
+    "ollama": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "^0.6.3",
+      "_source": "npm",
+      "_shipped": true
+    },
+    "openai": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "^7.10.0",
+      "_source": "npm",
+      "_shipped": true
+    },
+    "openwhisk": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "^3.21.9",
+      "_source": "npm",
+      "_shipped": true
+    },
+    "pg": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "^8.23.0",
+      "_source": "npm",
+      "_shipped": true
+    },
+    "redis": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "^6.2.1",
+      "_source": "npm",
+      "_shipped": true
+    },
+    "request": {
+      "license": "Apache-2.0",
+      "notice": "Licensed under the Apache License, Version 2.0. See http://www.apache.org/licenses/LICENSE-2.0",
+      "version": "2.88.0",
+      "_source": "deps.dev",
+      "_shipped": true
+    },
+    "shell-quote": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "^1.8.3",
+      "_source": "npm",
+      "_shipped": true
+    },
+    "uuid": {
+      "license": "MIT",
+      "notice": "Licensed under the MIT License.",
+      "version": "^14.0.2",
+      "_source": "npm",
+      "_shipped": true
+    },
+    "yaml": {
+      "license": "ISC",
+      "notice": "Licensed under the ISC License.",
+      "version": "^2.8.3",
+      "_source": "npm",
+      "_shipped": true
+    }
+  }
+}
