@@ -15,213 +15,721 @@ build/openwhisk.
 Apache OpenWhisk
 Copyright 2016-2024 The Apache Software Foundation
 
----------------
+==============================================================================
+THIRD-PARTY NOTICES
+==============================================================================
 
-The `ops` command-line interface contains code from Apache OpenWhisk Client Go
-which was released under an Apache 2.0 license.
+This file is self-contained: the notice of every third-party component
+bundled in this product is reproduced below. The complete text of each
+license referred to here is reproduced in the LICENSE file distributed
+beside this file.
 
-Apache OpenWhisk
-Copyright 2016-2024 The Apache Software Foundation
+Components: 516
 
----------------
-
-The `ops` command-line interface contains code from go-git which was released
-under an Apache 2.0 license.
-
-Copyright 2018 Sourced Technologies, S.L.
-
----------------
-
-The `ops` command-line interface contains code from go-billy which was
-released under an Apache 2.0 license.
-
-Copyright 2017 Sourced Technologies S.L.
-
----------------
-
-The `ops` command-line interface contains code from groupcache which was
-released under an Apache 2.0 license.
-
-Copyright 2012 Google Inc.
-
----------------
-
-The `ops` command-line interface contains code from Cobra which was released
-under an Apache 2.0 license.
-
-Copyright 2013 Steve Francia <spf@spf13.com>
-Copyright 2015 Red Hat Inc.
-
----------------
-
-The `ops` command-line interface contains code from ssh-agent which was
-released under an Apache 2.0 license.
-
-Copyright (c) 2014 David Mzareulyan
-Copyright 2015 Sander van Harmelen
-
----------------
-
-The `ops` command-line interface contains code from go-task/template, a fork
-of the Go standard library text/template package, which was released under a
-3-clause BSD license.
-
-Copyright 2011 The Go Authors. All rights reserved.
-
----------------
-
-The `ops` command-line interface and the streamer contain code from the Go
-golang.org/x libraries which were released under a 3-clause BSD license.
-
-Copyright (c) 2009 The Go Authors. All rights reserved.
-
----------------
-
-The `ops` command-line interface contains code from jibber_jabber which was
-released under an Apache 2.0 license.
-
-Copyright (c) 2014 Pivotal
-
----------------
-
-The `ops` command-line interface contains code from go-toml which was
-released under an Apache 2.0 license.
-
-Copyright (c) 2013 - 2021 Thomas Pelletier, Eric Anderton
-
----------------
-
-The `ops` command-line interface and the streamer contain code from
-gopkg.in/yaml.v2 and gopkg.in/yaml.v3 which were released under an Apache 2.0
-license and, for the parts derived from libyaml, under an MIT license.
-
-Copyright 2011-2016 Canonical Ltd.
-Copyright (c) 2006-2010 Kirill Simonov
-Copyright (c) 2006-2011 Kirill Simonov
-
----------------
-
-The container images contain Akka, Akka HTTP, Akka Management and Alpakka
-which were released under an Apache 2.0 license.
-
-Akka
-Copyright (C) 2009-2021 Lightbend Inc. <https://www.lightbend.com>
-
-Akka 2.6.x is the last version that was distributed under the Apache
-License, Version 2.0.
-
----------------
-
-The container images contain the Scala standard library which was released
-under an Apache 2.0 license.
-
-Scala
-Copyright (c) 2002-2020 EPFL
-Copyright (c) 2011-2020 Lightbend, Inc.
-
-Scala includes software developed at
-LAMP/EPFL (https://lamp.epfl.ch/) and
-Lightbend, Inc. (https://www.lightbend.com/).
-
----------------
-
-The container images contain spray-json which was released under an
-Apache 2.0 license.
-
-Copyright (C) 2011-2015 the spray project <http://spray.io>
-
----------------
-
-The container images contain code derived from Spray Caching in
-openwhisk/common/scala/src/main/scala/org/apache/openwhisk/core/database/
-ConcurrentMapBackedCache.scala, which was released under an Apache 2.0
-license.
-
-Copyright (C) 2011-2015 the spray project <http://spray.io>
-
----------------
-
-The container images contain the AWS SDK for Java, elastic4s and the MongoDB
-Scala Driver which were released under an Apache 2.0 license.
-
----------------
-
-The container images contain Logback which was dual-licensed under the
-Eclipse Public License 1.0 and the GNU Lesser General Public License 2.1.
-
-Copyright (C) 1999-2017 QOS.ch
-
----------------
-
-The runtime container images contain the Eclipse OpenJ9 virtual machine and
-Eclipse OMR, which were released under the Eclipse Public License 2.0 or an
-Apache 2.0 license.
-
-Product: OpenJ9
-Copyright IBM Corp. and others 1991
-
----------------
-
-The container images contain a Java runtime environment (Eclipse Temurin
-and/or Amazon Corretto, OpenJDK 11), licensed under the GNU General Public
-License, version 2, with the Classpath Exception.
-
-Copyright (c) Oracle and/or its affiliates, and Eclipse Adoptium
-Copyright (c) Amazon.com, Inc. or its affiliates.
-
----------------
-
-The container images contain certifi, which distributes a version of the
-Mozilla CA root certificate bundle under the Mozilla Public License, v. 2.0.
-
-This product includes software developed by the Mozilla Foundation
-(https://www.mozilla.org/).
-
----------------
-
-The container images contain Docker CLI static binaries.
-
-Copyright 2013-2018 Docker, Inc.
-Copyright 2013-2020 Docker, Inc.
-
----------------
-
-The container images contain Scallop which was released under an MIT license.
-
-Copyright (c) 2012-2019 Platon Pronko and Chris Hodapp
-
----------------
-
-The container images contain Python components released under the Python
-Software Foundation License Version 2.
-
-Copyright (c) 2001-2025 Python Software Foundation. All rights reserved.
-
----------------
-
-The container images contain zip and unzip which were released under the
-Info-ZIP license.
-
-Copyright (c) 1990-2007 Info-ZIP.  All rights reserved.
-
----------------
-
-The container images inherit operating-system components from their upstream
-Ubuntu, Debian, Alpine and ibm-semeru-runtimes base images. Those components
-are supplied by the upstream base images and are not redistributed by the ASF
-in source form. Their notices are distributed inside the container images at
-/usr/share/doc/<package>/copyright.
-
----------------
-
-The NOTICE file of each submodule remains authoritative for that component:
-
-  admin-api/NOTICE     Admin API service
-  build/NOTICE         Build tree, including vendored Apache OpenWhisk
-  cli/NOTICE           The `ops` command-line interface
-  devcontainer/NOTICE  Developer container image
-  oplugins/NOTICE      Taskfile plugins
-  oplugins-op/NOTICE   Kubernetes operator
-  runtimes/NOTICE      Action runtime container images
-  streamer/NOTICE      Streamer service
-  testing/NOTICE       Integration test suite
+------------------------------------------------------------------------------
+ATTRIBUTIONS REQUIRED BY THE COMPONENT LICENSES
+------------------------------------------------------------------------------
+
+The components below carry copyright notices that this product is
+required to reproduce.
+
+  github.com/apache/openwhisk-client-go (v0.0.0-20241028140229-bb8408824b9b) -- Apache-2.0
+      Apache OpenWhisk
+      Copyright 2016-2024 The Apache Software Foundation
+
+  github.com/cloudfoundry/jibber_jabber (v0.0.0-20151120183258-bcc4c8345a21) -- Apache-2.0
+      Copyright (c) 2014 Pivotal
+
+  github.com/go-git/go-billy/v5 (v5.5.0) -- Apache-2.0
+      Copyright 2017 Sourced Technologies S.L.
+
+  github.com/go-git/go-git/v5 (v5.12.0) -- Apache-2.0
+      Copyright 2018 Sourced Technologies, S.L.
+
+  github.com/go-task/template (v0.0.0-20240602015157-960e6f576656) -- BSD-3-Clause
+      Copyright 2011 The Go Authors. All rights reserved.
+
+  github.com/golang/groupcache (v0.0.0-20210331224755-41bb18bfe9da) -- Apache-2.0
+      Copyright 2012 Google Inc.
+
+  github.com/pjbgf/sha1cd (v0.3.0) -- Apache-2.0
+      Copyright 2009 The Go Authors (portions)
+
+  github.com/spf13/cobra (v1.1.3) -- Apache-2.0
+      Copyright 2013 Steve Francia <spf@spf13.com>
+      Copyright 2015 Red Hat Inc.
+
+  github.com/xanzy/ssh-agent (v0.3.3) -- Apache-2.0
+      Copyright (c) 2014 David Mzareulyan
+      Copyright 2015 Sander van Harmelen
+
+  golang.org/x/crypto (v0.7.0) -- BSD-3-Clause
+      Copyright (c) 2009 The Go Authors. All rights reserved.
+
+  golang.org/x/net (v0.8.0) -- BSD-3-Clause
+      Copyright (c) 2009 The Go Authors. All rights reserved.
+
+  golang.org/x/sys (v0.6.0) -- BSD-3-Clause
+      Copyright (c) 2009 The Go Authors. All rights reserved.
+
+  golang.org/x/term (v0.6.0) -- BSD-3-Clause
+      Copyright (c) 2009 The Go Authors. All rights reserved.
+
+  golang.org/x/text (v0.8.0) -- BSD-3-Clause
+      Copyright (c) 2009 The Go Authors. All rights reserved.
+
+  gopkg.in/yaml.v2 (v2.4.0) -- Apache-2.0
+      Copyright 2011-2016 Canonical Ltd.
+      Copyright (c) 2006-2010 Kirill Simonov
+
+  gopkg.in/yaml.v3 (v3.0.1) -- MIT AND Apache-2.0
+      Copyright 2011-2016 Canonical Ltd.
+      Copyright (c) 2006-2011 Kirill Simonov
+
+  ch.qos.logback:logback-classic (1.2.3) -- EPL-1.0 OR LGPL-2.1
+      Copyright (C) 1999-2017 QOS.ch
+
+  com.typesafe.akka:akka-actor_2.13 (2.6.12) -- Apache-2.0
+      Akka
+      Copyright (C) 2009-2021 Lightbend Inc. <https://www.lightbend.com>
+      Akka 2.6.x is the last version distributed under the Apache License, Version 2.0.
+
+  io.spray:spray-json_2.13 (1.3.5) -- Apache-2.0
+      Copyright (C) 2011-2015 the spray project <http://spray.io>
+
+  org.rogach:scallop_2.13 (3.3.2) -- MIT
+      Copyright (c) 2012-2019 Platon Pronko and Chris Hodapp
+
+  org.scala-lang:scala-library (2.13.1) -- Apache-2.0
+      Scala
+      Copyright (c) 2002-2020 EPFL
+      Copyright (c) 2011-2020 Lightbend, Inc.
+      Scala includes software developed at LAMP/EPFL (https://lamp.epfl.ch/) and Lightbend, Inc. (https://www.lightbend.com/).
+
+  certifi (2024.12.14) -- MPL-2.0
+      This product includes software developed by the Mozilla Foundation (https://www.mozilla.org/).
+
+------------------------------------------------------------------------------
+ALL BUNDLED COMPONENTS BY LICENSE
+------------------------------------------------------------------------------
+
+Apache-2.0 -- 169 component(s)
+  Go modules:
+    cloud.google.com/go v0.46.3   (not redistributed)
+    cloud.google.com/go/bigquery v1.0.1   (not redistributed)
+    cloud.google.com/go/datastore v1.0.0   (not redistributed)
+    cloud.google.com/go/firestore v1.1.0   (not redistributed)
+    cloud.google.com/go/pubsub v1.0.1   (not redistributed)
+    cloud.google.com/go/storage v1.0.0   (not redistributed)
+    github.com/Masterminds/goutils v1.1.1
+    github.com/OneOfOne/xxhash v1.2.2   (not redistributed)
+    github.com/apache/openwhisk-client-go v0.0.0-20241028140229-bb8408824b9b
+    github.com/cloudfoundry/jibber_jabber v0.0.0-20151120183258-bcc4c8345a21
+    github.com/coreos/etcd v3.3.13+incompatible   (not redistributed)
+    github.com/coreos/go-semver v0.3.0   (not redistributed)
+    github.com/coreos/go-systemd v0.0.0-20190321100706-95778dfbb74e   (not redistributed)
+    github.com/coreos/go-systemd/v22 v22.5.0   (not redistributed)
+    github.com/coreos/pkg v0.0.0-20180928190104-399ea9e2e55f   (not redistributed)
+    github.com/dominikbraun/graph v0.23.0
+    github.com/go-git/go-billy/v5 v5.5.0
+    github.com/go-git/go-git-fixtures/v4 v4.3.2-0.20231010084843-55a94097c399   (not redistributed)
+    github.com/go-git/go-git/v5 v5.12.0
+    github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b   (not redistributed)
+    github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da
+    github.com/golang/mock v1.3.1   (not redistributed)
+    github.com/google/btree v1.0.0   (not redistributed)
+    github.com/google/martian v2.1.0+incompatible   (not redistributed)
+    github.com/google/pprof v0.0.0-20190515194954-54271f7e092f   (not redistributed)
+    github.com/google/renameio v0.1.0   (not redistributed)
+    github.com/google/renameio/v2 v2.0.0   (not redistributed)
+    github.com/grpc-ecosystem/go-grpc-middleware v1.0.0   (not redistributed)
+    github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0   (not redistributed)
+    github.com/grpc-ecosystem/grpc-gateway v1.9.0   (not redistributed)
+    github.com/inconshreveable/mousetrap v1.0.0   (not redistributed)
+    github.com/jonboulle/clockwork v0.1.0   (not redistributed)
+    github.com/matttproud/golang_protobuf_extensions v1.0.1   (not redistributed)
+    github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd   (not redistributed)
+    github.com/modern-go/reflect2 v1.0.1   (not redistributed)
+    github.com/mwitkow/go-conntrack v0.0.0-20161129095857-cc309e4a2223   (not redistributed)
+    github.com/oklog/ulid v1.3.1   (not redistributed)
+    github.com/pelletier/go-toml v1.9.5
+    github.com/pjbgf/sha1cd v0.3.0
+    github.com/prometheus/client_golang v0.9.3   (not redistributed)
+    github.com/prometheus/client_model v0.0.0-20190129233127-fd36f4220a90   (not redistributed)
+    github.com/prometheus/common v0.4.0   (not redistributed)
+    github.com/prometheus/procfs v0.0.0-20190507164030-5867b95ac084   (not redistributed)
+    github.com/prometheus/tsdb v0.7.1   (not redistributed)
+    github.com/sciabarracom/openwhisk-cli v1.2.1
+    github.com/sciabarracom/openwhisk-wskdeploy v1.2.1
+    github.com/skeema/knownhosts v1.2.2
+    github.com/smartystreets/assertions v0.0.0-20180927180507-b2de0cb4f26d   (not redistributed)
+    github.com/smartystreets/goconvey v1.6.4   (not redistributed)
+    github.com/soheilhy/cmux v0.1.4   (not redistributed)
+    github.com/spf13/afero v1.5.1   (not redistributed)
+    github.com/spf13/cobra v1.1.3
+    github.com/xanzy/ssh-agent v0.3.3
+    go.opencensus.io v0.22.0   (not redistributed)
+    google.golang.org/appengine v1.6.1   (not redistributed)
+    google.golang.org/genproto v0.0.0-20191108220845-16a3f7862a1a   (not redistributed)
+    google.golang.org/grpc v1.21.1   (not redistributed)
+    gopkg.in/ini.v1 v1.62.0   (not redistributed)
+    gopkg.in/yaml.v2 v2.4.0
+    gopkg.in/yaml.v3 v3.0.1
+  Scala / JVM artifacts:
+    ch.megard:akka-http-cors_2.13 0.4.2
+    com.amazonaws:aws-java-sdk-cloudfront 1.11.517
+    com.fasterxml.uuid:java-uuid-generator 3.1.3
+    com.github.ben-manes.caffeine:caffeine 2.6.2
+    com.google.code.findbugs:jsr305 3.0.2
+    com.ibm.etcd:etcd-java 0.0.13
+    com.lightbend.akka.discovery:akka-discovery-kubernetes-api_2.13 1.0.5
+    com.lightbend.akka.discovery:akka-discovery-marathon-api_2.13 1.0.5
+    com.lightbend.akka.grpc:akka-grpc-gradle-plugin 1.0.0   (not redistributed)
+    com.lightbend.akka.management:akka-management-cluster-bootstrap_2.13 1.0.5
+    com.lightbend.akka:akka-stream-alpakka-file_2.13 1.1.2
+    com.lightbend.akka:akka-stream-alpakka-s3_2.13 1.1.2
+    com.sksamuel.elastic4s:elastic4s-http_2.13 6.7.4
+    com.typesafe.akka:akka-actor_2.13 2.6.12
+    com.typesafe.akka:akka-cluster-metrics_2.13 2.6.12
+    com.typesafe.akka:akka-cluster-sharding_2.13 2.6.12
+    com.typesafe.akka:akka-cluster-tools_2.13 2.6.12
+    com.typesafe.akka:akka-cluster_2.13 2.6.12
+    com.typesafe.akka:akka-coordination_2.13 2.6.12
+    com.typesafe.akka:akka-discovery_2.13 2.6.12
+    com.typesafe.akka:akka-distributed-data_2.13 2.6.12
+    com.typesafe.akka:akka-http-core_2.13 10.2.4
+    com.typesafe.akka:akka-http-spray-json_2.13 10.2.4
+    com.typesafe.akka:akka-http-testkit_2.13 10.2.4
+    com.typesafe.akka:akka-http-xml_2.13 10.2.4
+    com.typesafe.akka:akka-http2-support_2.13 10.2.4
+    com.typesafe.akka:akka-http_2.13 10.2.4
+    com.typesafe.akka:akka-parsing_2.13 10.2.4
+    com.typesafe.akka:akka-persistence_2.13 2.6.12
+    com.typesafe.akka:akka-protobuf_2.13 2.6.12
+    com.typesafe.akka:akka-remote_2.13 2.6.12
+    com.typesafe.akka:akka-slf4j_2.13 2.6.12
+    com.typesafe.akka:akka-stream-kafka-testkit_2.13 2.0.2
+    com.typesafe.akka:akka-stream-kafka_2.13 2.0.2
+    com.typesafe.akka:akka-stream-testkit_2.13 2.6.12
+    com.typesafe.akka:akka-stream_2.13 2.6.12
+    com.typesafe.akka:akka-testkit_2.13 2.6.12
+    commons-codec:commons-codec 1.9
+    commons-collections:commons-collections 3.2.2
+    commons-io:commons-io 2.6
+    io.altoo:akka-kryo-serialization_2.13 1.0.0
+    io.fabric8:kubernetes-client 4.10.3
+    io.kamon:kamon-core_2.13 2.1.12
+    io.kamon:kamon-datadog_2.13 2.1.12
+    io.kamon:kamon-prometheus_2.13 2.1.12
+    io.kamon:kamon-statsd_2.13 2.1.12
+    io.kamon:kamon-system-metrics_2.13 2.1.12
+    io.opentracing.brave:brave-opentracing 0.31.0
+    io.opentracing:opentracing-api 0.31.0
+    io.opentracing:opentracing-util 0.31.0
+    io.prometheus:simpleclient 0.6.0
+    io.prometheus:simpleclient_common 0.6.0
+    io.reactivex:rxjava 1.3.8
+    io.reactivex:rxjava-reactive-streams 1.2.1
+    io.spray:spray-json_2.13 1.3.5
+    io.zipkin.reporter2:zipkin-reporter 2.6.1
+    io.zipkin.reporter2:zipkin-sender-okhttp3 2.6.1
+    org.apache.curator:curator-recipes 4.0.0
+    org.apache.httpcomponents:httpclient 4.5.5
+    org.apache.kafka:kafka-clients 2.4.0
+    org.apache.zookeeper:zookeeper 3.4.11
+    org.mongodb.scala:mongo-scala-driver_2.13 2.7.0
+    org.scala-lang:scala-library 2.13.1
+    org.scala-lang:scala-reflect 2.13.1
+    org.scalatest:scalatest_2.13 3.0.8   (not redistributed)
+    org.slf4j:log4j-over-slf4j 1.7.25
+  Python packages:
+    accelerate 1.1.1
+    aiohttp 3.14.3
+    aiosignal 1.4.0
+    asttokens 3.0.0
+    bcrypt 4.3.0
+    boto3 1.43.93
+    botocore 1.43.93
+    cryptography 44.0.0
+    distro 1.9.0
+    frozenlist 1.5.0
+    google-auth 2.37.0
+    huggingface_hub 0.26.2
+    kafka-python 3.0.11
+    kafka_python 2.0.2
+    kubernetes 31.0.0
+    minio 7.1.13
+    mistral_inference 1.5.0
+    multidict 6.1.0
+    nltk 3.10.3
+    openai 3.13.0
+    orjson 3.12.0
+    ormsgpack 1.12.2
+    packaging 26.3
+    propcache 0.2.1
+    pykube-ng 23.6.0
+    pymongo 4.18.1
+    python-dateutil 2.9.0.post0
+    regex 2026.9.10
+    requests 2.31.0
+    requests-toolbelt 1.0.0
+    rsa 4.9
+    s3transfer 0.19.2
+    sentencepiece 0.2.0
+    sniffio 1.3.1
+    tenacity 9.1.4
+    transformers 4.46.3
+    websocket-client 1.8.0
+    yarl 1.18.3
+  Node.js packages:
+    minio ^8.0.7
+    mongodb ^7.6.0
+    openai ^7.10.0
+    openwhisk ^3.21.9
+    request 2.88.0
+
+MIT -- 208 component(s)
+  Go modules:
+    github.com/BurntSushi/toml v0.3.1   (not redistributed)
+    github.com/Masterminds/semver v1.5.0
+    github.com/Masterminds/semver/v3 v3.2.1
+    github.com/Masterminds/sprig v2.22.0+incompatible
+    github.com/Microsoft/go-winio v0.6.1   (not redistributed)
+    github.com/a8m/envsubst v1.4.2
+    github.com/alecthomas/assert/v2 v2.7.0   (not redistributed)
+    github.com/alecthomas/chroma/v2 v2.14.0
+    github.com/alecthomas/repr v0.4.0   (not redistributed)
+    github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf   (not redistributed)
+    github.com/alessio/shellescape v1.4.1
+    github.com/anmitsu/go-shlex v0.0.0-20200514113438-38f4b401e2be   (not redistributed)
+    github.com/armon/circbuf v0.0.0-20150827004946-bbbad097214e   (not redistributed)
+    github.com/armon/go-metrics v0.0.0-20180917152333-f0300d1749da   (not redistributed)
+    github.com/armon/go-radix v0.0.0-20180808171621-7fddfc383310   (not redistributed)
+    github.com/armon/go-socks5 v0.0.0-20160902184237-e75332964ef5   (not redistributed)
+    github.com/beorn7/perks v1.0.0   (not redistributed)
+    github.com/bgentry/speakeasy v0.1.0   (not redistributed)
+    github.com/bketelsen/crypt v0.0.3-0.20200106085610-5cbc8cc4026c   (not redistributed)
+    github.com/bwesterb/go-ristretto v1.2.3   (not redistributed)
+    github.com/cenkalti/backoff/v4 v4.3.0
+    github.com/cespare/xxhash v1.1.0   (not redistributed)
+    github.com/client9/misspell v0.3.4   (not redistributed)
+    github.com/coreos/bbolt v1.3.2   (not redistributed)
+    github.com/cpuguy83/go-md2man/v2 v2.0.0   (not redistributed)
+    github.com/creack/pty v1.1.21   (not redistributed)
+    github.com/danieljoos/wincred v1.2.0   (not redistributed)
+    github.com/dgrijalva/jwt-go v3.2.0+incompatible   (not redistributed)
+    github.com/dgryski/go-sip13 v0.0.0-20181026042036-e10d5fee7954   (not redistributed)
+    github.com/dlclark/regexp2 v1.11.0
+    github.com/docopt/docopt-go v0.0.0-20180111231733-ee0de3bc6815
+    github.com/fatih/color v1.7.0
+    github.com/frankban/quicktest v1.14.6   (not redistributed)
+    github.com/ghodss/yaml v1.0.1-0.20190212211648-25d852aebe32
+    github.com/go-kit/kit v0.8.0   (not redistributed)
+    github.com/go-logfmt/logfmt v0.4.0   (not redistributed)
+    github.com/go-stack/stack v1.8.0   (not redistributed)
+    github.com/go-task/slim-sprig/v3 v3.0.0
+    github.com/h2non/filetype v1.1.3
+    github.com/hashicorp/go-syslog v1.0.0   (not redistributed)
+    github.com/hashicorp/mdns v1.0.0   (not redistributed)
+    github.com/hokaccha/go-prettyjson v0.0.0-20211117102719-0474bc63780f
+    github.com/hpcloud/tail v1.0.0   (not redistributed)
+    github.com/huandu/xstrings v1.3.2
+    github.com/itchyny/gojq v0.12.16
+    github.com/itchyny/timefmt-go v0.1.6
+    github.com/jaytaylor/html2text v0.0.0-20230321000545-74c2419ad056
+    github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99
+    github.com/joho/godotenv v1.5.1
+    github.com/json-iterator/go v1.1.6   (not redistributed)
+    github.com/jstemmer/go-junit-report v0.0.0-20190106144839-af01ea7f8024   (not redistributed)
+    github.com/jtolds/gls v4.20.0+incompatible   (not redistributed)
+    github.com/kevinburke/ssh_config v1.2.0
+    github.com/kisielk/errcheck v1.1.0   (not redistributed)
+    github.com/kisielk/gotool v1.0.0   (not redistributed)
+    github.com/klauspost/cpuid/v2 v2.0.9   (not redistributed)
+    github.com/konsorten/go-windows-terminal-sequences v1.0.1   (not redistributed)
+    github.com/kr/logfmt v0.0.0-20140226030751-b84e30acd515   (not redistributed)
+    github.com/kr/pretty v0.3.1   (not redistributed)
+    github.com/kr/pty v1.1.1   (not redistributed)
+    github.com/kr/text v0.2.0   (not redistributed)
+    github.com/mattn/go-colorable v0.1.8
+    github.com/mattn/go-isatty v0.0.4
+    github.com/mattn/go-runewidth v0.0.9
+    github.com/mattn/go-zglob v0.0.4
+    github.com/mitchellh/copystructure v1.2.0
+    github.com/mitchellh/go-homedir v1.1.0
+    github.com/mitchellh/go-testing-interface v1.0.0   (not redistributed)
+    github.com/mitchellh/hashstructure/v2 v2.0.2
+    github.com/mitchellh/iochan v1.0.0   (not redistributed)
+    github.com/mitchellh/mapstructure v1.4.1   (not redistributed)
+    github.com/mitchellh/reflectwalk v1.0.2
+    github.com/nicksnyder/go-i18n v1.10.3
+    github.com/nuvolaris/envsubst/cmd/envsubstmain v0.0.0-20230603163828-10ca029cdb58
+    github.com/nuvolaris/go-replace v0.0.0-20230515190028-12766da1824c
+    github.com/nuvolaris/goawk v1.21.1
+    github.com/nuvolaris/gron v0.0.0-20231020134423-84e679ea6aad
+    github.com/nuvolaris/jj v0.0.0-20231020143327-10b90948a5d2
+    github.com/nwidger/jsoncolor v0.0.0-20170215171346-75a6de4340e5
+    github.com/nxadm/tail v1.4.8   (not redistributed)
+    github.com/olekukonko/tablewriter v0.0.5
+    github.com/onsi/ginkgo v1.6.0   (not redistributed)
+    github.com/onsi/gomega v1.7.1   (not redistributed)
+    github.com/otiai10/copy v1.14.0   (not redistributed)
+    github.com/pelletier/go-toml v1.9.5
+    github.com/posener/complete v1.1.1   (not redistributed)
+    github.com/remeh/sizedwaitgroup v1.0.0
+    github.com/rivo/uniseg v0.4.7
+    github.com/rs/xid v1.5.0   (not redistributed)
+    github.com/rs/zerolog v1.33.0   (not redistributed)
+    github.com/ryanuber/columnize v0.0.0-20160712163229-9b3edd62028f   (not redistributed)
+    github.com/sajari/fuzzy v1.0.0
+    github.com/sciabarracom/task/v3 v3.38.12
+    github.com/sean-/seed v0.0.0-20170313163322-e2103e2c3529   (not redistributed)
+    github.com/sergi/go-diff v1.3.2-0.20230802210424-5b0b94c5c0d3
+    github.com/shurcooL/sanitized_anchor_name v1.0.0   (not redistributed)
+    github.com/sirupsen/logrus v1.9.0   (not redistributed)
+    github.com/smartystreets/assertions v0.0.0-20180927180507-b2de0cb4f26d   (not redistributed)
+    github.com/smartystreets/goconvey v1.6.4   (not redistributed)
+    github.com/spf13/cast v1.3.1   (not redistributed)
+    github.com/spf13/jwalterweatherman v1.1.0   (not redistributed)
+    github.com/spf13/viper v1.7.1   (not redistributed)
+    github.com/ssor/bom v0.0.0-20170718123548-6386211fdfcf
+    github.com/stretchr/objx v0.5.2   (not redistributed)
+    github.com/stretchr/testify v1.9.0   (not redistributed)
+    github.com/subosito/gotenv v1.2.0   (not redistributed)
+    github.com/tidwall/gjson v1.14.0
+    github.com/tidwall/match v1.1.1
+    github.com/tidwall/pretty v1.2.0
+    github.com/tidwall/sjson v1.2.4
+    github.com/tmc/grpc-websocket-proxy v0.0.0-20190109142713-0ad062ec5ee5   (not redistributed)
+    github.com/xiang90/probing v0.0.0-20190116061207-43a291ad63a2   (not redistributed)
+    github.com/yuin/goldmark v1.4.13   (not redistributed)
+    github.com/zalando/go-keyring v0.2.5
+    go.etcd.io/bbolt v1.3.2   (not redistributed)
+    go.uber.org/atomic v1.4.0   (not redistributed)
+    go.uber.org/multierr v1.1.0   (not redistributed)
+    go.uber.org/zap v1.10.0   (not redistributed)
+    google.golang.org/api v0.9.0   (not redistributed)
+    gopkg.in/alecthomas/kingpin.v2 v2.2.6   (not redistributed)
+    gopkg.in/resty.v1 v1.12.0   (not redistributed)
+    gopkg.in/yaml.v3 v3.0.1
+    honnef.co/go/tools v0.0.1-2019.2.3   (not redistributed)
+  Scala / JVM artifacts:
+    com.azure:azure-storage-blob 12.7.0
+    com.lihaoyi:fastparse_2.13 2.3.0
+    com.microsoft.azure:azure-cosmos 3.5.0
+    com.microsoft.azure:azure-cosmosdb 2.6.2
+    gradle.plugin.cz.alenkacz:gradle-scalafmt 1.16.2   (not redistributed)
+    io.github.embeddedkafka:embedded-kafka_2.13 2.4.0
+    org.rogach:scallop_2.13 3.3.2
+    org.slf4j:jcl-over-slf4j 1.7.25
+  Python packages:
+    PyYAML 6.0.2
+    aiohttp 3.14.3
+    annotated-types 0.8.0
+    anyio 4.15.1
+    argon2-cffi 23.1.0
+    argon2-cffi-bindings 21.2.0
+    asn1crypto 1.5.1
+    attrs 24.3.0
+    auth0-python 4.9.0
+    backoff 2.2.1
+    beautifulsoup4 4.15.0
+    cachetools 5.5.0
+    cffi 1.17.1
+    charset-normalizer 3.4.1
+    croniter 1.4.1
+    durationpy 0.9
+    executing 2.1.0
+    flasgger 0.9.7.1
+    flask-cors 6.0.0
+    h11 0.16.0
+    httplib2 0.32.0
+    iso8601 2.1.0
+    jedi 0.19.2
+    jiter 0.17.0
+    jmespath 1.1.0
+    kopf 1.37.4
+    langchain 1.4.0
+    langchain-core 1.6.3
+    langchain-protocol 0.0.19
+    langdetect 1.0.9
+    langgraph 1.2.11
+    langgraph-checkpoint 4.2.0
+    langgraph-prebuilt 1.1.0
+    langgraph-sdk 0.4.4
+    langsmith 0.12.4
+    narwhals 2.26.0
+    netifaces 0.11.0
+    ollama 0.6.2
+    orjson 3.12.0
+    ormsgpack 1.12.2
+    parso 0.8.4
+    plotly 7.0.0
+    pure-eval 0.2.3
+    pydantic 2.13.5
+    pydantic-core 2.46.5
+    pyparsing 3.3.2
+    pyyaml 6.0.2
+    redis 5.2.0
+    setuptools    (not redistributed)
+    simplejson 3.17.5
+    six 1.17.0
+    sniffio 1.3.1
+    soupsieve 2.9.2
+    stack-data 0.6.3
+    tqdm 4.70.1
+    truststore 0.10.4
+    twisted 21.7.0
+    typing-inspection 0.4.4
+    urllib3 2.3.0
+    wcwidth 0.2.13
+  Node.js packages:
+    @clack/prompts ^0.7.0
+    @types/bun =1.2.2   (not redistributed)
+    @types/docopt =0.6.37   (not redistributed)
+    @types/minio ^7.1.1   (not redistributed)
+    aws-s3 ^2.0.5
+    bun-types ^1.2.16
+    chokidar =4.0.3
+    commander =13.1.0
+    docopt =0.6.2
+    lodash 4.17.15
+    marked ^12.0.0
+    mime-types ^2.1.35
+    ollama ^0.6.3
+    pg ^8.23.0
+    redis ^6.2.1
+    shell-quote ^1.8.3
+    uuid ^14.0.2
+
+MIT-0 -- 1 component(s)
+  Python packages:
+    scramp 1.4.17
+
+BSD-3-Clause -- 98 component(s)
+  Go modules:
+    dario.cat/mergo v1.0.0
+    dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9   (not redistributed)
+    github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802   (not redistributed)
+    github.com/Ladicle/tabwriter v1.0.0
+    github.com/ProtonMail/go-crypto v1.0.0
+    github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc   (not redistributed)
+    github.com/cloudflare/circl v1.3.7
+    github.com/cyphar/filepath-securejoin v0.2.4
+    github.com/elazarl/goproxy v0.0.0-20230808193330-2592e75ae04a   (not redistributed)
+    github.com/fsnotify/fsnotify v1.6.0   (not redistributed)
+    github.com/ghodss/yaml v1.0.1-0.20190212211648-25d852aebe32
+    github.com/gliderlabs/ssh v0.3.7   (not redistributed)
+    github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376
+    github.com/go-gl/glfw v0.0.0-20190409004039-e6da0acd62b1   (not redistributed)
+    github.com/go-task/template v0.0.0-20240602015157-960e6f576656
+    github.com/gogo/protobuf v1.2.1   (not redistributed)
+    github.com/golang/protobuf v1.4.2   (not redistributed)
+    github.com/google/go-cmp v0.6.0   (not redistributed)
+    github.com/google/go-querystring v1.1.0
+    github.com/google/pprof v0.0.0-20190515194954-54271f7e092f   (not redistributed)
+    github.com/google/uuid v1.6.0
+    github.com/googleapis/gax-go/v2 v2.0.5   (not redistributed)
+    github.com/grpc-ecosystem/grpc-gateway v1.9.0   (not redistributed)
+    github.com/hashicorp/go-msgpack v0.5.3   (not redistributed)
+    github.com/hashicorp/go.net v0.0.1   (not redistributed)
+    github.com/hexops/gotextdiff v1.0.3   (not redistributed)
+    github.com/imdario/mergo v0.3.13
+    github.com/jessevdk/go-flags v1.5.0
+    github.com/julienschmidt/httprouter v1.2.0   (not redistributed)
+    github.com/kr/fs v0.1.0   (not redistributed)
+    github.com/miekg/dns v1.0.14   (not redistributed)
+    github.com/mmcloughlin/avo v0.5.0   (not redistributed)
+    github.com/pkg/diff v0.0.0-20210226163009-20ebb0f2a09e   (not redistributed)
+    github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2   (not redistributed)
+    github.com/radovskyb/watcher v1.0.7
+    github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af   (not redistributed)
+    github.com/rogpeppe/go-internal v1.3.0   (not redistributed)
+    github.com/sciabarracom/sh/v3 v3.8.3
+    github.com/sean-/seed v0.0.0-20170313163322-e2103e2c3529   (not redistributed)
+    github.com/smartystreets/assertions v0.0.0-20180927180507-b2de0cb4f26d   (not redistributed)
+    github.com/spaolacci/murmur3 v0.0.0-20180118202830-f09979ecbc72   (not redistributed)
+    github.com/spf13/pflag v1.0.5
+    golang.org/x/crypto v0.7.0
+    golang.org/x/exp v0.0.0-20240719175910-8a7402abbf56
+    golang.org/x/image v0.0.0-20190802002840-cff245a6509b   (not redistributed)
+    golang.org/x/lint v0.0.0-20190930215403-16217165b5de   (not redistributed)
+    golang.org/x/mobile v0.0.0-20190719004257-d2bd2a29d028   (not redistributed)
+    golang.org/x/mod v0.8.0   (not redistributed)
+    golang.org/x/net v0.8.0
+    golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45   (not redistributed)
+    golang.org/x/sync v0.7.0
+    golang.org/x/sys v0.6.0
+    golang.org/x/telemetry v0.0.0-20240521205824-bda55230c457   (not redistributed)
+    golang.org/x/term v0.6.0
+    golang.org/x/text v0.8.0   (not redistributed)
+    golang.org/x/time v0.0.0-20190308202827-9d24e82272b4   (not redistributed)
+    golang.org/x/tools v0.6.0   (not redistributed)
+    golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1   (not redistributed)
+    google.golang.org/api v0.9.0   (not redistributed)
+    google.golang.org/protobuf v1.23.0   (not redistributed)
+    gopkg.in/errgo.v2 v2.1.0   (not redistributed)
+    gopkg.in/fsnotify.v1 v1.4.7   (not redistributed)
+    gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7   (not redistributed)
+    honnef.co/go/tools v0.0.1-2019.2.3   (not redistributed)
+    mvdan.cc/editorconfig v0.2.1-0.20231228180347-1925077f8eb2   (not redistributed)
+    rsc.io/binaryregexp v0.2.0   (not redistributed)
+  Python packages:
+    Jinja2 3.1.3
+    click 8.1.8
+    cloudpickle 3.1.2
+    colorama 0.4.6
+    cryptography 44.0.0
+    decorator 5.1.1
+    flask 3.1.1
+    flatdict 4.1.0
+    htmlgenerator    (not redistributed)
+    httpcore 1.0.9
+    httpcore2 2.12.0
+    httpx 0.28.1
+    httpx2 2.12.0
+    idna 3.10
+    ipython 8.31.0
+    jinja2 3.1.5
+    joblib 1.6.0
+    jsonpatch 1.33
+    jsonpointer 3.1.1
+    markupsafe 3.0.2
+    matplotlib-inline 0.1.7
+    oauthlib 3.2.2
+    pg8000 1.31.5
+    prompt-toolkit 3.0.48
+    protobuf 5.28.3
+    pycparser 2.22
+    python-dotenv 1.1.1
+    scrapy 2.5.0
+    traitlets 5.14.3
+    uuid-utils 0.17.1
+    websockets 16.1.1
+    zstandard 0.25.0
+
+BSD-2-Clause -- 22 component(s)
+  Go modules:
+    github.com/emirpasic/gods v1.18.1
+    github.com/godbus/dbus/v5 v5.1.0   (not redistributed)
+    github.com/gomarkdown/markdown v0.0.0-20240730141124-034f12af3bf6
+    github.com/gopherjs/gopherjs v0.0.0-20181017120253-0766667cb4d1   (not redistributed)
+    github.com/gorilla/websocket v1.4.2   (not redistributed)
+    github.com/magiconair/properties v1.8.4   (not redistributed)
+    github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c
+    github.com/pkg/errors v0.9.1
+    github.com/pkg/sftp v1.10.1   (not redistributed)
+    github.com/russross/blackfriday/v2 v2.0.1   (not redistributed)
+    github.com/zeebo/xxh3 v1.0.2
+    gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c   (not redistributed)
+    gopkg.in/warnings.v0 v0.1.2
+  Python packages:
+    feedparser 6.0.14
+    packaging 26.3
+    pyasn1 0.6.4
+    pyasn1-modules 0.4.2
+    pycryptodome 3.21.0
+    pygments 2.19.1
+    python-json-logger 3.2.1
+    xxhash 4.0.1
+  Node.js packages:
+    dotenv ^16.4.7
+
+ISC -- 7 component(s)
+  Go modules:
+    github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc
+    github.com/emirpasic/gods v1.18.1
+  Python packages:
+    dnspython 2.8.0
+    pexpect 4.9.0
+    ptyprocess 0.7.0
+    requests-oauthlib 2.0.0
+  Node.js packages:
+    yaml ^2.8.3
+
+Zlib -- 1 component(s)
+  Go modules:
+    github.com/go-gl/glfw v0.0.0-20190409004039-e6da0acd62b1   (not redistributed)
+
+BlueOak-1.0.0 -- 1 component(s)
+  Node.js packages:
+    glob =12.0.0
+
+PSF-2.0 -- 4 component(s)
+  Python packages:
+    aiohappyeyeballs 2.7.1
+    defusedxml 0.7.1
+    feedparser-sgmllib 2.1.0
+    typing-extensions 4.12.2
+
+CNRI-Python -- 1 component(s)
+  Python packages:
+    regex 2026.9.10
+
+ZPL-2.1 -- 1 component(s)
+  Python packages:
+    waitress 3.0.2
+
+WTFPL -- 1 component(s)
+  Go modules:
+    github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802   (not redistributed)
+
+public-domain -- 2 component(s)
+  Go modules:
+    github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8
+  Python packages:
+    pycryptodome 3.21.0
+
+CC0-1.0 -- 2 component(s)
+  Go modules:
+    github.com/pascaldekloe/goe v0.0.0-20180627143212-57f6aae5913c   (not redistributed)
+    github.com/zeebo/assert v1.3.0   (not redistributed)
+
+MPL-2.0 -- 20 component(s)  [ASF Category B]
+  Go modules:
+    github.com/hashicorp/consul/api v1.1.0   (not redistributed)
+    github.com/hashicorp/consul/sdk v0.1.1   (not redistributed)
+    github.com/hashicorp/errwrap v1.0.0   (not redistributed)
+    github.com/hashicorp/go-cleanhttp v0.5.1   (not redistributed)
+    github.com/hashicorp/go-immutable-radix v1.0.0   (not redistributed)
+    github.com/hashicorp/go-multierror v1.0.0   (not redistributed)
+    github.com/hashicorp/go-rootcerts v1.0.0   (not redistributed)
+    github.com/hashicorp/go-sockaddr v1.0.0   (not redistributed)
+    github.com/hashicorp/go-uuid v1.0.1   (not redistributed)
+    github.com/hashicorp/golang-lru v0.5.1   (not redistributed)
+    github.com/hashicorp/hcl v1.0.0   (not redistributed)
+    github.com/hashicorp/logutils v1.0.0   (not redistributed)
+    github.com/hashicorp/memberlist v0.1.3   (not redistributed)
+    github.com/hashicorp/serf v0.8.2   (not redistributed)
+    github.com/mitchellh/cli v1.0.0   (not redistributed)
+    github.com/mitchellh/gox v0.4.0   (not redistributed)
+  Scala / JVM artifacts:
+    com.github.pureconfig:pureconfig_2.13 0.11.1
+  Python packages:
+    certifi 2024.12.14
+    orjson 3.12.0
+    tqdm 4.70.1
+
+EPL-1.0 -- 1 component(s)  [ASF Category B]
+  Scala / JVM artifacts:
+    ch.qos.logback:logback-classic 1.2.3
+
+CPL-1.0 -- 1 component(s)  [ASF Category B]
+  Scala / JVM artifacts:
+    junit:junit 4.11   (not redistributed)
+
+LGPL-2.1 -- 1 component(s)  [ASF Category X (offered but NOT elected; see note)]
+  Scala / JVM artifacts:
+    ch.qos.logback:logback-classic 1.2.3
+
+------------------------------------------------------------------------------
+LICENSE ELECTION
+------------------------------------------------------------------------------
+
+ch.qos.logback:logback-classic 1.2.3 is offered under a choice of the
+Eclipse Public License 1.0 or the GNU Lesser General Public License 2.1.
+The Eclipse Public License 1.0 is elected for this distribution.
+
+It is used as an unmodified, separately distributed library, resolved
+from Maven Central at build time and included in the container images in
+binary form only. It is not present in the source distribution.
