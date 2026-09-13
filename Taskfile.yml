@@ -52,6 +52,9 @@ vars:
   CMD: "check"
   TEST_TYPE: "kind"
 
+  RAT_VERSION: 0.18
+  RAT: "apache-rat-{{.RAT_VERSION}}.jar"
+
 tasks:
 
     default:
@@ -269,7 +272,6 @@ tasks:
                ls *-*.sh | awk '{ print "- "  $1 }'
           fi
 
-
     license:
       silent: true
       desc: check license headers
@@ -284,6 +286,50 @@ tasks:
             license-eye header {{.CMD}}
             cd {{.TASKFILE_DIR}}
         done
+
+
+    rat-install:
+      cmds:
+      - |
+        if ! java --version
+        then echo install java 17 at least ; exit 1
+        fi
+      - wget https://dlcdn.apache.org//creadur/apache-rat-{{.RAT_VERSION}}/apache-rat-{{.RAT_VERSION}}-bin.zip
+      - unzip -j apache-rat-{{.RAT_VERSION}}-bin.zip apache-rat-{{.RAT_VERSION}}/apache-rat-{{.RAT_VERSION}}.jar
+      - rm apache-rat-{{.RAT_VERSION}}-bin.zip
+      - java -jar {{.RAT}} -help
+      status:
+      - test -e {{.RAT}}
+
+
+    rat:
+      desc: check ASF license compliance with Apache RAT
+      cmds:
+      - task: rat-install
+      - java -jar {{.RAT}} --input-exclude-parsed-scm GIT --input-exclude-file .rat-excludes -- .
+
+    rat-list:
+      desc: list files RAT does not approve, one per line (T=all to list every file)
+      vars:
+        XML: .task/rat.xml
+      cmds:
+      - mkdir -p .task
+      - defer: rm -f {{.XML}}
+      - rat --input-exclude-parsed-scm GIT --input-exclude-file .rat-excludes --output-file {{.XML}} --output-style xml -- . >/dev/null 2>&1 || true
+      - |
+        python3 - {{.XML}} {{.T}} <<'EOF'
+        import sys, xml.etree.ElementTree as ET
+        xml = sys.argv[1]
+        show_all = len(sys.argv) > 2 and sys.argv[2] == 'all'
+        for res in ET.parse(xml).getroot().iter('resource'):
+            approved = any(l.get('approval') == 'true' for l in res.findall('license'))
+            if approved and not show_all:
+                continue
+            lic = ','.join(l.get('id') or '?' for l in res.findall('license')) or '-'
+            print(f"{res.get('type'):9} {res.get('mediaType'):26} {lic:12} {res.get('name')}")
+        EOF
+
+
 
     find-binaries:
       silent: true
