@@ -11,6 +11,10 @@ openserverless/*/.github/*
 openserverless/*/.vscode/*
 openserverless/*/.vscode
 
+openserverless/build/openwhisk/tools/eclipse/java.xml
+openserverless/no-release.txt
+openserverless/openserverless.code-workspace
+
 
 openserverless/oplugins-op/enterprise-util/kafka/jmx/jmx_prometheus_javaagent-0.18.0.jar
 openserverless/runtimes/tests/java/hello.jar

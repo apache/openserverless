@@ -305,7 +305,7 @@ tasks:
       desc: check ASF license compliance with Apache RAT
       cmds:
       - task: rat-install
-      - java -jar {{.RAT}} --input-exclude-parsed-scm GIT --input-exclude-file .rat-excludes -- .
+      - java -jar {{.RAT}} --input-exclude-file .rat-excludes -- .
 
     rat-list:
       desc: list files RAT does not approve, one per line (T=all to list every file)
@@ -314,7 +314,7 @@ tasks:
       cmds:
       - mkdir -p .task
       - defer: rm -f {{.XML}}
-      - java -jar {{.RAT}} --input-exclude-parsed-scm GIT --input-exclude-file .rat-excludes --output-file {{.XML}} --output-style xml -- . >/dev/null 2>&1 || true
+      - java -jar {{.RAT}} --input-exclude-file .rat-excludes --output-file {{.XML}} --output-style xml -- . >/dev/null 2>&1 || true
       - |
         python3 - {{.XML}} {{.T}} <<'EOF'
         import sys, xml.etree.ElementTree as ET

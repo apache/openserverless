@@ -31,3 +31,6 @@
 
 # skip WARN
 **/WARN
+
+# skip .git
+**/.git
