@@ -350,12 +350,13 @@ tasks:
         - python syncimages.py --write={{.WRITE}} "{{.GHUSER}}"
 
     targz:
+      requires: {vars: [FILE]}
       cmds:
       - >
           {{if eq OS "darwin"}}gtar{{else}}tar{{end}} -C ..
           --exclude-from={{.TASKFILE_DIR}}/no-release.txt
           --transform 's,^openserverless,apache-openserverless-{{.VER}}-incubating,'
-          -czvf ../apache-openserverless-{{.VER}}-incubating-src.tar.gz
+          -czvf ../{{.FILE}}
           openserverless
 
     release:
@@ -363,7 +364,7 @@ tasks:
       requires:
         vars: [ VER, RC, KEY ]
       vars:
-        FILE: apache-openserverless-{{.VER}}-src.tar.gz
+        FILE: apache-openserverless-{{.VER}}-incubating-src.tar.gz
         TAG: v{{.VER}}-incubating{{.RC}}
       cmds:
       - test -d ../../{{.VER}}-incubating{{.RC}}/openserverless || { echo "parent dir does not match with version" ; exit 1; }
@@ -371,7 +372,7 @@ tasks:
       - rm -f -v ../apache-openserverless-* || true
       - git tag -d $(git tag) || true
       - git tag "{{.TAG}}"
-      - task: targz
+      - task targz FILE={{.FILE}}
       - gpg --armor --detach-sign --local-user {{.KEY}} ../{{.FILE}}
       - cd .. && shasum -a 512 {{.FILE}} >{{.FILE}}.sha512
       - python3 releasing.py {{.TAG}} >../../{{.VER}}-incubating{{.RC}}.txt
