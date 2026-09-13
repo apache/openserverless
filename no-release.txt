@@ -11,7 +11,6 @@ openserverless/*/.github/*
 openserverless/*/.vscode/*
 openserverless/*/.vscode
 
-openserverless/build/openwhisk/gradle/wrapper/gradle-wrapper.jar
 
 openserverless/oplugins-op/enterprise-util/kafka/jmx/jmx_prometheus_javaagent-0.18.0.jar
 openserverless/runtimes/tests/java/hello.jar
