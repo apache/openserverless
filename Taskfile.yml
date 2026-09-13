@@ -301,8 +301,7 @@ tasks:
       status:
       - test -e {{.RAT}}
 
-
-    rat:
+    rat-check:
       desc: check ASF license compliance with Apache RAT
       cmds:
       - task: rat-install
@@ -330,12 +329,11 @@ tasks:
         EOF
 
 
-
     find-binaries:
       silent: true
       desc: find binary files
       cmds:
-      # configurator is a false positive
+      # configurator.js is a false positive because of an embedded unicode character
       - >
           find . -name .git -prune
           -o -iname '*.png' -prune
@@ -354,27 +352,28 @@ tasks:
     targz:
       cmds:
       - >
-          {{if eq OS "darwin"}}gtar{{else}}tar{{end}}
+          {{if eq OS "darwin"}}gtar{{else}}tar{{end}} -C ..
           --exclude-from={{.TASKFILE_DIR}}/no-release.txt
-          -C ..
-          --transform 's,^openserverless,openserverless-{{.VER}},'
-          -czvf ../openserverless-{{.VER}}-src.tar.gz
+          --transform 's,^openserverless,apache-openserverless-{{.VER}}-incubating,'
+          -czvf ../apache-openserverless-{{.VER}}-incubating-src.tar.gz
           openserverless
 
     release:
       desc: release - the source must be in version folder and you need a gpg key to sign
       requires:
-        vars: [ VER, KEY ]
+        vars: [ VER, RC, KEY ]
+      vars:
+        FILE: apache-openserverless-{{.VER}}-src.tar.gz
+        TAG: v{{.VER}}-incubating{{.RC}}
       cmds:
-      - test -d ../../{{.VER}}/openserverless || { echo "parent dir does not match with version" ; exit 1; }
-      - gpg --list-secret-keys | grep  "{{or .KEY "missing" }}" || { echo "key not found in gpg" ;   exit 1; }
-      - rm -f -v ../openserverless-* || true
-      - task license
+      - test -d ../../{{.VER}}-incubating{{.RC}}/openserverless || { echo "parent dir does not match with version" ; exit 1; }
+      - gpg --list-secret-keys | grep  "{{or .KEY "missing" }}" || { echo "key not found in gpg" ;  exit 1; }
+      - rm -f -v ../apache-openserverless-* || true
       - git tag -d $(git tag) || true
-      - git tag "v{{.VER}}"
+      - git tag "{{.TAG}}"
       - task: targz
-      - gpg --armor --detach-sign --local-user {{.KEY}} ../openserverless-{{.VER}}-src.tar.gz
-      - cd .. && shasum -a 512 openserverless-{{.VER}}-src.tar.gz >openserverless-{{.VER}}-src.tar.gz.sha512
-      - python3 releasing.py {{.VER}} >../../{{.VER}}.txt
-      - echo 'Next steps are svn push, git push --tags and send email'
+      - gpg --armor --detach-sign --local-user {{.KEY}} ../{{.FILE}}
+      - cd .. && shasum -a 512 {{.FILE}} >{{.FILE}}.sha512
+      - python3 releasing.py {{.TAG}} >../../{{.VER}}-incubating{{.RC}}.txt
+
 

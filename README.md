@@ -24,6 +24,7 @@ Welcome to [Apache OpenServerless](https://openserverless.apache.org), an incuba
 - If you want to **install** Apache OpenServerless to use it go [here](https://openserverless.apache.org/docs/installation/). If you are in a hurry go straight to the [quick start](https://openserverless.apache.org/docs/installation/quickstart/).
 - If you want to **contribute** to the project, read [this the contribution guide](CONTRIBUTING.md) and the [developer guide](DEVEL.md).
 - If you want to **discuss** with us, join our mailing list by sending an email to `dev-subscribe@openserverless.apache.org`
+- If you are releasing a version of Apache OpenServerless, [follow this process](RELEASE.md).
 
 > [!IMPORTANT]
 > **The rest of this document covers building Apache OpenServerless from source,
@@ -49,12 +50,12 @@ where `<version>` is the release you want, for example `v0.9.0`. Browse
 to see the available versions.
 
 Release artifacts are signed. Before building, verify the tarball against the
-project [KEYS](https://dist.apache.org/repos/dist/dev/incubator/openserverless/KEYS)
+project [KEYS](https://dist.apache.org/repos/dist/release/incubator/openserverless/KEYS)
 file:
 
 ```
 curl -O https://dist.apache.org/repos/dist/dev/incubator/openserverless/<version>/openserverless-<version>-incubating-src.tar.gz.asc
-curl -O https://dist.apache.org/repos/dist/dev/incubator/openserverless/KEYS
+curl -O https://dist.apache.org/repos/dist/release/incubator/openserverless/KEYS
 gpg --import KEYS
 gpg --verify openserverless-<version>-incubating-src.tar.gz.asc
 ```

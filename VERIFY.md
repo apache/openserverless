@@ -37,6 +37,8 @@ This markdown file serves as a local checklist for verifying the authenticity an
 - [ ] **Fetch ASC File**: Download the detached signature file (`.asc`) for your exact release version.
 - [ ] **Execute Signature Check**: Run the verification command:
   ```bash
+  curl https://dist.apache.org/repos/dist/release/incubator/openserverless/KEYS -o KEYS
+  gpg --import KEYS
   gpg --verify <filename>.<extension>.asc <filename>.<extension>
   ```
 - [ ] **Confirm 'Good Signature'**: Ensure the output states `"Good signature from..."`. (Ignore the "not certified with a trusted signature" warning if you haven't explicitly set trust levels, provided the name matches the release manager).
@@ -53,9 +55,11 @@ This markdown file serves as a local checklist for verifying the authenticity an
 - [ ] **Mandatory Root Files**: Unpack the archive and verify the root contains the required metadata files:
   - `LICENSE`
   - `NOTICE`
+
 - [ ] **Informational Files**: Verify the presence of setup and project notes:
   - `README` or `README.md`
   - `RELEASE_NOTES` or `CHANGES`
+
 - [ ] **Source Cleanliness**: For source distributions, check that no compiled binaries (`.jar`, `.class`, `.so`, `.dll`, or target/build folders) are accidentally bundled inside the package.
 
 
