@@ -314,7 +314,7 @@ tasks:
       cmds:
       - mkdir -p .task
       - defer: rm -f {{.XML}}
-      - rat --input-exclude-parsed-scm GIT --input-exclude-file .rat-excludes --output-file {{.XML}} --output-style xml -- . >/dev/null 2>&1 || true
+      - java -jar {{.RAT}} --input-exclude-parsed-scm GIT --input-exclude-file .rat-excludes --output-file {{.XML}} --output-style xml -- . >/dev/null 2>&1 || true
       - |
         python3 - {{.XML}} {{.T}} <<'EOF'
         import sys, xml.etree.ElementTree as ET

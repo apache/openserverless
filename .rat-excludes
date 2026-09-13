@@ -28,3 +28,6 @@
 
 # go.sum is a generated checksum database - a header breaks verification.
 **/go.sum
+
+# skip WARN
+**/WARN
