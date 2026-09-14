@@ -15,25 +15,5 @@
 # specific language governing permissions and limitations
 # under the License.
 #
-header:
-  license:
-    spdx-id: Apache-2.0
-    copyright-owner: Apache Software Foundation
 
-  paths-ignore:
-    - 'cli'
-    - 'admin-api'
-    - 'devcontainer'
-    - 'oplugins'
-    - 'oplugins-op'
-    - 'runtimes'
-    - 'streamer'
-    - 'testing'
-    - 'build'
-    - 'LICENSE'
-    - 'DISCLAIMER'
-    - 'NOTICE'
-    - 'WARN'
-    - 'openserverless.code-workspace'
-    - 'no-release.txt'
-    - '**/*.json'
+This folder lists all the dependencies and their respective licenses and notices for the project.

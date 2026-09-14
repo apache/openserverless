@@ -1,0 +1,434 @@
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+#
+# Python libraries used by Apache OpenServerless 0.9.0-incubating
+# Sources: admin-api/pyproject.toml, oplugins-op/pyproject.toml + poetry.lock,
+#          runtimes/runtime/python/*/requirements.txt, runtimes/experimental/python/*,
+#          runtimes/packages/python/*, admin-api/deploy/samples/requirements.txt
+
+## admin-api (pyproject.toml — direct dependencies)
+
+  PyYAML>=6.0.2
+  Jinja2>=3.1.3
+  requests>=2.31.0
+  flatdict==4.1.0
+  minio==7.1.13
+  backoff==2.2.1
+  flask>=3.1.1
+  redis>=5.2.0
+  auth0-python>=4.9.0
+  waitress==3.0.2
+  flasgger==0.9.7.1
+  flask-cors>=6.0.0
+  cryptography>=44.0.0
+  python-dotenv>=1.1.1
+  bcrypt>=4.3.0
+  ipython>=8.24.0   # dev
+
+## openserverless operator - oplugins-op (pyproject.toml — direct dependencies)
+
+  python = "^3.12"
+  kopf = {extras = ["full-auth"], version = "^1.36.1"}
+  PyYAML = "^6.0"
+  pykube-ng = "^23.6.0"
+  Jinja2 = "^3.0.3"
+  requests = "^2.32.4"
+  flatdict = "^4.1.0"
+  croniter = "^1.3.5"
+  minio = "^7.1.13"
+  backoff = "^2.2.1"
+  pg8000 = "^1.31.2"
+  redis = "^5.0.4"
+  bcrypt = "^4.2.1"
+  ipython = "^8.15.0"   # dev
+
+## openserverless operator - oplugins-op (poetry.lock — full resolved set)
+
+  aiohappyeyeballs==2.7.1
+  aiohttp==3.14.3
+  aiosignal==1.4.0
+  argon2-cffi-bindings==21.2.0
+  argon2-cffi==23.1.0
+  asn1crypto==1.5.1
+  asttokens==3.0.0
+  attrs==24.3.0
+  backoff==2.2.1
+  bcrypt==4.2.1
+  cachetools==5.5.0
+  certifi==2024.12.14
+  cffi==1.17.1
+  charset-normalizer==3.4.1
+  click==8.1.8
+  colorama==0.4.6
+  croniter==1.4.1
+  decorator==5.1.1
+  durationpy==0.9
+  executing==2.1.0
+  flatdict==4.1.0
+  frozenlist==1.5.0
+  google-auth==2.37.0
+  idna==3.10
+  ipython==8.31.0
+  iso8601==2.1.0
+  jedi==0.19.2
+  jinja2==3.1.5
+  kopf==1.37.4
+  kubernetes==31.0.0
+  markupsafe==3.0.2
+  matplotlib-inline==0.1.7
+  minio==7.2.14
+  multidict==6.1.0
+  oauthlib==3.2.2
+  parso==0.8.4
+  pexpect==4.9.0
+  pg8000==1.31.5
+  prompt-toolkit==3.0.48
+  propcache==0.2.1
+  ptyprocess==0.7.0
+  pure-eval==0.2.3
+  pyasn1-modules==0.4.2
+  pyasn1==0.6.4
+  pycparser==2.22
+  pycryptodome==3.21.0
+  pygments==2.19.1
+  pykube-ng==23.6.0
+  python-dateutil==2.9.0.post0
+  python-json-logger==3.2.1
+  pyyaml==6.0.2
+  redis==5.2.1
+  requests-oauthlib==2.0.0
+  requests==2.32.4
+  rsa==4.9
+  scramp==1.4.17
+  six==1.17.0
+  stack-data==0.6.3
+  traitlets==5.14.3
+  typing-extensions==4.12.2
+  urllib3==2.3.0
+  wcwidth==0.2.13
+  websocket-client==1.8.0
+  yarl==1.18.3
+
+## runtimes/runtime/python/sys/requirements.txt
+
+  argon2-cffi==25.1.0
+  argon2-cffi-bindings==26.1.0
+  asn1crypto==1.5.1
+  bcrypt==5.0.0
+  boto3==1.43.93
+  botocore==1.43.93
+  certifi==2026.7.22
+  cffi==2.1.1
+  charset-normalizer==3.5.1
+  dnspython==2.8.0
+  httplib2==0.32.0
+  idna==3.19
+  jmespath==1.1.0
+  kafka-python==3.0.11
+  minio==7.2.20
+  pg8000==1.31.5
+  pycparser==3.0
+  pycryptodome==3.23.0
+  pymongo==4.18.1
+  pyparsing==3.3.2
+  python-dateutil==2.9.0.post0
+  pyyaml==6.0.3
+  redis==8.1.0
+  requests==2.34.2
+  s3transfer==0.19.2
+  scramp==1.4.17
+  six==1.17.0
+  typing-extensions==4.16.0
+  urllib3==2.7.0
+
+## runtimes/runtime/python/v3.11/requirements.txt
+
+  annotated-types==0.8.0
+  anyio==4.15.1
+  argon2-cffi==25.1.0
+  argon2-cffi-bindings==26.1.0
+  asn1crypto==1.5.1
+  bcrypt==5.0.0
+  beautifulsoup4==4.15.0
+  boto3==1.43.93
+  botocore==1.43.93
+  certifi==2026.7.22
+  cffi==2.1.1
+  charset-normalizer==3.5.1
+  click==8.5.0
+  cloudpickle==3.1.2
+  defusedxml==0.7.1
+  distro==1.9.0
+  dnspython==2.8.0
+  feedparser==6.0.14
+  feedparser-sgmllib==2.1.0
+  h11==0.16.0
+  httpcore==1.0.9
+  httpcore2==2.12.0
+  httplib2==0.32.0
+  httpx==0.28.1
+  httpx2==2.12.0
+  idna==3.19
+  jiter==0.17.0
+  jmespath==1.1.0
+  joblib==1.6.0
+  jsonpatch==1.33
+  jsonpointer==3.1.1
+  kafka-python==3.0.11
+  langchain==1.4.0
+  langchain-core==1.6.3
+  langchain-protocol==0.0.19
+  langdetect==1.0.9
+  langgraph==1.2.11
+  langgraph-checkpoint==4.2.0
+  langgraph-prebuilt==1.1.0
+  langgraph-sdk==0.4.4
+  langsmith==0.12.4
+  minio==7.2.20
+  narwhals==2.26.0
+  nltk==3.10.3
+  ollama==0.6.2
+  openai==3.13.0
+  orjson==3.12.0
+  ormsgpack==1.12.2
+  packaging==26.3
+  pg8000==1.31.5
+  plotly==7.0.0
+  pycparser==3.0
+  pycryptodome==3.23.0
+  pydantic==2.13.5
+  pydantic-core==2.46.5
+  pymongo==4.18.1
+  pyparsing==3.3.2
+  python-dateutil==2.9.0.post0
+  pyyaml==6.0.3
+  redis==8.1.0
+  regex==2026.9.10
+  requests==2.34.2
+  requests-toolbelt==1.0.0
+  s3transfer==0.19.2
+  scramp==1.4.17
+  six==1.17.0
+  sniffio==1.3.1
+  soupsieve==2.9.2
+  tenacity==9.1.4
+  tqdm==4.70.1
+  truststore==0.10.4
+  typing-extensions==4.16.0
+  typing-inspection==0.4.4
+  urllib3==2.7.0
+  uuid-utils==0.17.1
+  websockets==16.1.1
+  xxhash==4.0.1
+  zstandard==0.25.0
+
+## runtimes/runtime/python/v3.12/requirements.txt
+
+  annotated-types==0.8.0
+  anyio==4.15.1
+  argon2-cffi==25.1.0
+  argon2-cffi-bindings==26.1.0
+  asn1crypto==1.5.1
+  bcrypt==5.0.0
+  beautifulsoup4==4.15.0
+  boto3==1.43.93
+  botocore==1.43.93
+  certifi==2026.7.22
+  cffi==2.1.1
+  charset-normalizer==3.5.1
+  click==8.5.0
+  cloudpickle==3.1.2
+  defusedxml==0.7.1
+  distro==1.9.0
+  dnspython==2.8.0
+  feedparser==6.0.14
+  feedparser-sgmllib==2.1.0
+  h11==0.16.0
+  httpcore==1.0.9
+  httpcore2==2.12.0
+  httplib2==0.32.0
+  httpx==0.28.1
+  httpx2==2.12.0
+  idna==3.19
+  jiter==0.17.0
+  jmespath==1.1.0
+  joblib==1.6.0
+  jsonpatch==1.33
+  jsonpointer==3.1.1
+  kafka-python==3.0.11
+  langchain==1.4.0
+  langchain-core==1.6.3
+  langchain-protocol==0.0.19
+  langdetect==1.0.9
+  langgraph==1.2.11
+  langgraph-checkpoint==4.2.0
+  langgraph-prebuilt==1.1.0
+  langgraph-sdk==0.4.4
+  langsmith==0.12.4
+  minio==7.2.20
+  narwhals==2.26.0
+  nltk==3.10.3
+  ollama==0.6.2
+  openai==3.13.0
+  orjson==3.12.0
+  ormsgpack==1.12.2
+  packaging==26.3
+  pg8000==1.31.5
+  plotly==7.0.0
+  pycparser==3.0
+  pycryptodome==3.23.0
+  pydantic==2.13.5
+  pydantic-core==2.46.5
+  pymongo==4.18.1
+  pyparsing==3.3.2
+  python-dateutil==2.9.0.post0
+  pyyaml==6.0.3
+  redis==8.1.0
+  regex==2026.9.10
+  requests==2.34.2
+  requests-toolbelt==1.0.0
+  s3transfer==0.19.2
+  scramp==1.4.17
+  six==1.17.0
+  sniffio==1.3.1
+  soupsieve==2.9.2
+  tenacity==9.1.4
+  tqdm==4.70.1
+  truststore==0.10.4
+  typing-extensions==4.16.0
+  typing-inspection==0.4.4
+  urllib3==2.7.0
+  uuid-utils==0.17.1
+  websockets==16.1.1
+  xxhash==4.0.1
+  zstandard==0.25.0
+
+## runtimes/runtime/python/v3.13/requirements.txt
+
+  annotated-types==0.8.0
+  anyio==4.15.1
+  argon2-cffi==25.1.0
+  argon2-cffi-bindings==26.1.0
+  asn1crypto==1.5.1
+  bcrypt==5.0.0
+  beautifulsoup4==4.15.0
+  boto3==1.43.93
+  botocore==1.43.93
+  certifi==2026.7.22
+  cffi==2.1.1
+  charset-normalizer==3.5.1
+  click==8.5.0
+  cloudpickle==3.1.2
+  defusedxml==0.7.1
+  distro==1.9.0
+  dnspython==2.8.0
+  feedparser==6.0.14
+  feedparser-sgmllib==2.1.0
+  h11==0.16.0
+  httpcore==1.0.9
+  httpcore2==2.12.0
+  httplib2==0.32.0
+  httpx==0.28.1
+  httpx2==2.12.0
+  idna==3.19
+  jiter==0.17.0
+  jmespath==1.1.0
+  joblib==1.6.0
+  jsonpatch==1.33
+  jsonpointer==3.1.1
+  kafka-python==3.0.11
+  langchain==1.4.0
+  langchain-core==1.6.3
+  langchain-protocol==0.0.19
+  langdetect==1.0.9
+  langgraph==1.2.11
+  langgraph-checkpoint==4.2.0
+  langgraph-prebuilt==1.1.0
+  langgraph-sdk==0.4.4
+  langsmith==0.12.4
+  minio==7.2.20
+  narwhals==2.26.0
+  nltk==3.10.3
+  ollama==0.6.2
+  openai==3.13.0
+  orjson==3.12.0
+  ormsgpack==1.12.2
+  packaging==26.3
+  pg8000==1.31.5
+  plotly==7.0.0
+  pycparser==3.0
+  pycryptodome==3.23.0
+  pydantic==2.13.5
+  pydantic-core==2.46.5
+  pymongo==4.18.1
+  pyparsing==3.3.2
+  python-dateutil==2.9.0.post0
+  pyyaml==6.0.3
+  redis==8.1.0
+  regex==2026.9.10
+  requests==2.34.2
+  requests-toolbelt==1.0.0
+  s3transfer==0.19.2
+  scramp==1.4.17
+  six==1.17.0
+  sniffio==1.3.1
+  soupsieve==2.9.2
+  tenacity==9.1.4
+  tqdm==4.70.1
+  truststore==0.10.4
+  typing-extensions==4.16.0
+  typing-inspection==0.4.4
+  urllib3==2.7.0
+  uuid-utils==0.17.1
+  websockets==16.1.1
+  xxhash==4.0.1
+  zstandard==0.25.0
+
+## runtimes/experimental/python/v3.11cuda/requirements.txt
+
+  beautifulsoup4==4.10.0
+  httplib2==0.19.1
+  kafka_python==2.0.2
+  python-dateutil==2.8.2
+  requests==2.31.0
+  scrapy==2.5.0
+  simplejson==3.17.5
+  twisted==21.7.0
+  netifaces==0.11.0
+  pyyaml==6.0.1
+  redis==4.4.2
+  boto3==1.28.25
+  pg8000==1.31.5
+  pymongo==4.4.1
+  minio==7.1.16
+  huggingface_hub==0.26.2
+  accelerate==1.1.1
+  protobuf==5.28.3
+  sentencepiece==0.2.0
+  mistral_inference==1.5.0
+  transformers==4.46.3
+
+## runtimes/packages/python/withreqs/requirements.txt
+
+  htmlgenerator
+
+## admin-api/deploy/samples/requirements.txt
+
+  beautifulsoup4
+  setuptools
+
