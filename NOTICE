@@ -15,3 +15,12 @@ vendored under build/openwhisk.
 
 Apache OpenWhisk
 Copyright 2016-2021 The Apache Software Foundation
+
+This product bundles a rendering of the Apache Pulsar Helm chart (as
+redistributed by the Milvus Helm chart).
+Apache Pulsar
+Copyright 2017-2022 The Apache Software Foundation
+
+This product bundles the default configuration file of Apache Kvrocks.
+Apache Kvrocks
+Copyright 2022-2026 The Apache Software Foundation
