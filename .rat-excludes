@@ -35,5 +35,9 @@
 # skip .git
 **/.git
 
+# skip temp files
+**/_*
+
 # skip the skip
 no-release.txt
+apache-rat-0.18.jar
