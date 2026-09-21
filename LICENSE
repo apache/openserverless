@@ -230,3 +230,192 @@ Gradle wrapper v5.5
   The files build/openwhisk/gradlew and build/openwhisk/gradlew.bat are
   distributed under the Apache License, Version 2.0. For details see those
   files.
+
+Kubernetes ingress-nginx
+  The deployment manifests of the ingress-nginx controller are vendored
+  under oplugins, taken from the upstream static provider manifests:
+    oplugins/cloud/eks/ingress-deploy.yaml    (controller v1.15.1)
+    oplugins/cloud/gke/ingress-deploy.yaml    (controller v1.15.1)
+    oplugins/cloud/aks/ingress-deploy.yaml    (controller v1.15.1)
+    oplugins/setup/docker/ingress-deploy.yaml (controller v1.7.0)
+  Licensed under the Apache License, Version 2.0.
+  Copyright The Kubernetes Authors.
+
+Kubegres
+  The custom resource definition and the operator descriptors of Kubegres,
+  for the API group kubegres.reactive-tech.io, are vendored under oplugins:
+    oplugins/setup/kubernetes/crds/kubegres-crd.yaml
+    oplugins/setup/kubernetes/roles/openserverless-kubegres-roles.yaml
+    oplugins/setup/kubernetes/common/openserverless-kubegres-common.yaml
+  The upstream release version is not recorded in these files.
+  Licensed under the Apache License, Version 2.0.
+  Copyright Reactive Tech Limited.
+
+openshift-acme
+  The deployment descriptors of openshift-acme are vendored under oplugins:
+    oplugins/cloud/osh/acme-openshift/acme-setup.yaml
+    oplugins/cloud/osh/acme-openshift/acme-rbac.yaml
+  Licensed under the Apache License, Version 2.0.
+  Copyright The openshift-acme Authors.
+
+Prometheus and kube-state-metrics
+  The files
+    oplugins/setup/kubernetes/common/openserverless-monitoring-common.yaml
+    oplugins/setup/kubernetes/roles/openserverless-monitoring-roles.yaml
+  contain descriptors derived from the prometheus-community `prometheus`
+  Helm chart, with the resource names rebranded to the openserverless-
+  prefix. Licensed under the Apache License, Version 2.0.
+  Copyright The Prometheus Authors.
+  Copyright The Kubernetes Authors.
+
+Apache OpenWhisk Helm chart descriptors
+  The files
+    oplugins/setup/kubernetes/common/openwhisk-core-common.yaml
+    oplugins/setup/kubernetes/common/openwhisk-invoker-common.yaml
+    oplugins/setup/kubernetes/roles/openwhisk-core-roles.yaml
+    oplugins/setup/kubernetes/roles/openwhisk-invoker-roles.yaml
+  were rendered from the `openwhisk` Helm chart and retain their upstream
+  `# Source:` provenance comments. Licensed under the Apache License,
+  Version 2.0. See the NOTICE file for the required attribution.
+
+
+==============================================================================
+BUNDLED COMPONENTS -- PRE-BUILT JAVASCRIPT
+==============================================================================
+
+The pre-built JavaScript files checked in under oplugins are produced by
+`bun build` from the TypeScript sources beside them and statically embed
+their runtime dependencies. The embedded components are listed below.
+
+------------------------------------------------------------------------------
+Apache License, Version 2.0
+------------------------------------------------------------------------------
+
+The pre-built file oplugins/util/upload.js embeds the following component,
+which was released under an Apache 2.0 license.
+
+  * minio (8.0.1), MinIO JavaScript client
+
+------------------------------------------------------------------------------
+MIT License
+------------------------------------------------------------------------------
+
+The pre-built file oplugins/util/upload.js embeds the following components,
+which were released under an MIT license.
+
+  * async (3.2.6)
+  * block-stream2 (2.1.0)
+  * browser-or-node (2.1.1)
+  * buffer-crc32 (1.0.0)
+  * decode-uri-component (0.2.2)
+  * docopt (0.6.2)
+  * eventemitter3 (5.0.1)
+  * fast-xml-parser (4.5.0)
+  * filter-obj (1.1.0)
+  * ipaddr.js (2.2.0)
+  * lodash (4.17.21)
+  * mime-db (1.52.0)
+  * mime-types (2.1.35)
+  * query-string (7.1.3)
+  * readable-stream (3.6.2)
+  * safe-buffer (5.2.1)
+  * split-on-first (1.1.0)
+  * strict-uri-encode (2.0.0)
+  * string_decoder (1.3.0)
+  * strnum (1.0.5)
+  * through2 (4.0.2)
+  * util-deprecate (1.0.2)
+  * xml2js (0.5.0)
+  * xmlbuilder (11.0.1)
+
+The pre-built file oplugins/util/config/configurator.js embeds the following
+components, which were released under an MIT license.
+
+  * @clack/core (0.3.4)
+  * @clack/prompts (0.7.0)
+  * sisteransi (1.0.5)
+
+The MIT license reads as follows:
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+------------------------------------------------------------------------------
+ISC License
+------------------------------------------------------------------------------
+
+The pre-built file oplugins/util/upload.js embeds the following components,
+which were released under an ISC license.
+
+  * inherits (2.0.4)
+  * sax (1.4.1)
+
+The pre-built file oplugins/util/config/configurator.js embeds picocolors
+(1.0.1), and the pre-built file oplugins/admin/usage/usage.js embeds yaml
+(2.8.3), which were released under an ISC license.
+
+The ISC license reads as follows:
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+
+------------------------------------------------------------------------------
+BSD 3-Clause License
+------------------------------------------------------------------------------
+
+The pre-built file oplugins/util/upload.js embeds the following components,
+which were released under a BSD-3-Clause license.
+
+  * stream-chain (2.2.5)
+  * stream-json (1.8.0)
+
+The BSD-3-Clause license reads as follows:
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors
+   may be used to endorse or promote products derived from this software
+   without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
