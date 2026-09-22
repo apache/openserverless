@@ -347,7 +347,7 @@ tasks:
     sync-images:
       desc: synchronize runtimes.json and opsroot.json with published images, use WRITE=y to actuallyt write, GHUSER=github-user for a non apache user on ghcr.io
       cmds:
-        - python syncimages.py --write={{.WRITE}} "{{.GHUSER}}"
+        - python3 syncimages.py --write={{.WRITE}} "{{.GHUSER}}"
 
     targz:
       requires: {vars: [FILE]}
