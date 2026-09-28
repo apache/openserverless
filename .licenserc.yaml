@@ -30,6 +30,7 @@ header:
     - 'streamer'
     - 'testing'
     - 'build'
+    - '.github'
     - 'LICENSE'
     - 'DISCLAIMER'
     - 'NOTICE'

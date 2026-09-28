@@ -35,6 +35,9 @@
 # skip .git
 **/.git
 
+# skip .git
+**/.github
+
 # skip temp files
 **/_*
 
