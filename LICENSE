@@ -328,13 +328,6 @@ which were released under an MIT license.
   * xml2js (0.5.0)
   * xmlbuilder (11.0.1)
 
-The pre-built file oplugins/util/config/configurator.js embeds the following
-components, which were released under an MIT license.
-
-  * @clack/core (0.3.4)
-  * @clack/prompts (0.7.0)
-  * sisteransi (1.0.5)
-
 The MIT license reads as follows:
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -365,9 +358,8 @@ which were released under an ISC license.
   * inherits (2.0.4)
   * sax (1.4.1)
 
-The pre-built file oplugins/util/config/configurator.js embeds picocolors
-(1.0.1), and the pre-built file oplugins/admin/usage/usage.js embeds yaml
-(2.8.3), which were released under an ISC license.
+The pre-built file oplugins/admin/usage/usage.js embeds yaml (2.8.3), which
+was released under an ISC license.
 
 The ISC license reads as follows:
 

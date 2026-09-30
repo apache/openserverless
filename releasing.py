@@ -36,8 +36,8 @@ output:
     with a closing date. Without it the mail is the [ANNOUNCE] of the
     final release, whose artifacts live under `dist/release`.
 
-The KEYS file is the exception: it is shared by all releases and always
-lives in `dist/release`, so it is linked from there even for candidates.
+The KEYS file is the exception: it is shared by all releases, so it is
+always linked from https://downloads.apache.org, even for candidates.
 
 Usage:
 
@@ -141,19 +141,14 @@ class Release:
             % (area, self.project_path)
 
     @property
-    def release_root(self):
-        """Release area of the dist repo, where shared files such as KEYS live."""
-        return "https://dist.apache.org/repos/dist/release/%s" \
-            % self.project_path
-
-    @property
     def artifacts_url(self):
         return "%s/%s" % (self.dist_root, self.full_version)
 
     @property
     def keys_url(self):
-        """KEYS always lives in the release area, also for candidates."""
-        return "%s/KEYS" % self.release_root
+        """KEYS is shared by all releases, so it is linked from the
+        downloads mirror also for candidates."""
+        return "https://downloads.apache.org/%s/KEYS" % self.project_path
 
     @property
     def downloads_url(self):

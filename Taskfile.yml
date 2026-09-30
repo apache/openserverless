@@ -203,10 +203,6 @@ tasks:
       - test -d ~/.ops/{{.OPS_BRANCH}}/oplugins || ln -sf $(pwd)/oplugins ~/.ops/{{.OPS_BRANCH}}/oplugins
       - touch ~/.profile
       - |
-        if ! grep -q OPS_BRANCH= ~/.profile
-        then echo export OPS_BRANCH={{.OPS_BRANCH}} >>~/.profile
-        fi
-      - |
         if ! grep -q 'PATH=~/.local/bin' ~/.profile
         then echo 'export PATH=~/.local/bin:"$PATH"' >>~/.profile
         fi
@@ -333,13 +329,11 @@ tasks:
       silent: true
       desc: find binary files
       cmds:
-      # configurator.js is a false positive because of an embedded unicode character
       - >
           find . -name .git -prune
           -o -iname '*.png' -prune
           -o -iname '*.jpg' -prune
           -o -iname '*.ico' -prune
-          -o -path './oplugins/util/config/configurator.js' -prune
           -o -type f -size +0 -print0
           | xargs -0 file --mime-encoding
           | grep ':.*\bbinary$' | cut -d: -f1
