@@ -233,28 +233,49 @@ Gradle wrapper v5.5
 
 Kubernetes ingress-nginx
   The deployment manifests of the ingress-nginx controller are vendored
-  under oplugins, taken from the upstream static provider manifests:
-    oplugins/cloud/eks/ingress-deploy.yaml    (controller v1.15.1)
-    oplugins/cloud/gke/ingress-deploy.yaml    (controller v1.15.1)
-    oplugins/cloud/aks/ingress-deploy.yaml    (controller v1.15.1)
-    oplugins/setup/docker/ingress-deploy.yaml (controller v1.7.0)
+  under oplugins, oplugins-op and testing, taken from the upstream static
+  provider manifests:
+    controller v1.15.1:
+      oplugins/cloud/eks/ingress-deploy.yaml
+      oplugins/cloud/gke/ingress-deploy.yaml
+      oplugins/cloud/aks/ingress-deploy.yaml
+    controller v1.8.1:
+      oplugins-op/deploy/ingress-nginx/cloud-nginx-ingress.yaml
+    controller v1.7.0:
+      oplugins/setup/docker/ingress-deploy.yaml
+      testing/stress-test/oplugins-stress/setup/docker/ingress-deploy.yaml
+    controller v1.5.1:
+      oplugins-op/deploy/ingress-nginx/eks-nginx-ingress.yaml
+      oplugins-op/deploy/ingress-nginx/kind-nginx-ingress.yaml
   Licensed under the Apache License, Version 2.0.
   Copyright The Kubernetes Authors.
 
 Kubegres
   The custom resource definition and the operator descriptors of Kubegres,
-  for the API group kubegres.reactive-tech.io, are vendored under oplugins:
+  for the API group kubegres.reactive-tech.io, are vendored under oplugins,
+  oplugins-op and testing:
     oplugins/setup/kubernetes/crds/kubegres-crd.yaml
     oplugins/setup/kubernetes/roles/openserverless-kubegres-roles.yaml
     oplugins/setup/kubernetes/common/openserverless-kubegres-common.yaml
-  The upstream release version is not recorded in these files.
+    oplugins-op/deploy/openserverless-permissions/kubegres-crd.yaml
+    oplugins-op/deploy/openserverless-permissions/openserverless-kubegres-roles.yaml
+    oplugins-op/deploy/openserverless-permissions/openserverless-kubegres-common.yaml
+    oplugins-op/deploy/postgres-operator/kubegres-operator.yaml
+    testing/stress-test/oplugins-stress/setup/kubernetes/crds/kubegres-crd.yaml
+    testing/stress-test/oplugins-stress/setup/kubernetes/roles/openserverless-kubegres-roles.yaml
+    testing/stress-test/oplugins-stress/setup/kubernetes/common/openserverless-kubegres-common.yaml
+  The upstream release version is not recorded in these files, except
+  kubegres-operator.yaml, which deploys the Kubegres 1.18 operator.
   Licensed under the Apache License, Version 2.0.
   Copyright Reactive Tech Limited.
 
 openshift-acme
-  The deployment descriptors of openshift-acme are vendored under oplugins:
+  The deployment descriptors of openshift-acme are vendored under oplugins
+  and oplugins-op:
     oplugins/cloud/osh/acme-openshift/acme-setup.yaml
     oplugins/cloud/osh/acme-openshift/acme-rbac.yaml
+    oplugins-op/deploy/acme-openshift/acme-setup.yaml
+    oplugins-op/deploy/acme-openshift/acme-rbac.yaml
   Licensed under the Apache License, Version 2.0.
   Copyright The openshift-acme Authors.
 
@@ -262,6 +283,13 @@ Prometheus and kube-state-metrics
   The files
     oplugins/setup/kubernetes/common/openserverless-monitoring-common.yaml
     oplugins/setup/kubernetes/roles/openserverless-monitoring-roles.yaml
+    oplugins-op/deploy/monitoring/kubestate-03-dep.yaml
+    oplugins-op/deploy/monitoring/kubestate-04-svc.yaml
+    oplugins-op/deploy/monitoring/prometheus-02-cm.yaml
+    oplugins-op/deploy/monitoring/prometheus-03-dep.yaml
+    oplugins-op/deploy/monitoring/prometheus-04-svc.yaml
+    oplugins-op/deploy/openserverless-permissions/openserverless-monitoring-00-sa.yaml
+    oplugins-op/deploy/openserverless-permissions/openserverless-monitoring-01-roles.yaml
   contain descriptors derived from the prometheus-community `prometheus`
   Helm chart, with the resource names rebranded to the openserverless-
   prefix. Licensed under the Apache License, Version 2.0.
@@ -274,6 +302,25 @@ Apache OpenWhisk Helm chart descriptors
     oplugins/setup/kubernetes/common/openwhisk-invoker-common.yaml
     oplugins/setup/kubernetes/roles/openwhisk-core-roles.yaml
     oplugins/setup/kubernetes/roles/openwhisk-invoker-roles.yaml
+    oplugins-op/deploy/couchdb/couchdb-svc.yaml
+    oplugins-op/deploy/kafka/kafka-000-pvc.yaml
+    oplugins-op/deploy/kafka/kafka-003-svc.yaml
+    oplugins-op/deploy/kvrocks/kvrocks-svc.yaml
+    oplugins-op/deploy/openserverless-permissions/openwhisk-core-roles.yaml
+    oplugins-op/deploy/openserverless-permissions/openwhisk-core-sa.yaml
+    oplugins-op/deploy/openserverless-permissions/openwhisk-invoker-sa.yaml
+    oplugins-op/deploy/openwhisk-enterprise/enterprise-sts.yaml
+    oplugins-op/deploy/openwhisk-invoker/invoker-sts.yaml
+    oplugins-op/deploy/quota/quota_checker.yaml
+    oplugins-op/deploy/redis/redis-svc.yaml
+    oplugins-op/deploy/scheduler/cron.yaml
+    oplugins-op/enterprise-util/kafka/jmx/prometheus-jmx-agent-config.yml
+    oplugins-op/openserverless/templates/couchdb-set-tpl.yaml
+    oplugins-op/openserverless/templates/enterprise-sts.yaml
+    oplugins-op/openserverless/templates/invoker-sts.yaml
+    oplugins-op/openserverless/templates/kafka-000-pvc.yaml
+    oplugins-op/openserverless/templates/standalone-sts.yaml
+    testing/stress-test/oplugins-stress/setup/kubernetes/roles/openwhisk-core-roles.yaml
   were rendered from the `openwhisk` Helm chart and retain their upstream
   `# Source:` provenance comments. Licensed under the Apache License,
   Version 2.0. See the NOTICE file for the required attribution.
