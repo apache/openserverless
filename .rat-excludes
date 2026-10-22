@@ -44,3 +44,6 @@
 # skip the skip
 no-release.txt
 apache-rat-0.18.jar
+
+# Unmodified third-party license texts, referenced by the top-level LICENSE.
+licenses/javascript/*.txt

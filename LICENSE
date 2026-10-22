@@ -210,26 +210,12 @@ are available under the Apache License, Version 2.0, whose complete text is
 reproduced above.
 
 Apache OpenWhisk (https://openwhisk.apache.org/)
-  A subset of the Apache OpenWhisk sources, taken unmodified from an earlier
-  OpenWhisk release, is vendored under build/openwhisk. Apache OpenWhisk is
-  licensed under the Apache License, Version 2.0. See the NOTICE file for the
-  required attribution.
-
-Spray Caching 1.3.4 (io.spray:spray-caching_2.11:1.3.4)
-  http://spray.io/documentation/1.2.4/spray-caching/
-  The file
-    build/openwhisk/common/scala/src/main/scala/org/apache/openwhisk/core/database/ConcurrentMapBackedCache.scala
-  contains implementation derived from Spray's [[spray.caching.Cache]] and
-  [[spray.caching.SimpleLruCache]]. Licensed under the Apache License,
-  Version 2.0. The license text as distributed by the spray project is
-  included at build/openwhisk/licenses/LICENSE-spray.txt, or see
-  https://github.com/spray/spray/blob/master/LICENSE
-  Copyright (C) 2011-2015 the spray project <http://spray.io>
-
-Gradle wrapper v5.5
-  The files build/openwhisk/gradlew and build/openwhisk/gradlew.bat are
-  distributed under the Apache License, Version 2.0. For details see those
-  files.
+  Sources and build descriptors derived from Apache OpenWhisk, with
+  OpenServerless modifications, are included under build/openwhisk-patch.
+  They are licensed under the Apache License, Version 2.0. See the NOTICE
+  file for the required attribution. The separately downloaded OpenWhisk
+  checkout and its Gradle wrapper scripts are not part of this source
+  distribution.
 
 Kubernetes ingress-nginx
   The deployment manifests of the ingress-nginx controller are vendored
@@ -330,131 +316,74 @@ Apache OpenWhisk Helm chart descriptors
 BUNDLED COMPONENTS -- PRE-BUILT JAVASCRIPT
 ==============================================================================
 
-The pre-built JavaScript files checked in under oplugins are produced by
-`bun build` from the TypeScript sources beside them and statically embed
-their runtime dependencies. The embedded components are listed below.
+The pre-built JavaScript files checked in under oplugins statically embed
+runtime dependencies. The following files preserve the upstream license
+texts and copyright notices for the versions listed below. These license
+files are included in this source distribution under licenses/javascript/.
+No additional copyright notice is inferred where upstream provides none.
 
-------------------------------------------------------------------------------
-Apache License, Version 2.0
-------------------------------------------------------------------------------
+oplugins/util/upload.js:
 
-The pre-built file oplugins/util/upload.js embeds the following component,
-which was released under an Apache 2.0 license.
+  * minio (8.0.1) -- Apache-2.0
+    licenses/javascript/minio-8.0.1.txt
+  * async (3.2.6) -- MIT
+    licenses/javascript/async-3.2.6.txt
+  * block-stream2 (2.1.0) -- MIT
+    licenses/javascript/block-stream2-2.1.0.txt
+  * browser-or-node (2.1.1) -- MIT
+    licenses/javascript/browser-or-node-2.1.1.txt
+  * buffer-crc32 (1.0.0) -- MIT
+    licenses/javascript/buffer-crc32-1.0.0.txt
+  * decode-uri-component (0.2.2) -- MIT
+    licenses/javascript/decode-uri-component-0.2.2.txt
+  * docopt (0.6.2) -- MIT
+    licenses/javascript/docopt-0.6.2.txt
+  * eventemitter3 (5.0.1) -- MIT
+    licenses/javascript/eventemitter3-5.0.1.txt
+  * fast-xml-parser (4.5.0) -- MIT
+    licenses/javascript/fast-xml-parser-4.5.0.txt
+  * filter-obj (1.1.0) -- MIT
+    licenses/javascript/filter-obj-1.1.0.txt
+  * ipaddr.js (2.2.0) -- MIT
+    licenses/javascript/ipaddr.js-2.2.0.txt
+  * lodash (4.17.21) -- MIT
+    licenses/javascript/lodash-4.17.21.txt
+  * mime-db (1.52.0) -- MIT
+    licenses/javascript/mime-db-1.52.0.txt
+  * mime-types (2.1.35) -- MIT
+    licenses/javascript/mime-types-2.1.35.txt
+  * query-string (7.1.3) -- MIT
+    licenses/javascript/query-string-7.1.3.txt
+  * readable-stream (3.6.2) -- MIT
+    licenses/javascript/readable-stream-3.6.2.txt
+  * safe-buffer (5.2.1) -- MIT
+    licenses/javascript/safe-buffer-5.2.1.txt
+  * split-on-first (1.1.0) -- MIT
+    licenses/javascript/split-on-first-1.1.0.txt
+  * strict-uri-encode (2.0.0) -- MIT
+    licenses/javascript/strict-uri-encode-2.0.0.txt
+  * string_decoder (1.3.0) -- MIT
+    licenses/javascript/string_decoder-1.3.0.txt
+  * strnum (1.0.5) -- MIT
+    licenses/javascript/strnum-1.0.5.txt
+  * through2 (4.0.2) -- MIT
+    licenses/javascript/through2-4.0.2.txt
+  * util-deprecate (1.0.2) -- MIT
+    licenses/javascript/util-deprecate-1.0.2.txt
+  * xml2js (0.5.0) -- MIT
+    licenses/javascript/xml2js-0.5.0.txt
+  * xmlbuilder (11.0.1) -- MIT
+    licenses/javascript/xmlbuilder-11.0.1.txt
+  * inherits (2.0.4) -- ISC
+    licenses/javascript/inherits-2.0.4.txt
+  * sax (1.4.1) -- ISC; also contains MIT-licensed code
+    licenses/javascript/sax-1.4.1.txt
+  * stream-chain (2.2.5) -- BSD-3-Clause
+    licenses/javascript/stream-chain-2.2.5.txt
+  * stream-json (1.8.0) -- BSD-3-Clause
+    licenses/javascript/stream-json-1.8.0.txt
 
-  * minio (8.0.1), MinIO JavaScript client
+oplugins/admin/usage/usage.js:
 
-------------------------------------------------------------------------------
-MIT License
-------------------------------------------------------------------------------
-
-The pre-built file oplugins/util/upload.js embeds the following components,
-which were released under an MIT license.
-
-  * async (3.2.6)
-  * block-stream2 (2.1.0)
-  * browser-or-node (2.1.1)
-  * buffer-crc32 (1.0.0)
-  * decode-uri-component (0.2.2)
-  * docopt (0.6.2)
-  * eventemitter3 (5.0.1)
-  * fast-xml-parser (4.5.0)
-  * filter-obj (1.1.0)
-  * ipaddr.js (2.2.0)
-  * lodash (4.17.21)
-  * mime-db (1.52.0)
-  * mime-types (2.1.35)
-  * query-string (7.1.3)
-  * readable-stream (3.6.2)
-  * safe-buffer (5.2.1)
-  * split-on-first (1.1.0)
-  * strict-uri-encode (2.0.0)
-  * string_decoder (1.3.0)
-  * strnum (1.0.5)
-  * through2 (4.0.2)
-  * util-deprecate (1.0.2)
-  * xml2js (0.5.0)
-  * xmlbuilder (11.0.1)
-
-The MIT license reads as follows:
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-------------------------------------------------------------------------------
-ISC License
-------------------------------------------------------------------------------
-
-The pre-built file oplugins/util/upload.js embeds the following components,
-which were released under an ISC license.
-
-  * inherits (2.0.4)
-  * sax (1.4.1)
-
-The pre-built file oplugins/admin/usage/usage.js embeds yaml (2.8.3), which
-was released under an ISC license.
-
-The ISC license reads as follows:
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted, provided that the above
-copyright notice and this permission notice appear in all copies.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-
-------------------------------------------------------------------------------
-BSD 3-Clause License
-------------------------------------------------------------------------------
-
-The pre-built file oplugins/util/upload.js embeds the following components,
-which were released under a BSD-3-Clause license.
-
-  * stream-chain (2.2.5)
-  * stream-json (1.8.0)
-
-The BSD-3-Clause license reads as follows:
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-
-1. Redistributions of source code must retain the above copyright notice, this
-   list of conditions and the following disclaimer.
-
-2. Redistributions in binary form must reproduce the above copyright notice,
-   this list of conditions and the following disclaimer in the documentation
-   and/or other materials provided with the distribution.
-
-3. Neither the name of the copyright holder nor the names of its contributors
-   may be used to endorse or promote products derived from this software
-   without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  * yaml (2.8.3) -- ISC
+    licenses/javascript/yaml-2.8.3.txt

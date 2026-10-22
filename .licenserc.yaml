@@ -21,6 +21,8 @@ header:
     copyright-owner: Apache Software Foundation
 
   paths-ignore:
+    # Preserve third-party license texts without adding ASF headers.
+    - 'licenses/javascript'
     - 'cli'
     - 'admin-api'
     - 'devcontainer'
