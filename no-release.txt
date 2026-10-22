@@ -11,7 +11,11 @@ openserverless/*/.github/*
 openserverless/*/.vscode/*
 openserverless/*/.vscode
 
-openserverless/build/openwhisk/tools/eclipse/java.xml
+# OpenWhisk is fetched at build time; ship only the tracked patch overlay.
+# Exclude generated checkouts/intermediates even after a local build.
+openserverless/build/openwhisk
+openserverless/build/openwhisk-orig
+openserverless/build/openwhisk-patch.tar
 openserverless/no-release.txt
 openserverless/openserverless.code-workspace
 

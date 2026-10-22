@@ -62,6 +62,16 @@ This markdown file serves as a local checklist for verifying the authenticity an
 
 - [ ] **Source Cleanliness**: For source distributions, check that no compiled binaries (`.jar`, `.class`, `.so`, `.dll`, or target/build folders) are accidentally bundled inside the package.
 
+- [ ] **OpenWhisk source boundary**: The archive includes `build/openwhisk-patch/`,
+  which contains the OpenServerless source and build-descriptor overlay. It must
+  not include the generated `build/openwhisk/` or `build/openwhisk-orig/`
+  checkouts, or `build/openwhisk-patch.tar`. The build fetches OpenWhisk at
+  `OPENWHISK_HASH` from `build/Taskfile.yml` and applies the overlay. Network
+  access is required for that step. Its Gradle wrapper uses version 6.9.1;
+  those downloaded wrapper scripts are not bundled in this source archive.
+  The source `LICENSE`/`NOTICE` describe the shipped overlay; licensing files
+  for built container images have a different scope.
+
 
 ## 6.Build and Test the Sources
 Execute:
