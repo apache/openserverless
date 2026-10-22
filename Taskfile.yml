@@ -343,6 +343,20 @@ tasks:
       cmds:
         - python3 syncimages.py --write={{.WRITE}} "{{.GHUSER}}"
 
+    align-main:
+      requires: {vars: [SUB]}
+      desc: create pr to merge in main for SUB=<subrepo>
+      cmds:
+        - |
+          SUB={{.SUB}}
+          BRANCH=0.9.0
+          cd $SUB
+          git fetch --all
+          git merge -s ours main
+          git push origin $BRANCH
+          gh pr create --base main --head $BRANCH --title "Use Merge NOT Squash!" --body "Align main with $BRANCH"
+
+
     targz:
       requires: {vars: [FILE]}
       cmds:
