@@ -203,6 +203,10 @@ tasks:
       - test -d ~/.ops/{{.OPS_BRANCH}}/oplugins || ln -sf $(pwd)/oplugins ~/.ops/{{.OPS_BRANCH}}/oplugins
       - touch ~/.profile
       - |
+        if ! grep -q OPS_BRANCH= ~/.profile
+        then echo export OPS_BRANCH={{.OPS_BRANCH}} >>~/.profile
+        fi
+      - |
         if ! grep -q 'PATH=~/.local/bin' ~/.profile
         then echo 'export PATH=~/.local/bin:"$PATH"' >>~/.profile
         fi
@@ -329,33 +333,21 @@ tasks:
       silent: true
       desc: find binary files
       cmds:
+      # configurator.js is a false positive because of an embedded unicode character
       - >
           find . -name .git -prune
           -o -iname '*.png' -prune
           -o -iname '*.jpg' -prune
           -o -iname '*.ico' -prune
+          -o -path './oplugins/util/config/configurator.js' -prune
           -o -type f -size +0 -print0
           | xargs -0 file --mime-encoding
           | grep ':.*\bbinary$' | cut -d: -f1
 
     sync-images:
-      desc: synchronize runtimes.json and opsroot.json with published images, use WRITE=y to actuallyt write, GHUSER=github-user for a non apache user on ghcr.io
+      desc: synchronize runtimes.json and opsroot.json with the images published by the origin user, asking before writing
       cmds:
-        - python3 syncimages.py --write={{.WRITE}} "{{.GHUSER}}"
-
-    align-main:
-      requires: {vars: [SUB]}
-      desc: create pr to merge in main for SUB=<subrepo>
-      cmds:
-        - |
-          SUB={{.SUB}}
-          BRANCH=0.9.0
-          cd $SUB
-          git fetch --all
-          git merge -s ours main
-          git push origin $BRANCH
-          gh pr create --base main --head $BRANCH --title "Use Merge NOT Squash!" --body "Align main with $BRANCH"
-
+        - python3 syncimages.py
 
     targz:
       requires: {vars: [FILE]}

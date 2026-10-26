@@ -25,35 +25,27 @@ you silently get a tagless `...openserverless-wsk-controller:` reference.
 This reads the tags from the remotes instead, so a clone without tags and
 a clone that never fetched give the same, correct answer.
 
-Takes a `<user>` (default `apache`), which selects both where to look for
-the tags and what registry the images are pulled from. This mirrors the
-publication rule of DEVEL.md ("Where the images go"): a tag pushed to the
-Apache repository builds to `docker.io/apache`, a tag pushed to any fork
-builds to `ghcr.io/<the fork owner>`. So a contributor syncs their own
-published builds with
+The `<user>` is read from `git remote get-url origin`, which must be
+`https://github.com/<user>/openserverless` (or its ssh form
+`git@github.com:<user>/openserverless`); the script says where it found
+it. The user selects both where to look for the tags and what registry
+the images are pulled from. This mirrors the publication rule of DEVEL.md
+("Where the images go"): a tag pushed to the Apache repository builds to
+`docker.io/apache`, a tag pushed to any fork builds to `ghcr.io/<the fork
+owner>`. So a contributor working in a clone of their fork syncs their own
+published builds just with
 
-    ./syncimages.py myuser
+    ./syncimages.py
 
 Tags are read with `git ls-remote` - nothing is cloned, and no credentials
 are needed for public repos.
 
-**Nothing is written unless you pass `--write=yes`.** The default run reports
-the images it resolved, each line prefixed `[dry-run]`, and exits without
-touching the files. This is deliberate: the tags come from whatever has
-been published at this moment, so you want to see what you are about to
-pin before you pin it.
-
-Both arguments tolerate an empty value, so a task file can pass them
-through without having to branch on whether they are set - `{{.USER}}`
-and `--write={{.WRITE}}` interpolate to the empty string when undefined:
-
-    ./syncimages.py                 # dry run, apache
-    ./syncimages.py "" --write=     # the same, spelled by a task file
-    ./syncimages.py myuser --write=yes
-
-`--write` also accepts a bare `--write` (meaning yes), and no/false/0/off
-as well as yes/true/1/on. Anything else is an error rather than a silent
-no, because writing is the half of this script that changes your files.
+**Nothing is written without asking.** The run lists every change it
+found, as `old -> new`, and then asks for confirmation before rewriting
+the files. This is deliberate: the tags come from whatever has been
+published at this moment, so you want to see what you are about to pin
+before you pin it. When stdin is not a terminal there is nobody to ask,
+so nothing is written.
 
 A repo that cannot be read, or that carries no publication tag, is
 **warned about and skipped**, not fatal - a fork usually has only some of
@@ -121,14 +113,30 @@ Only the `:<tag>` part of the value is replaced, so third-party images
 (couchdb, redis, ingress, ...) keep their own registry and tag - those are
 not ours to retag.
 
-Every resolved image is printed, one per line, as `<image>:<tag>`.
+Every image that changes is printed, one per line, as `old -> new`.
+
+The top-level `version` field is synced too, from the latest **GitHub
+release** of the `...-cli` repo - not its latest tag. A cli tag is only a
+request to build one; the release is what carries the binaries users
+install, and a tag whose build failed or was never published has none.
+Drafts are ignored. The cli is tagged `v<version>`, and the version it names
+is exactly what this field holds - the leading `v` is the tag's, not the
+version's, so it is dropped:
+
+    v0.9.0-incubating+26i13l12-snapshot -> 0.9.0-incubating+26i13l12-snapshot
+
+Note the separator: the cli spells its timestamp after a `+`, where the
+image repos use a `.`.
 """
 
 import argparse
 import json
+import os
 import re
 import subprocess
 import sys
+import urllib.error
+import urllib.request
 
 # month, a=January ... l=December - and hour, a=00 ... x=23
 MONTHS = "abcdefghijkl"
@@ -145,9 +153,14 @@ DIGIT_TS_RE = re.compile(r"^(?P<yy>\d\d)(?P<month>\d\d)(?P<dd>\d\d)(?P<hour>\d\d
 # half an hour ago is a warning nobody acts on
 WARNINGS = []
 
-# whether we are actually writing; only `report` needs to know, and
-# threading it through every call site would not make it clearer
-WRITING = False
+# every change found, as (path, what, old, new), shown before asking
+CHANGES = []
+
+# the origin forms we understand, both naming the same github repo
+ORIGIN_RES = [
+    re.compile(r"^https://github\.com/(?P<user>[^/]+)/openserverless(\.git)?/?$"),
+    re.compile(r"^git@github\.com:(?P<user>[^/]+)/openserverless(\.git)?$"),
+]
 
 # the repos we build ourselves, and the opsroot.json keys they feed
 OPSROOT_REPOS = [
@@ -159,33 +172,52 @@ OPSROOT_REPOS = [
 ]
 
 
-# what counts as yes and no for --write, so that `--write=$(VAR)` works
-# whatever spelling the caller's shell or task file happens to use
-TRUE = ("yes", "y", "true", "1", "on")
-FALSE = ("", "no", "n", "false", "0", "off")
+def change(path, what, old, new):
+    """Record a change, to be shown before asking whether to write it."""
+    if old != new:
+        CHANGES.append((path, what, old, new))
 
 
-def parse_flag(value):
-    """Read --write, rejecting anything that is not plainly yes or no.
+def origin_user():
+    """The github user of `origin`, and the url it was read from.
 
-    An unrecognised value is an error rather than a silent false: writing
-    is the destructive half of this script, and `--write=maybe` quietly
-    doing nothing is worse than a message.
+    Read from the clone this script lives in, not the current directory,
+    so that running it from elsewhere still syncs this checkout.
     """
-    normalised = value.strip().lower()
-    if normalised in TRUE:
-        return True
-    if normalised in FALSE:
-        return False
+    try:
+        url = subprocess.run(
+            ["git", "remote", "get-url", "origin"],
+            cwd=os.path.dirname(os.path.abspath(__file__)),
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+    except FileNotFoundError:
+        raise SystemExit("git not found in PATH: it is needed to read the origin")
+    except subprocess.CalledProcessError as exc:
+        detail = (exc.stderr.strip().splitlines() or ["?"])[-1]
+        raise SystemExit(f"cannot read git remote origin: {detail}")
+
+    for regex in ORIGIN_RES:
+        match = regex.match(url)
+        if match:
+            return match.group("user"), url
     raise SystemExit(
-        f"--write: expected one of {', '.join(TRUE)} or {', '.join(FALSE[1:])} "
-        f"(or empty, meaning no), not {value!r}"
+        f"git remote origin is {url}, not https://github.com/<user>/openserverless: "
+        "cannot tell whose images to sync"
     )
 
 
-def report(path, image):
-    """Print a resolved image, saying plainly whether it is being written."""
-    print(f"{'' if WRITING else '[dry-run] '}{path}: {image}")
+def confirm(question):
+    """Ask a yes/no question; anything but yes, or no terminal, is no."""
+    if not sys.stdin.isatty():
+        print("not a terminal, nobody to ask: nothing written", file=sys.stderr)
+        return False
+    try:
+        answer = input(f"{question} [y/N] ")
+    except EOFError:
+        return False
+    return answer.strip().lower() in ("y", "yes")
 
 
 def warn(message):
@@ -259,7 +291,32 @@ def remote_tags(origin):
     return tags
 
 
-def latest_tag(origin, timestamp_of):
+def remote_releases(origin):
+    """The tag names of the published GitHub releases of a repo, or None.
+
+    Read from the GitHub API, which needs no credentials for a public repo;
+    GITHUB_TOKEN is used when set, only to lift the anonymous rate limit.
+    Drafts are skipped: they are not published, and anonymously are not
+    even listed.
+    """
+    repo = origin.removeprefix("https://github.com/")
+    request = urllib.request.Request(
+        f"https://api.github.com/repos/{repo}/releases?per_page=100",
+        headers={"Accept": "application/vnd.github+json"},
+    )
+    if os.environ.get("GITHUB_TOKEN"):
+        request.add_header("Authorization", f"Bearer {os.environ['GITHUB_TOKEN']}")
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            releases = json.load(response)
+    except (urllib.error.URLError, ValueError) as exc:
+        warn(f"cannot list the releases of {origin}: {exc}")
+        return None
+
+    return {release["tag_name"] for release in releases if not release.get("draft")}
+
+
+def latest_tag(origin, timestamp_of, list_tags=remote_tags):
     """The most recent publication tag of `origin`, and its timestamp.
 
     `timestamp_of` locates the timestamp inside a tag name, and returns
@@ -271,8 +328,11 @@ def latest_tag(origin, timestamp_of):
     its own tags around the timestamp. Returns None, after warning, when
     the repo cannot be read or carries no publication tag - the image
     then keeps whatever it already references.
+
+    `list_tags` is where the tag names come from: the git tags by default,
+    or `remote_releases` for the tags that were actually released.
     """
-    tags = remote_tags(origin)
+    tags = list_tags(origin)
     if tags is None:
         return None
 
@@ -293,11 +353,14 @@ def latest_tag(origin, timestamp_of):
     return tag, candidates[tag]
 
 
-def sync_runtimes(path, prefix, timestamp, write):
-    """Retag every runtime image in runtimes.json, keeping its version prefix."""
+def sync_runtimes(path, prefix, timestamp):
+    """Retag every runtime image in runtimes.json, keeping its version prefix.
+
+    Returns the updated json, or None when there is nothing to sync to.
+    """
     if timestamp is None:
         warn(f"{path} left alone: no runtimes tag to sync to")
-        return
+        return None
 
     with open(path) as file:
         runtimes = json.load(file)
@@ -313,25 +376,36 @@ def sync_runtimes(path, prefix, timestamp, write):
                     "<version>- prefix to keep, leaving it alone"
                 )
                 continue
+            old = f"{image['prefix']}/{image['name']}:{image['tag']}"
             image["prefix"] = prefix
             image["tag"] = f"{version}-{timestamp}"
-            report(path, f"{image['prefix']}/{image['name']}:{image['tag']}")
+            change(path, image["name"], old, f"{prefix}/{image['name']}:{image['tag']}")
 
-    if write:
-        write_json(path, runtimes)
+    return runtimes
 
 
-def sync_opsroot(path, prefix, tags, write):
-    """Repoint, in opsroot.json, each image we build ourselves.
+def sync_opsroot(path, prefix, tags, version):
+    """Repoint, in opsroot.json, each image we build ourselves, and the version.
 
-    Both halves move: the tag, and the `<registry>/<user>` the image is
-    pulled from. A fork publishes to its own registry, so pinning its tag
-    onto `docker.io/apache` would name an image that does not exist.
+    Both halves of an image move: the tag, and the `<registry>/<user>` it
+    is pulled from. A fork publishes to its own registry, so pinning its
+    tag onto `docker.io/apache` would name an image that does not exist.
     Third-party images (couchdb, redis, ...) are not in OPSROOT_REPOS and
     so keep both their registry and their tag.
+
+    `version` is the cli release this opsroot goes with; None (the cli
+    repo unreadable or untagged) leaves the field as it is.
+
+    Returns the updated json.
     """
     with open(path) as file:
         opsroot = json.load(file)
+
+    if version is None:
+        warn(f"{path}: version left at {opsroot.get('version', '?')}")
+    else:
+        change(path, "version", opsroot.get("version"), version)
+        opsroot["version"] = version
 
     images = opsroot["config"]["images"]
     for repo, keys in OPSROOT_REPOS:
@@ -351,11 +425,11 @@ def sync_opsroot(path, prefix, tags, write):
                     "to replace, leaving it alone"
                 )
                 continue
-            images[key] = f"{prefix}/{image.rpartition('/')[2]}:{tag}"
-            report(path, images[key])
+            new = f"{prefix}/{image.rpartition('/')[2]}:{tag}"
+            change(path, f"config.images.{key}", images[key], new)
+            images[key] = new
 
-    if write:
-        write_json(path, opsroot)
+    return opsroot
 
 
 def write_json(path, data):
@@ -373,26 +447,8 @@ def write_json(path, data):
 def main(argv=None):
     parser = argparse.ArgumentParser(
         description=__doc__.splitlines()[0],
-        epilog="By default nothing is written: the run only reports what it would do. "
-        "Pass --write=yes to apply it. Both arguments accept an empty value, so a "
-        "task file can pass them through unconditionally: an empty <user> means "
-        "apache, and an empty --write means no.",
-    )
-    parser.add_argument(
-        "user",
-        nargs="?",
-        default="",
-        help="the github user and registry namespace to sync from "
-        "(default, and for an empty value: apache)",
-    )
-    parser.add_argument(
-        "--write",
-        nargs="?",
-        const="yes",
-        default="",
-        metavar="yes|no",
-        help="rewrite the json files (default: dry run, write nothing). "
-        "Accepts yes/no/true/false/1/0, and an empty value meaning no",
+        epilog="The github user is read from git remote origin. The changes found "
+        "are listed, and written only after you confirm.",
     )
     parser.add_argument(
         "--runtimes-json",
@@ -406,18 +462,12 @@ def main(argv=None):
     )
     args = parser.parse_args(argv)
 
-    # an empty value is how a task file passes "not set": `{{.USER}}` and
-    # `--write={{.WRITE}}` both interpolate to the empty string when the
-    # variable is undefined, and neither should be an error
-    user = args.user or "apache"
-    write = parse_flag(args.write)
-
-    global WRITING
-    WRITING = write
-
+    user, url = origin_user()
     registry = "docker.io" if user == "apache" else "ghcr.io"
     origin = f"https://github.com/{user}/openserverless"
     prefix = f"{registry}/{user}"
+    print(f"user {user}: from git remote origin {url}")
+    print(f"images from {prefix}, tags from {origin}-*\n")
 
     # every tag is resolved before anything is written, so that a repo we
     # cannot reach cannot leave the files half synced
@@ -428,6 +478,15 @@ def main(argv=None):
         f"{origin}-runtimes",
         lambda tag: tag[len("all_"):] if tag.startswith("all_") else None,
     )
+    # the cli is tagged `v<version>`, with the timestamp after a `+`, and
+    # the version it names is the whole tag without that leading `v`; only
+    # released tags count, a tag alone may never have produced a cli
+    cli = latest_tag(
+        f"{origin}-cli",
+        lambda tag: (tag.rpartition("+")[2] or None) if tag.startswith("v") else None,
+        list_tags=remote_releases,
+    )
+    version = cli[0][1:] if cli else None
     # the others are tagged BASETAG.<timestamp><SUFFIX>, and the whole tag
     # is what names the image
     tags = {}
@@ -437,8 +496,15 @@ def main(argv=None):
         )
         tags[repo] = found[0] if found else None
 
-    sync_runtimes(args.runtimes_json, prefix, runtimes[1] if runtimes else None, write)
-    sync_opsroot(args.opsroot_json, prefix, tags, write)
+    updated = {
+        args.runtimes_json: sync_runtimes(
+            args.runtimes_json, prefix, runtimes[1] if runtimes else None
+        ),
+        args.opsroot_json: sync_opsroot(args.opsroot_json, prefix, tags, version),
+    }
+
+    for path, what, old, new in CHANGES:
+        print(f"{path}: {what}\n    {old}\n -> {new}")
 
     # stdout is block-buffered when piped, so without this the stderr
     # summary below would appear *before* the lines it summarises
@@ -446,15 +512,24 @@ def main(argv=None):
 
     if WARNINGS:
         print(
-            f"\n{len(WARNINGS)} warning(s), the images above are all that could be "
+            f"\n{len(WARNINGS)} warning(s), the changes above are all that could be "
             "resolved:",
             file=sys.stderr,
         )
         for message in WARNINGS:
             print(f"  - {message}", file=sys.stderr)
 
-    if not write:
-        print("\ndry run: nothing written, pass --write=yes to apply", file=sys.stderr)
+    if not CHANGES:
+        print("\nalready up to date: nothing to write")
+    else:
+        paths = sorted({path for path, *_ in CHANGES})
+        print()
+        if confirm(f"Write {len(CHANGES)} change(s) to {', '.join(paths)}?"):
+            for path in paths:
+                write_json(path, updated[path])
+            print(f"written: {', '.join(paths)}")
+        else:
+            print("nothing written")
 
     # something unresolved is a real failure even though we carried on, so
     # a caller chaining this in a script notices
