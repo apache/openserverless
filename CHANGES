@@ -59,3 +59,24 @@ This is the initial version of the CHANGES file for the project. It outlines the
 - do no not add OPS_BRANCH in ~/.profile any more
 - updated the LICENSE and NOTICE for oplugins and top level
 
+# 0.9.0 (Unreleased)
+
+- Require FerretDB client credentials and correct tenant database/role provisioning and cleanup.
+- Restrict CouchDB user metadata access to administrators.
+- Restrict Redis tenant command, key and channel permissions while preserving tenant-scoped Lua; persist tenant ACLs on persistent volumes across Redis restarts.
+- Forward termination signals to Redis so graceful shutdown can save pending RDB writes.
+- Scope anonymous S3 reads to declared public web buckets; reconcile and verify restored IAM before resuming ingress.
+- Add NetworkPolicies and internal Services limiting tenant action access to etcd, Milvus management, Kafka, ZooKeeper, SeaweedFS control APIs and shared monitoring (requires an enforcing CNI); reduce monitoring Secret access and reconcile its RBAC during operator updates.
+- Generate installation-specific etcd JWT signing keys, scope Milvus access to etcd, store Milvus configuration in Secrets and redact configuration values from debug logs.
+- Enforce authentication before executing custom OPTIONS handlers on protected web actions, preserving automatic CORS preflight handling.
+- Require OIDC issuer/subject ownership before issuing tenant credentials; add a separate Secret-authorized tenant provisioning API and install its scoped RBAC during K3s setup.
+- Validate runtime-build image references and tenant ownership; isolate rootless BuildKit jobs with user namespaces, no service-account token and process sandboxing.
+- Isolate malformed Cron annotations between tenants and bound cron-init jobs, HTTP requests and paginated scans while retaining Allow concurrency. Duplicate prevention and recovery of missed executions remain separate work.
+- Wait for API ingress, registry credentials and default-tenant readiness during full cluster setup; validate component dependencies before reporting success.
+- Update the default K3s installation to v1.36.4+k3s1 and Milvus to v2.5.27; align the image catalog and correct the devcontainer image tag.
+- Fix operator image build ownership and provide a valid default Alertmanager receiver when notifications are disabled.
+- Restore valid TOML comments in uv.lock so the Admin API can start.
+- Prevent operator image publication on branch pushes, including branch names containing slashes.
+- Strengthen operator integration regression gates, use private service endpoints in SeaweedFS tests, and correct FerretDB and static-content assertions; propagate setup and HTTP failures.
+- Preserve bundled JavaScript license texts, correct NOTICE attribution and document/exclude generated OpenWhisk checkouts and overlay archives from source distributions.
+- Add an SSO configuration guide covering provider examples, login flows, provisioning defaults, rollout and troubleshooting.
