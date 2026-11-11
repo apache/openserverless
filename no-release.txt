@@ -52,12 +52,21 @@ openserverless/admin-api/WARN
 # Nested LICENSE and NOTICE files that no Dockerfile copies into an image.
 # The ones beside a Dockerfile describe that container image and are kept,
 # because the image build needs them.
-openserverless/cli/LICENSE
-openserverless/cli/tests/oplugins/LICENSE
-openserverless/testing/LICENSE
-openserverless/oplugins/LICENSE
-openserverless/build/LICENSE
-openserverless/cli/NOTICE
-openserverless/testing/NOTICE
-openserverless/oplugins/NOTICE
-openserverless/build/NOTICE
+admin-api/LICENSE
+admin-api/NOTICE
+build/LICENSE
+build/NOTICE
+cli/LICENSE
+cli/NOTICE
+devcontainer/LICENSE
+devcontainer/NOTICE
+oplugins-op/LICENSE
+oplugins-op/NOTICE
+oplugins/LICENSE
+oplugins/NOTICE
+runtimes/LICENSE
+runtimes/NOTICE
+streamer/LICENSE
+streamer/NOTICE
+testing/LICENSE
+testing/NOTICE
