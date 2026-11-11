@@ -56,7 +56,7 @@ keep the same shell for the whole procedure.
 # the version branch we want to publish
 export VER=0.9.0
 # the release candidate suffix (use RC1 for the first attempt)
-export RC=-RC5
+export RC=-RC8
 # your GPG fingerprint
 export KEY=E64863824BDA2495CBAA57FDCEBE1A0116BE6665
 ```
