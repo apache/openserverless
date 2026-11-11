@@ -11,10 +11,18 @@ DISCLAIMER file distributed with this work.
 This product contains significant parts that were originally based on
 Apache OpenWhisk <https://openwhisk.apache.org/>. Sources and build
 descriptors derived from Apache OpenWhisk, with OpenServerless
-modifications, are included under build/openwhisk-patch.
+modifications, are included under build/openwhisk-patch. Descriptors and
+data files derived from Apache OpenWhisk are included under cli, oplugins,
+oplugins-op and testing.
 
 Apache OpenWhisk
 Copyright 2016-2021 The Apache Software Foundation
+
+This product contains, under runtimes, sources derived from the Apache
+OpenWhisk runtimes, with OpenServerless modifications.
+
+Apache OpenWhisk Runtime Go
+Copyright 2016-2023 The Apache Software Foundation
 
 This product contains parts that were originally based on software from
 Nuvolaris (https://github.com/nuvolaris).
@@ -50,3 +58,51 @@ Copyright The Prometheus Authors.
 
 kube-state-metrics
 Copyright The Kubernetes Authors.
+
+This product contains, under oplugins-op, the Kafka example configuration
+of the Prometheus JMX Exporter, which was released under an Apache 2.0
+license.
+
+Prometheus exporter for JMX beans.
+Copyright 2012-2015 The Prometheus Authors
+
+This product includes software developed at
+SoundCloud Ltd. (http://soundcloud.com/).
+
+This product contains, under oplugins-op, the installation manifest of
+cert-manager, which was released under an Apache 2.0 license.
+
+cert-manager
+Copyright 2022 The cert-manager Authors.
+
+This product contains, under oplugins-op, descriptors derived from the
+Helm charts of Milvus and of the Milvus Operator, and the default
+configuration file of Milvus, which were released under an Apache 2.0
+license.
+
+Milvus
+Copyright (C) 2019-2021 Zilliz. All rights reserved.
+
+This product contains, under oplugins-op, descriptors derived from the
+Apache Pulsar Helm chart.
+
+Apache Pulsar
+Copyright 2017-2022 The Apache Software Foundation
+
+This product contains, under oplugins-op, descriptors derived from the
+Bitnami etcd Helm chart, which were released under an Apache 2.0 license.
+
+Bitnami etcd Helm chart
+Copyright Broadcom, Inc. All Rights Reserved.
+
+This product contains, under oplugins-op, a configuration file derived
+from the default configuration of Apache APISIX.
+
+Apache APISIX
+Copyright 2019-2023 The Apache Software Foundation
+
+This product contains, under oplugins-op, a configuration file derived
+from the default configuration of Apache Kvrocks.
+
+Apache Kvrocks
+Copyright 2022-2024 The Apache Software Foundation

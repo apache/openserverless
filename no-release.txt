@@ -8,6 +8,8 @@ openserverless/.github
 openserverless/.github/*
 openserverless/*/.github
 openserverless/*/.github/*
+openserverless/.vscode
+openserverless/.vscode/*
 openserverless/*/.vscode/*
 openserverless/*/.vscode
 
@@ -43,9 +45,19 @@ openserverless/runtimes/runtime/java/v8/WARN
 openserverless/runtimes/runtime/java/v11/WARN
 openserverless/runtimes/runtime/java/v21/WARN
 openserverless/runtimes/runtime/java/v17/WARN
-openserverless/cli/WARN
 openserverless/streamer/WARN
 openserverless/devcontainer/WARN
-openserverless/oplugins/WARN
 openserverless/admin-api/WARN
-openserverless/openserverless.code-workspace
+
+# Nested LICENSE and NOTICE files that no Dockerfile copies into an image.
+# The ones beside a Dockerfile describe that container image and are kept,
+# because the image build needs them.
+openserverless/cli/LICENSE
+openserverless/cli/tests/oplugins/LICENSE
+openserverless/testing/LICENSE
+openserverless/oplugins/LICENSE
+openserverless/build/LICENSE
+openserverless/cli/NOTICE
+openserverless/testing/NOTICE
+openserverless/oplugins/NOTICE
+openserverless/build/NOTICE
