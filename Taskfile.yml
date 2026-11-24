@@ -349,6 +349,14 @@ tasks:
       cmds:
         - python3 syncimages.py
 
+    rebuild-images:
+      desc: rebuild all the images
+      cmds:
+        - |
+          for i in build oplugins-op admin-api runtimes streamer
+          do task -d $i tag ci
+          done
+
     targz:
       requires: {vars: [FILE]}
       cmds:

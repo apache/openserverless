@@ -41,6 +41,9 @@
 # skip temp files
 **/_*
 
+# skip poetry.log
+**/poetry.lock
+
 # skip the skip
 no-release.txt
 apache-rat-0.18.jar
