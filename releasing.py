@@ -39,15 +39,23 @@ output:
 The KEYS file is the exception: it is shared by all releases, so it is
 always linked from https://downloads.apache.org, even for candidates.
 
+The Git tag is always written together with the commit hash it points
+to. The hash is looked up in the local repository (`git rev-list`), or,
+if the tag is not there, on GitHub (`git ls-remote`). If it cannot be
+found the script fails; use `--commit` to give it explicitly.
+
 Usage:
 
     ./releasing.py 0.9.0-incubating-RC4
     ./releasing.py 0.9.0-incubating-RC4 --hours 96
     ./releasing.py 0.9.0 --manager "Michele Sciabarra"
+    ./releasing.py 0.9.0-incubating-RC4 --commit 7956c9d89e81e88f7c50
 """
 
 import argparse
+import os
 import re
+import subprocess
 import sys
 from datetime import datetime, timedelta, timezone
 
@@ -57,7 +65,11 @@ VERSION_RE = re.compile(
     r"(?:-(?:RC|rc)(?P<rc>\d+))?$"
 )
 
-VERIFY_URL = "https://github.com/apache/openserverless/blob/0.9.0/VERIFY.md"
+COMMIT_RE = re.compile(r"^[0-9a-fA-F]{7,40}$")
+
+REPO_URL = "https://github.com/apache/openserverless"
+
+VERIFY_URL ="https://github.com/apache/openserverless/blob/0.9.0/VERIFY.md"
 
 DISCLAIMER = """\
 Apache OpenServerless is an effort undergoing incubation at The Apache Software
@@ -78,10 +90,42 @@ CHECKLIST = """\
 [ ] Can compile from source"""
 
 
+def _git(*args):
+    """Run git, returning stdout, or None if it fails or is missing."""
+    try:
+        out = subprocess.run(
+            ["git"] + list(args),
+            stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
+            universal_newlines=True, check=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    return out.stdout.strip()
+
+
+def resolve_commit(tag, repo_dir=None):
+    """Return the full hash of the commit `tag` points to, or None.
+
+    Looks in the local repository first (annotated tags are dereferenced
+    to their commit), then on GitHub."""
+    repo_dir = repo_dir or os.path.dirname(os.path.abspath(__file__))
+    sha = _git("-C", repo_dir, "rev-list", "-n", "1",
+               "refs/tags/%s" % tag, "--")
+    if sha:
+        return sha
+    out = _git("ls-remote", REPO_URL,
+               "refs/tags/%s" % tag, "refs/tags/%s^{}" % tag)
+    if not out:
+        return None
+    refs = dict(reversed(line.split("\t", 1)) for line in out.splitlines())
+    # the peeled (^{}) entry is the commit of an annotated tag
+    return refs.get("refs/tags/%s^{}" % tag) or refs.get("refs/tags/%s" % tag)
+
+
 class Release:
     """The pieces of a version string, and everything derived from them."""
 
-    def __init__(self, version, hours=72, now=None):
+    def __init__(self, version, hours=72, now=None, commit=None):
         match = VERSION_RE.match(version.strip())
         if not match:
             raise ValueError(
@@ -93,6 +137,7 @@ class Release:
         self.rc = int(match.group("rc")) if match.group("rc") else None
         self.hours = hours
         self.now = now or datetime.now(timezone.utc)
+        self.commit = commit
 
     # -- naming ----------------------------------------------------------
 
@@ -161,6 +206,13 @@ class Release:
             % self.tag
 
     @property
+    def tag_line(self):
+        """The tag, always together with the commit it points to."""
+        if not self.commit:
+            raise ValueError("no commit hash for tag %s" % self.tag)
+        return "%s (commit %s)\n\n%s" % (self.tag, self.commit, self.tag_url)
+
+    @property
     def deadline(self):
         return self.now + timedelta(hours=self.hours)
 
@@ -180,8 +232,7 @@ class Release:
         paragraphs += [
             "The artifacts for this release candidate can be found at:\n\n%s"
             % self.artifacts_url,
-            "The Git tag to be voted upon is:\n\n%s\n\n%s"
-            % (self.tag, self.tag_url),
+            "The Git tag to be voted upon is:\n\n%s" % self.tag_line,
             "Release artifacts are signed with the GPG key of %s." % signer,
             "The KEYS file is available at:\n\n%s" % self.keys_url,
             "Please download, verify, and test the release candidate.",
@@ -214,8 +265,7 @@ class Release:
             "Apache OpenServerless %s." % (self.pmc, self.version),
             "The release is available for download at:\n\n%s"
             % self.downloads_url,
-            "The Git tag for this release is:\n\n%s\n\n%s"
-            % (self.tag, self.tag_url),
+            "The Git tag for this release is:\n\n%s" % self.tag_line,
             "The KEYS file used to sign the artifacts is available at:\n\n%s"
             % self.keys_url,
             "For instructions on how to verify the release, please see the\n"
@@ -252,12 +302,29 @@ def main(argv=None):
         "--manager",
         help="name of the release manager, used to sign off the mail",
     )
+    parser.add_argument(
+        "--commit",
+        help="commit hash the tag points to (default: looked up with git, "
+             "locally and then on GitHub)",
+    )
     args = parser.parse_args(argv)
 
     try:
         release = Release(args.version, hours=args.hours)
     except ValueError as err:
         parser.error(str(err))
+
+    if args.commit:
+        if not COMMIT_RE.match(args.commit):
+            parser.error("not a valid commit hash: %r" % args.commit)
+        release.commit = args.commit.lower()
+    else:
+        release.commit = resolve_commit(release.tag)
+        if not release.commit:
+            parser.error(
+                "cannot find the commit for tag %s, locally or on %s; "
+                "push/fetch the tag or pass --commit" % (release.tag, REPO_URL)
+            )
 
     sys.stdout.write(release.mail(args.manager))
     return 0
